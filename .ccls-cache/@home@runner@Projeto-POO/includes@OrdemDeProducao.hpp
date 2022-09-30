@@ -1,6 +1,9 @@
 #ifndef ORDEMDEPRODUCAO_H
 #define ORDEMDEPRODUCAO_H
 
+#include "Produto.hpp"
+#include "Data.hpp"
+
 class OrdemDeProducao {
   private:
     Produto* produto;

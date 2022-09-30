@@ -9,7 +9,7 @@ OrdemDeProducao::~OrdemDeProducao() {
 }
 
     void OrdemDeProducao::setProduto(Produto* produto) {
-      
+
     }
     void OrdemDeProducao::setData(Data data) {
       
