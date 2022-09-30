@@ -18,7 +18,8 @@ class Salario {
 
 public:
 
-    Salario(double, double, Data, Motivo);
+    Salario(double salarioBase, double variacaoSalarial, Data data, Motivo motivacao);
+    Salario();
     ~Salario();
 
     //getters
@@ -28,13 +29,12 @@ public:
     Motivo getMotivacao();
 
     //setters
-    void setSalarioBase(double);
-    void setVariacaoSalarial(double);
-    void setData(Data);
-    void setMotivacao(Motivo);
+    void setSalarioBase(double salarioBase);
+    void setVariacaoSalarial(double variacaoSalarial);
+    void setData(Data data);
+    void setMotivacao(Motivo motivacao);
 
+    
 };
 
-#include "../src/Salario.cpp"
-
-#endif
+#endif // SALARIO_H

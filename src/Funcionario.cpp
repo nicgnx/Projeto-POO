@@ -1,39 +1,42 @@
 #include "../includes/Funcionario.hpp"
 
-Funcionario::Funcionario() {
-  
+Funcionario::Funcionario() {}
+
+Funcionario::Funcionario(std::string nome,std::string cpfCnpj,std::string email,Data dataNascimento, std::string endereco,std::string matricula, Cargo cargo, Departamento departamento, Historico historico, Salario salario){
+  this->nome = nome;
+  this->cpfCnpj = cpfCnpj;
+  this->email = email;
+  this->dataNascimento = dataNascimento;
+  this->endereco = endereco;
+  this->matricula = matricula;
+  this->cargo = cargo;
+  this->departamento = departamento;
+  this->historico.push_back(historico);
+  this->salario.push_back(salario);
 }
 
-Funcionario::~Funcionario() {
+Funcionario::~Funcionario() {}
 
-}
+Data Funcionario::getDataNascimento() { return this->dataNascimento; }
 
-Data Funcionario::getDataNascimento() {
-  return this->dataNascimento;
-}
+std::string Funcionario::getEndereco() { return this->endereco; }
 
-std::string Funcionario::getEndereco() {
-  return this->endereco;
-}
+std::string Funcionario::getMatricula() { return this->matricula; }
 
-std::string Funcionario::getMatricula() {
-  return this->matricula;
-}
-
-Cargo Funcionario::getCargo() {
-  return this->cargo;
-}
+Cargo Funcionario::getCargo() { return this->cargo; }
 
 Historico Funcionario::getHistorico() {
-  // implementar aqui, tem que buscar na classe Histórico
+  return this->historico.back();
 }
 
-Departamento Funcionario::getDepartamento() {
-  return this->departamento;
+vector <Historico> Funcionario::getHistoricoCompleto(){
+  return this->historico;
 }
+Departamento Funcionario::getDepartamento() { return this->departamento; }
 
-float Funcionario::getSalarioAtual() {
-  // implementar aqui, tem que buscar na classe Salario
+double Funcionario::getSalarioAtual() {
+  Salario salario = this->salario.back();
+  return salario.getSalarioBase();
 }
 
 void Funcionario::setDataNascimento(Data dataNascimento) {
@@ -48,18 +51,16 @@ void Funcionario::setMatricula(std::string matricula) {
   this->matricula = matricula;
 }
 
-void Funcionario::setCargo(Cargo cargo) {
-  this->cargo = cargo;
-}
+void Funcionario::setCargo(std::string cargo) { this->cargo.setCargo(cargo); }
 
 void Funcionario::updateHistorico(Historico historico) {
-  // implementar aqui, tem que trabalhar com vetor Historico[]
+  this->historico.push_back(historico);
 }
 
-void Funcionario::setDepartamento(Departamento departamento) {
-  this->departamento = departamento;
+void Funcionario::setDepartamento(std::string departamento) {
+  this->departamento.setDepartamento(departamento);
 }
 
-void Funcionario::setSalarioAtual() {
-  // implementar aqui, tem que trabalhar com vetor Salario[]
+void Funcionario::setSalarioAtual(Salario salario) {
+  this->salario.push_back(salario);
 }

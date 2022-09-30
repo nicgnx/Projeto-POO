@@ -2,33 +2,18 @@
 #include "../includes/Data.hpp"
 #include <string>
 
-Historico::Historico(int ano, int mes, int dia, int hora, int minuto,
-                     int segundo, std::string reg) {
-  Data data(ano, mes, dia, hora, minuto, segundo);
-  std::string registro = reg;
+Historico::Historico(Data data, std::string registro) {
+  this->data = data;
+  this->registro = registro;
 }
 
 Historico::~Historico() {}
 
-Data Historico::getData() {
-  Data intermediarioData;
-  intermediarioData.setAno(data.getAno());
-  intermediarioData.setMes(data.getMes());
-  intermediarioData.setDia(data.getDia());
-  intermediarioData.setHora(data.getHora());
-  intermediarioData.setMin(data.getMin());
-  intermediarioData.setSeg(data.getSeg());
-  return intermediarioData;
-}
+Data Historico::getData() { return this->data; }
 
-std::string Historico::getRegistro() {
-  std::string intermediarioReg = " ";
-  intermediarioReg = registro;
-  return intermediarioReg;
-}
+std::string Historico::getRegistro() { return this->registro; }
 
-void Historico::setData(Data intermediarioData) { data = intermediarioData; }
+void Historico::setData(Data data) { this->data = data; }
 
-void Historico::setRegistro(std::string intermediarioString) {
-  registro = intermediarioString;
-}
+void Historico::setRegistro(std::string registro) { this->registro = registro; }
+
