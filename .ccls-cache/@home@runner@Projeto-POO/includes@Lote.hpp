@@ -10,8 +10,9 @@ class Lote {
     Data data;
     int quantidade;
     const int NUMLOTE;
+    static int lotesTotais = 0;
   public:
-    Lote(Produto*, Data, int, int);
+    Lote(Produto*, Data, int);
     Lote();
     ~Lote();
 
@@ -25,7 +26,6 @@ class Lote {
     void setProduto(Produto* produto);
     void setData(Data data);
     void setQuatidade(int quatidade);
-
 
     void atualizaLotes();
     

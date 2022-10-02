@@ -1,14 +1,16 @@
 #include "../includes/Lote.hpp"
 
-Lote::Lote(Produto* produto, Data data, int quantidade, int numLote):
-  NUMLOTE(numLote) {
+Lote::Lote(Produto* produto, Data data, int quantidade):
+  NUMLOTE(this->lotesTotais) {
   this->data = data;
   this->produto = produto;
   this->quantidade = quantidade;
+  this->lotesTotais += 1;
   }
 
-Lote() {
-  
+Lote::Lote():
+  NUMLOTE(this->lotesTotais) {
+  this->lotesTotais += 1;
 }
 
 Lote::~Lote() {
