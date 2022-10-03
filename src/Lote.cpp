@@ -17,10 +17,6 @@ Lote::~Lote() {
   
 }
 
-void Lote::atualizaLotes() {
-  
-}
-
 //getters
 Produto* Lote::getProduto() {
   return this->produto;
@@ -28,7 +24,7 @@ Produto* Lote::getProduto() {
 Data Lote::getData() {
   return this->data;
 }
-int Lote::getQuatidade() {
+int Lote::getQuantidade() {
     return this->quantidade;
 }
 int Lote::getNumLote() {
@@ -42,7 +38,7 @@ void Lote::setProduto(Produto* produto) {
 void Lote::setData(Data data) {
   this->data = data;
 }
-void Lote::setQuatidade(int quatidade) {
+void Lote::setQuatidade(int quantidade) {
   this->quantidade = quantidade;
   
 }

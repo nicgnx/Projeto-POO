@@ -19,15 +19,13 @@ class Lote {
     //getters
     Produto* getProduto();
     Data getData();
-    int getQuatidade();
+    int getQuantidade();
     int getNumLote();
 
     //setters
     void setProduto(Produto* produto);
     void setData(Data data);
     void setQuatidade(int quatidade);
-
-    void atualizaLotes();
     
 };
 
