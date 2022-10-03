@@ -1,4 +1,5 @@
 #include "../includes/Produto.hpp"
+#include <iostream>
 
 // Contrutores e Destrutores
 
@@ -42,14 +43,19 @@ int Produto::getLoteMinimo(){
   return this->loteMinimo;
 }
 
-
 int Produto::getEstoqueMinimo(){ return this-> estoqueMinimo;}
 
 Lote Produto::getLote(int numLote){
-  for(){
-    
+  bool flag = 1;
+  for(unsigned int num = this->lotes.size();flag;num--){
+    if(this->lotes[num]->getNumLote() == numLote){
+      return this->lotes[num];
+    }
+    if (num == 0){
+      flag = 0;
+      cout << "Lote não encontrado.";
+    }
   }
-
 }
 
 vector <Lote*> Produto::getLoteTodos(){
@@ -57,7 +63,35 @@ vector <Lote*> Produto::getLoteTodos(){
 }
 
 
+// Setters
 
+void Produto::setProduto(std::string produto){
+  this->produto = produto;
+}
+void Produto::setCodigo(int codigo){
+  this->codigo = codigo;
+}
 
+void Produto::setValor(float valor){
+  this->valor = valor;
+}
 
+void Produto::setCategoria(Categoria categoria){
+  this->categoria = categoria;
+}
 
+void Produto::setLoteMinimo(int loteMinimo){
+  this->loteMinimo = loteMinimo;
+}
+
+void Produto::setEstoqueMinimo(int estoqueMinimo){
+  this->estoqueMinimo = estoqueMinimo;
+}
+
+void Produto::setLote(int numLote, Lote lote){
+  this->lotes[numLote] = lote;
+}
+
+void Produto::setLoteTodos(vector <Lote*> lotes){
+  this->lotes = lotes;
+}

@@ -4,14 +4,14 @@
 
 class Categoria {
 private:
-  std::string nomeCateg;
+  std::string categoria;
 
 public:
-  Categoria(std::string nomeCateg);
+  Categoria(std::string categoria);
   Categoria();
   ~Categoria();
-  std::string getNomeCateg();
-  void setNomeCateg(std::string nome);
+  std::string getCategoria();
+  void setCategoria(std::string categoria);
 };
 
 #endif // CATEGORIA_H

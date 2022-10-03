@@ -38,7 +38,7 @@ public:
     void Produto::setCategoria(Categoria categoria);
     void Produto::setLoteMinimo(int loteMinimo);
     void Produto::setEstoqueMinimo(int estoqueMinimo);
-    void Produto::setLote(int numLote);
+    void Produto::setLote(int numLote, Lote lote);
     void Produto::setLoteTodos(vector <Lote*> lotes)
 };
 
