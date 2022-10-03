@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-10-03T15:46:33.347Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="ZmhBGxY8DYyX8qEwuLSU" version="20.4.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-03T15:47:52.438Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="How-r3z4iKzojtiprpFf" version="20.4.0" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Diagrama UML">
     <mxGraphModel dx="1897" dy="1678" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="2000" pageHeight="1800" background="none" math="0" shadow="0">
       <root>
@@ -335,7 +335,7 @@
           <mxGeometry y="138" width="272" height="26" as="geometry" />
         </mxCell>
         <mxCell id="zTteDzw6mhybtIft6KNz-35" value="Estoque" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="420" y="1099" width="314" height="244" as="geometry">
+          <mxGeometry x="420" y="1099" width="314" height="200" as="geometry">
             <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -354,7 +354,7 @@
         <mxCell id="VAJZHnrrX_qjfKX5aMCy-19" value="+ bool verificaEstoque(quantidade [ int ])&amp;nbsp;" style="text;html=1;resizable=0;autosize=1;align=left;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" parent="zTteDzw6mhybtIft6KNz-35" vertex="1">
           <mxGeometry y="112" width="314" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="VAJZHnrrX_qjfKX5aMCy-26" value="+ vector &amp;lt;int&amp;gt; lotesParaVenda()" style="text;html=1;resizable=0;autosize=1;align=left;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" parent="zTteDzw6mhybtIft6KNz-35" vertex="1">
+        <mxCell id="VAJZHnrrX_qjfKX5aMCy-26" value="+ vector &amp;lt;int&amp;gt; lotesVendidos()" style="text;html=1;resizable=0;autosize=1;align=left;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" parent="zTteDzw6mhybtIft6KNz-35" vertex="1">
           <mxGeometry y="138" width="314" height="26" as="geometry" />
         </mxCell>
         <mxCell id="eWod7wNQgIvaONbQWn_n-0" value="+ OrdemProducao verificaEstoqueMinimo()" style="text;html=1;resizable=0;autosize=1;align=left;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" vertex="1" parent="zTteDzw6mhybtIft6KNz-35">
@@ -454,7 +454,7 @@
           <mxGeometry x="732" y="1164" width="31" height="41" as="geometry" />
         </mxCell>
         <mxCell id="zTteDzw6mhybtIft6KNz-99" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=24;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="541" y="1338" width="31" height="41" as="geometry" />
+          <mxGeometry x="543.5" y="1297" width="31" height="41" as="geometry" />
         </mxCell>
         <mxCell id="zTteDzw6mhybtIft6KNz-100" value="0...*" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=24;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="522.5" y="1427" width="61" height="41" as="geometry" />
