@@ -7,9 +7,12 @@ Salario::Salario(double salarioBase, double variacaoSalarial, Data data, Motivo 
   this->motivacao = motivacao;
 }
 
-Salario::~Salario() {
-  
-}
+// Construtores 
+Salario::Salario() {}
+
+Salario::~Salario() {}
+
+// Getters
 double Salario::getSalarioBase() {
   return this->salarioBase;
 }
@@ -22,6 +25,9 @@ Data Salario::getData() {
 Motivo Salario::getMotivacao() {
   return this->motivacao;
 }
+
+// Setters
+
 void Salario::setSalarioBase(double novoSalarioBase) {
   this->salarioBase = novoSalarioBase;
 }

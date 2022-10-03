@@ -4,15 +4,12 @@
 #include <string>
 
 class Usuario {
-
+protected:
   std::string nome;
   std::string cpfCnpj;
   std::string email;
  
-
-
-protected:
-  
+public:
   virtual ~Usuario() = default;
   std::string getNome();
   std::string getcpfCnpj();
@@ -23,6 +20,4 @@ protected:
 
 };
 
-#include "../src/Usuario.cpp"
-
-#endif
+#endif // USUARIO_H

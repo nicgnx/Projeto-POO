@@ -1,8 +1,8 @@
 # DISTRIBUIÇÃO
 
 - Cargo:
-- Usuario / Cliente: Cesar 
-- Salario: Erick
+- Usuario / Cliente / Venda: Cesar 
+- Salario / Lote / Ordem de Produção: Erick
 - Cargo / Departamento: Vitor
 - Funcionario: Raphael
 - Historico: Gustavo

@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "usuario.hpp"
+#include "Usuario.hpp"
 #include "Data.hpp"
 #include "Cargo.hpp"
 #include "Departamento.hpp"
@@ -16,11 +16,12 @@ class Funcionario : public Usuario {
   std::string matricula;
   Cargo cargo;
   Departamento departamento;
-  Historico historico[];
-  Salario salario[];   
+  std::vector <Historico> historico;
+  std::vector <Salario> salario;   
 
 public:
   Funcionario();
+  Funcionario(std::string nome,std::string cpfCnpj,std::string email,Data dataNascimento, std::string endereco,std::string matricula, Cargo cargo, Departamento departamento, Historico historico, Salario salario);
   ~Funcionario();
 
   // getters
@@ -29,17 +30,18 @@ public:
   std::string getMatricula();
   Cargo getCargo();
   Historico getHistorico();
+  vector <Historico> getHistoricoCompleto();
   Departamento getDepartamento();
-  float getSalarioAtual();
+  double getSalarioAtual();
 
   // setters
-  void setDataNascimento(Data);
-  void setEndereco(std::string);
-  void setMatricula(std::string);
-  void setCargo(std::string);
-  void updateHistorico(Historico Historico);
-  void setSalarioAtual(float);
-  void setDepartamento(Departamento); 
+  void setDataNascimento(Data dataNascimento);
+  void setEndereco(std::string endereco);
+  void setMatricula(std::string matricula);
+  void setCargo(std::string cargo);
+  void updateHistorico(Historico historico);
+  void setSalarioAtual(Salario salario);
+  void setDepartamento(std::string departamento); 
 };
 
-#endif
+#endif // FUNCIONARIO_H

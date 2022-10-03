@@ -1,21 +1,17 @@
 #ifndef CARGO_H
 #define CARGO_H
-
-#include "Departamento.hpp"
-
+#include <string>
 
 class Cargo {
 private:
-  std::string nome;
+  std::string cargo;
 
 public:
-  Cargo(std::string nome);
+  Cargo(std::string cargo);
+  Cargo();
   ~Cargo();
-
   std::string getCargo();
-  void setCargo(std::string nome);
+  void setCargo(std::string cargo);
 };
-
-#include "../src/Cargo.cpp"
 
 #endif // CARGO_H
