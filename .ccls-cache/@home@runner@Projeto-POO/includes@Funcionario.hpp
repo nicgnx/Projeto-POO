@@ -39,8 +39,8 @@ public:
   void setEndereco(std::string endereco);
   void setMatricula(std::string matricula);
   void setCargo(std::string cargo);
-  void updateHistorico(Historico historico);
-  void setSalarioAtual(Salario salario);
+  void addHistorico(Historico historico);
+  void setNovoSalario(Salario salario);
   void setDepartamento(std::string departamento); 
 };
 

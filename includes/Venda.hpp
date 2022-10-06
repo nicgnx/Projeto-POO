@@ -7,33 +7,40 @@
 #include <vector>
 
 class Venda{
-  
+
+  int idProduto
   Data dataVenda;
   Cliente* cliente;
   int quantidade;
-  vector<Lote*> lotes;
+  vector<int> lotes;
+  float precoUnitario;
+  float valorVenda;
+  Estoque& estoque;
   
 public:
-  Venda(Data dataVenda, Cliente* cliente, int quantidade);
+  Venda(int idProduto, Data dataVenda, Cliente* cliente, int quantidade);
   ~Venda();
 //getters
+  int idProduto
   Data getDataVenda();
-  Cliente getCliente();
+  Cliente* getCliente();
   int getQuantidade();
-  int getLotes();
+  vector <int> getLotes();
+  float precoUnitario;
+  float valorVenda;
 
 //setters
   void setDataVenda(Data data);
   void setCliente(Cliente* cliente);
   void setQuantidade(int quantidade);
-  void setLotes(Lote* lote);
+  void setLotes(vector <int> lote);
+  void setPrecoUnitario(float precoUnitario);
+  void setValorVenda(float valorVenda);
+  void setEstoque(Estoque& estoque);
 
 //outros metodos
-  bool VerificaEstoque();
+  bool verificaVenda();
   void executaVenda();
-  
-
-
 };
 
 #endif 

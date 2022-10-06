@@ -3,12 +3,13 @@
 
 #include <string>
 #include "../includes/Produto.hpp"
+#include <map>
 
 class Estoque {
 private:
-  Produto *produto;
-  int quantidade;
-
+  vector <Produto*> produto;
+  map <int idProduto,vector <Lotes*> lotes> quantidade;
+  static Estoque* estoque;
 public:
   Estoque(Produto *produto, int quantidade);
   Estoque();

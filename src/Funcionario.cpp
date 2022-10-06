@@ -53,7 +53,7 @@ void Funcionario::setMatricula(std::string matricula) {
 
 void Funcionario::setCargo(std::string cargo) { this->cargo.setCargo(cargo); }
 
-void Funcionario::updateHistorico(Historico historico) {
+void Funcionario::addHistorico(Historico historico) {
   this->historico.push_back(historico);
 }
 
@@ -61,6 +61,6 @@ void Funcionario::setDepartamento(std::string departamento) {
   this->departamento.setDepartamento(departamento);
 }
 
-void Funcionario::setSalarioAtual(Salario salario) {
+void Funcionario::setNovoSalario(Salario salario) {
   this->salario.push_back(salario);
 }
