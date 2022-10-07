@@ -13,8 +13,8 @@ private:
   ~Estoque();
 
   // Atributes
-  vector <Produto*> produto;
-  map <int idProduto,vector <Lotes*> lote> lotes;
+  map <int idProduto,Produto* produto> produto;
+  map <int idProduto,Lotes* lote> lotes;
   Estoque* Estoque::estoque = NULL;
 public:
   // Operators 
@@ -23,7 +23,7 @@ public:
 
 //getters
   Produto* getProduto(int idProduto);
-  int getQuantidade();
+  Lote* getLote(int idProduto, int idLote);
   static Estoque* getInstancia();
 
 //setters

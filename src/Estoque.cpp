@@ -6,20 +6,22 @@ Estoque::~Estoque(){}
 //getters
 
 Produto* Estoque::getProduto (int idProduto){
-  for(unsigned int num = this->produto.size(); num >= 0;num--){
-    if(this->produto[num].getIdProduto() == idProduto){
-      return this->produto[num];
-    }
-  }throw ("Esse produto não existe!");
+  Produto* produto = this->produto.find(idProduto);
+  if (produto == this->produto.end()){throw ("Esse produto não existe!");}
+  else{return produto;}
 }
 
-int Estoque::getQuantidade(){
-  return this->quantidade;
+Lote* Estoque::getLote(int idProduto, int idLote){
+  for(int num = this->lotes.size();num >= 0; num--){ 
+    if (this->lotes[idProduto][num]->getIdLote() == idLote){
+      return this->lotes[idProduto][num];
+    }
+  } throw("Esse lote não existe!");
 }
 
 //setters
 void Estoque::setProduto (int idProduto){
-  for(unsigned int num = this->produto.size(); num >= 0;num--){
+  for(int num = this->produto.size(); num >= 0;num--){
     if(this->produto[num].getIdProduto() == idProduto){
       return this->produto[num];
     }
