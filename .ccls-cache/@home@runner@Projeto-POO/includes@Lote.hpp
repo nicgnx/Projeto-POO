@@ -17,8 +17,8 @@ class Lote {
     Lote();
     ~Lote();
 
+    void updateLotes();
     
-
     //getters
     int getIdProduto();
     Data getData();

@@ -3,7 +3,9 @@
 
 #include <string>
 #include "../includes/Produto.hpp"
+#include "../includes/OrdemProducao.hpp"
 #include <map>
+#include <list>
 
 
 class Estoque {
@@ -13,8 +15,9 @@ private:
   ~Estoque();
 
   // Atributes
-  map <int idProduto,Produto* produto> produto;
-  map <int idProduto,Lotes* lote> lotes;
+  std::map <int,Produto*> produto; // Parâmetros: idProduto, Produto
+  std::map <int,std::vector<Lotes*>> lotes; // Parâmetros: idProduto, Lote
+  std::list <OrdemProducao*> ordensDeProducao;
   Estoque* Estoque::estoque = NULL;
 public:
   // Operators 
@@ -26,18 +29,13 @@ public:
   Lote* getLote(int idProduto, int idLote);
   static Estoque* getInstancia();
 
-//setters
-  void setProduto(int idProduto);
-  void setQuantidade(int quantidade);
-
 //Métodos
-  vector <int> retiraLotes();
+  vector <int> retiraLotes(int idProduto,int quantidade);
   int  verificaEstoque(int idProduto);
   void cadastraProduto(Estoque* produto);
   void cadastraLote(int idProduto, Lote* lote);
   void solicitaLote();
   void reabasteceEstoqueMinimo(int idProduto);
-
   
 };
 

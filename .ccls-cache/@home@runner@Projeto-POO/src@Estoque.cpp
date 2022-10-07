@@ -12,35 +12,40 @@ Produto* Estoque::getProduto (int idProduto){
 }
 
 Lote* Estoque::getLote(int idProduto, int idLote){
-  for(unsigned int num = this->lotes.size();num >= 0; num--){
-  if (this->lotes[idProduto][num]->getIdLote() == idLote){ return this}
-
-  }
-  if (produto == this->produto.end()){throw ("Esse produto não existe!");}
-  else{return produto;}
-}
-
-//setters
-void Estoque::setProduto (int idProduto){
-  for(unsigned int num = this->produto.size(); num >= 0;num--){
-    if(this->produto[num].getIdProduto() == idProduto){
-      return this->produto[num];
+  for(int num = 0;num < this->lotes[idProduto].size(); num++){ 
+    if (this->lotes[idProduto][num]->getIdLote() == idLote){
+      return this->lotes[idProduto][num];
     }
-  }throw ("Esse produto não existe!");
-}
-void Estoque::setQuantidade (int quantidade){
-  this->quantidade = quantidade;
+  } throw("Esse lote não existe!");
 }
 
-//atualizar estoque
-void Estoque::atualizaEstoque(){
-  int estoque = 0;
-  bool flag = 1;
+//Métodos
+
+vector <int> Estoque::retiraLotes(int idProduto,int quantidade){
+  vector <int> lotes;
+  int aux,num = 0;
+  for (;num < this->lotes[idProduto].size();num++){
+    aux = this->lotes[idProduto][num]->getQuantidade();
+    if(aux >= quantidade){
+      aux = aux - quantidade;
+      this->lotes[idProduto][num]->setQuantidade(aux);
+      lotes.push_back(this->lotes[idProduto][num]->getIdLote());
+      return lotes;
+    }else{
+      quantidade = quantidade - aux;
+      this->lotes[idProduto][num]->setQuantidade(0);
+      lotes.push_back(this->lotes[idProduto][num]->getIdLote());
+    }
+  }throw ("Não era nem pra essa compra ter sido aprovada! Vai ficar sem produto...")
+}
+
+int Estoque::verificaEstoque(int idProduto){
+  int estoqueDisponivel
+  for(int num = 0;num < this->lotes[idProduto].size();num++){
+    estoqueDisponivel += this->lotes[idProduto][num]->getQuantidade();
+  } return estoqueDisponivel;
+}
+
+void Estoque::reabasteceEstoqueMinimo(Produto* produto){
   
-
-  for(unsigned int num = this->produto->getLoteTodos().size();flag;num--){
-    estoque += this->produto->getLoteTodos()[num]->getQuantidade();
-    if(num == 0){flag = 0;}
-  }
-  setQuantidade(estoque);
 }

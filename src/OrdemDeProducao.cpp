@@ -1,7 +1,7 @@
 #include "../includes/OrdemDeProducao.hpp"
 
-OrdemDeProducao::OrdemDeProducao(Produto* produto, Data data, int quantidade) {
-  this->IdProduto = produto;
+OrdemDeProducao::OrdemDeProducao(int idProduto, Data data, int quantidade) {
+  this->idProduto = idProduto;
   this->data = data;
   this->quantidade = quantidade;
 }
@@ -11,12 +11,11 @@ OrdemDeProducao::~OrdemDeProducao() {
 }
 
 Lote* OrdemDeProducao::solicitaLote() {
-  Lote* lote = new Lote(this->IdProduto, this->data, this->quantidade);
-  return lote;
+  return new Lote(this->idProduto, this->data, this->quantidade);
 }
 //getters
-Produto* OrdemDeProducao::getProduto() {
-  return this->produto;
+int OrdemDeProducao::getIdProduto() {
+  return this->idProduto;
 }
 Data OrdemDeProducao::getData() {
   return this->data;
@@ -26,8 +25,8 @@ int OrdemDeProducao::getQuantidade() {
 }
 
 //setters
-void OrdemDeProducao::setProduto(Produto* produto) {
-  this->produto = produto;
+void OrdemDeProducao::setIdProduto(int idProduto) {
+  this->idProduto = idProduto;
 }
 void OrdemDeProducao::setData(Data data) {
   this->data = data;

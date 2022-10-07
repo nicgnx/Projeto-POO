@@ -17,6 +17,9 @@ Lote::~Lote() {
   
 }
 
+void Lote::updateLotes() {
+  
+}
 
 //getters
 int Lote::getIdProduto() {

@@ -8,23 +8,23 @@
 
 class OrdemDeProducao {
   private:
-    Produto* produto;
+    int idProduto;
     Data data;
     int quantidade;
 
   public:
-    OrdemDeProducao(Produto*, Data, int);
+    OrdemDeProducao(int, Data, int);
     ~OrdemDeProducao();
 
     Lote* solicitaLote();
 
     //getters
-    Produto* getProduto();
+    int getIdProduto();
     Data getData();
     int getQuantidade();
 
     //setters
-    void setProduto(Produto*);
+    void setIdProduto(int);
     void setData(Data);
     void setQuantidade(int);
     
