@@ -92,3 +92,7 @@ void Produto::setEstoqueMinimo(int estoqueMinimo) {
 void Produto::setLote(Lote* lote){
   this->lotes.push_back(lote);
 }
+
+void Produto::updatePreco(Lote* lote){
+  this->lotes.push_back(lote);
+}

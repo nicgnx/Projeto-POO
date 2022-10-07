@@ -27,7 +27,7 @@ public:
   static Estoque* getInstancia();
 
 //setters
-  void setProduto(int produto);
+  void setProduto(int idProduto);
   void setQuantidade(int quantidade);
 
 //Métodos
