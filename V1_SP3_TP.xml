@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-10-07T03:39:29.243Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="vAEa82kM6FQ2o2K77NYG" version="20.4.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-07T14:11:13.956Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="FCX8WXrNXtOUDTHpOpC6" version="20.4.0" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Diagrama UML">
-    <mxGraphModel dx="1123" dy="1233" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="2000" pageHeight="1800" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1268" dy="1320" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="2000" pageHeight="1800" background="none" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -339,10 +339,10 @@
             <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zTteDzw6mhybtIft6KNz-38" value="- Produto [ map &lt;idProduto&gt;,&lt;*Produto&gt; ] &lt;&lt; get/set &gt;&gt;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="zTteDzw6mhybtIft6KNz-35" vertex="1">
+        <mxCell id="zTteDzw6mhybtIft6KNz-38" value="- Produto [ map &lt;idProduto&gt;,&lt;*Produto&gt; ] &lt;&lt; get &gt;&gt;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="zTteDzw6mhybtIft6KNz-35" vertex="1">
           <mxGeometry y="26" width="314" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="zTteDzw6mhybtIft6KNz-81" value="- lotes [ map &lt; idProduto,vector &lt;*Lotes&gt;&gt;] &lt;&lt; get/set &gt;&gt;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="zTteDzw6mhybtIft6KNz-35" vertex="1">
+        <mxCell id="zTteDzw6mhybtIft6KNz-81" value="- lotes [ map &lt; idProduto,vector &lt;*Lotes&gt;&gt;] &lt;&lt; get &gt;&gt;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="zTteDzw6mhybtIft6KNz-35" vertex="1">
           <mxGeometry y="52" width="314" height="26" as="geometry" />
         </mxCell>
         <mxCell id="zTteDzw6mhybtIft6KNz-40" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="zTteDzw6mhybtIft6KNz-35" vertex="1">
@@ -412,7 +412,7 @@
         <mxCell id="eWod7wNQgIvaONbQWn_n-9" value="+ bool verificaVenda()" style="text;html=1;resizable=0;autosize=1;align=left;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" parent="zTteDzw6mhybtIft6KNz-46" vertex="1">
           <mxGeometry y="268" width="301.5" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="VAJZHnrrX_qjfKX5aMCy-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;startArrow=none;startFill=0;endArrow=diamondThin;endFill=0;startSize=16;endSize=16;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.537;entryY=1.083;entryDx=0;entryDy=0;entryPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="zTteDzw6mhybtIft6KNz-60" edge="1" target="Jqu-rE0V3BrTrrEw6oY6-4">
+        <mxCell id="VAJZHnrrX_qjfKX5aMCy-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;startArrow=none;startFill=0;endArrow=diamondThin;endFill=0;startSize=16;endSize=16;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.537;entryY=1.083;entryDx=0;entryDy=0;entryPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="zTteDzw6mhybtIft6KNz-60" target="Jqu-rE0V3BrTrrEw6oY6-4" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="688" y="1375" as="targetPoint" />
             <mxPoint x="556" y="1463" as="sourcePoint" />
