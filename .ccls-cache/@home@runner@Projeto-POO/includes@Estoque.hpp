@@ -32,7 +32,7 @@ public:
 //Métodos
   vector <int> retiraLotes(int idProduto,int quantidade);
   int  verificaEstoque(int idProduto);
-  void cadastraProduto(Estoque* produto);
+  void cadastraProduto(std::string nome, int loteMinimo, int estoqueMinimo);
   void cadastraLote(int idProduto, Lote* lote);
   void solicitaLote();
   void reabasteceEstoqueMinimo(int idProduto);

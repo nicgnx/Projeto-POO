@@ -46,10 +46,11 @@ int Estoque::verificaEstoque(int idProduto){
   } return estoqueDisponivel;
 }
 
-void Estoque::reabasteceEstoqueMinimo(Produto* produto){
-  if(verificaEstoque(produto->getIdProduto()) <= produto->getEstoqueMinimo()){
-    OrdemDeProducao Solicitacao (produto->getNome(),produto->getIdProduto(),Data (2022,10,15,0,0,0),produto->getLoteMinimo());
+void Estoque::reabasteceEstoqueMinimo(int idProduto){
+  if(verificaEstoque(idProduto) <= this->produto[idProduto]->getEstoqueMinino()){
+    OrdemDeProducao Solicitacao (this->produto[idProduto]->getNome(),idProduto,Data (2022,10,15,0,0,0),this->produto[idProduto]->getLoteMinimo());
     Lote lote = Solicitacao.solicitaLote();
     this->lotes[produto->getIdProduto()].push_back(&lote);
   }
 }
+
