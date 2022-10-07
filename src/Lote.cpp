@@ -1,15 +1,15 @@
 #include "../includes/Lote.hpp"
 
-Lote::Lote(Produto* produto, Data data, int quantidade):
-  NUMLOTE(this->lotesTotais) {
+Lote::Lote(int idProduto, Data data, int quantidade):
+  idLote(this->lotesTotais) {
   this->data = data;
-  this->produto = produto;
+  this->idProduto = idProduto;
   this->quantidade = quantidade;
   this->lotesTotais += 1;
   }
 
 Lote::Lote():
-  NUMLOTE(this->lotesTotais) {
+  idLote(this->lotesTotais) {
   this->lotesTotais += 1;
 }
 
@@ -17,9 +17,10 @@ Lote::~Lote() {
   
 }
 
+
 //getters
-Produto* Lote::getProduto() {
-  return this->produto;
+int Lote::getIdProduto() {
+  return this->idProduto;
 }
 Data Lote::getData() {
   return this->data;
@@ -27,13 +28,16 @@ Data Lote::getData() {
 int Lote::getQuantidade() {
     return this->quantidade;
 }
-int Lote::getNumLote() {
-  return this->NUMLOTE;
+int Lote::getIdLote() {
+  return this->idLote;
+}
+int Lote::getLotesTotais() {
+  return this->lotesTotais;
 }
 
 //setters
-void Lote::setProduto(Produto* produto) {
-  this->produto = produto;
+void Lote::setIdProduto(int idProduto) {
+  this->idProduto = idProduto;
 }
 void Lote::setData(Data data) {
   this->data = data;

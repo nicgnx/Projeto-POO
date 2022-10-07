@@ -1,97 +1,94 @@
 #include "../includes/Produto.hpp"
-#include <iostream>
 
-// Contrutores e Destrutores
-
-Produto::Produto(std::string produto, int codigo, float valor, Categoria categoria, int loteMinimo, int estoqueMinimo){
-  this->produto = produto;
-  this->codigo = codigo;
-  this->valor = valor;
+Produto::Produto(
+  std::string nome, 
+  int idProduto, 
+  PrecoProduto* precoInicial,
+  Categoria categoria, 
+  int loteMinimo, 
+  int estoqueMinimo
+) {
+  vector <PrecoProduto*> initialPrecos;
+  initialPrecos.push_back(precoInicial);
+  
+  this->nome = nome;
+  this->idProduto = idProduto;
+  this->precos = initialPrecos;
   this->categoria = categoria;
   this->loteMinimo = loteMinimo;
   this->estoqueMinimo = estoqueMinimo;
   this->lotes.clear();
 }
 
-Produto::Produto(){}
+Produto::Produto() { } // construtor padrão
 
-~Produto::Produto(){}
+Produto::~Produto() { } // destrutor
 
-// Getters
-
-std::string Produto::getProduto(){
-  return this->produto;
+std::string Produto::getNome() {
+  return this->nome;
 }
 
-
-int Produto::getCodigo(){
-  return this->codigo;
+int Produto::getIdProduto() {
+  return this->idProduto;
 }
 
-
-float Produto::getValor(){
-  return this->valor;
+vector <PrecoProduto*> Produto::getPrecos() {
+  return this->precos;
 }
 
-
-Categoria Produto::getCategoria(){
+Categoria Produto::getCategoria() {
   return this->categoria;
 }
-
 
 int Produto::getLoteMinimo(){
   return this->loteMinimo;
 }
 
-int Produto::getEstoqueMinimo(){ return this-> estoqueMinimo;}
+int Produto::getEstoqueMinimo() { 
+  return this-> estoqueMinimo;
+}
 
-Lote Produto::getLote(int numLote){
-  bool flag = 1;
-  for(unsigned int num = this->lotes.size();flag;num--){
-    if(this->lotes[num]->getNumLote() == numLote){
-      return this->lotes[num];
+Lote Produto::getLote(int idLote) {
+  for (unsigned int num = this->lotes.size(); num >= 0; num--) {
+    if (this->lotes[num]->getIdLote() == idLote) {
+      return *this->lotes[num];
+      break;
     }
-    if (num == 0){
-      flag = 0;
-      cout << "Lote não encontrado.";
+    
+    if (num == 0) {
+      throw "Lote não encontrado.";
     }
   }
 }
 
-vector <Lote*> Produto::getLoteTodos(){
+vector <Lote*> Produto::getAllLotes(){
   return this->lotes;
 }
 
-
-// Setters
-
-void Produto::setProduto(std::string produto){
-  this->produto = produto;
-}
-void Produto::setCodigo(int codigo){
-  this->codigo = codigo;
+void Produto::setNome(std::string nome) {
+  this->nome = nome;
 }
 
-void Produto::setValor(float valor){
-  this->valor = valor;
+void Produto::setIdProduto(int idProduto) {
+  this->idProduto = idProduto;
 }
 
-void Produto::setCategoria(Categoria categoria){
+void Produto::setPreco(PrecoProduto* preco){
+  this->precos.push_back(preco); 
+}
+
+void Produto::setCategoria(Categoria categoria) {
   this->categoria = categoria;
 }
 
-void Produto::setLoteMinimo(int loteMinimo){
+void Produto::setLoteMinimo(int loteMinimo) {
   this->loteMinimo = loteMinimo;
 }
 
-void Produto::setEstoqueMinimo(int estoqueMinimo){
+void Produto::setEstoqueMinimo(int estoqueMinimo) {
   this->estoqueMinimo = estoqueMinimo;
 }
 
-void Produto::setLote(int numLote, Lote lote){
-  this->lotes[numLote] = lote;
-}
-
-void Produto::setLoteTodos(vector <Lote*> lotes){
-  this->lotes = lotes;
+void Produto::setLote(Lote* lote){
+  this->lotes.push_back(lote);
 }

@@ -6,24 +6,28 @@
 
 class Lote {
   private:
-    Produto* produto;
+    int idProduto;
     Data data;
     int quantidade;
-    const int NUMLOTE;
+    const int idLote;
     static int lotesTotais = 0;
+
   public:
-    Lote(Produto*, Data, int);
+    Lote(int, Data, int);
     Lote();
     ~Lote();
 
+    
+
     //getters
-    Produto* getProduto();
+    int getIdProduto();
     Data getData();
     int getQuantidade();
-    int getNumLote();
+    int getIdLote();
+    int getLotesTotais();
 
     //setters
-    void setProduto(Produto* produto);
+    void setIdProduto(int produto);
     void setData(Data data);
     void setQuatidade(int quatidade);
     

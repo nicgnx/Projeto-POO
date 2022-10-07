@@ -1,14 +1,18 @@
 #include "../includes/OrdemDeProducao.hpp"
 
-OrdemDeProducao::OrdemDeProducao(Produto* produto, Data data, int quantidade, Status status) {
-  this->produto = produto;
+OrdemDeProducao::OrdemDeProducao(Produto* produto, Data data, int quantidade) {
+  this->IdProduto = produto;
   this->data = data;
   this->quantidade = quantidade;
-  this->status = status;
 }
 
 OrdemDeProducao::~OrdemDeProducao() {
   
+}
+
+Lote* OrdemDeProducao::solicitaLote() {
+  Lote* lote = new Lote(this->IdProduto, this->data, this->quantidade);
+  return lote;
 }
 //getters
 Produto* OrdemDeProducao::getProduto() {
@@ -20,9 +24,6 @@ Data OrdemDeProducao::getData() {
 int OrdemDeProducao::getQuantidade() {
   return this->quantidade;
 }
-Status OrdemDeProducao::getStatus() {
-  return this->status;
-}
 
 //setters
 void OrdemDeProducao::setProduto(Produto* produto) {
@@ -33,7 +34,4 @@ void OrdemDeProducao::setData(Data data) {
 }
 void OrdemDeProducao::setQuantidade(int quantidade) {
   this->quantidade = quantidade;
-}
-void OrdemDeProducao::setStatus(Status status) {
-  this->status = status;
 }

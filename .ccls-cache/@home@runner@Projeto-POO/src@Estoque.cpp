@@ -1,28 +1,29 @@
 #include "../includes/Estoque.hpp"
 
-Estoque::Estoque(Produto *produto, int quantidade) {
-  this->produto = produto;
-  this->quantidade = quantidade;
-}
-
-Estoque::Estoque(){
-  this->produto.clear();
-  this->quantidade.clear();
-}
 
 Estoque::~Estoque(){}
 
 //getters
-Produto Estoque::getProduto (){
-  return this->produto;
+
+Produto* Estoque::getProduto (int idProduto){
+  for(unsigned int num = this->produto.size(); num >= 0;num--){
+    if(this->produto[num].getIdProduto() == idProduto){
+      return this->produto[num];
+    }
+  }throw ("Esse produto não existe!");
 }
+
 int Estoque::getQuantidade(){
   return this->quantidade;
 }
 
 //setters
-void Estoque::setProduto (Produto *produto){
-  this->produto = produto;
+void Estoque::setProduto (int idProduto){
+  for(unsigned int num = this->produto.size(); num >= 0;num--){
+    if(this->produto[num].getIdProduto() == idProduto){
+      return this->produto[num];
+    }
+  }throw ("Esse produto não existe!");
 }
 void Estoque::setQuantidade (int quantidade){
   this->quantidade = quantidade;
