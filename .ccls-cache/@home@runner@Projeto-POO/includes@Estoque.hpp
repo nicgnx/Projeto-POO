@@ -3,7 +3,7 @@
 
 #include <string>
 #include "../includes/Produto.hpp"
-#include "../includes/OrdemProducao.hpp"
+#include "../includes/OrdemDeProducao.hpp"
 #include <map>
 #include <list>
 
@@ -17,7 +17,6 @@ private:
   // Atributes
   std::map <int,Produto*> produto; // Parâmetros: idProduto, Produto
   std::map <int,std::vector<Lotes*>> lotes; // Parâmetros: idProduto, Lote
-  std::list <OrdemProducao*> ordensDeProducao;
   Estoque* Estoque::estoque = NULL;
 public:
   // Operators 
@@ -32,10 +31,11 @@ public:
 //Métodos
   vector <int> retiraLotes(int idProduto,int quantidade);
   int  verificaEstoque(int idProduto);
-  void cadastraProduto(std::string nome, int loteMinimo, int estoqueMinimo);
+  void cadastraProduto(std::string nome, int loteMinimo, int estoqueMinimoProduto*);
   void cadastraLote(int idProduto, Lote* lote);
   void solicitaLote();
-  void reabasteceEstoqueMinimo(int idProduto);
+  void reabasteceEstoque(int idProduto);
+  void reabasteceEstoque(int idProduto, int quantidade);
   
 };
 

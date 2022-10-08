@@ -1,6 +1,7 @@
 #include "../includes/OrdemDeProducao.hpp"
 
-OrdemDeProducao::OrdemDeProducao(int idProduto, Data data, int quantidade) {
+OrdemDeProducao::OrdemDeProducao(std::string produto, int idProduto, Data data, int quantidade) {
+  this-> produto = produto;
   this->idProduto = idProduto;
   this->data = data;
   this->quantidade = quantidade;
@@ -10,9 +11,6 @@ OrdemDeProducao::~OrdemDeProducao() {
   
 }
 
-Lote* OrdemDeProducao::solicitaLote() {
-  return new Lote(this->idProduto, this->data, this->quantidade);
-}
 //getters
 int OrdemDeProducao::getIdProduto() {
   return this->idProduto;
@@ -33,4 +31,10 @@ void OrdemDeProducao::setData(Data data) {
 }
 void OrdemDeProducao::setQuantidade(int quantidade) {
   this->quantidade = quantidade;
+}
+
+// Métodos
+
+Lote* OrdemDeProducao::solicitaLote() {
+  return new Lote(this->idProduto, this->data, this->quantidade);
 }

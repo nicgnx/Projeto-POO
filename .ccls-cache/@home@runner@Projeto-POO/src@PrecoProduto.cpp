@@ -1,5 +1,4 @@
 #include "../includes/PrecoProduto.hpp"
-#include <iostream>
 
 PrecoProduto::PrecoProduto(
   float precoBase, 

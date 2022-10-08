@@ -42,6 +42,7 @@ public:
 //outros metodos
   bool verificaVenda();
   void executaVenda();
+  void printVenda();
 };
 
 #endif 
