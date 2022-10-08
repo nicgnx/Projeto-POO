@@ -3,6 +3,7 @@
 
 #include "../includes/Usuario.hpp"
 #include "../includes/Data.hpp"
+#include "../includes/Venda.hpp"
 
 enum tipoPessoa {PF, PJ};
 
@@ -28,7 +29,6 @@ public:
 
 //Métodos
 std::string compra (int idProduto, int quantidade, Data dataCompra);
-
 
 };
 

@@ -12,6 +12,9 @@ Estoque* Estoque::getInstancia(){
   } return estoque;
 }
 
+std::map <int,Produto*> Estoque::getListaDeProdutos(){
+  return this->produto;
+}
 
 Produto* Estoque::getProduto(int idProduto) {
   std::map<int, Produto *>::iterator produto = this->produto.find(idProduto);
@@ -90,4 +93,10 @@ void Estoque::cadastraProduto(std::string nome, int loteMinimo,
                               int estoqueMinimo) {
   Produto *produto = new Produto(nome, loteMinimo, estoqueMinimo);
   this->produto[produto->getIdProduto()] = produto;
+}
+
+void Estoque::printListaDeProdutos(){
+  for(std::map<int,Produto*>::iterator it=produto.begin(); it!=produto.end(); ++it){
+    std::cout << "Produto: " << this->produto[it->first]->getNome() << "     ID: " << this->produto[it->first]->getIdProduto() << "     Quantidade: " << verificaEstoque(this->produto[it->first]->getIdProduto()) << "\n";
+  }
 }

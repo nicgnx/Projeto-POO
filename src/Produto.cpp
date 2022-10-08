@@ -1,4 +1,5 @@
 #include "../includes/Produto.hpp"
+
 int Produto::staticIdProduto = 0;
 
 Produto::Produto(std::string nome, Categoria categoria, int loteMinimo,

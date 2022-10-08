@@ -19,14 +19,14 @@ public:
   ~PrecoProduto();
 
   // Getters
-  float PrecoProduto::getPrecoBase();
-  float PrecoProduto::getPercentualVariacao();
-  Data PrecoProduto::getDataVariacao(); 
+  float getPrecoBase();
+  float getPercentualVariacao();
+  Data getDataVariacao(); 
 
   // Setters
-  void PrecoProduto::setPrecoBase(float precoBase);
-  void PrecoProduto::setPercentualVariacao(float percentualVariacao);
-  void PrecoProduto::setDataVariacao(Data dataVariacao);
+  void setPrecoBase(float precoBase);
+  void setPercentualVariacao(float percentualVariacao);
+  void setDataVariacao(Data dataVariacao);
 };
 
 

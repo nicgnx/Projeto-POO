@@ -3,6 +3,7 @@
 
 #include "../includes/Usuario.hpp"
 #include "../includes/Data.hpp"
+#include "../includes/Venda.hpp"
 
 enum tipoPessoa {PF, PJ};
 
@@ -27,8 +28,7 @@ public:
   void setTelefone(unsigned int telefone);
 
 //Métodos
-std::string compra (int idProduto, int quantidade, Data dataCompra, Cliente* cliente);
-
+std::string compra (int idProduto, int quantidade, Data dataCompra);
 
 };
 

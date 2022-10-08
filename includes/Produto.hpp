@@ -2,7 +2,6 @@
 #define PRODUTO_H
 
 #include "../includes/Categoria.hpp"
-#include "../includes/Lote.hpp"
 #include "../includes/PrecoProduto.hpp"
 #include <string>
 #include <vector>

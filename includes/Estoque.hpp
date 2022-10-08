@@ -5,6 +5,7 @@
 #include "../includes/OrdemDeProducao.hpp"
 #include <map>
 #include <list>
+#include <iostream>
 
 class Estoque {
   private:
@@ -21,6 +22,7 @@ class Estoque {
     Estoque& operator=(const Estoque&);
 
   //getters
+    std::map <int,Produto*> getListaDeProdutos();
     Produto* getProduto(int idProduto);
     Lote* getLote(int idProduto, int idLote);
     static Estoque* getInstancia();
@@ -33,5 +35,6 @@ class Estoque {
     void solicitaLote();
     void reabasteceEstoque(int idProduto);
     void reabasteceEstoque(int idProduto, int quantidade);
+    void printListaDeProdutos();
 };
 

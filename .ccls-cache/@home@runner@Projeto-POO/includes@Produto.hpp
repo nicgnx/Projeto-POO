@@ -2,13 +2,12 @@
 #define PRODUTO_H
 
 #include "../includes/Categoria.hpp"
-#include "../includes/Lote.hpp"
 #include "../includes/PrecoProduto.hpp"
 #include <string>
 #include <vector>
 
 class Produto {
-  static int staticIdProduto = 0;
+  static int staticIdProduto;
   std::string nome;
   int idProduto;
   vector <PrecoProduto*> precos;
@@ -32,7 +31,7 @@ public:
   // Getters
   std::string getNome();
   int getIdProduto();
-  vector <PrecoProduto*> getPrecos();
+  PrecoProduto* getPrecos();
   Categoria getCategoria();
   int getLoteMinimo();
   int getEstoqueMinimo();
@@ -47,6 +46,5 @@ public:
   // misc
   void novoPreco(float precoBase,float percentualVariacao,Data data);
 };
-
 
 #endif // PRODUTO_H

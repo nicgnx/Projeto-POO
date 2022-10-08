@@ -2,16 +2,15 @@
 #define VENDA_H
 
 #include "Data.hpp"
-#include "Cliente.hpp"
 #include "Lote.hpp"
-#include "Estoque.hpp"
+#include "../includes/Estoque.hpp"
 #include <vector>
 
 class Venda{
 
   int idProduto;
   Data dataVenda;
-  Cliente* cliente;
+  std::string cliente;
   int quantidade;
   vector<int> idLotes;
   float precoUnitario;
@@ -19,12 +18,12 @@ class Venda{
  
   
 public:
-  Venda(int idProduto, Data dataVenda, Cliente* cliente, int quantidade);
+  Venda(int idProduto, int quantidade, Data dataVenda, std::string cliente);
   ~Venda();
 //getters
   int getIdProduto();
   Data getDataVenda();
-  Cliente* getCliente();
+  std::string getCliente();
   int getQuantidade();
   vector <int> getLotes();
   float getPrecoUnitario();
@@ -32,7 +31,7 @@ public:
 
 //setters
   void setDataVenda(Data data);
-  void setCliente(Cliente* cliente);
+  void setCliente(std::string cliente);
   void setQuantidade(int quantidade);
   void setLotes(Lote* lote);
   void setPrecoUnitario();
@@ -42,6 +41,7 @@ public:
 //outros metodos
   bool verificaVenda();
   void executaVenda();
+  void printVenda();
 };
 
 #endif 

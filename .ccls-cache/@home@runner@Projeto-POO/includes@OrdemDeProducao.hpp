@@ -1,7 +1,6 @@
 #ifndef ORDEMDEPRODUCAO_H
 #define ORDEMDEPRODUCAO_H
 
-#include "Produto.hpp"
 #include "Data.hpp"
 #include "Lote.hpp"
 #include <string>
@@ -30,6 +29,6 @@ class OrdemDeProducao {
 
     // Métodos
     Lote* solicitaLote();
-}
+};
 
 #endif // ORDEMDEPRODUCAO_H
