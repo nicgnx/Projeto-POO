@@ -10,7 +10,7 @@ class Lote {
     Data data;
     int quantidade;
     const int idLote;
-    static int lotesTotais = 1000;
+    static int lotesTotais;
 
   public:
     Lote(int, Data, int);
@@ -29,7 +29,7 @@ class Lote {
     //setters
     void setIdProduto(int produto);
     void setData(Data data);
-    void setQuatidade(int quatidade);
+    void setQuantidade(int quatidade);
     
 };
 

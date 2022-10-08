@@ -1,23 +1,23 @@
 #include "../includes/Venda.hpp"
 #include <iostream>
 
-Venda::Venda(int idProduto, Data dataVenda, Cliente* cliente, int quantidade){
+
+Venda::Venda(int idProduto, int quantidade, Data dataVenda, std::string cliente ){
   
   this->idProduto = idProduto;
   this->dataVenda = dataVenda;
   this->cliente = cliente;
   this->quantidade = quantidade;
-  this->precoUnitario = Estoque::getInstance()->getProduto(idProduto)->getPreco();
-  setValorVenda();  
 }
 
+Venda::~Venda(){}
 // Getters
 
 Data Venda::getDataVenda(){
   return this->dataVenda;
 }
 
-Cliente* Venda::getCliente(){
+std::string Venda::getCliente(){
   return this->cliente;
 }
 
@@ -43,7 +43,7 @@ void Venda::setDataVenda(Data data){
   this->dataVenda = data;
 }
 
-void Venda::setCliente(Cliente* cliente){
+void Venda::setCliente(std::string cliente){
   this->cliente = cliente;
 }
 
@@ -75,7 +75,7 @@ bool Venda::verificaVenda(){
 
 void Venda::executaVenda(){
   Estoque* estoque = Estoque::getInstancia();
-  this->idLotes = estoque->retiraLotes(this->IdProduto, this->quantidade);
+  this->idLotes = estoque->retiraLotes(this->idProduto, this->quantidade);
   setValorVenda();
   printVenda();
 }
@@ -83,11 +83,11 @@ void Venda::executaVenda(){
 void Venda::printVenda(){
   std::cout << "----------------------------------------------------------------------------------------------------\n";
   std::cout << "   Compra realizada com sucesso! Segue abaixo as informações da compra.\n\n";
-  std::cout << "   Cliente: " << this->cliente->getNome(); << "\n"
-  std::cout << "   Data: " << this->data.printData(); << "\n"
-  std::cout << "   Produto: " << this->produto; << "\n"
-  std::cout << "   Preço da unidade: " << this->precoUnitario << "\n"
-  std::cout << "   Valor Total: " << this->valorVenda; << "\n"
+  std::cout << "   Cliente: " << this->cliente << "\n";
+  std::cout << "   Data: "; this->dataVenda.printData(); std::cout << "\n";
+  std::cout << "   Produto: " << Estoque::getInstancia()->getProduto(this->idProduto)->getNome() << "\n";
+  std::cout << "   Preço da unidade: " << this->precoUnitario << "\n";
+  std::cout << "   Valor Total: " << this->valorVenda << "\n";
   std::cout << "   Lotes:";
   for(int num = 0;num < idLotes.size(); num++){
     num == idLotes.size() - 1 ? std::cout << " " << idLotes[num] : std::cout << " " << idLotes[num] << ",";

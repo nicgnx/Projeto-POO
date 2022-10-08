@@ -1,4 +1,5 @@
 #include "../includes/Produto.hpp"
+int Produto::staticIdProduto = 0;
 
 Produto::Produto(std::string nome, Categoria categoria, int loteMinimo,
                  int estoqueMinimo, PrecoProduto preco) {
@@ -30,7 +31,7 @@ std::string Produto::getNome() { return this->nome; }
 
 int Produto::getIdProduto() { return this->idProduto; }
 
-vector<PrecoProduto *> Produto::getPrecos() { return this->precos; }
+PrecoProduto* Produto::getPrecos() { return this->precos.back(); }
 
 Categoria Produto::getCategoria() { return this->categoria; }
 

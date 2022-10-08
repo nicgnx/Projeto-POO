@@ -30,6 +30,6 @@ class OrdemDeProducao {
 
     // Métodos
     Lote* solicitaLote();
-}
+};
 
 #endif // ORDEMDEPRODUCAO_H

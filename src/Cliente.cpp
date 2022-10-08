@@ -31,10 +31,9 @@ void Cliente::setTelefone(unsigned int telefone){
   this->telefone = telefone;
 }
 
-std::string Cliente::compra (int idProduto, int quantidade, Data dataCompra, Cliente* cliente){
-  std::string falha = "Não foi possível realizar a compra. Não possuimos estoque desejado no momento";
-  Venda pedido (int idProduto, int quantidade, Data dataCompra, Cliente cliente);
+std::string Cliente::compra (int idProduto, int quantidade, Data dataCompra){
+  Venda pedido(idProduto,quantidade,dataCompra,getNome());
   if(pedido.verificaVenda()){
-   return pedido.executaVenda();
-  } else {return falha};  
+    pedido.executaVenda();
+  } else {throw ("Não foi possível realizar a compra. Não possuimos estoque desejado no momento");};  
 }

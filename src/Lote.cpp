@@ -1,5 +1,7 @@
 #include "../includes/Lote.hpp"
 
+int Lote::lotesTotais = 1000;
+
 Lote::Lote(int idProduto, Data data, int quantidade):
   idLote(this->lotesTotais) {
   this->data = data;
@@ -45,7 +47,7 @@ void Lote::setIdProduto(int idProduto) {
 void Lote::setData(Data data) {
   this->data = data;
 }
-void Lote::setQuatidade(int quantidade) {
+void Lote::setQuantidade(int quantidade) {
   this->quantidade = quantidade;
   
 }

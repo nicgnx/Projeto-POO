@@ -1,5 +1,6 @@
 #include "../includes/OrdemDeProducao.hpp"
 
+
 OrdemDeProducao::OrdemDeProducao(std::string produto, int idProduto, Data data, int quantidade) {
   this-> produto = produto;
   this->idProduto = idProduto;
