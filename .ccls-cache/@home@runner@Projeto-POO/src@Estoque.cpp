@@ -57,7 +57,7 @@ vector<int> Estoque::retiraLotes(int idProduto, int quantidade) {
 }
 
 int Estoque::verificaEstoque(int idProduto) {
-  int estoqueDisponivel;
+  int estoqueDisponivel = 0;
   for (int num = 0; num < this->lotes[idProduto].size(); num++) {
     estoqueDisponivel += this->lotes[idProduto][num]->getQuantidade();
   }
@@ -71,7 +71,12 @@ void Estoque::reabasteceEstoque(int idProduto) {
                                 Data(2022, 10, 15, 0, 0, 0),
                                 this->produto[idProduto]->getLoteMinimo());
     this->lotes[idProduto].push_back(Solicitacao.solicitaLote());
-
+    std::cout << "----------------------------------------------------------------------------------------------------\n\n";
+    std::cout << "                  Solicitação de Reabastecimento do Estoque do produto " << this->produto[idProduto]->getNome() << "\n\n";
+    std::cout << "                  ID: " << idProduto;
+    std::cout << "\n                  Lote: " << lotes[idProduto].back()->getIdLote();
+    std::cout << "\n                  Quantidade: " << lotes[idProduto].back()->getQuantidade();;
+    std::cout << "\n\n----------------------------------------------------------------------------------------------------\n";
   } else {throw("O estoque minímo ainda não foi atingido");}
 }
 
@@ -80,6 +85,10 @@ void Estoque::reabasteceEstoque(int idProduto, int quantidade) {
     OrdemDeProducao Solicitacao(this->produto[idProduto]->getNome(), idProduto,
                                 Data(2022, 10, 15, 0, 0, 0), quantidade);
     this->lotes[idProduto].push_back(Solicitacao.solicitaLote());
+    std::cout << "----------------------------------------------------------------------------------------------------\n";
+    std::cout << "   Solicitação de Reabastecimento do Estoque do produto: " << this->produto[idProduto]->getNome() << "\n\n";
+    std::cout << "ID: " << idProduto << "   Lote: " << lotes[idProduto].back()->getIdLote() <<  "    Quantidade: " << lotes[idProduto].back()->getQuantidade();
+    std::cout << "\n\n----------------------------------------------------------------------------------------------------\n";
   } else {
     throw("A quantidade solicitada é menor que o minímo permitido.");
   }
@@ -90,13 +99,22 @@ void Estoque::cadastraLote(int idProduto, Lote *lote) {
 }
 
 void Estoque::cadastraProduto(std::string nome, int loteMinimo,
-                              int estoqueMinimo) {
-  Produto *produto = new Produto(nome, loteMinimo, estoqueMinimo);
+                              int estoqueMinimo, PrecoProduto* preco) {
+  Produto *produto = new Produto(nome, loteMinimo, estoqueMinimo, preco);
   this->produto[produto->getIdProduto()] = produto;
+  this->lotes[produto->getIdProduto()].push_back(new Lote());
+  this->lotes[produto->getIdProduto()][0]->setQuantidade(0);
+  
 }
 
 void Estoque::printListaDeProdutos(){
   for(std::map<int,Produto*>::iterator it=produto.begin(); it!=produto.end(); ++it){
     std::cout << "Produto: " << this->produto[it->first]->getNome() << "     ID: " << this->produto[it->first]->getIdProduto() << "     Quantidade: " << verificaEstoque(this->produto[it->first]->getIdProduto()) << "\n";
+  }
+}
+
+void Estoque::printListaDeLotes(int idProduto){
+  for(int num =0; num < this->lotes[idProduto].size(); num++){
+    std::cout << "Produto: " << this->produto[idProduto]->getNome() << "     ID: " << idProduto << "     Lote: " << this->lotes[idProduto][num]->getIdLote() << "     Quantidade: " << this->lotes[idProduto][num]->getQuantidade() << "\n";
   }
 }

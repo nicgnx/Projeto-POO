@@ -58,7 +58,7 @@ void Venda::setLotes(Lote* lote){
 
 void Venda::setPrecoUnitario(){
   Estoque* estoque = Estoque::getInstancia();
-  this->precoUnitario = estoque->getProduto(this->idProduto)->getIdProduto();
+  this->precoUnitario = estoque->getProduto(this->idProduto)->getPrecos()->getPrecoBase();
 }
 
 void Venda::setValorVenda(){
@@ -77,16 +77,18 @@ bool Venda::verificaVenda(){
 void Venda::executaVenda(){
   Estoque* estoque = Estoque::getInstancia();
   this->idLotes = estoque->retiraLotes(this->idProduto, this->quantidade);
+  setPrecoUnitario();
   setValorVenda();
   printVenda();
 }
 
 void Venda::printVenda(){
-  std::cout << "----------------------------------------------------------------------------------------------------\n";
+  std::cout << "----------------------------------------------------------------------------------------------------\n\n";
   std::cout << "   Compra realizada com sucesso! Segue abaixo as informações da compra.\n\n";
   std::cout << "   Cliente: " << this->cliente << "\n";
   std::cout << "   Data: "; this->dataVenda.printData(); std::cout << "\n";
   std::cout << "   Produto: " << Estoque::getInstancia()->getProduto(this->idProduto)->getNome() << "\n";
+  std::cout << "   Quantidade: " << this->quantidade << "\n";
   std::cout << "   Preço da unidade: " << this->precoUnitario << "\n";
   std::cout << "   Valor Total: " << this->valorVenda << "\n";
   std::cout << "   Lotes:";

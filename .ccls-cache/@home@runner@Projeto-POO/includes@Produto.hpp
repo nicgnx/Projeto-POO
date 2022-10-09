@@ -22,10 +22,10 @@ public:
     Categoria categoria, 
     int loteMinimo, 
     int estoqueMinimo,
-    PrecoProduto preco
+    vector <PrecoProduto*> preco
   );
   Produto();
-  Produto(std::string nome, int loteMinimo, int estoqueMinimo);
+  Produto(std::string nome, int loteMinimo, int estoqueMinimo, PrecoProduto* preco);
   ~Produto();
 
   // Getters
@@ -45,6 +45,7 @@ public:
 
   // misc
   void novoPreco(float precoBase,float percentualVariacao,Data data);
+  void novoPreco(PrecoProduto* preco);
 };
 
 #endif // PRODUTO_H

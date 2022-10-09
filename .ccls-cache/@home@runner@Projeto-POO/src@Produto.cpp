@@ -1,21 +1,24 @@
 #include "../includes/Produto.hpp"
 
+int Produto::staticIdProduto = 0;
+
 Produto::Produto(std::string nome, Categoria categoria, int loteMinimo,
-                 int estoqueMinimo, PrecoProduto preco) {
+                 int estoqueMinimo, PrecoProduto* preco) {
   
   this->nome = nome;
   this->idProduto = this->staticIdProduto + 1;
-  this->precos.push_back(&preco);
+  this->precos.push_back(preco);
   this->categoria = categoria;
   this->loteMinimo = loteMinimo;
   this->estoqueMinimo = estoqueMinimo;
 }
 
-Produto::Produto(std::string nome, int loteMinimo, int estoqueMinimo) {
+Produto::Produto(std::string nome, int loteMinimo, int estoqueMinimo, PrecoProduto* preco) {
   this->nome = nome;
   this->idProduto = this->staticIdProduto + 1;
   this->loteMinimo = loteMinimo;
   this->estoqueMinimo = estoqueMinimo;
+  this->precos.push_back(preco);
 }
 
 Produto::Produto() {
@@ -30,7 +33,7 @@ std::string Produto::getNome() { return this->nome; }
 
 int Produto::getIdProduto() { return this->idProduto; }
 
-vector<PrecoProduto *> Produto::getPrecos() { return this->precos; }
+PrecoProduto* Produto::getPrecos() { return this->precos.back(); }
 
 Categoria Produto::getCategoria() { return this->categoria; }
 
@@ -54,5 +57,9 @@ void Produto::setEstoqueMinimo(int estoqueMinimo) {this->estoqueMinimo = estoque
 
 void Produto::novoPreco(float precoBase, float percentualVariacao, Data data){
   PrecoProduto* preco = new PrecoProduto(precoBase,percentualVariacao,data);
+  this->precos.push_back(preco);
+}
+
+void Produto::novoPreco(PrecoProduto* preco){
   this->precos.push_back(preco);
 }
