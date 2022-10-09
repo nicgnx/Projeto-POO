@@ -6,6 +6,7 @@
 #include <map>
 #include <list>
 #include <iostream>
+#include <deque>
 
 class Estoque {
   private:
@@ -15,7 +16,7 @@ class Estoque {
 
     // Atributes
     std::map <int,Produto*> produto; // Parâmetros: idProduto, Produto
-    std::map <int,std::vector<Lote*>> lotes; // Parâmetros: idProduto, Lote
+    std::map <int,std::deque<Lote*>> lotes; // Parâmetros: idProduto, Lote
   public:
   // Operators 
     Estoque(const Estoque&);

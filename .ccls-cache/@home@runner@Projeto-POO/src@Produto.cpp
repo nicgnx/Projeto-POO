@@ -1,12 +1,12 @@
 #include "../includes/Produto.hpp"
 
-int Produto::staticIdProduto = 0;
+int* Produto::staticIdProduto = NULL;
 
 Produto::Produto(std::string nome, Categoria categoria, int loteMinimo,
                  int estoqueMinimo, PrecoProduto* preco) {
   
   this->nome = nome;
-  this->idProduto = this->staticIdProduto + 1;
+  this->idProduto = getID();
   this->precos.push_back(preco);
   this->categoria = categoria;
   this->loteMinimo = loteMinimo;
@@ -15,19 +15,27 @@ Produto::Produto(std::string nome, Categoria categoria, int loteMinimo,
 
 Produto::Produto(std::string nome, int loteMinimo, int estoqueMinimo, PrecoProduto* preco) {
   this->nome = nome;
-  this->idProduto = this->staticIdProduto + 1;
+  this->idProduto = getID();
   this->loteMinimo = loteMinimo;
   this->estoqueMinimo = estoqueMinimo;
   this->precos.push_back(preco);
 }
 
 Produto::Produto() {
-  this->idProduto = this->staticIdProduto + 1;
+  this->idProduto = getID();
 } // construtor padrão
 
 Produto::~Produto() {} // destrutor
 
 // Getters
+
+int Produto::getID(){
+  if(staticIdProduto == NULL){
+  staticIdProduto = new int;
+  *staticIdProduto = 0;
+  } *staticIdProduto += 1;
+  return *staticIdProduto;
+}
 
 std::string Produto::getNome() { return this->nome; }
 

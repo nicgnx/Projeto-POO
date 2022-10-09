@@ -6,8 +6,9 @@
 #include <string>
 #include <vector>
 
+
 class Produto {
-  static int staticIdProduto;
+  static int* staticIdProduto;
   std::string nome;
   int idProduto;
   vector <PrecoProduto*> precos;
@@ -22,7 +23,7 @@ public:
     Categoria categoria, 
     int loteMinimo, 
     int estoqueMinimo,
-    vector <PrecoProduto*> preco
+    PrecoProduto* preco
   );
   Produto();
   Produto(std::string nome, int loteMinimo, int estoqueMinimo, PrecoProduto* preco);
@@ -35,6 +36,7 @@ public:
   Categoria getCategoria();
   int getLoteMinimo();
   int getEstoqueMinimo();
+  int getID();
 
   // Setters
   void setNome(std::string nome);

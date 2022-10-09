@@ -26,19 +26,37 @@ std::cout << "   - Registro: " << Alan.getHistorico().getRegistro() << "\n Salar
 
   Cliente agroBrasil("Agro Brasil","comercial@agrobrasil.com.br", "1236548", PJ, 551125487);
   Estoque* estoque = Estoque::getInstancia();
+
+  // Cadastrar Produtos
+  
   estoque->cadastraProduto("Adubo Nutrien",100,35,new PrecoProduto(29.90,0.0, Data(2022,10,8,22,0,0)));
   estoque->cadastraProduto("Adubo PhosAgro",100,325,new PrecoProduto(59.90,0.0, Data(2022,10,8,22,0,0)));
+  estoque->cadastraProduto("Adubo Yara Brasil",50,100,new PrecoProduto(39.90,0.0, Data(2022,10,8,22,0,0)));
+  estoque->cadastraProduto("Adubo Mosaic",75,80,new PrecoProduto(89.90,0.0, Data(2022,10,8,22,0,0)));
+  estoque->cadastraProduto("Adubo Heringer",30,470,new PrecoProduto(49.90,0.0, Data(2022,10,8,22,0,0)));
+
+  // Reabastece estoque
+  
   estoque->reabasteceEstoque(localizaID("Adubo Nutrien"));
-  estoque->reabasteceEstoque(localizaID("Adubo Nutrien"));
+  estoque->reabasteceEstoque(localizaID("Adubo Yara Brasil"));
   estoque->reabasteceEstoque(localizaID("Adubo PhosAgro"));
-  estoque->reabasteceEstoque(localizaID("Adubo PhosAgro"));
+  estoque->reabasteceEstoque(localizaID("Adubo Mosaic"));
+  estoque->reabasteceEstoque(localizaID("Adubo Heringer"));
+  std::cout << "\n\n\n";
   estoque->printListaDeProdutos();
   std::cout << "\n\n\n";
-  agroBrasil.compra(localizaID("Adubo Nutrien"), 60, Data(2022,10,8,22,0,0));
-  agroBrasil.compra(localizaID("Adubo Nutrien"), 80, Data(2022,10,8,22,0,0));
-  agroBrasil.compra(localizaID("Adubo PhosAgro"), 200, Data(2022,10,8,22,0,0));
-  agroBrasil.compra(localizaID("Adubo PhosAgro"), 80, Data(2022,10,8,22,0,0));
-  estoque->printListaDeProdutos();
+
+  // Compra produtos
   
+  agroBrasil.compra(localizaID("Adubo Nutrien"), 61, Data(2022,10,8,22,0,0));
+  agroBrasil.compra(localizaID("Adubo Yara Brasil"), 83, Data(2022,10,8,22,0,0));
+  agroBrasil.compra(localizaID("Adubo PhosAgro"), 27, Data(2022,10,8,22,0,0));
+  agroBrasil.compra(localizaID("Adubo Mosaic"), 69, Data(2022,10,8,22,0,0));
+  agroBrasil.compra(localizaID("Adubo Mosaic"), 130, Data(2022,10,8,22,0,0));
+  agroBrasil.compra(localizaID("Adubo Heringer"), 54, Data(2022,10,8,22,0,0));
+  std::cout << "\n\n\n";
+  estoque->printListaDeProdutos();
+  std::cout << "\n\n\n";
+
   
 }

@@ -19,6 +19,7 @@ std::map <int,Produto*> Estoque::getListaDeProdutos(){
 Produto* Estoque::getProduto(int idProduto) {
   std::map<int, Produto *>::iterator produto = this->produto.find(idProduto);
   if (produto == this->produto.end()) {
+    std::cout << "Esse produto não existe!";
     throw("Esse produto não existe!");
   } else {
     return this->produto[idProduto];
@@ -93,12 +94,16 @@ vector<int> Estoque::retiraLotes(int idProduto, int quantidade) {
       reabasteceEstoque(idProduto);
       return lotes;
     } else {
-      quantidade = quantidade - aux;
-      this->lotes[idProduto][num]->setQuantidade(0);
-      lotes.push_back(this->lotes[idProduto][num]->getIdLote());
+      if((aux == 0) && (this->lotes[idProduto].size() > 1)){
+        
+      } 
+      else {
+        quantidade = quantidade - aux;
+        this->lotes[idProduto][num]->setQuantidade(0);
+        lotes.push_back(this->lotes[idProduto][num]->getIdLote());
+      }      
     }
-  }
-  std::cout << "Não era nem pra essa compra ter sido aprovada! Vai ficar sem produto...";
+  } std::cout << "Não era nem pra essa compra ter sido aprovada! Vai ficar sem produto...";
 }
 
 void Estoque::reabasteceEstoque(int idProduto, int quantidade) {
