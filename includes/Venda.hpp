@@ -3,7 +3,7 @@
 
 #include "Data.hpp"
 #include "Lote.hpp"
-#include "../includes/Estoque.hpp"
+#include "./Estoque.hpp"
 #include <vector>
 
 class Venda{
