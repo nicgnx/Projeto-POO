@@ -18,7 +18,7 @@ class Salario {
 
 public:
 
-    Salario(double, double, Motivo , Data);
+    Salario(double, double, Data, Motivo);
     Salario();
     ~Salario();
 

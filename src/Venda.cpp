@@ -26,7 +26,7 @@ int Venda::getQuantidade(){
   return this->quantidade;
 }
 
-vector <int> Venda::getLotes(){
+std::vector <int> Venda::getLotes(){
   return this->idLotes;
 }
 

@@ -23,7 +23,7 @@ std::string Usuario::getSenha(){
   return this->senha;
 }
 
-vector <Permissao*> Usuario::getPermissao(){
+std::vector <Permissao*> Usuario::getPermissao(){
   
   return this->permissoes;
 }

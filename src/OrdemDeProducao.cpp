@@ -1,7 +1,7 @@
 #include "../includes/OrdemDeProducao.hpp"
 
 
-OrdemDeProducao::OrdemDeProducao(std::string produto, int idProduto, int quantidade, Data data = Data::dataNow()) {
+OrdemDeProducao::OrdemDeProducao(std::string produto, int idProduto, Data data, int quantidade) {
   this-> produto = produto;
   this->idProduto = idProduto;
   this->data = data;

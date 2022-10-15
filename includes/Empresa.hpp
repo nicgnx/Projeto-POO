@@ -10,15 +10,15 @@ class Empresa {
 private:
   std::string nome;
   std::string cnpj;
-  vector <Cargo*> cargos;
-  vector <Departamento*> departamentos;
+  std::vector <Cargo*> cargos;
+  std::vector <Departamento*> departamentos;
 
 public:
   Empresa(
     std::string nome,
     std::string cnpj,
-    vector <Cargo*> cargos,
-    vector <Departamento*> departamentos
+    std::vector <Cargo*> cargos,
+    std::vector <Departamento*> departamentos
   );
   Empresa();
   ~Empresa();
@@ -26,14 +26,14 @@ public:
   // Getters
   std::string getNome();
   std::string getCnpj();
-  vector <Cargo*> getCargos();
-  vector <Departamento*> getDepartamentos();
+  std::vector <Cargo*> getCargos();
+  std::vector <Departamento*> getDepartamentos();
 
   // Setters
   void setNome(std::string nome);
   void setCnpj(std::string cnpj);
-  void setCargos(vector <Cargo*> cargos);
-  void setDepartamentos(vector <Departamento*> departamentos);
+  void setCargos(std::vector <Cargo*> cargos);
+  void setDepartamentos(std::vector <Departamento*> departamentos);
 };
 
 #endif // EMPRESA_H

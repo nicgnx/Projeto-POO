@@ -5,8 +5,8 @@
 #include "Data.hpp"
 
 enum Status {
-  Estoque,
-  Vendido
+  ESTOQUE,
+  VENDIDO
 };
 
 class Lote {
@@ -19,7 +19,7 @@ class Lote {
     static int lotesTotais;
 
   public:
-    Lote(int, int, Data);
+    Lote(int, Data, int);
     Lote();
     ~Lote();
 

@@ -11,7 +11,7 @@ protected:
   std::string email;
   std::string cpfCnpj;
   std::string senha;
-  vector<Permissao*> permissoes;
+  std::vector<Permissao*> permissoes;
  
 public:
   virtual ~Usuario() = default;
@@ -19,7 +19,7 @@ public:
   std::string getcpfCnpj();
   std::string getEmail();
   std::string getSenha();
-  vector <Permissao*> getPermissao();
+  std::vector<Permissao*> getPermissao();
   
   void setNome(std::string nome);
   void setcpfCnpj(std::string cpfCnpj);

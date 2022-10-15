@@ -9,7 +9,7 @@ bool Utils::verificaCPF(std::string cpf) {
       temp = 0;
 
   // verifica se tem 11 digitos
-  if (strlen(cpf) != 11) {
+  if (cpf.length() != 11) {
     return false;
   }
 
@@ -52,7 +52,7 @@ bool Utils::verificaCNPJ(std::string cnpj) {
   // CNPJ deve estar sem pontos, traços ou espaço em branco
 
   // verifica se tem 14 digitos
-  if (strlen(cnpj) != 14) {
+  if (cnpj.length() != 14) {
     return false;
   }
 
