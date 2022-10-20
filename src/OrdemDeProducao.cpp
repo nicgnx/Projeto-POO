@@ -12,12 +12,6 @@ OrdemDeProducao::~OrdemDeProducao() {
   
 }
 
-// Métodos
-
-Lote* OrdemDeProducao::solicitaLote() {
-  return new Lote(this->idProduto, this->data, this->quantidade);
-}
-
 //getters
 int OrdemDeProducao::getIdProduto() {
   return this->idProduto;
@@ -40,3 +34,8 @@ void OrdemDeProducao::setQuantidade(int quantidade) {
   this->quantidade = quantidade;
 }
 
+// Métodos
+
+Lote* OrdemDeProducao::solicitaLote() {
+  return new Lote(this->idProduto, this->data, this->quantidade);
+}

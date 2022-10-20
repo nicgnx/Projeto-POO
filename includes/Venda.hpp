@@ -3,7 +3,7 @@
 
 #include "Data.hpp"
 #include "Lote.hpp"
-#include "./Estoque.hpp"
+#include "../includes/Estoque.hpp"
 #include <vector>
 
 class Venda{
@@ -12,7 +12,7 @@ class Venda{
   Data dataVenda;
   std::string cliente;
   int quantidade;
-  std::vector<int> idLotes;
+  vector<int> idLotes;
   float precoUnitario;
   float valorVenda;
  
@@ -25,7 +25,7 @@ public:
   Data getDataVenda();
   std::string getCliente();
   int getQuantidade();
-  std::vector <int> getLotes();
+  vector <int> getLotes();
   float getPrecoUnitario();
   float getValorVenda();
 

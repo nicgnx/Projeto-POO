@@ -1,6 +1,6 @@
 #include "../includes/Salario.hpp"
 
-Salario::Salario(double salarioBase, double variacaoSalarial,  Motivo motivacao, Data data = Data::dataNow()) {
+Salario::Salario(double salarioBase, double variacaoSalarial, Data data, Motivo motivacao) {
   this->salarioBase = salarioBase;
   this->variacaoSalarial = variacaoSalarial;
   this->data = data;

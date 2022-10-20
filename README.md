@@ -1,13 +1,13 @@
-## Distribuição
+# DISTRIBUIÇÃO
 
 - Cargo:
-- Usuario / Cliente / Venda / Permissao: Cesar 
-- Salario / Lote / Ordem de Produção / Login: Erick
+- Usuario / Cliente / Venda: Cesar 
+- Salario / Lote / Ordem de Produção: Erick
 - Cargo / Departamento: Vitor
-- Funcionario / Empresa / Utils: Raphael
+- Funcionario: Raphael
 - Historico: Gustavo
 
-## Padronizações
+# PADRONIZAÇÕES
 
 - nome de variaveis, atributos e métodos: lowerCamelCase
 - nome de classes: UpperCamelCase

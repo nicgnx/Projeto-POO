@@ -14,7 +14,7 @@ class OrdemDeProducao {
     int quantidade;
 
   public:
-    OrdemDeProducao(std::string, int, Data, int);
+    OrdemDeProducao(std::string nome ,int idProduto, Data data , int quantidade);
     ~OrdemDeProducao();
 
     //getters
