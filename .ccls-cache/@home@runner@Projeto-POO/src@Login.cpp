@@ -1,8 +1,9 @@
 #include "../includes/Login.hpp"
 
+Login* Login::instance = nullptr;
 
 Login::Login(Usuario* usuario) {
-  this->logadoEm = Data::dateNow();
+  this->logadoEm = logadoEm.dateNow();
   this->usuario = usuario;
 }
 
@@ -10,12 +11,24 @@ Login::~Login() {
   this->instance = nullptr;
 }
 
-static Login& Login::logar(Usuario* usuario) { 
-  if (instance == nullptr) {
-    instance = new Login(usuario);
+Login* Login::logar(Usuario* usuario) { 
+  if (Login::instance == nullptr) {
+    Login::instance = new Login(usuario);
     }
-  return *instance;
+  return Login::instance;
 }
+
+Login* Login::getInstance() {
+  return Login::instance;
+}
+
 void Login::deslogar() {
-  ~Login();
+  Login::getInstance()->~Login();
+}
+
+std::string Login::getUsuarioNome() {
+  return Login::getInstance()->usuario->getNome();
+}
+Usuario* Login::getUsuario() {
+  return Login::getInstance()->usuario;
 }

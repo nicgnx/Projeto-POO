@@ -1,7 +1,7 @@
-compile = "make tests"
-run = "./bin/main"
+#compile = "make"
+run = "make tests"
 entrypoint = "main.cpp"
-hidden = ["main", "**/*.o", "**/*.d", ".ccls-cache", "bin"]
+hidden = ["main", "**/*.o", "**/*.d", ".ccls-cache", "bin", "**/*.gcda", "**/*.gcno", "build"]
 
 [gitHubImport]
 requiredFiles = [".replit", "replit.nix", ".ccls-cache"]
