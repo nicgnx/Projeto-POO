@@ -21,7 +21,7 @@ class Funcionario : public Usuario {
 
 public:
   Funcionario();
-  Funcionario(std::string nome,std::string cpfCnpj,std::string email,Data dataNascimento, std::string endereco,std::string matricula, Cargo cargo, Departamento departamento, Historico historico, Salario salario);
+  Funcionario(std::string nome,std::string cpfCnpj,std::string email,std::string senha, Data dataNascimento, std::string endereco,std::string matricula, Cargo cargo, Departamento departamento, Historico historico, Salario salario);
   ~Funcionario();
 
   // getters

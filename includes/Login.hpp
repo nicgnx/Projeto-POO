@@ -22,8 +22,8 @@ class Login
       static Login* getInstance();
       static void deslogar();
       static std::string getUsuarioNome();
+      static std::string getUsuarioSenha();
       static Usuario* getUsuario();
-      
  };
 
 #endif //LOGIN_H

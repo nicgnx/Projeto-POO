@@ -16,7 +16,7 @@ public:
 
 // Construtores e Destrutores
   Cliente();
-  Cliente(std::string nome, std::string email, std::string cpfCnpj, tipoPessoa tipo, unsigned int telefone);
+  Cliente(std::string nome, std::string email, std::string senha, std::string cpfCnpj, tipoPessoa tipo, unsigned int telefone);
   ~Cliente();
 
 // Getters

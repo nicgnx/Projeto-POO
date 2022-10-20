@@ -1,6 +1,6 @@
-#include "includes/Funcionario.hpp"
-#include "includes/Cliente.hpp"
-#include "includes/Estoque.hpp"
+#include "../includes/Funcionario.hpp"
+#include "../includes/Cliente.hpp"
+#include "../includes/Estoque.hpp"
 #include <iostream>
 
 int localizaID(std::string nome){

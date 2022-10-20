@@ -27,6 +27,8 @@ public:
   void setSenha(std::string senha);
   void adicionaPermissoes(Permissao* permissao);
 
+  std::string exibePermissao();
+
 };
 
 #endif // USUARIO_H

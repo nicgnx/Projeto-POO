@@ -52,3 +52,10 @@ void Usuario::adicionaPermissoes(Permissao* permissao){
 
   this->permissoes.push_back(permissao);
 }
+
+std::string Usuario::exibePermissao(){
+  for(auto it = this->permissoes.begin(); it != this->permissoes.end(); it++){
+    return (it*)->getDescricao();
+  }
+}
+

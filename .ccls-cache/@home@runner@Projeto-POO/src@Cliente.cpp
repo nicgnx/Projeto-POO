@@ -5,10 +5,11 @@
 
 Cliente::Cliente(){}
 
-Cliente::Cliente(std::string nome, std::string email, std::string cpfCnpj, tipoPessoa tipo, unsigned int telefone){
+Cliente::Cliente(std::string nome, std::string email, std::string senha, std::string cpfCnpj, tipoPessoa tipo, unsigned int telefone){
 
   this->nome = nome;
   this->email = email;
+  this->senha = senha;
   this->cpfCnpj = cpfCnpj;
   this->tipo = tipo;
   this->telefone = telefone;

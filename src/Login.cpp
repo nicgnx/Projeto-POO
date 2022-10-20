@@ -32,3 +32,6 @@ std::string Login::getUsuarioNome() {
 Usuario* Login::getUsuario() {
   return Login::getInstance()->usuario;
 }
+std::string Login::getUsuarioSenha() {
+  return Login::getInstance()->usuario->getSenha();
+}
