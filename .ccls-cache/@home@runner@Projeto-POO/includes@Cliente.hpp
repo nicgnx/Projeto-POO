@@ -4,6 +4,8 @@
 #include "../includes/Usuario.hpp"
 #include "../includes/Data.hpp"
 #include "../includes/Venda.hpp"
+#include "../includes/Permissao.hpp"
+#include "../constants/PERMISSOES.h"
 
 enum tipoPessoa {PF, PJ};
 

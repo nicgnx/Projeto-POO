@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+struct Permissoes PERMISSOES;
 
 Cliente::Cliente(){}
 
@@ -34,6 +35,15 @@ void Cliente::setTelefone(unsigned int telefone){
 }
 
 void Cliente::compra (int idProduto, int quantidade, Data dataCompra){
+  // puxa as permissoes desse cliente
+  std::vector <Permissao*> permissoes = this->getPermissao();
+
+  for (Permissao* permissao : permissoes) {
+    if (permissao->getIdPermissao() == PERMISSOES.COMPRAR_PRODUTO) {
+      
+    }
+  }
+  
   Venda pedido(idProduto,quantidade,dataCompra,getNome());
   if(pedido.verificaVenda()){
     pedido.executaVenda();

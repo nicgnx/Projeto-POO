@@ -1,15 +1,30 @@
 #include "../includes/Empresa.hpp"
 
+Empresa* Empresa::empresa = NULL;
+
 Empresa::Empresa(
   std::string nome,
   std::string cnpj,
-  vector <Cargo*> cargos,
-  vector <Departamento*> departamentos
+  std::vector <Cargo*> cargos,
+  std::vector <Departamento*> departamentos,
+  Estoque* estoque,
+  HistoricoDeLogs* historico,
+  std::vector <Permissao*> permissoes 
 ) {
   this->nome = nome;
   this->cnpj = cnpj;
   this->cargos = cargos;
   this->departamentos = departamentos;
+  this->estoque = estoque;
+  this->historico = historico;
+  this->permissoes = permissoes;
+}
+
+// getters
+Estoque* Estoque::getInstancia(){
+  if(estoque == NULL){
+  estoque = new Estoque();
+  } return estoque;
 }
 
 std::string Empresa::getNome() {
@@ -20,11 +35,11 @@ std::string Empresa::getCnpj() {
   return this->cnpj;
 };
 
-vector <Cargo*> Empresa::getCargos() {
+std::vector <Cargo*> Empresa::getCargos() {
   return this->cargos;
 };
 
-vector <Departamento*> Empresa::getDepartamentos() {
+std::vector <Departamento*> Empresa::getDepartamentos() {
   return this->departamentos;
 };
 
@@ -37,11 +52,11 @@ void Empresa::setCnpj(std::string cnpj) {
   this->cnpj = cnpj;
 }
 
-void Empresa::setCargos(vector <Cargo*> cargos) {
+void Empresa::setCargos(std::vector <Cargo*> cargos) {
   this->cargos = cargos;
 }
 
-void Empresa::setDepartamentos(vector <Departamento*> departamentos) {
+void Empresa::setDepartamentos(std::vector <Departamento*> departamentos) {
   this->departamentos = departamentos;
 }
 

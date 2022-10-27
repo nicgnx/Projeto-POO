@@ -18,7 +18,7 @@ Data Venda::getDataVenda(){
   return this->dataVenda;
 }
 
-std::string Venda::getCliente(){
+Cliente* Venda::getCliente(){
   return this->cliente;
 }
 
@@ -44,7 +44,7 @@ void Venda::setDataVenda(Data data){
   this->dataVenda = data;
 }
 
-void Venda::setCliente(std::string cliente){
+void Venda::setCliente(Cliente* cliente){
   this->cliente = cliente;
 }
 

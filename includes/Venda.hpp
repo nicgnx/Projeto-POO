@@ -10,7 +10,7 @@ class Venda{
 
   int idProduto;
   Data dataVenda;
-  std::string cliente;
+  Cliente* cliente;
   int quantidade;
   std::vector<int> idLotes;
   float precoUnitario;
@@ -23,7 +23,7 @@ public:
 //getters
   int getIdProduto();
   Data getDataVenda();
-  std::string getCliente();
+  Cliente* getCliente();
   int getQuantidade();
   std::vector <int> getLotes();
   float getPrecoUnitario();
@@ -31,7 +31,7 @@ public:
 
 //setters
   void setDataVenda(Data data);
-  void setCliente(std::string cliente);
+  void setCliente(Cliente* cliente);
   void setQuantidade(int quantidade);
   void setLotes(Lote* lote);
   void setPrecoUnitario();

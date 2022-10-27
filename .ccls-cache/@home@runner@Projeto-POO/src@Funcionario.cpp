@@ -2,10 +2,11 @@
 
 Funcionario::Funcionario() {}
 
-Funcionario::Funcionario(std::string nome,std::string cpfCnpj,std::string email,Data dataNascimento, std::string endereco,std::string matricula, Cargo cargo, Departamento departamento, Historico historico, Salario salario){
+Funcionario::Funcionario(std::string nome,std::string cpfCnpj,std::string email,std::string senha, Data dataNascimento, std::string endereco,std::string matricula, Cargo cargo, Departamento departamento, Historico historico, Salario salario){
   this->nome = nome;
   this->cpfCnpj = cpfCnpj;
   this->email = email;
+  this->senha = senha;
   this->dataNascimento = dataNascimento;
   this->endereco = endereco;
   this->matricula = matricula;
