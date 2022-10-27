@@ -4,7 +4,7 @@
 #include "../includes/Permissao.hpp"
 #include <iostream>
 
-/*
+
 int localizaID(std::string nome){
   Estoque* estoque = Estoque::getInstancia();
   auto listaDeProdutos = estoque->getListaDeProdutos();
@@ -16,10 +16,10 @@ int localizaID(std::string nome){
     }   
   } std::cout << "Esse produto não existe";
 }
-*/
+
 
 int main() {
-
+/*
   
 
   Funcionario Alan("Alan", "125.254.366-98", "alan@testeemail.com","senha123", Data (1985, 8, 24, 0, 0, 0),
@@ -43,10 +43,10 @@ std::cout << "   - Registro: " << Alan.getHistorico().getRegistro() << "\n Salar
 
   if(funcionario.getIdPermissao() == 1){
     Alan.setNovoSalario(Salario (2000.95,0,Data(2022,29,9,15,59,00));
-  }
-  
+  }  
+*/
 
- /* Cliente agroBrasil("Agro Brasil","comercial@agrobrasil.com.br", "1236548", PJ, 551125487);
+  Cliente agroBrasil("Agro Brasil","comercial@agrobrasil.com.br", "senha", "1236548", PJ, 551125487);
   Estoque* estoque = Estoque::getInstancia();
 
   // Cadastrar Produtos
@@ -80,5 +80,5 @@ std::cout << "   - Registro: " << Alan.getHistorico().getRegistro() << "\n Salar
   estoque->printListaDeProdutos();
   std::cout << "\n\n\n";
 
-  */
+  
 }
