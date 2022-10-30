@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-10-30T05:41:07.643Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="qgdz5eXhirBJpho8evsa" version="20.5.1" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-30T05:41:32.414Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="Rha_MSqOjOP84aauu5j8" version="20.5.1" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Diagrama UML">
     <mxGraphModel dx="1736" dy="1440" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="3000" pageHeight="2200" background="none" math="0" shadow="0">
       <root>
@@ -395,7 +395,7 @@
         <mxCell id="Jqu-rE0V3BrTrrEw6oY6-4" value="+ void cadastraProduto(nome [ string ],loteMinimo [ int ], estoqueMinimo [ int ])" style="text;html=1;resizable=0;autosize=1;align=left;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" parent="zTteDzw6mhybtIft6KNz-35" vertex="1">
           <mxGeometry y="242" width="434" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="YGI2oginyyZpjjxHaFJb-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamondThin;endFill=0;startSize=6;endSize=16;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="zTteDzw6mhybtIft6KNz-46" edge="1">
+        <mxCell id="YGI2oginyyZpjjxHaFJb-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamondThin;endFill=1;startSize=6;endSize=16;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="zTteDzw6mhybtIft6KNz-46" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="3713" y="678" as="targetPoint" />
           </mxGeometry>
