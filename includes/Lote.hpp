@@ -4,28 +4,40 @@
 #include "Produto.hpp"
 #include "Data.hpp"
 
+enum Status {
+  ESTOQUE,
+  VENDIDO
+};
+
 class Lote {
   private:
-    Produto* produto;
+    int idProduto;
     Data data;
     int quantidade;
-    const int NUMLOTE;
-    static int lotesTotais = 0;
+    Status status;
+    const int idLote;
+    static int lotesTotais;
+
   public:
-    Lote(Produto*, Data, int);
+    Lote(int, Data, int);
     Lote();
     ~Lote();
 
+    void updateLotes(int);
+    
     //getters
-    Produto* getProduto();
+    int getIdProduto();
     Data getData();
     int getQuantidade();
-    int getNumLote();
+    int getIdLote();
+    int getLotesTotais();
+    Status getStatus();
 
     //setters
-    void setProduto(Produto* produto);
-    void setData(Data data);
-    void setQuatidade(int quatidade);
+    void setIdProduto(int);
+    void setData(Data);
+    void setQuantidade(int);
+    void setStatus(Status);
     
 };
 

@@ -2,38 +2,46 @@
 #define VENDA_H
 
 #include "Data.hpp"
-#include "Cliente.hpp"
 #include "Lote.hpp"
+#include "./Estoque.hpp"
 #include <vector>
 
 class Venda{
-  
+
+  int idProduto;
   Data dataVenda;
   Cliente* cliente;
   int quantidade;
-  vector<Lote*> lotes;
+  std::vector<int> idLotes;
+  float precoUnitario;
+  float valorVenda;
+ 
   
 public:
-  Venda(Data dataVenda, Cliente* cliente, int quantidade);
+  Venda(int idProduto, int quantidade, Data dataVenda, std::string cliente);
   ~Venda();
 //getters
+  int getIdProduto();
   Data getDataVenda();
-  Cliente getCliente();
+  Cliente* getCliente();
   int getQuantidade();
-  int getLotes();
+  std::vector <int> getLotes();
+  float getPrecoUnitario();
+  float getValorVenda();
 
 //setters
   void setDataVenda(Data data);
   void setCliente(Cliente* cliente);
   void setQuantidade(int quantidade);
   void setLotes(Lote* lote);
+  void setPrecoUnitario();
+  void setValorVenda();
+
 
 //outros metodos
-  bool VerificaEstoque();
+  bool verificaVenda();
   void executaVenda();
-  
-
-
+  void printVenda();
 };
 
 #endif 

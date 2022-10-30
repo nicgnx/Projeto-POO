@@ -1,25 +1,40 @@
 #include "../includes/Lote.hpp"
 
-Lote::Lote(Produto* produto, Data data, int quantidade):
-  NUMLOTE(this->lotesTotais) {
+int Lote::lotesTotais = 0;
+
+Lote::Lote(int idProduto, Data data, int quantidade):
+  idLote(this->lotesTotais) {
   this->data = data;
-  this->produto = produto;
+  this->idProduto = idProduto;
   this->quantidade = quantidade;
   this->lotesTotais += 1;
+  this->status = Status::ESTOQUE;
   }
 
 Lote::Lote():
-  NUMLOTE(this->lotesTotais) {
+  idLote(this->lotesTotais) {
   this->lotesTotais += 1;
+  this->status = Status::ESTOQUE;
+  this->data = data.dateNow();
+  this->idProduto = -1;
+  this->quantidade = -1;
 }
 
 Lote::~Lote() {
   
 }
 
+void Lote::updateLotes(int quantidade) {
+  this->quantidade -= quantidade;
+  if (this->quantidade <= 0) {
+    this->quantidade = 0;
+    this->status = Status::VENDIDO;
+  }
+}
+
 //getters
-Produto* Lote::getProduto() {
-  return this->produto;
+int Lote::getIdProduto() {
+  return this->idProduto; 
 }
 Data Lote::getData() {
   return this->data;
@@ -27,19 +42,27 @@ Data Lote::getData() {
 int Lote::getQuantidade() {
     return this->quantidade;
 }
-int Lote::getNumLote() {
-  return this->NUMLOTE;
+int Lote::getIdLote() {
+  return this->idLote;
+}
+int Lote::getLotesTotais() {
+  return this->lotesTotais;
+}
+Status Lote::getStatus() {
+  return this->status;
 }
 
 //setters
-void Lote::setProduto(Produto* produto) {
-  this->produto = produto;
+void Lote::setIdProduto(int idProduto) {
+  this->idProduto = idProduto;
 }
 void Lote::setData(Data data) {
   this->data = data;
 }
-void Lote::setQuatidade(int quantidade) {
+void Lote::setQuantidade(int quantidade) {
   this->quantidade = quantidade;
-  
+}
+void Lote::setStatus(Status status) {
+  this->status = status;
 }
 

@@ -1,38 +1,34 @@
 #ifndef ORDEMDEPRODUCAO_H
 #define ORDEMDEPRODUCAO_H
 
-#include "Produto.hpp"
 #include "Data.hpp"
+#include "Lote.hpp"
+#include <string>
 
-enum Status {
-  Pendente,
-  Executando,
-  Concluido,
-};
 
 class OrdemDeProducao {
   private:
-    Produto* produto;
+    std::string produto;
+    int idProduto;
     Data data;
     int quantidade;
-    Status status;
+
   public:
-    OrdemDeProducao(Produto*, Data, int, Status);
+    OrdemDeProducao(std::string, int, Data, int);
     ~OrdemDeProducao();
 
     //getters
-    Produto* getProduto();
+    int getIdProduto();
     Data getData();
     int getQuantidade();
-    Status getStatus();
 
     //setters
-    void setProduto(Produto*);
+    void setIdProduto(int);
     void setData(Data);
     void setQuantidade(int);
-    void setStatus(Status);
-    
-    
-}
+
+    // Métodos
+    Lote* solicitaLote();
+};
 
 #endif // ORDEMDEPRODUCAO_H

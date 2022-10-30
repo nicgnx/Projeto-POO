@@ -2,48 +2,52 @@
 #define PRODUTO_H
 
 #include "../includes/Categoria.hpp"
-#include "../includes/Lote.hpp"
+#include "../includes/PrecoProduto.hpp"
 #include <string>
+#include <vector>
+
 
 class Produto {
-    std::string produto;
-    int codigo;
-    float valor;
-    Categoria categoria;
-    int loteMinimo;
-    int estoqueMinimo;
-    vector <Lote*> lotes;
+  static int* staticIdProduto;
+  std::string nome;
+  int idProduto;
+  vector <PrecoProduto*> precos;
+  Categoria categoria;
+  int loteMinimo;
+  int estoqueMinimo;
 
 public:
+  // Construtores e Destrutores
+  Produto(
+    std::string nome, 
+    Categoria categoria, 
+    int loteMinimo, 
+    int estoqueMinimo,
+    PrecoProduto* preco
+  );
+  Produto();
+  Produto(std::string nome, int loteMinimo, int estoqueMinimo, PrecoProduto* preco);
+  ~Produto();
 
-    // Construtores e Destrutores
-    Produto(std::string produto, int codigo, float valor, Categoria categoria, int loteMinimo, int estoqueMinimo);
-    Produto();
-    ~Produto();
+  // Getters
+  std::string getNome();
+  int getIdProduto();
+  PrecoProduto* getPrecos();
+  Categoria getCategoria();
+  int getLoteMinimo();
+  int getEstoqueMinimo();
+  int getID();
 
-    // Getters
-    std::string Produto::getProduto();
-    int Produto::getCodigo();
-    float Produto::getValor();
-    Categoria Produto::getCategoria();
-    int Produto::getLoteMinimo();
-    int Produto::getEstoqueMinimo();
-    Lote Produto::getLote(int numLote);
-    vector <Lote*> Produto::getLoteTodos();
+  // Setters
+  void setNome(std::string nome);
+  void setIdProduto(int idProduto);
+  void setCategoria(Categoria categoria);
+  void setLoteMinimo(int loteMinimo);
+  void setEstoqueMinimo(int estoqueMinimo);
 
-    // Setters
-    void Produto::setProduto(std::string produto);
-    void Produto::setCodigo(int codigo);
-    void Produto::setValor(float valor);
-    void Produto::setCategoria(Categoria categoria);
-    void Produto::setLoteMinimo(int loteMinimo);
-    void Produto::setEstoqueMinimo(int estoqueMinimo);
-    void Produto::setLote(int numLote, Lote lote);
-    void Produto::setLoteTodos(vector <Lote*> lotes)
+  // misc
+  void novoPreco(float precoBase,float percentualVariacao,Data data);
+  void novoPreco(PrecoProduto* preco);
 };
-
-
-
-
 
 #endif // PRODUTO_H

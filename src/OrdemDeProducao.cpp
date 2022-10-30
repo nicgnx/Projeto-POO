@@ -1,18 +1,26 @@
 #include "../includes/OrdemDeProducao.hpp"
 
-OrdemDeProducao::OrdemDeProducao(Produto* produto, Data data, int quantidade, Status status) {
-  this->produto = produto;
+
+OrdemDeProducao::OrdemDeProducao(std::string produto, int idProduto, Data data, int quantidade) {
+  this-> produto = produto;
+  this->idProduto = idProduto;
   this->data = data;
   this->quantidade = quantidade;
-  this->status = status;
 }
 
 OrdemDeProducao::~OrdemDeProducao() {
   
 }
+
+// Métodos
+
+Lote* OrdemDeProducao::solicitaLote() {
+  return new Lote(this->idProduto, this->data, this->quantidade);
+}
+
 //getters
-Produto* OrdemDeProducao::getProduto() {
-  return this->produto;
+int OrdemDeProducao::getIdProduto() {
+  return this->idProduto;
 }
 Data OrdemDeProducao::getData() {
   return this->data;
@@ -20,13 +28,10 @@ Data OrdemDeProducao::getData() {
 int OrdemDeProducao::getQuantidade() {
   return this->quantidade;
 }
-Status OrdemDeProducao::getStatus() {
-  return this->status;
-}
 
 //setters
-void OrdemDeProducao::setProduto(Produto* produto) {
-  this->produto = produto;
+void OrdemDeProducao::setIdProduto(int idProduto) {
+  this->idProduto = idProduto;
 }
 void OrdemDeProducao::setData(Data data) {
   this->data = data;
@@ -34,6 +39,4 @@ void OrdemDeProducao::setData(Data data) {
 void OrdemDeProducao::setQuantidade(int quantidade) {
   this->quantidade = quantidade;
 }
-void OrdemDeProducao::setStatus(Status status) {
-  this->status = status;
-}
+
