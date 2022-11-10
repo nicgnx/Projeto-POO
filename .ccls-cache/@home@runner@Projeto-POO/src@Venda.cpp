@@ -49,9 +49,6 @@ float Venda::getPrecoUnitario(){
   return this->precoUnitario;
 }
 
-float Venda::getValorVenda(){
-  return this->valorVenda;
-}
 
 // Setters
 
@@ -59,8 +56,20 @@ void Venda::setDataVenda(Data data){
   this->dataVenda = data;
 }
 
-void Venda::setCliente(Cliente* cliente){
+void Venda::setCliente(std::string cliente){
   this->cliente = cliente;
+}
+
+void Venda::setCpfCnpj(int cpfCnpj){
+  this->cpfCnpj = cpfCnpj;
+}
+
+void Venda::setEmail(std::string email){
+  this->email = email;
+}
+
+void Venda::setIdProduto(int idProduto){
+  this->idProduto = idProduto;
 }
 
 void Venda::setQuantidade(int quantidade){
@@ -76,18 +85,17 @@ void Venda::setPrecoUnitario(){
   this->precoUnitario = estoque->getProduto(this->idProduto)->getPrecos()->getPrecoBase();
 }
 
-void Venda::setValorVenda(){
-  this->valorVenda = this->precoUnitario * this->quantidade;
+void Venda::setDataVenda(Data dataVenda){
+  this->dataVenda = dataVenda;
 }
 
-
-bool Venda::verificaVenda(){
+/*bool Venda::verificaVenda(){
   Estoque* estoque = Estoque::getInstancia();
     if(this->quantidade > estoque->verificaEstoque(this->idProduto)){
       return false;
       }
     else {return true;}
-}
+}*/
 
 void Venda::executaVenda(){
   Estoque* estoque = Estoque::getInstancia();

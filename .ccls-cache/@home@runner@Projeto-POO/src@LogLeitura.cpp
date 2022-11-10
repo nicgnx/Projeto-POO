@@ -1,4 +1,5 @@
 #include "../includes/LogLeitura.hpp"
+#include <iostream>
 
 LogLeitura::LogLeitura(std::string usuario, int idUsuario, Data data, std::string classeAcessada, std::string informacao){
   this->usuario = usuario;
@@ -21,12 +22,12 @@ void LogLeitura::setInformacao(std::string informacao){
 }
 
 void LogLeitura::printLog(){
-  std::cout << "----------------------------------------------------------------------------------------------------"
+  std::cout << "----------------------------------------------------------------------------------------------------\n"
             << "                                         Log de Leitura"
             << "Usuário:             " << this->usuario << ".\n"
             << "idUsuario:           " << this->idUsuario << ".\n"
-            << "Data:                " << this->data << ".\n"
+            << "Data:                " << this->data.printData(); std::cout << ".\n"
             << "Classe Acesso:       " << this->classeAcessada << ".\n"
             << "Informação Acessada: " << this->informacao << ".\n"
-            << "----------------------------------------------------------------------------------------------------";
+            << "----------------------------------------------------------------------------------------------------\n\n";
 }

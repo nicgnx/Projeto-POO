@@ -32,12 +32,12 @@ public:
   bool getDisponibilidade();
 
   // setters
-  void getProduto(std::string produto);
-  void getIdProduto(int idProduto);
-  void getPrecoUnitario(float precoUnitario);
-  void getQuantidade(int quantidade); 
-  void getValorTotal(float valorTotal);
-  void getDisponibilidade(bool disponibilidade);
+  void setProduto(std::string produto);
+  void setIdProduto(int idProduto);
+  void setPrecoUnitario(float precoUnitario);
+  void setQuantidade(int quantidade); 
+  void setValorTotal(float valorTotal);
+  void setDisponibilidade(bool disponibilidade);
 
   // misc
   float calculaCompra(float precoUnitario, int quantidade);

@@ -1,8 +1,10 @@
 #ifndef LOG_ESCRITA_H
 #define LOG_ESCRITA_H
+#include "LogAbstrata.hpp"
 
-class LogEscrita {
-protected:
+
+class LogEscrita : public LogAbstrata{
+private:
   std::string atributoAntes;
   std::string atributoDepois;
 

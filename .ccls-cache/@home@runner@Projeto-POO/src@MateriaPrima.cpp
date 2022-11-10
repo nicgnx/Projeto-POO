@@ -4,7 +4,7 @@ MateriaPrima::MateriaPrima(int id, std::string nome, std::string unidade, int es
   this->nome = nome;
   this->id = id;
   this->estoqueMinimo = estoqueMinimo;
-  this->unidade = un
+  this->unidade = unidade;
 }
 MateriaPrima::~MateriaPrima() {
   

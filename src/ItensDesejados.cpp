@@ -17,16 +17,61 @@ ItensDesejados::ItensDesejados(
   this->disponibilidade = disponibilidade;
 }
 
-ItensDesejados::~ItensDesejados() {}
+ItensDesejados::~ItensDesejados() { }
 
-  std::string ItensDesejados::getProduto();
-  int ItensDesejados::getIdProduto();
-  float ItensDesejados::getPrecoUnitario();
-  int ItensDesejados::getQuantidade(); 
-  float ItensDesejados::getValorTotal();
-  bool ItensDesejados::getDisponibilidade();
+std::string ItensDesejados::getProduto() {
+  return this->produto;
+};
 
-void Historico::setData(Data data) { this->data = data; }
+int ItensDesejados::getIdProduto() {
+  return this->idProduto;
+};
 
-void Historico::setRegistro(std::string registro) { this->registro = registro; }
+float ItensDesejados::getPrecoUnitario() {
+  return this->precoUnitario;
+};
+
+int ItensDesejados::getQuantidade() {
+  return this->quantidade;
+}; 
+
+float ItensDesejados::getValorTotal() {
+  return this->valorTotal;
+};
+
+bool ItensDesejados::getDisponibilidade() {
+  return this->disponibilidade;
+};
+
+void ItensDesejados::setProduto(std::string produto) {
+  this->produto = produto;
+};
+
+void ItensDesejados::setIdProduto(int idProduto) {
+  this->idProduto = idProduto;
+};
+
+void ItensDesejados::setPrecoUnitario(float precoUnitario) {
+  this->precoUnitario = precoUnitario;
+};
+
+void ItensDesejados::setQuantidade(int quantidade) {
+  this->quantidade = quantidade;
+}; 
+
+void ItensDesejados::setValorTotal(float valorTotal) {
+  this->valorTotal = valorTotal;
+};
+
+void ItensDesejados::setDisponibilidade(bool disponibilidade) {
+  this->disponibilidade = disponibilidade;
+};
+
+float ItensDesejados::calculaCompra(float precoUnitario, int quantidade) {
+  
+};
+
+bool ItensDesejados::verificaDisponibilidade(int idProduto) {
+  
+};
 
