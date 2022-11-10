@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-11-10T18:51:01.930Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="e_8bc2bfH7jBW9MqzE_g" version="20.5.1" type="github">
+<mxfile host="app.diagrams.net" modified="2022-11-10T22:31:10.743Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="t96HHBcqUCAOziKWQkxU" version="20.5.3" type="github">
   <diagram id="LnakwKp7Q2fhomEW0Q4i" name="Page-1">
-    <mxGraphModel dx="2770" dy="1700" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1422" dy="1186" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -528,10 +528,10 @@
         <mxCell id="G2CM9ZHuS_VSogmRqTbu-127" value="- cnpj [ string ] &lt;&lt; get/set &gt;&gt;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="G2CM9ZHuS_VSogmRqTbu-125" vertex="1">
           <mxGeometry y="52" width="332" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="ZAHIw_BACBg13SFvlBzE-1" value="- funcionarios [ Funcionario* ] &lt;&lt; get / set &gt;&gt;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="G2CM9ZHuS_VSogmRqTbu-125">
+        <mxCell id="ZAHIw_BACBg13SFvlBzE-1" value="- funcionarios [ Funcionario* ] &lt;&lt; get / set &gt;&gt;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="G2CM9ZHuS_VSogmRqTbu-125" vertex="1">
           <mxGeometry y="78" width="332" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="ZAHIw_BACBg13SFvlBzE-2" value="- clientes [ Cliente* ] &lt;&lt; get / set &gt;&gt;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="G2CM9ZHuS_VSogmRqTbu-125">
+        <mxCell id="ZAHIw_BACBg13SFvlBzE-2" value="- clientes [ Cliente* ] &lt;&lt; get / set &gt;&gt;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="G2CM9ZHuS_VSogmRqTbu-125" vertex="1">
           <mxGeometry y="104" width="332" height="26" as="geometry" />
         </mxCell>
         <mxCell id="G2CM9ZHuS_VSogmRqTbu-128" value="- cargos [ vector&lt;Cargo*&gt; ] &lt;&lt; get/set &gt;&gt;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="G2CM9ZHuS_VSogmRqTbu-125" vertex="1">
@@ -543,7 +543,7 @@
         <mxCell id="G2CM9ZHuS_VSogmRqTbu-130" value="- historicoDeLogs [ HistoricoDeLogs* ] &lt;&lt; get / set &gt;&gt;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="G2CM9ZHuS_VSogmRqTbu-125" vertex="1">
           <mxGeometry y="182" width="332" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="ZAHIw_BACBg13SFvlBzE-3" value="- estoque [ Estoque* ] &lt;&lt; get/set &gt;&gt;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="G2CM9ZHuS_VSogmRqTbu-125">
+        <mxCell id="ZAHIw_BACBg13SFvlBzE-3" value="- estoque [ Estoque* ] &lt;&lt; get/set &gt;&gt;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="G2CM9ZHuS_VSogmRqTbu-125" vertex="1">
           <mxGeometry y="208" width="332" height="26" as="geometry" />
         </mxCell>
         <mxCell id="G2CM9ZHuS_VSogmRqTbu-131" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="G2CM9ZHuS_VSogmRqTbu-125" vertex="1">
@@ -781,10 +781,10 @@
         <mxCell id="G2CM9ZHuS_VSogmRqTbu-190" value="- logLeitura [ map &amp;lt;id&amp;gt;,&amp;lt;LogLeitura&amp;gt; ] &amp;lt;&amp;lt; get/set &amp;gt;&amp;gt;" style="text;html=1;resizable=0;autosize=1;align=left;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" parent="G2CM9ZHuS_VSogmRqTbu-189" vertex="1">
           <mxGeometry y="26" width="373" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="ZAHIw_BACBg13SFvlBzE-4" value="- logEscrita [ map &amp;lt;id&amp;gt;,&amp;lt;LogEscrita&amp;gt; ] &amp;lt;&amp;lt; get/set &amp;gt;&amp;gt;" style="text;html=1;resizable=0;autosize=1;align=left;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" vertex="1" parent="G2CM9ZHuS_VSogmRqTbu-189">
+        <mxCell id="ZAHIw_BACBg13SFvlBzE-4" value="- logEscrita [ map &amp;lt;id&amp;gt;,&amp;lt;LogEscrita&amp;gt; ] &amp;lt;&amp;lt; get/set &amp;gt;&amp;gt;" style="text;html=1;resizable=0;autosize=1;align=left;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" parent="G2CM9ZHuS_VSogmRqTbu-189" vertex="1">
           <mxGeometry y="52" width="373" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="ZAHIw_BACBg13SFvlBzE-5" value="- logExcecao [ map &amp;lt;id&amp;gt;,&amp;lt;LogExcecao&amp;gt; ] &amp;lt;&amp;lt; get/set &amp;gt;&amp;gt;" style="text;html=1;resizable=0;autosize=1;align=left;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" vertex="1" parent="G2CM9ZHuS_VSogmRqTbu-189">
+        <mxCell id="ZAHIw_BACBg13SFvlBzE-5" value="- logExcecao [ map &amp;lt;id&amp;gt;,&amp;lt;LogExcecao&amp;gt; ] &amp;lt;&amp;lt; get/set &amp;gt;&amp;gt;" style="text;html=1;resizable=0;autosize=1;align=left;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" parent="G2CM9ZHuS_VSogmRqTbu-189" vertex="1">
           <mxGeometry y="78" width="373" height="26" as="geometry" />
         </mxCell>
         <mxCell id="G2CM9ZHuS_VSogmRqTbu-191" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="G2CM9ZHuS_VSogmRqTbu-189" vertex="1">
