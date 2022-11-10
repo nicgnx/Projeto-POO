@@ -1,15 +1,17 @@
 #ifndef LOG_LEITURA_H
 #define LOG_LEITURA_H
 
-class LogLeitura {
-protected:
+#include "LogAbstrata.hpp"
+#include <iostream>
+
+class LogLeitura : public LogAbstrata {
+
+private:
   std::string informacao;
 
 public:
   // Construtores e Destrutores
-  LogLeitura(
-    std::string inforacao
-  );
+  LogLeitura(std::string usuario, int idUsuario, Data data, std::string classeAcessada, std::string informacao);
   LogLeitura();
   ~LogLeitura();
 
@@ -18,6 +20,10 @@ public:
 
   // Setters
   void setInformacao(std::string informacao);
+
+  // Methods
+
+  void printLog();
 };
 
 

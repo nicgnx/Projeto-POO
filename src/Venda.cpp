@@ -3,28 +3,43 @@
 #include <iostream>
 
 
-Venda::Venda(int idProduto, int quantidade, Data dataVenda, std::string cliente ){
-  
-  this->idProduto = idProduto;
-  this->dataVenda = dataVenda;
+Venda::Venda(std::string cliente, int cpfCnpj, std::string email, int idProduto, int quantidade, Data dataVenda){
   this->cliente = cliente;
+  this->cpfCnpj = cpfCnpj;
+  this->email = email;
+  this->idProduto = idProduto;
   this->quantidade = quantidade;
+  this->dataVenda = dataVenda;
+
 }
 
 Venda::~Venda(){}
 // Getters
 
-Data Venda::getDataVenda(){
-  return this->dataVenda;
+std::string Venda::getCliente(){
+  return this->cliente;
 }
 
-Cliente* Venda::getCliente(){
-  return this->cliente;
+int Venda::getCpfCnpj(){
+  return this->cpfCnpj;
+}
+
+std::string Venda::getEmail(){
+  return this->email;
+}
+
+int Venda::getIdProduto(){
+  return this->idProduto;
 }
 
 int Venda::getQuantidade(){
   return this->quantidade;
 }
+
+Data Venda::getDataVenda(){
+  return this->dataVenda;
+}
+
 
 std::vector <int> Venda::getLotes(){
   return this->idLotes;

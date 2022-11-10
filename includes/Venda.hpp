@@ -7,24 +7,27 @@
 #include <vector>
 
 class Venda{
-
+  std::string cliente;
+  int cpfCnpj;
+  std::string email;
   int idProduto;
-  Data dataVenda;
-  Cliente* cliente;
   int quantidade;
-  std::vector<int> idLotes;
+  Data dataVenda;
   float precoUnitario;
-  float valorVenda;
+  std::vector<int> idLotes;
+ 
  
   
 public:
-  Venda(int idProduto, int quantidade, Data dataVenda, std::string cliente);
+  Venda(std::string cliente, int cpfCnpj, std::string email, int idProduto, int quantidade, Data dataVenda);
   ~Venda();
 //getters
+  std::string getCliente();
+  int getCpfCnpj();
+  std::string getEmail();
   int getIdProduto();
-  Data getDataVenda();
-  Cliente* getCliente();
   int getQuantidade();
+  Data getDataVenda();
   std::vector <int> getLotes();
   float getPrecoUnitario();
   float getValorVenda();

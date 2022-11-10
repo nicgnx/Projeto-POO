@@ -11,9 +11,7 @@ protected:
   // std::string cliente;
   float valorTotal;
   Data data;
-  P cliente;
-  std::string cliente;
-  std::string cliente;
+  // PedidoDeCompra pedido;
 
 public:
   // Construtores e Destrutores
@@ -22,12 +20,6 @@ public:
   );
   Orcamento();
   ~Orcamento();
-
-  // Getters
-  std::string getInformacao();
-
-  // Setters
-  void setInformacao(std::string informacao);
 };
 
 
