@@ -1,11 +1,7 @@
 ## Distribuição
 
-- Cargo:
-- Usuario / Cliente / Venda / Permissao: Cesar 
-- Salario / Lote / Ordem de Produção / Login: Erick
-- Cargo / Departamento: Vitor
-- Funcionario / Empresa / Utils: Raphael
-- Historico: Gustavo
+- Materia Prima, OrdemDeMateriaPrima, Fornecedor: Erick
+- Orcamento, PedidoDeCompra, ItensDesejados: Raphael
 
 ## Padronizações
 

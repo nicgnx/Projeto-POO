@@ -30,6 +30,9 @@
 	exceção se não tiver
   * testar funcionalidade de login junto aqui
 
+(9) (Gustavo) Alterando modelo das classe LogAbstrata.
+  *  Fazer funcionar
+
 ----------------------------------------------------------------------
 
 ## FEITAS -> colocar nome de quem fez

@@ -1,8 +1,12 @@
 
 #include "../includes/LogAbstrata.hpp"
 
-Usuario* LogAbstrata::getUsuario(){
+std::string LogAbstrata::getUsuario(){
   return this->usuario;
+}
+
+int LogAbstrata::getIdUsuario(){
+  return this->idUsuario;
 }
 
 Data LogAbstrata::getData(){
@@ -14,6 +18,18 @@ std::string LogAbstrata::getClasseAcessada(){
 }
 
 
-void LogAbstrata::setUsuario(Usuario* usuario){
+void LogAbstrata::setUsuario(std::string usuario){
   this->usuario = usuario;
+}
+
+void LogAbstrata::setIdUsuario(int usuario){
+  this->idUsuario = usuario;
+}
+
+void LogAbstrata::setData(Data data){
+  this->data = data;
+}
+
+void LogAbstrata::setClasseAcessada(std::string classeAcessada){
+  this->classeAcessada = classeAcessada;
 }

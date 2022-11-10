@@ -9,7 +9,8 @@
 class LogAbstrata{
 
   protected:
-    Usuario* usuario;
+    std::string usuario;
+    std::string idUsuario;
     Data data;
     std::string classeAcessada;
 
@@ -17,15 +18,15 @@ class LogAbstrata{
   public:
     virtual LogAbstrata() = default;
   
-    Usuario* getUsuario();
+    std::string getUsuario();
+    int getIdUsuario();
     Data getData();
     std::string getClasseAcessada();
 
-    void setUsuario(Usuario* usuario);
+    void setUsuario(std:string usuario);
+    void setIdUsuario(int idUsuario);
     void setData(Data data);
     void setClasseAcessada(std::string classeAcessada);
-
-    std::string printLog();
 }
 
 #endif
