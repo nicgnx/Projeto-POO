@@ -1,4 +1,6 @@
-#include "../includes/PagamentoAbstrata.hpp".hpp"
+#include "../includes/PagamentoAbstrata.hpp"
 
 
-Pagamento
+PagamentoAbstrata::PagamentoAbstrata(Data data, float valorApagar);
+
+PagamentoAbstrata::~PagamentoAbstrata();
