@@ -30,10 +30,11 @@
 (1) (Gustavo) implementar funcionalidade de Logs
 	* finalizar implementação - OK
 	* testar com outros métodos criando logs de erro, operação, etc
-     * Testado separado do código, está funcionando. Falta implementar logs nas classes do Projeto.
+     * Testado separado do código, funcionando. Falta implementar logs nas classes do projeto e testar.
 
-(4) (Gustavo) adaptar classe Empresa para o modelo mais recente
-  * Necessário implementar Classes Turno e Veículo para deixar Empresa de acordo com o modelo mais recente.
+(4) (Gustavo) adaptar classe Empresa para o modelo mais recente.
+  * Alterar o construtor da classse afim dele para criar um usuário root que possuí todas as permissões quando a 1º instância de Empresa é criada.
+    * Precisamos de decidir e implementar as permissões para fazer esse ponto.
 
 (7) (Gustavo) implementar classes Veiculo e Turno.
   * deixar funcional
