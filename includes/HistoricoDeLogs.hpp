@@ -8,12 +8,13 @@
 #include "LogExcecao.hpp"
 #include "Data.hpp"
 
+enum tipoLog {Escrita,Leitura,Excecao};
 
 class HistoricoDeLogs {
   private:
-    std::map <int, LogLeitura*> historico;
-    std::map <int, LogEscrita*> historico;
-    std::map <int, LogExcecao*> historico;
+    std::map <int, vector<LogLeitura*>> historicoLeitura;
+    std::map <int, vector<LogEscrita*>> historicoEscrita;
+    std::map <int, vector<LogExcecao*>> historicoExcecao;
 
 
   public:
@@ -21,16 +22,19 @@ class HistoricoDeLogs {
     ~HistoricoDeLogs();
 
     //Getters
-    std::vector <LogLeitura*> listaLogLeitura(Data, Data);
-    std::vector <LogEscrita*> listaLogEscrita(Data, Data);
-    std::vector <LogExcecao*> listaLogExcecao(Data, Data);
+    std::vector <LogLeitura*> listaLogLeitura(int idUsuario,Data inicial, Data final);
+    std::vector <LogEscrita*> listaLogEscrita(int idUsuario,Data inicial, Data final);
+    std::vector <LogExcecao*> listaLogExcecao(int idUsuario,Data inicial, Data final);
 
     //Setters
-    void setLogLeitura(LogLeitura *Log);
-    void setLogEscrita(LogEscrita *Log);
-    void setLogExcecao(LogExcecao *Log);
+    void setLogLeitura(int idUsuario, LogLeitura *Log);
+    void setLogEscrita(int idUsuario, LogEscrita *Log);
+    void setLogExcecao(int idUsuario, LogExcecao *Log);
+
+    //Methods
+    void printLog(tipoLog log,int idUsuario, Data inicial, Data final);
     
-}
+};
 
 
 

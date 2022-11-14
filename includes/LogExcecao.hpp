@@ -9,7 +9,7 @@ private:
 
 public:
   // Construtores e Destrutores
-  LogExcecao(std::string usuario, int idUsuario, Data data, std::string classeAcessada,std::string metodo);
+  LogExcecao(std::string usuario, int idUsuario, Data data,std::string classeAcessada, std::string instanciaAcessada,std::string metodo);
   LogExcecao();
   ~LogExcecao();
 

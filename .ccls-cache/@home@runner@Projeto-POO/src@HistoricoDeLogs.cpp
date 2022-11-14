@@ -1,46 +1,82 @@
 #include "../includes/HistoricoDeLogs.hpp"
 
-HistoricoDeLogs::HistoricoDeLogs() {
-  
-}
-HistoricoDeLogs::~HistoricoDeLogs() {
-  
-}
-std::vector <LogLeitura*>  HistoricoDeLogs::listaLogLeitura(Data dataInicial, Data dataFinal) {
+HistoricoDeLogs::HistoricoDeLogs() {}
+
+HistoricoDeLogs::~HistoricoDeLogs() {}
+
+std::vector <LogLeitura*>  HistoricoDeLogs::listaLogLeitura(int idUsuario,Data dataInicial, Data dataFinal) {
   std::vector <LogLeitura*> logs;
-  for (auto it : this->historico) {
-    if (it.second->getData() >= dataInicial && it.second->getData() <= dataFinal)
-      logs.push_back(it.second);
-  }
-  return logs;
+  for (int i = 0; i < this->historicoLeitura[idUsuario].size(); i++) {
+    Data dataUser = this->historicoLeitura[idUsuario][i]->getData();
+    if (dataInicial < dataUser || dataInicial == dataUser){
+      if(dataFinal > dataUser || dataFinal == dataUser)
+        logs.push_back(this->historicoLeitura[idUsuario][i]);
+      else
+      return logs;
+    }
+  }return logs;
 }
 
-std::vector <LogEscrita*>  HistoricoDeLogs::listaLogEscrita(Data dataInicial, Data dataFinal) {
+std::vector <LogEscrita*>  HistoricoDeLogs::listaLogEscrita(int idUsuario,Data dataInicial, Data dataFinal) {
   std::vector <LogEscrita*> logs;
-  for (auto it : this->historico) {
-    if (it.second->getData() >= dataInicial && it.second->getData() <= dataFinal)
-      logs.push_back(it.second);
-  }
-  return logs;
+  for (int i = 0; i < this->historicoEscrita[idUsuario].size(); i++) {
+    Data dataUser = this->historicoEscrita[idUsuario][i]->getData();
+    if (dataInicial < dataUser || dataInicial == dataUser){
+      if(dataFinal > dataUser || dataFinal == dataUser)
+        logs.push_back(this->historicoEscrita[idUsuario][i]);
+      else
+        return logs;
+    }
+  }return logs;
 }
 
-std::vector <LogExcecao*>  HistoricoDeLogs::listaLogExcecao(Data dataInicial, Data dataFinal) {
+std::vector <LogExcecao*>  HistoricoDeLogs::listaLogExcecao(int idUsuario,Data dataInicial, Data dataFinal) {
   std::vector <LogExcecao*> logs;
-  for (auto it : this->historico) {
-    if (it.second->getData() >= dataInicial && it.second->getData() <= dataFinal)
-      logs.push_back(it.second);
+  for (int i = 0; i < this->historicoExcecao[idUsuario].size(); i++) {
+    Data dataUser = this->historicoExcecao[idUsuario][i]->getData();
+    if (dataInicial < dataUser || dataInicial == dataUser){
+      if(dataFinal > dataUser || dataFinal == dataUser)
+        logs.push_back(this->historicoExcecao[idUsuario][i]);
+      else
+        return logs;
+    }
+  }return logs;
+}
+
+void HistoricoDeLogs::setLogLeitura(int idUsuario, LogLeitura *Log){
+  this->historicoLeitura[idUsuario].push_back(Log);
+}
+
+void HistoricoDeLogs::setLogEscrita(int idUsuario, LogEscrita *Log){
+  this->historicoEscrita[idUsuario].push_back(Log);
+}
+
+void HistoricoDeLogs::setLogExcecao(int idUsuario, LogExcecao *Log){
+  this->historicoExcecao[idUsuario].push_back(Log);
+}
+
+void HistoricoDeLogs::printLog(tipoLog log,int idUsuario, Data inicial, Data final){
+  switch(log){
+    case Escrita:{
+      vector<LogEscrita*> logsE = listaLogEscrita(idUsuario, inicial, final);
+      for(int i = 0; i < logsE.size(); i++){
+        logsE[i]->printLog();
+      }; 
+      break;    
+      }
+    case Excecao:{
+      vector<LogExcecao*> logsEx = listaLogExcecao(idUsuario,inicial, final);
+      for(int i = 0; i < logsEx.size(); i++){
+        logsEx[i]->printLog();
+      }; 
+      break;
+      }
+    case Leitura:{
+      vector<LogLeitura*> logsL = listaLogLeitura(idUsuario,inicial, final);
+        for(int i = 0; i < logsL.size(); i++){
+          logsL[i]->printLog();
+        }; 
+        break;
+      }
   }
-  return logs;
-}
-
-void HistoricoDeLogs::setLogLeitura(LogLeitura *Log){
-  this->listaLogLeitura.push_back(Log);
-}
-
-void HistoricoDeLogs::setLogEscrita(LogEscrita *Log){
-  this->listaLogEscrita.push_back(Log);
-}
-
-void HistoricoDeLogs::setLogExcecao(LogExcecao *Log){
-  this->listaLogExcecao.push_back(Log);
 }

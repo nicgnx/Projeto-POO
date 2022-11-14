@@ -1,8 +1,7 @@
 #ifndef LOGABSTRATA_H
 #define LOGABSTRATA_H
 
-#include "../includes/HistoricoDelogs.hpp"
-#include "../includes/Usuario.hpp"
+
 #include "../includes/Data.hpp"
 #include <iostream>
 
@@ -11,23 +10,27 @@ class LogAbstrata{
 
   protected:
     std::string usuario;
-    std::string idUsuario;
+    int idUsuario;
     Data data;
     std::string classeAcessada;
+    std::string instanciaAcessada;
 
 
   public:
-    virtual LogAbstrata() = default;
+    LogAbstrata() = default;
   
     std::string getUsuario();
     int getIdUsuario();
     Data getData();
     std::string getClasseAcessada();
+    std::string getInstanciaAcessada();
 
-    void setUsuario(std:string usuario);
+
+    void setUsuario(std::string usuario);
     void setIdUsuario(int idUsuario);
     void setData(Data data);
     void setClasseAcessada(std::string classeAcessada);
-}
+    void setInstanciaAcessada(std::string instanciaAcessada);
+};
 
 #endif

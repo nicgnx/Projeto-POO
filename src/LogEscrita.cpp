@@ -1,10 +1,17 @@
 #include "../includes/LogEscrita.hpp"
 
-LogEscrita::LogEscrita(std::string atributoAcessado, std::string atributoAntes, std::string atributoDepois){
+LogEscrita::LogEscrita(std::string usuario, int idUsuario, Data data,std::string classeAcessada, std::string instanciaAcessada, std::string atributoAcessado, std::string atributoAntes, std::string atributoDepois){
+  this->usuario = usuario;
+  this->idUsuario = idUsuario;
+  this->data = data;
+  this->classeAcessada = classeAcessada;
+  this->instanciaAcessada = instanciaAcessada;
   this->atributoAcessado = atributoAcessado;
   this->atributoAntes = atributoAntes;
   this->atributoDepois = atributoDepois;
 }
+
+LogEscrita::~LogEscrita(){}
 
 std::string LogEscrita::getAtributoAcessado(){
   return this->atributoAcessado;
@@ -32,13 +39,14 @@ void LogEscrita::setAtributoDepois(std::string atributoDepois){
 
 void LogEscrita::printLog(){
   std::cout << "----------------------------------------------------------------------------------------------------\n"
-            << "                                         Log de Escrita"
-            << "Usuário:             " << this->usuario << ".\n"
-            << "idUsuario:           " << this->idUsuario << ".\n"
-            << "Data:                " << this->data.printData(); std::cout << ".\n"
-            << "Classe Acesso:       " << this->classeAcessada << ".\n"
-            << "Atributo Acessado:   " << this->atributoAcessado << ".\n"
-            << "Atributo Antes:      " << this->atributoAntes << ".\n"
-            << "Atributo Depois:     " << this->atributoDepois << ".\n"
+            << "                                         Log de Escrita\n\n"
+            << "Usuário:             " << this->usuario << "\n"
+            << "idUsuario:           " << this->idUsuario << "\n"
+            << "Data (UTC):          ";   this->data.printData();
+std::cout   << "Classe Acessada:     " << this->classeAcessada << "\n"
+            << "Instancia Acessada:  " << this->instanciaAcessada << "\n"
+            << "Atributo Acessado:   " << this->atributoAcessado << "\n"
+            << "Atributo Antes:      " << this->atributoAntes << "\n"
+            << "Atributo Depois:     " << this->atributoDepois << "\n"
             << "----------------------------------------------------------------------------------------------------\n\n";
 }

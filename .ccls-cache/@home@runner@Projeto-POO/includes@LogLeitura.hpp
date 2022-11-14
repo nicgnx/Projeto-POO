@@ -11,7 +11,7 @@ private:
 
 public:
   // Construtores e Destrutores
-  LogLeitura(std::string usuario, int idUsuario, Data data, std::string classeAcessada, std::string informacao);
+  LogLeitura(std::string usuario, int idUsuario, Data data,std::string classeAcessada, std::string instanciaAcessada, std::string informacao);
   LogLeitura();
   ~LogLeitura();
 
