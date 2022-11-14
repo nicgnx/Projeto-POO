@@ -19,9 +19,16 @@ class HistoricoDeLogs {
   public:
     HistoricoDeLogs();
     ~HistoricoDeLogs();
+
+    //Getters
     std::vector <LogLeitura*> listaLogLeitura(Data, Data);
     std::vector <LogEscrita*> listaLogEscrita(Data, Data);
     std::vector <LogExcecao*> listaLogExcecao(Data, Data);
+
+    //Setters
+    void setLogLeitura(LogLeitura *Log);
+    void setLogEscrita(LogEscrita *Log);
+    void setLogExcecao(LogExcecao *Log);
     
 }
 

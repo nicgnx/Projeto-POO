@@ -32,3 +32,15 @@ std::vector <LogExcecao*>  HistoricoDeLogs::listaLogExcecao(Data dataInicial, Da
   }
   return logs;
 }
+
+void HistoricoDeLogs::setLogLeitura(LogLeitura *Log){
+  this->listaLogLeitura.push_back(Log);
+}
+
+void HistoricoDeLogs::setLogEscrita(LogEscrita *Log){
+  this->listaLogEscrita.push_back(Log);
+}
+
+void HistoricoDeLogs::setLogExcecao(LogExcecao *Log){
+  this->listaLogExcecao.push_back(Log);
+}
