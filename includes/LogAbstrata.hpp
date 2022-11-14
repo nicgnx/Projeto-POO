@@ -4,6 +4,7 @@
 #include "../includes/HistoricoDelogs.hpp"
 #include "../includes/Usuario.hpp"
 #include "../includes/Data.hpp"
+#include <iostream>
 
 
 class LogAbstrata{

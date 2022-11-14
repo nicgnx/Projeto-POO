@@ -16,11 +16,11 @@ std::string LogExcecao::getMetodo(){
   return this->metodo;
 }
 
-void LogExcecao::setMetodo(){
-  this->metodo;
-}
+void LogExcecao::setMetodo(std::string metodo){
+  this->metodo = metodo;
+};
 
-void LogExcecao::printLog(){
+void LogExcecao::printLog() {
   std::cout << "----------------------------------------------------------------------------------------------------\n"
             << "                                         Log de Excecao"
             << "Usuário:             " << this->usuario << ".\n"

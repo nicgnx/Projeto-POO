@@ -1,14 +1,20 @@
 #ifndef LOG_ESCRITA_H
 #define LOG_ESCRITA_H
 
-class LogEscrita {
-protected:
+#include "LogAbstrata.hpp"
+#include <iostream>
+
+
+class LogEscrita : public LogAbstrata{
+private:
+  std::string atributoAcessado;
   std::string atributoAntes;
   std::string atributoDepois;
 
 public:
   // Construtores e Destrutores
   LogEscrita(
+    std::string atributoAcessado,
     std::string atributoAntes,
     std::string atributoDepois
   );
@@ -22,6 +28,9 @@ public:
   // Setters
   void setAtributoAntes(std::string atributoAntes);
   void setAtributoDepois(std::string atributoDepois);
+
+  //Methods
+  void printLog();
 };
 
 

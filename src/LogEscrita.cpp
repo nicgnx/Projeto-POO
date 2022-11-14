@@ -29,3 +29,16 @@ void LogEscrita::setAtributoAntes(std::string atributoAntes){
 void LogEscrita::setAtributoDepois(std::string atributoDepois){
   this->atributoDepois = atributoDepois;
 }
+
+void LogEscrita::printLog(){
+  std::cout << "----------------------------------------------------------------------------------------------------\n"
+            << "                                         Log de Escrita"
+            << "Usuário:             " << this->usuario << ".\n"
+            << "idUsuario:           " << this->idUsuario << ".\n"
+            << "Data:                " << this->data.printData(); std::cout << ".\n"
+            << "Classe Acesso:       " << this->classeAcessada << ".\n"
+            << "Atributo Acessado:   " << this->atributoAcessado << ".\n"
+            << "Atributo Antes:      " << this->atributoAntes << ".\n"
+            << "Atributo Depois:     " << this->atributoDepois << ".\n"
+            << "----------------------------------------------------------------------------------------------------\n\n";
+}
