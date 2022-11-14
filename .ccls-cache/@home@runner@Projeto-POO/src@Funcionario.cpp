@@ -1,5 +1,6 @@
 #include "../includes/Funcionario.hpp"
 
+//Construtores e Destrutores
 Funcionario::Funcionario() {}
 
 Funcionario::Funcionario(std::string nome,std::string cpfCnpj,std::string email,std::string senha, Data dataNascimento, std::string endereco,std::string matricula, Cargo cargo, Departamento departamento, Historico historico, Salario salario){
@@ -18,6 +19,7 @@ Funcionario::Funcionario(std::string nome,std::string cpfCnpj,std::string email,
 
 Funcionario::~Funcionario() {}
 
+//Getters
 Data Funcionario::getDataNascimento() { return this->dataNascimento; }
 
 std::string Funcionario::getEndereco() { return this->endereco; }
@@ -40,6 +42,11 @@ double Funcionario::getSalarioAtual() {
   return salario.getSalarioBase();
 }
 
+Turno* Funcionario::getTurno(){
+  return this->turno;
+}
+
+//Setters
 void Funcionario::setDataNascimento(Data dataNascimento) {
   this->dataNascimento = dataNascimento;
 }
@@ -64,4 +71,8 @@ void Funcionario::setDepartamento(std::string departamento) {
 
 void Funcionario::setNovoSalario(Salario salario) {
   this->salario.push_back(salario);
+}
+
+void Funcionario::setTurno(Turno *turno){
+  this->turno = turno;
 }

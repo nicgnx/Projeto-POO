@@ -8,6 +8,8 @@
 #include "../includes/Estoque.hpp"
 #include "../includes/HistoricoDeLogs.hpp"
 #include "../includes/Permissao.hpp"
+#include "Veiculo.hpp"
+#include "Turno.hpp"
 #include <string>
 #include <vector>
 
@@ -23,7 +25,9 @@ private:
     std::vector <Departamento*> departamentos,
     Estoque* estoque,
     HistoricoDeLogs* historico,
-    std::vector <Permissao*> permissoes    
+    std::vector <Permissao*> permissoes,    
+    std::vector <Veiculo*> frotaVeiculos,
+    std::vector <Turno*> turnos
   );
   Empresa();
   ~Empresa();
@@ -38,6 +42,8 @@ private:
   Estoque* estoque;
   HistoricoDeLogs* historico;
   std::vector <Permissao*> permissoes; 
+  std::vector <Veiculo*> frotaVeiculos;
+  std::vector <Turno*> turnos;
 
 
 public:
@@ -47,6 +53,7 @@ public:
    Empresa& Empresa=(const Empresa&);
 
   // Getters
+  Empresa* getInstancia();
   std::string getNome();
   std::string getCnpj();
   std::vector <Funcionario*> getFuncionarios();
@@ -54,8 +61,10 @@ public:
   std::vector <Cargo*> getCargos();
   std::vector <Departamento*> getDepartamentos();
   Estoque* getEstoque();
-  HistoricoDeLogs getHistoricoDeLogs();
+  HistoricoDeLogs* getHistoricoDeLogs();
   std::vector <Permissao*> getPermissoes();
+  std::vector <Veiculo*> getFrotaVeiculos();
+  std::vector <Turno*> getTurnos();
 
   // Setters
   void setNome(std::string nome);
@@ -66,7 +75,9 @@ public:
   void setDepartamentos(std::vector <Departamento*> departamentos);
   void setEstoque(Estoque* estoque);
   void setHistoricoDeLogs(HistoricoDeLogs* historico);
-  void setPermissoes(Permissao* permissoes);
+  void setPermissoes(std::vector<Permissao*> permissoes);
+  void setFrotaVeiculos(vector<Veiculo*> frotaVeiculos);
+  void setTurnos(vector<Turno*> turnos);
 };
 
 #endif // EMPRESA_H

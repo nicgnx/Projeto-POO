@@ -1,0 +1,41 @@
+#ifndef VEICULO_H
+#define VEICULO_H
+
+#include <string>
+#include <vector>
+#include "../includes/Turno.hpp"
+#include "../includes/Funcionario.hpp"
+
+class Veiculo{
+//Atributos
+private:
+  int capacidade;
+  Turno* turno;
+  vector<Funcionario*> rotasFuncionarios;
+
+//Métodos
+  void verificaTurno();
+  floar calculaDistancia();
+  void defineRota();
+public:
+// Construtores e Destrutores
+  Veiculo(int capacidade,Turno* turno,vector<Funcionario*> rotasFuncionarios);
+  Veiculo();
+  ~Veiculo();
+
+//Getters
+  int getCapacidade();
+  Turno* getTurno();
+  vector<Funcionario*> getRotasFuncionarios();
+
+//Setters
+  void setCapacidade(int capacidade);
+  void setTurno(Turno* turno);
+  void setRotasFuncionarios(vector<Funcionario*> rotasFuncionarios);
+
+
+
+  
+}
+
+#endif // VEICULO_H

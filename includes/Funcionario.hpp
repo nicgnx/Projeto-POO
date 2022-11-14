@@ -9,6 +9,7 @@
 #include "Departamento.hpp"
 #include "Salario.hpp"
 #include "Historico.hpp"
+#include "Turno.hpp"
 
 class Funcionario : public Usuario {
   Data dataNascimento;
@@ -17,7 +18,9 @@ class Funcionario : public Usuario {
   Cargo cargo;
   Departamento departamento;
   std::vector <Historico> historico;
-  std::vector <Salario> salario;   
+  std::vector <Salario> salario; 
+  Turno* turno;
+
 
 public:
   Funcionario();
@@ -33,6 +36,7 @@ public:
   vector <Historico> getHistoricoCompleto();
   Departamento getDepartamento();
   double getSalarioAtual();
+  Turno* getTurno();
 
   // setters
   void setDataNascimento(Data dataNascimento);
@@ -42,6 +46,7 @@ public:
   void addHistorico(Historico historico);
   void setNovoSalario(Salario salario);
   void setDepartamento(std::string departamento); 
+  void setTurno(Turno* turno);
 };
 
 #endif // FUNCIONARIO_H

@@ -9,9 +9,12 @@
 (6) implementar classes Orçamento, ItensDesejados, PedidoDeCompra, RegistroDeVenda, PagamentoAbstrata, Boleto, Credito conforme modelo mais recente
 	* deixar funcional
 
-(7) (fazer por ultimo) passar a limpo todas funcionalidades de todas sprints e ver se o codigo atende tudo
+(8) implementar alterações na classe Funcionario (Sprint 7).
+  * deixar funcional
 
-(8) (fazer por ultimo) revisao geral do codigo conforme funcionalidades passadas a limpo
+(9) (fazer por ultimo) passar a limpo todas funcionalidades de todas sprints e ver se o codigo atende tudo
+
+(10) (fazer por ultimo) revisao geral do codigo conforme funcionalidades passadas a limpo
 	* padronizações, tratamentos de erros e casos particulares, etc
 
 ----------------------------------------------------------------------
@@ -27,10 +30,15 @@
 (1) (Gustavo) implementar funcionalidade de Logs
 	* finalizar implementação - OK
 	* testar com outros métodos criando logs de erro, operação, etc
-     * Testado separado do código, está funcionando. Falra implementar logs nas classes do Projeto.
+     * Testado separado do código, está funcionando. Falta implementar logs nas classes do Projeto.
 
 (4) (Gustavo) adaptar classe Empresa para o modelo mais recente
- 
+  * Necessário implementar Classes Turno e Veículo para deixar Empresa de acordo com o modelo mais recente.
+
+(7) (Gustavo) implementar classes Veiculo e Turno.
+  * deixar funcional
+  * Classe Turno - OK
+  * Classe Veiculo - Parcialmente concluída. Falta implementar os métodos calculaDistancia() e defineRota().
 
 
 ----------------------------------------------------------------------
