@@ -23,10 +23,11 @@ class Estoque {
     Estoque& operator=(const Estoque&);
 
   //getters
+    static Estoque* getInstancia();
     std::map <int,Produto*> getListaDeProdutos();
     Produto* getProduto(int idProduto);
     Lote* getLote(int idProduto, int idLote);
-    static Estoque* getInstancia();
+    
 
   //Métodos
     vector <int> retiraLotes(int idProduto,int quantidade);

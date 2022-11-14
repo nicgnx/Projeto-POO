@@ -1,8 +1,20 @@
 #include "../includes/HistoricoDeLogs.hpp"
 
-HistoricoDeLogs::HistoricoDeLogs() {}
-
+HistoricoDeLogs::HistoricoDeLogs() {
+  this->historicoEscrita.clear();
+  this->historicoExcecao.clear();
+  this->historicoLeitura.clear();
+}
 HistoricoDeLogs::~HistoricoDeLogs() {}
+HistoricoDeLogs* HistoricoDeLogs::historicoDeLogs = NULL;
+
+//Getters
+HistoricoDeLogs* HistoricoDeLogs::getInstacia(){
+  if(historicoDeLogs == NULL)
+    historicoDeLogs = new HistoricoDeLogs();
+  return historicoDeLogs;    
+}
+
 
 std::vector <LogLeitura*>  HistoricoDeLogs::listaLogLeitura(int idUsuario,Data dataInicial, Data dataFinal) {
   std::vector <LogLeitura*> logs;

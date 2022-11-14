@@ -1,18 +1,12 @@
 #include "../includes/Empresa.hpp"
 
-Empresa* Empresa::empresa = NULL;
+Empresa *Empresa::empresa = NULL;
 
-Empresa::Empresa(
-  std::string nome,
-  std::string cnpj,
-  std::vector <Cargo*> cargos,
-  std::vector <Departamento*> departamentos,
-  Estoque* estoque,
-  HistoricoDeLogs* historico,
-  std::vector <Permissao*> permissoes 
-) {
+Empresa::Empresa(    std::string nome,std::string cnpj,std::vector <Funcionario*> funcionarios,std::vector <Cliente*> clientes,std::vector <Cargo*> cargos,std::vector <Departamento*> departamentos,Estoque* estoque,HistoricoDeLogs* historico,std::vector <Permissao*> permissoes ) {
   this->nome = nome;
   this->cnpj = cnpj;
+  this->clientes = clientes;
+  this->funcionarios = funcionarios;
   this->cargos = cargos;
   this->departamentos = departamentos;
   this->estoque = estoque;
@@ -21,42 +15,34 @@ Empresa::Empresa(
 }
 
 // getters
-Estoque* Estoque::getInstancia(){
-  if(estoque == NULL){
-  estoque = new Estoque();
-  } return estoque;
+Estoque *Estoque::getInstancia() {
+  if (estoque == NULL) {
+    estoque = new Estoque();
+  }
+  return estoque;
 }
 
-std::string Empresa::getNome() {
-  return this->nome;
-};
+std::string Empresa::getNome() {return this->nome;}
 
-std::string Empresa::getCnpj() {
-  return this->cnpj;
-};
+std::string Empresa::getCnpj() {return this->cnpj;}
 
-std::vector <Cargo*> Empresa::getCargos() {
-  return this->cargos;
-};
+std::vector<Funcionario*> Empresa::getFuncionarios(){return this->funcionarios;}
 
-std::vector <Departamento*> Empresa::getDepartamentos() {
-  return this->departamentos;
-};
+std::vector<Cliente*> Empresa::getClientes(){return this->clientes;}
 
+std::vector<Cargo *> Empresa::getCargos() {return this->cargos;}
 
-void Empresa::setNome(std::string nome) {
-  this->nome = nome;
-}
+std::vector<Departamento *> Empresa::getDepartamentos() {return this->departamentos;}
 
-void Empresa::setCnpj(std::string cnpj) {
-  this->cnpj = cnpj;
-}
+//Setters
+void Empresa::setNome(std::string nome) {this->nome = nome;}
 
-void Empresa::setCargos(std::vector <Cargo*> cargos) {
-  this->cargos = cargos;
-}
+void Empresa::setCnpj(std::string cnpj) {this->cnpj = cnpj;}
 
-void Empresa::setDepartamentos(std::vector <Departamento*> departamentos) {
-  this->departamentos = departamentos;
-}
+void Empresa::setFuncionarios(std::vector<Funcionario*> funcionarios){this->funcionarios = funcionarios;}
 
+void Empresa::setClientes(std::vector<Cliente*> clientes){this->clientes = clientes;}
+
+void Empresa::setCargos(std::vector<Cargo *> cargos) {this->cargos = cargos;}
+
+void Empresa::setDepartamentos(std::vector<Departamento *> departamentos) {this->departamentos = departamentos;}

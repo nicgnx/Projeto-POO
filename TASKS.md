@@ -1,13 +1,7 @@
 ## FALTANDO FAZER
 
-(1) implementar funcionalidade de Logs
-	* finalizar implementação
-	* testar com outros métodos criando logs de erro, operação, etc
-
 (3) alinhar maneira de fazer singleton (alguns lugares estão sem e outros feitos de maneiras diferentes)
 	* aplicar Singleton no codigo a todas as classes que precisam ser singleton conforme o modelo
-
-(4) adaptar classe Empresa para o modelo mais recente
 
 (5) implementar classes Estoque, MateriaPrima, OrdemDeMateriaPrima, Fornecedor conforme modelo mais recente
 	* deixar funcional
@@ -30,11 +24,16 @@
 	exceção se não tiver
   * testar funcionalidade de login junto aqui
 
-(9) (Gustavo) Alterando modelo das classe LogAbstrata.
-  *  Fazer funcionar
+(1) (Gustavo) implementar funcionalidade de Logs
+	* finalizar implementação - OK
+	* testar com outros métodos criando logs de erro, operação, etc
+     * Testado separado do código, está funcionando. Falra implementar logs nas classes do Projeto.
+
+(4) (Gustavo) adaptar classe Empresa para o modelo mais recente
+ 
+
 
 ----------------------------------------------------------------------
 
 ## FEITAS -> colocar nome de quem fez
-
 

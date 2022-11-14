@@ -1,6 +1,8 @@
 #ifndef EMPRESA_H
 #define EMPRESA_H
 
+#include "../includes/Funcionario.hpp"
+#include "../includes/Cliente.hpp"
 #include "../includes/Cargo.hpp"
 #include "../includes/Departamento.hpp"
 #include "../includes/Estoque.hpp"
@@ -15,6 +17,8 @@ private:
   Empresa(
     std::string nome,
     std::string cnpj,
+    std::vector <Funcionario*> funcionarios,
+    std::vector <Cliente*> clientes,
     std::vector <Cargo*> cargos,
     std::vector <Departamento*> departamentos,
     Estoque* estoque,
@@ -27,6 +31,8 @@ private:
 // Atributes
   std::string nome;
   std::string cnpj;
+  std::vector <Funcionario*> funcionarios;
+  std::vector <Cliente*> clientes;
   std::vector <Cargo*> cargos;
   std::vector <Departamento*> departamentos;
   Estoque* estoque;
@@ -43,6 +49,8 @@ public:
   // Getters
   std::string getNome();
   std::string getCnpj();
+  std::vector <Funcionario*> getFuncionarios();
+  std::vector <Cliente*> getClientes();
   std::vector <Cargo*> getCargos();
   std::vector <Departamento*> getDepartamentos();
   Estoque* getEstoque();
@@ -52,6 +60,8 @@ public:
   // Setters
   void setNome(std::string nome);
   void setCnpj(std::string cnpj);
+  void setFuncionarios(std::vector<Funcionario*>);
+  void setClientes(std::vector<Cliente*>);
   void setCargos(std::vector <Cargo*> cargos);
   void setDepartamentos(std::vector <Departamento*> departamentos);
   void setEstoque(Estoque* estoque);
