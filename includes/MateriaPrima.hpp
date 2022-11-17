@@ -12,6 +12,7 @@ class MateriaPrima {
 
 
   public:
+    MateriaPrima();
     MateriaPrima(int, std::string, std::string, int );
     ~MateriaPrima();
 

@@ -1,7 +1,6 @@
 #include "../includes/OrdemDeMateriaPrima.hpp"
 
-OrdemDeMateriaPrima::OrdemDeMateriaPrima(int quantidade,
-                                         std::string materiaPrima, Data data) {
+OrdemDeMateriaPrima::OrdemDeMateriaPrima(MateriaPrima materiaPrima,int quantidade,Data data) {
   this->quantidade = quantidade;
   this->materiaPrima = materiaPrima;
   this->data = data;
@@ -25,17 +24,16 @@ void OrdemDeMateriaPrima::setData(Data data) { this->data = data; }
 //Métodos 
 Fornecedor* OrdemDeMateriaPrima::melhorPreco(int idMateriaPrima, std::vector<Fornecedor*> fornecedores){
   std::vector<Fornecedor*> auxFornecedores;
+  Fornecedor* fornecedor = NULL;
   for(int i = 0; i < fornecedores.size(); i++){
     if(fornecedores[i]->possuiProduto(idMateriaPrima))
       auxFornecedores.push_back(fornecedores[i]);
   }
   if (auxFornecedores.size() <= 0){
     std::cout << "Não temos fornecedores dessa materia prima.";
-    Fornecedor* fornecedor = NULL;
     return fornecedor;
   } else{
     float preco = 0.0;
-    Fornecedor* fornecedor = NULL;
     for(int i = 0; i < auxFornecedores.size(); i++){
       if(i != 0){
         if(preco > auxFornecedores[i]->enviaPreco(idMateriaPrima)){
@@ -49,4 +47,10 @@ Fornecedor* OrdemDeMateriaPrima::melhorPreco(int idMateriaPrima, std::vector<For
       }
     } return fornecedor;
   }
+}
+
+void OrdemDeMateriaPrima::printOrdemDeMP(){
+  std::cout << "----------------------------------------------------------------------------------------------------\n"
+            << "                              Resumo da Ordem de Reabasdtecimento de Materia Prima\n\n"
+            << ""
 }

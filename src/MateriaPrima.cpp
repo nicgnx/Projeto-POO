@@ -1,5 +1,6 @@
 #include "../includes/MateriaPrima.hpp"
 
+MateriaPrima::MateriaPrima(){}
 MateriaPrima::MateriaPrima(int id, std::string nome, std::string unidade, int estoqueMinimo) {
   this->nome = nome;
   this->id = id;

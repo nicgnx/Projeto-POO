@@ -36,3 +36,12 @@ bool Fornecedor::possuiProduto(int idMateriaPrima){
   this->produtosFornecidos.find(idMateriaPrima) != this->produtosFornecidos.end() ? aux = 1 : aux = 0;
   return aux;
 }
+
+void Fornecedor::printProdutos(){
+  std::cout << "----------------------------------------------------------------------------------------------------\n"
+            << "                         Produtos ofertados pelo fornecedor " << this->nome << "\n\n";
+  for(auto i = this->produtosFornecidos.begin();i != this->produtosFornecidos.end();i++){
+    std::cout << "ID: " << i->first << "     " << "Preço: " << i->second << "\n";
+  }
+  std::cout << "----------------------------------------------------------------------------------------------------\n"
+}

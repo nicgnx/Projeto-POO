@@ -2,7 +2,7 @@
 #define FORNECEDOR_H
 
 #include <map>
-
+#include <iostream>
 #include "MateriaPrima.hpp"
 
 class Fornecedor {
@@ -26,6 +26,7 @@ class Fornecedor {
     //Métodos
     float enviaPreco(int idMateriaPrima);
     bool possuiProduto(int idMateriaPrima);
+    void printProdutos();
 
 } 
 
