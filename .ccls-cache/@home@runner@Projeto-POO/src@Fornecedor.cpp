@@ -43,5 +43,5 @@ void Fornecedor::printProdutos(){
   for(auto i = this->produtosFornecidos.begin();i != this->produtosFornecidos.end();i++){
     std::cout << "ID: " << i->first << "     " << "Preço: " << i->second << "\n";
   }
-  std::cout << "----------------------------------------------------------------------------------------------------\n"
+  std::cout << "----------------------------------------------------------------------------------------------------\n";
 }

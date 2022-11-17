@@ -2,7 +2,7 @@
 
 OrdemDeMateriaPrima::OrdemDeMateriaPrima(){}
 
-OrdemDeMateriaPrima::OrdemDeMateriaPrima(MateriaPrima materiaPrima,int quantidade,Data data, std::vector<Fornecedor*> fornecedores) {
+OrdemDeMateriaPrima::OrdemDeMateriaPrima(MateriaPrima* materiaPrima,int quantidade,Data data, std::vector<Fornecedor*> fornecedores) {
   this->quantidade = quantidade;
   this->materiaPrima = materiaPrima;
   this->data = data;
@@ -11,7 +11,7 @@ OrdemDeMateriaPrima::OrdemDeMateriaPrima(MateriaPrima materiaPrima,int quantidad
 OrdemDeMateriaPrima::~OrdemDeMateriaPrima() {}
 
 // getters
-MateriaPrima OrdemDeMateriaPrima::getMateriaPrima() {return this->materiaPrima;}
+MateriaPrima* OrdemDeMateriaPrima::getMateriaPrima() {return this->materiaPrima;}
 
 int OrdemDeMateriaPrima::getQuantidade() { return this->quantidade; }
 
@@ -22,7 +22,7 @@ Data OrdemDeMateriaPrima::getData() { return this->data; }
 Fornecedor* OrdemDeMateriaPrima::getFornecedor(){ return this->fornecedor; }
 
 // setters
-void OrdemDeMateriaPrima::setMateriaPrima(MateriaPrima materiaPrima) {this->materiaPrima = materiaPrima; }
+void OrdemDeMateriaPrima::setMateriaPrima(MateriaPrima* materiaPrima) {this->materiaPrima = materiaPrima; }
 
 void OrdemDeMateriaPrima::setQuantidade(int quantidade) {this->quantidade = quantidade; }
 
@@ -57,7 +57,7 @@ Fornecedor* OrdemDeMateriaPrima::melhorPreco(int idMateriaPrima, std::vector<For
         fornecedor = auxFornecedores[i];
       }
     } 
-    this->valorFinal = this->quantidade * fornecedor->enviaPreco(this->materiaPrima.getId());
+    this->valorFinal = this->quantidade * fornecedor->enviaPreco(this->materiaPrima->getId());
     return fornecedor;
   }
 }
@@ -65,10 +65,10 @@ Fornecedor* OrdemDeMateriaPrima::melhorPreco(int idMateriaPrima, std::vector<For
 void OrdemDeMateriaPrima::printOrdemDeMP(){
   std::cout << "----------------------------------------------------------------------------------------------------\n"
             << "                      Resumo da Ordem de Reabastecimento de Materia Prima\n\n"
-            << "Materia Prima: " << this->materiaPrima.getNome() << "\n"
-            << "Identificador: " << this->materiaPrima.getId() << "\n"
+            << "Materia Prima: " << this->materiaPrima->getNome() << "\n"
+            << "Identificador: " << this->materiaPrima->getId() << "\n"
             << "Quantidade:    " << this->quantidade<< "\n"
-            << "Preço:         R$ " << this->fornecedor->enviaPreco(this->materiaPrima.getId()) << "\n"
+            << "Preço:         R$ " << this->fornecedor->enviaPreco(this->materiaPrima->getId()) << "\n"
             << "Valor Final:   R$ " << this->valorFinal << "\n"
             << "Fornecedor:    " << this->fornecedor->getNome() << "\n"
             << "Data (UTC):    ";   this->data.printData(); std::cout << "\n"

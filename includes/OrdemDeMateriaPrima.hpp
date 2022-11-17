@@ -19,18 +19,18 @@ class OrdemDeMateriaPrima {
 
   public:
     OrdemDeMateriaPrima();
-    OrdemDeMateriaPrima(MateriaPrima materiaPrima,int quantidade, Data data, std::vector<Fornecedor*> fornecedores);
+    OrdemDeMateriaPrima(MateriaPrima* materiaPrima,int quantidade, Data data, std::vector<Fornecedor*> fornecedores);
     ~OrdemDeMateriaPrima();
 
     //getters
-    MateriaPrima getMateriaPrima();
+    MateriaPrima* getMateriaPrima();
     int getQuantidade();
     float getValorFinal();
     Data getData();
     Fornecedor* getFornecedor();
 
     //setters
-    void setMateriaPrima(MateriaPrima);
+    void setMateriaPrima(MateriaPrima*);
     void setQuantidade(int);
     void setValorFinal(float);
     void setData(Data);
