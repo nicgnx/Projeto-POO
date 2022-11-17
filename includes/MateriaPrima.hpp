@@ -2,6 +2,7 @@
 #define MATERIAPRIMA_H
 
 #include <string>
+#include <iostream>
 
 class MateriaPrima {
   private:
@@ -29,6 +30,9 @@ class MateriaPrima {
     void setNome(std::string);
     void setUnidade(std::string);
     void setEstoqueMinimo(int);
-} 
+
+    //Métodos
+    void printMateriaPrima();
+} ;
 
 #endif // MATERIAPRIMA_H

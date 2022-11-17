@@ -1,25 +1,36 @@
 #include "../includes/OrdemDeMateriaPrima.hpp"
 
-OrdemDeMateriaPrima::OrdemDeMateriaPrima(MateriaPrima materiaPrima,int quantidade,Data data) {
+OrdemDeMateriaPrima::OrdemDeMateriaPrima(){}
+
+OrdemDeMateriaPrima::OrdemDeMateriaPrima(MateriaPrima materiaPrima,int quantidade,Data data, std::vector<Fornecedor*> fornecedores) {
   this->quantidade = quantidade;
   this->materiaPrima = materiaPrima;
   this->data = data;
+  this->fornecedor = melhorPreco(materiaPrima.getId(),fornecedores);
 }
 OrdemDeMateriaPrima::~OrdemDeMateriaPrima() {}
 
 // getters
-std::string OrdemDeMateriaPrima::getMateriaPrima() {return this->materiaPrima;}
+MateriaPrima OrdemDeMateriaPrima::getMateriaPrima() {return this->materiaPrima;}
 
-int OrdemDeMateriaPrima::getquantidade() { return this->quantidade; }
+int OrdemDeMateriaPrima::getQuantidade() { return this->quantidade; }
+
+float OrdemDeMateriaPrima::getValorFinal(){ return this->valorFinal; }
 
 Data OrdemDeMateriaPrima::getData() { return this->data; }
 
-// setters
-void OrdemDeMateriaPrima::setMateriaPrima(MateriaPrima materiaPrima) {this->materiaPrima = materiaPrima;}
+Fornecedor* OrdemDeMateriaPrima::getFornecedor(){ return this->fornecedor; }
 
-void OrdemDeMateriaPrima::setQuantidade(int quantidade) {this->quantidade = quantidade;}
+// setters
+void OrdemDeMateriaPrima::setMateriaPrima(MateriaPrima materiaPrima) {this->materiaPrima = materiaPrima; }
+
+void OrdemDeMateriaPrima::setQuantidade(int quantidade) {this->quantidade = quantidade; }
+
+void OrdemDeMateriaPrima::setValorFinal(float valorFinal){ this->valorFinal = valorFinal; }
 
 void OrdemDeMateriaPrima::setData(Data data) { this->data = data; }
+
+void OrdemDeMateriaPrima::setFornecedor(Fornecedor* fornecedor){ this->fornecedor = fornecedor; }
 
 //Métodos 
 Fornecedor* OrdemDeMateriaPrima::melhorPreco(int idMateriaPrima, std::vector<Fornecedor*> fornecedores){
@@ -45,7 +56,9 @@ Fornecedor* OrdemDeMateriaPrima::melhorPreco(int idMateriaPrima, std::vector<For
         preco = auxFornecedores[i]->enviaPreco(idMateriaPrima);
         fornecedor = auxFornecedores[i];
       }
-    } return fornecedor;
+    } 
+    this->valorFinal = this->quantidade * fornecedor->enviaPreco(this->materiaPrima.getId());
+    return fornecedor;
   }
 }
 
@@ -54,8 +67,9 @@ void OrdemDeMateriaPrima::printOrdemDeMP(){
             << "                      Resumo da Ordem de Reabastecimento de Materia Prima\n\n"
             << "Materia Prima: " << this->materiaPrima.getNome() << "\n"
             << "Identificador: " << this->materiaPrima.getId() << "\n"
-            << "Quantidade:    " << this->materiaPrima.getQuantidade() << "\n"
-            << "Preço:         " << this->fornecedor->enviaPreco(this->materiaPrima.getId()) << "\n"
+            << "Quantidade:    " << this->quantidade<< "\n"
+            << "Preço:         R$ " << this->fornecedor->enviaPreco(this->materiaPrima.getId()) << "\n"
+            << "Valor Final:   R$ " << this->valorFinal << "\n"
             << "Fornecedor:    " << this->fornecedor->getNome() << "\n"
             << "Data (UTC):    ";   this->data.printData(); std::cout << "\n"
             << "----------------------------------------------------------------------------------------------------\n";

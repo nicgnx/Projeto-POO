@@ -28,6 +28,6 @@ class Fornecedor {
     bool possuiProduto(int idMateriaPrima);
     void printProdutos();
 
-} 
+} ;
 
 #endif // FORNECEDOR_H

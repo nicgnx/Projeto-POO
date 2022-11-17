@@ -36,3 +36,14 @@ void MateriaPrima::setUnidade(std::string unidade) {
 void MateriaPrima::setEstoqueMinimo(int estoqueMinimo) {
   this->estoqueMinimo = estoqueMinimo;
 }
+
+//Métodos
+
+void MateriaPrima::printMateriaPrima(){
+  std::cout << "----------------------------------------------------------------------------------------------------\n"
+            << "                                      Materia Prima - " << this->nome << "\n\n"
+            << "Identificador:  " << this->id << "\n"
+            << "Unidade:        " << this->unidade << "\n"
+            << "Estoque Mínimo: " << this->estoqueMinimo << "\n"
+            << "----------------------------------------------------------------------------------------------------\n";
+}
