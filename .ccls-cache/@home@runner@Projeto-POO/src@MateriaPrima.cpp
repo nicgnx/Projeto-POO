@@ -6,9 +6,11 @@ MateriaPrima::MateriaPrima(int id, std::string nome, std::string unidade, int es
   this->estoqueMinimo = estoqueMinimo;
   this->unidade = unidade;
 }
-MateriaPrima::~MateriaPrima() {
-  
-}
+MateriaPrima::~MateriaPrima() {}
+
+//Operators
+  bool MateriaPrima::operator==(MateriaPrima &mp){return this->id == mp.id;}
+
 //getters
 int MateriaPrima::getId() {
   return this->id;

@@ -15,6 +15,9 @@ class MateriaPrima {
     MateriaPrima(int, std::string, std::string, int );
     ~MateriaPrima();
 
+    //Operators
+    bool operator==(MateriaPrima &mp2);
+
     //getters
     int getId();
     std::string getNome();

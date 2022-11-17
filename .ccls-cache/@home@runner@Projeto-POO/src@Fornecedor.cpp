@@ -1,5 +1,6 @@
 #include "../includes/Fornecedor.hpp"
 
+
 Fornecedor::Fornecedor(std::string nome) {
   this->nome = nome;
 }
@@ -7,22 +8,31 @@ Fornecedor::~Fornecedor() {
   
 }
 
-void Fornecedor::AdcionaMateriaPrima(MateriaPrima materiaPrima) {
-  this->materiaPrima.push_back(materiaPrima);
-}
 
 //getters
-std::vector <MateriaPrima> Fornecedor::getMateriaPrima() {
-  return this->materiaPrima;
+
+std::map<int,float> Fornecedor::getMateriaPrima() {
+  return this->produtosFornecidos;
 }
 std::string Fornecedor::getNome() {
   return this->nome;
 }
 
 //setters
-void Fornecedor::setMateriaPrima(std::vector <MateriaPrima> materiaPrima) {
-  this->materiaPrima = materiaPrima;
+void Fornecedor::setMateriaPrima(int idMateriaPrima, float preco) {
+  this->produtosFornecidos[idMateriaPrima] = preco;
 }
 void Fornecedor::setNome(std::string nome) {
   this->nome = nome;
+}
+
+//Métodos
+float Fornecedor::enviaPreco(int idMateriaPrima){
+  return this->produtosFornecidos[idMateriaPrima];
+}
+
+bool Fornecedor::possuiProduto(int idMateriaPrima){
+  bool aux;
+  this->produtosFornecidos.find(idMateriaPrima) != this->produtosFornecidos.end() ? aux = 1 : aux = 0;
+  return aux;
 }
