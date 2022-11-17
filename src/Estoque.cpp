@@ -103,7 +103,11 @@ vector<int> Estoque::retiraLotes(int idProduto, int quantidade) {
         lotes.push_back(this->lotes[idProduto][num]->getIdLote());
       }      
     }
-  } std::cout << "Não era nem pra essa compra ter sido aprovada! Vai ficar sem produto...";
+  } std::cout << "Não era nem pra essa compra ter sido aprovada! Vai ficar sem produto..."; return lotes;
+}
+
+void Estoque::retiraMateriaPrima (int idMateriaPrima, int quantidade){
+  this->lotesMP[idMateriaPrima] = this->lotesMP[idMateriaPrima] - quantidade;
 }
 
 void Estoque::reabasteceEstoque(int idProduto, int quantidade) {
