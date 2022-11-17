@@ -3,12 +3,6 @@
 (3) alinhar maneira de fazer singleton (alguns lugares estão sem e outros feitos de maneiras diferentes)
 	* aplicar Singleton no codigo a todas as classes que precisam ser singleton conforme o modelo
 
-(5) implementar classes Estoque, MateriaPrima, OrdemDeMateriaPrima, Fornecedor conforme modelo mais recente
-	* deixar funcional
-
-(6) implementar classes Orçamento, ItensDesejados, PedidoDeCompra, RegistroDeVenda, PagamentoAbstrata, Boleto, Credito conforme modelo mais recente
-	* deixar funcional
-
 (8) implementar alterações na classe Funcionario (Sprint 7).
   * deixar funcional
 
@@ -41,6 +35,11 @@
   * Classe Turno - OK
   * Classe Veiculo - Parcialmente concluída. Falta implementar os métodos calculaDistancia() e defineRota().
 
+(5) (Gustavo) implementar classes Estoque, MateriaPrima, OrdemDeMateriaPrima, Fornecedor conforme modelo mais recente
+	* deixar funcional
+
+(6) (Cesar & Erick) implementar classes Orçamento, ItensDesejados, PedidoDeCompra, RegistroDeVenda, PagamentoAbstrata, Boleto, Credito conforme modelo mais recente
+	* deixar funcional
 
 ----------------------------------------------------------------------
 

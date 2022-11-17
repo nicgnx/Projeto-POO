@@ -11,23 +11,6 @@
 - usar dois espaços para tabs
 - usar this para acessar os atributos e métodos
 
-## Falta fazer 27/10
-
-# Codigo SP4
-- implementar as 5 classes de logs no codigo (sp4)
-  - LogAbstrata: Cesar
-  - HistoricoDeLogs (Singleton): Érick 
-  - LogLeitura / LogEscrita / LogExcecao: Vitor
-  
-- fazer o singleton da empresa, e ela guardar ponteiro de todos os singletons
-  - Gustavo
-    
-- definir os ids de atributos ou permissoes
-  - Raphael
-
-# Modelo SP5
-
-
 ## Listando ações do sistema
 
 1. Logar

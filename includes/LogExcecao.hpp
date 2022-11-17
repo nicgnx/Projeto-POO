@@ -20,7 +20,7 @@ public:
   void setMetodo(std::string metodo);
 
   //Methods
-  void printLog();
+  void printLog() override;
 };
 
 

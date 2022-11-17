@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-struct Permissoes PERMISSOES;
+
 
 Cliente::Cliente(){}
 
@@ -44,7 +44,10 @@ void Cliente::compra (int idProduto, int quantidade, Data dataCompra){
     }
   }
   
-  Venda pedido(idProduto,quantidade,dataCompra,getNome());
+  RegistroVenda pedido(this->nome, this->cpfCnpj, this->email, idProduto, quantidade, dataCompra);
+
+
+  
   if(pedido.verificaVenda()){
     pedido.executaVenda();
   } else {

@@ -23,7 +23,7 @@ public:
 
   // Methods
 
-  void printLog();
+  void printLog() override;
 };
 
 

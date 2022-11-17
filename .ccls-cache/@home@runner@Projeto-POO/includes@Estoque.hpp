@@ -28,6 +28,7 @@ class Estoque {
     void auxPrintReabasteceEstoque(tipoRetorno mens, int idProduto);
     void reabasteceEstoqueProduto(int idProduto);
     void reabasteceEstoqueMP(int idMateriaPrima);
+    void retiraMateriaPrima(int idMateriaPrima,int quantidade);
   public:
   // Operators 
     Estoque(const Estoque&);
@@ -44,10 +45,11 @@ class Estoque {
     
 
   //Métodos
-    void cadastraFornecedo
+    void cadastraFornecedor(Fornecedor* fornecedor);
     vector <int> retiraLotes(int idProduto,int quantidade);
-    void retiraMateriaPrima(int idMateriaPrima,int quantidade);
+    
     int  verificaEstoqueProduto(int idProduto);
+    bool verificaAplicacaoJuros(int idProduto, int quantidade);
     int  verificaEstoqueMP(int idMateriaPrima);
     void cadastraProduto(std::string nome, int loteMinimo, int estoqueMinimo, PrecoProduto* preco);
     void cadastraMateriaPrima(int id,std::string nome, std::string unidade, int estoqueMinimo);

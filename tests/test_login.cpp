@@ -3,6 +3,9 @@
 #include "../includes/Funcionario.hpp"
 #include "../third_party/doctest.h"
 
+#include "../includes/LogLeitura.hpp"
+#include "../includes/LogExcecao.hpp"
+
 TEST_CASE("Construtor") {
     Cliente agroBrasil("Agro Brasil","comercial@agrobrasil.com.br", "1236548", "123.456.78-456", PJ, 551125487);
     Cliente comunicaBrasil("Comunica Brasil","comercial@comunicabrasil.com.br", "83974141", "856.478.566-55", PJ, 112548557);
@@ -35,5 +38,12 @@ std::cout << "   - Registro: " << Alan.getHistorico().getRegistro() << "\n Salar
   }
 
   
+TEST_CASE("login"){
+
+  LogAbstrata* log =  new LogLeitura("cesar", 1, Data (1985, 8, 24, 0, 0, 0), "Venda", "executaVenda", "executou a venda para o cliente");
+  LogAbstrata* log2 =  new LogExcecao("fulano", 2,Data (1985, 8, 24, 0, 0, 0), "Estoque", "VerificaEstoque nao permitido", "Verifica estoque");
+  log.printLog();
+  log2.printLog();
+  }
   
 }

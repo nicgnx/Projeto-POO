@@ -6,21 +6,20 @@
 
 class PagamentoAbstrata{
 
-Data data;
-float valorAPagar;
+protected:
+  Data data;
+  float valorAPagar;
 
-public:
-
-PagamentoAbstrata(Data data, float valorApagar);
-~PagamentoAbstrata();
-
-//getters
-Data getData();
-float getValorAPagar();
-
-//setters
-void setData(Data data);
-void setValorAPagar(float valorAPagar);
+public:  
+  virtual ~PagamentoAbstrata() = default;
+  
+  //getters
+  Data getData();
+  float getValorAPagar();
+  
+  //setters
+  void setData(Data data);
+  void setValorAPagar(float valorAPagar);
 
 };
 

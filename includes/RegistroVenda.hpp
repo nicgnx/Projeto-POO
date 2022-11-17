@@ -1,12 +1,12 @@
-#ifndef VENDA_H
-#define VENDA_H
+#ifndef REGISTRO_VENDA_H
+#define REGISTRO_VENDA_H
 
 #include "Data.hpp"
 #include "Lote.hpp"
 #include "./Estoque.hpp"
 #include <vector>
 
-class Venda{
+class RegistroVenda{
   std::string cliente;
   int cpfCnpj;
   std::string email;
@@ -19,8 +19,8 @@ class Venda{
  
   
 public:
-  Venda(std::string cliente, int cpfCnpj, std::string email, int idProduto, int quantidade, Data dataVenda);
-  ~Venda();
+  RegistroVenda(std::string cliente, int cpfCnpj, std::string email, int idProduto, int quantidade, Data dataVenda);
+  ~RegistroVenda();
 //getters
   std::string getCliente();
   int getCpfCnpj();
@@ -48,7 +48,7 @@ public:
 //outros metodos
   //bool verificaVenda();
   void executaVenda();
-  void printVenda();
+  void printRegistro();
 };
 
 #endif 

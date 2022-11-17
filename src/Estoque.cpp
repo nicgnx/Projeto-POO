@@ -64,7 +64,6 @@ void Estoque::reabasteceEstoqueProduto(int idProduto) {
   } else{ 
     if(this->produto[idProduto]->getEstoqueMinimo() > this->produto[idProduto]->getLoteMinimo()){
       int aux = this->produto[idProduto]->getEstoqueMinimo() - verificaEstoqueProduto(idProduto);
-     
       OrdemDeProducao Solicitacao(this->produto[idProduto]->getNome(), idProduto,
                                   Data().dateNow(),
                                   ((aux/this->produto[idProduto]->getLoteMinimo())+1)*this->produto[idProduto]->getLoteMinimo());
@@ -101,19 +100,27 @@ void Estoque::reabasteceEstoqueMP(int idMateriaPrima) {
     auxPrintReabasteceEstoque(N_REALIZADO_MP,idMateriaPrima);
   } 
   else{ 
-    OrdemMateriaPrima Solicitacao(this->materiaPrima[idMateriaPrima],this->materiaPrima[idMateriaPrima]->getEstoqueMinimo(), Data().dateNow(),
-                                  );
-     this->lotes[idMateriaPrima].push_back(Solicitacao.solicitaLote());
-     auxPrintReabasteceEstoque(REALIZADO,idMateriaPrima);
+    OrdemDeMateriaPrima Solicitacao(this->materiaPrima[idMateriaPrima],this->materiaPrima[idMateriaPrima]->getEstoqueMinimo(), Data().dateNow(),this->fornecedores);
+     auxPrintReabasteceEstoque(REALIZADO_MP,idMateriaPrima);
+    this->estoqueMP[idMateriaPrima] += Solicitacao.getQuantidade();
   }
 }
 
+
+
+void Estoque::reabasteceEstoqueMP(int idMateriaPrima, int quantidade) {
+  OrdemDeMateriaPrima Solicitacao(this->materiaPrima[idMateriaPrima],quantidade, Data().dateNow(),this->fornecedores);
+  auxPrintReabasteceEstoque(REALIZADO_MP,idMateriaPrima);
+  this->estoqueMP[idMateriaPrima] += Solicitacao.getQuantidade();
+}
 
 
 
 vector<int> Estoque::retiraLotes(int idProduto, int quantidade) {
   vector<int> lotes;
   int aux, num = 0;
+  vector<int> materiasPrimas;
+  
   for (; num < this->lotes[idProduto].size(); num++) {
     aux = this->lotes[idProduto][num]->getQuantidade();
     if (aux >= quantidade) {
@@ -144,9 +151,9 @@ void Estoque::cadastraLote(int idProduto, Lote *lote) {
 
 
 void Estoque::retiraMateriaPrima (int idMateriaPrima, int quantidade){
-  if(this->lotesMP[idMateriaPrima] > quantidade)
-    this->lotesMP[idMateriaPrima] = this->lotesMP[idMateriaPrima] - quantidade;
-  else
+    this->estoqueMP[idMateriaPrima] = this->estoqueMP[idMateriaPrima] - quantidade;
+    if(this->estoqueMP[idMateriaPrima] < this->materiaPrima[idMateriaPrima]->getEstoqueMinimo())
+      reabasteceEstoqueMP(idMateriaPrima);
 }
 
 
@@ -161,6 +168,9 @@ void Estoque::cadastraProduto(std::string nome, int loteMinimo,
 }
 
 
+bool Estoque::verificaAplicacaoJuros(int idProdutos, int quantidade){
+  
+}
 
 
 void Estoque::printListaDeProdutos(){

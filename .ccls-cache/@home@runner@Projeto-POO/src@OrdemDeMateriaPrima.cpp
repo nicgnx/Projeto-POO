@@ -6,7 +6,7 @@ OrdemDeMateriaPrima::OrdemDeMateriaPrima(MateriaPrima* materiaPrima,int quantida
   this->quantidade = quantidade;
   this->materiaPrima = materiaPrima;
   this->data = data;
-  this->fornecedor = melhorPreco(materiaPrima.getId(),fornecedores);
+  this->fornecedor = melhorPreco(materiaPrima->getId(),fornecedores);
 }
 OrdemDeMateriaPrima::~OrdemDeMateriaPrima() {}
 

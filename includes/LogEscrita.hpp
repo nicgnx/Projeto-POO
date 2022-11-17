@@ -28,7 +28,7 @@ public:
   void setAtributoDepois(std::string atributoDepois);
 
   //Methods
-  void printLog();
+  void printLog()  override;
 };
 
 

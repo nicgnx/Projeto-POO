@@ -1,9 +1,9 @@
-#include "../includes/Venda.hpp"
+#include "../includes/RegistroVenda.hpp"
 
 #include <iostream>
 
 
-Venda::Venda(std::string cliente, int cpfCnpj, std::string email, int idProduto, int quantidade, Data dataVenda){
+RegistroVenda::RegistroVenda(std::string cliente, int cpfCnpj, std::string email, int idProduto, int quantidade, Data dataVenda){
   this->cliente = cliente;
   this->cpfCnpj = cpfCnpj;
   this->email = email;
@@ -13,83 +13,83 @@ Venda::Venda(std::string cliente, int cpfCnpj, std::string email, int idProduto,
 
 }
 
-Venda::~Venda(){}
+RegistroVenda::~RegistroVenda(){}
 // Getters
 
-std::string Venda::getCliente(){
+std::string RegistroVenda::getCliente(){
   return this->cliente;
 }
 
-int Venda::getCpfCnpj(){
+int RegistroVenda::getCpfCnpj(){
   return this->cpfCnpj;
 }
 
-std::string Venda::getEmail(){
+std::string RegistroVenda::getEmail(){
   return this->email;
 }
 
-int Venda::getIdProduto(){
+int RegistroVenda::getIdProduto(){
   return this->idProduto;
 }
 
-int Venda::getQuantidade(){
+int RegistroVenda::getQuantidade(){
   return this->quantidade;
 }
 
-Data Venda::getDataVenda(){
+Data RegistroVenda::getDataVenda(){
   return this->dataVenda;
 }
 
 
-std::vector <int> Venda::getLotes(){
+std::vector <int> RegistroVenda::getLotes(){
   return this->idLotes;
 }
 
-float Venda::getPrecoUnitario(){
+float RegistroVenda::getPrecoUnitario(){
   return this->precoUnitario;
 }
 
 
 // Setters
 
-void Venda::setDataVenda(Data data){
+void RegistroVenda::setDataVenda(Data data){
   this->dataVenda = data;
 }
 
-void Venda::setCliente(std::string cliente){
+void RegistroVenda::setCliente(std::string cliente){
   this->cliente = cliente;
 }
 
-void Venda::setCpfCnpj(int cpfCnpj){
+void RegistroVenda::setCpfCnpj(int cpfCnpj){
   this->cpfCnpj = cpfCnpj;
 }
 
-void Venda::setEmail(std::string email){
+void RegistroVenda::setEmail(std::string email){
   this->email = email;
 }
 
-void Venda::setIdProduto(int idProduto){
+void RegistroVenda::setIdProduto(int idProduto){
   this->idProduto = idProduto;
 }
 
-void Venda::setQuantidade(int quantidade){
+void RegistroVenda::setQuantidade(int quantidade){
   this->quantidade = quantidade;
 }
 
-void Venda::setLotes(Lote* lote){
+void RegistroVenda::setLotes(Lote* lote){
   this->idLotes.push_back(lote->getIdLote());
 }
 
-void Venda::setPrecoUnitario(){
+void RegistroVenda::setPrecoUnitario(){
   Estoque* estoque = Estoque::getInstancia();
   this->precoUnitario = estoque->getProduto(this->idProduto)->getPrecos()->getPrecoBase();
 }
 
-void Venda::setDataVenda(Data dataVenda){
+void RegistroVenda::setDataVenda(Data dataVenda){
   this->dataVenda = dataVenda;
 }
 
-/*bool Venda::verificaVenda(){
+/*bool RegistroVenda::verificaVenda(){
   Estoque* estoque = Estoque::getInstancia();
     if(this->quantidade > estoque->verificaEstoque(this->idProduto)){
       return false;
@@ -97,7 +97,7 @@ void Venda::setDataVenda(Data dataVenda){
     else {return true;}
 }*/
 
-void Venda::executaVenda(){
+void RegistroVenda::executaVenda(){
   Estoque* estoque = Estoque::getInstancia();
   this->idLotes = estoque->retiraLotes(this->idProduto, this->quantidade);
   setPrecoUnitario();
@@ -105,7 +105,7 @@ void Venda::executaVenda(){
   printVenda();
 }
 
-void Venda::printVenda(){
+void RegistroVenda::printRegistro(){
   std::cout << "----------------------------------------------------------------------------------------------------\n\n";
   std::cout << "   Compra realizada com sucesso! Segue abaixo as informações da compra.\n\n";
   std::cout << "   Cliente: " << this->cliente << "\n";

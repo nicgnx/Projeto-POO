@@ -8,7 +8,7 @@ Empresa::Empresa(){}
 
 Empresa::~Empresa(){empresa = NULL;}
 
-Empresa::Empresa(    std::string nome,std::string cnpj,std::vector <Funcionario*> funcionarios,std::vector <Cliente*> clientes,std::vector <Cargo*> cargos,std::vector <Departamento*> departamentos,Estoque* estoque,HistoricoDeLogs* historico,std::vector <Permissao*> permissoes,std::vector <Veiculo*> frotaVeiculos,std::vector <Turno*> turnos) {
+Empresa::Empresa( std::string nome,std::string cnpj,std::vector <Funcionario*> funcionarios,std::vector <Cliente*> clientes,std::vector <Cargo*> cargos,std::vector <Departamento*> departamentos,Estoque* estoque,HistoricoDeLogs* historico,std::vector <Permissao*> permissoes,std::vector <Veiculo*> frotaVeiculos,std::vector <Turno*> turnos) {
   
   this->nome = nome;
   this->cnpj = cnpj;

@@ -9,7 +9,7 @@
 
 class OrdemDeMateriaPrima {
   private:
-    MateriaPrima materiaPrima;
+    MateriaPrima* materiaPrima;
     int quantidade;
     float valorFinal;
     Data data;
