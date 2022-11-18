@@ -5,15 +5,15 @@
 
 class Departamento {
 private:
-    std::string departamento;
+  std::string departamento;
 
 public:
-    Departamento(std::string departamento);
-    Departamento();
-    ~Departamento();
+  Departamento(std::string departamento);
+  Departamento();
+  ~Departamento();
 
-    std::string getDepartamento();
-    void setDepartamento(std::string departamento);
+  std::string getDepartamento();
+  void setDepartamento(std::string departamento);
 };
 
 #endif // DEPARTAMENTO_H

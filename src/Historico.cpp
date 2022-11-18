@@ -3,8 +3,8 @@
 #include <string>
 
 Historico::Historico(Data data, std::string registro) {
-    this->data = data;
-    this->registro = registro;
+  this->data = data;
+  this->registro = registro;
 }
 
 Historico::~Historico() {}

@@ -35,4 +35,11 @@ clang-format -i *.hpp
 
 ```
 
+ou
+
+```
+
+.\format.bat
+
+```
 

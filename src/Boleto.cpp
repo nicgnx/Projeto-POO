@@ -1,9 +1,9 @@
 #include "../includes/Boleto.hpp"
 
 Boleto::Boleto(Data data, float valorAPagar, Periodo periodo) {
-    this->periodo = periodo;
-    this->data = data;
-    this->valorAPagar = valorAPagar;
+  this->periodo = periodo;
+  this->data = data;
+  this->valorAPagar = valorAPagar;
 };
 
 Periodo Boleto::getPeriodo() { return this->periodo; };

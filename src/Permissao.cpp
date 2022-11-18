@@ -2,8 +2,8 @@
 #include <iostream>
 
 Permissao::Permissao(int idPermissao, std::string descricao) {
-    this->idPermissao = idPermissao;
-    this->descricao = descricao;
+  this->idPermissao = idPermissao;
+  this->descricao = descricao;
 }
 
 int Permissao::getIdPermissao() { return this->idPermissao; }
@@ -11,9 +11,9 @@ int Permissao::getIdPermissao() { return this->idPermissao; }
 std::string Permissao::getDescricao() { return this->descricao; }
 
 void Permissao::setIdPermissao(int idPermissao) {
-    this->idPermissao = idPermissao;
+  this->idPermissao = idPermissao;
 }
 
 void Permissao::setDescricao(std::string descricao) {
-    this->descricao = descricao;
+  this->descricao = descricao;
 }

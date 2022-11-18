@@ -3,30 +3,30 @@
 int Lote::lotesTotais = 0;
 
 Lote::Lote(int idProduto, Data data, int quantidade)
-    : idLote(this->lotesTotais) {
-    this->data = data;
-    this->idProduto = idProduto;
-    this->quantidade = quantidade;
-    this->lotesTotais += 1;
-    this->status = Status::ESTOQUE;
+  : idLote(this->lotesTotais) {
+  this->data = data;
+  this->idProduto = idProduto;
+  this->quantidade = quantidade;
+  this->lotesTotais += 1;
+  this->status = Status::ESTOQUE;
 }
 
 Lote::Lote() : idLote(this->lotesTotais) {
-    this->lotesTotais += 1;
-    this->status = Status::ESTOQUE;
-    this->data = data.dateNow();
-    this->idProduto = -1;
-    this->quantidade = -1;
+  this->lotesTotais += 1;
+  this->status = Status::ESTOQUE;
+  this->data = data.dateNow();
+  this->idProduto = -1;
+  this->quantidade = -1;
 }
 
 Lote::~Lote() {}
 
 void Lote::updateLotes(int quantidade) {
-    this->quantidade -= quantidade;
-    if (this->quantidade <= 0) {
-        this->quantidade = 0;
-        this->status = Status::VENDIDO;
-    }
+  this->quantidade -= quantidade;
+  if (this->quantidade <= 0) {
+    this->quantidade = 0;
+    this->status = Status::VENDIDO;
+  }
 }
 
 // getters

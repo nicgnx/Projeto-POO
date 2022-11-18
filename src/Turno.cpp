@@ -2,13 +2,12 @@
 
 // Construtores e Destrutores
 Turno::Turno(
-    std::string nomeTurno, int horarioEntrada, int horarioSaida,
-    tipoTurno periodo
+  std::string nomeTurno, int horarioEntrada, int horarioSaida, tipoTurno periodo
 ) {
-    this->nomeTurno = nomeTurno;
-    this->horarioEntrada = horarioEntrada;
-    this->horarioSaida = horarioSaida;
-    this->periodo = periodo;
+  this->nomeTurno = nomeTurno;
+  this->horarioEntrada = horarioEntrada;
+  this->horarioSaida = horarioSaida;
+  this->periodo = periodo;
 }
 
 Turno::Turno() {}
@@ -28,11 +27,11 @@ tipoTurno Turno::getPeriodo() { return this->periodo; }
 void Turno::setNomeTurno(std::string nomeTurno) { this->nomeTurno = nomeTurno; }
 
 void Turno::setHorarioSaida(int horarioSaida) {
-    this->horarioSaida = horarioSaida;
+  this->horarioSaida = horarioSaida;
 }
 
 void Turno::setHorarioEntrada(int horarioEntrada) {
-    this->horarioEntrada = horarioEntrada;
+  this->horarioEntrada = horarioEntrada;
 }
 
 void Turno::setPeriodo(tipoTurno periodo) { this->periodo = periodo; }

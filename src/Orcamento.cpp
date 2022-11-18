@@ -2,17 +2,17 @@
 #include <string>
 
 Orcamento::Orcamento(
-    std::string cliente, int cpfCnpj, std::string email,
-    vector<ItensDesejados> carrinho, float valorTotal, Data data,
-    PedidoDeCompra pedido
+  std::string cliente, int cpfCnpj, std::string email,
+  vector<ItensDesejados> carrinho, float valorTotal, Data data,
+  PedidoDeCompra pedido
 ) {
-    this->cliente = cliente;
-    this->cpfCnpj = cpfCnpj;
-    this->email = email;
-    this->carrinho = carrinho;
-    this->valorTotal = valorTotal;
-    this->data = data;
-    this->pedido = pedido;
+  this->cliente = cliente;
+  this->cpfCnpj = cpfCnpj;
+  this->email = email;
+  this->carrinho = carrinho;
+  this->valorTotal = valorTotal;
+  this->data = data;
+  this->pedido = pedido;
 }
 
 Orcamento::~Orcamento() {}
@@ -38,11 +38,11 @@ void Orcamento::setCpfCnpj(int cpfCnpj) { this->cpfCnpj = cpfCnpj; };
 void Orcamento::setEmail(std::string email) { this->email = email; };
 
 void Orcamento::setCarrinho(vector<ItensDesejados> carrinho) {
-    this->carrinho = carrinho;
+  this->carrinho = carrinho;
 };
 
 void Orcamento::setValorTotal(float valorTotal) {
-    this->valorTotal = valorTotal;
+  this->valorTotal = valorTotal;
 };
 
 void Orcamento::setData(Data data) { this->data = data; };
@@ -58,7 +58,7 @@ void Orcamento::printaOrcamento(){
 };
 
 PedidoDeCompra Orcamento::gerarPedidoDeCompra(
-    vector<ItensDesejados> itens, string tipoPagamento, string forma
+  vector<ItensDesejados> itens, string tipoPagamento, string forma
 ){
 
 };

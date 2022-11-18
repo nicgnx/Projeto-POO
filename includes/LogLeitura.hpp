@@ -7,27 +7,26 @@
 class LogLeitura : public LogAbstrata {
 
 private:
-    std::string informacao;
+  std::string informacao;
 
 public:
-    // Construtores e Destrutores
-    LogLeitura(
-        std::string usuario, int idUsuario, Data data,
-        std::string classeAcessada, std::string instanciaAcessada,
-        std::string informacao
-    );
-    LogLeitura();
-    ~LogLeitura();
+  // Construtores e Destrutores
+  LogLeitura(
+    std::string usuario, int idUsuario, Data data, std::string classeAcessada,
+    std::string instanciaAcessada, std::string informacao
+  );
+  LogLeitura();
+  ~LogLeitura();
 
-    // Getters
-    std::string getInformacao();
+  // Getters
+  std::string getInformacao();
 
-    // Setters
-    void setInformacao(std::string informacao);
+  // Setters
+  void setInformacao(std::string informacao);
 
-    // Methods
+  // Methods
 
-    void printLog() override;
+  void printLog() override;
 };
 
 #endif // LOG_LEITURA_H

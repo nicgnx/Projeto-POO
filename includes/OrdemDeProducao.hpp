@@ -7,27 +7,27 @@
 
 class OrdemDeProducao {
 private:
-    std::string produto;
-    int idProduto;
-    Data data;
-    int quantidade;
+  std::string produto;
+  int idProduto;
+  Data data;
+  int quantidade;
 
 public:
-    OrdemDeProducao(std::string, int, Data, int);
-    ~OrdemDeProducao();
+  OrdemDeProducao(std::string, int, Data, int);
+  ~OrdemDeProducao();
 
-    // getters
-    int getIdProduto();
-    Data getData();
-    int getQuantidade();
+  // getters
+  int getIdProduto();
+  Data getData();
+  int getQuantidade();
 
-    // setters
-    void setIdProduto(int);
-    void setData(Data);
-    void setQuantidade(int);
+  // setters
+  void setIdProduto(int);
+  void setData(Data);
+  void setQuantidade(int);
 
-    // Métodos
-    Lote* solicitaLote();
+  // Métodos
+  Lote* solicitaLote();
 };
 
 #endif // ORDEMDEPRODUCAO_H

@@ -9,11 +9,11 @@ using namespace std;
 
 class ExecaoCustomizada : public exception {
 protected:
-    char msg[100];
+  char msg[100];
 
 public:
-    ExecaoCustomizada(char* e) { strcpy(msg, e); }
-    virtual const char* what() { return msg; }
+  ExecaoCustomizada(char* e) { strcpy(msg, e); }
+  virtual const char* what() { return msg; }
 };
 
 #endif // EXECAOCUSTOMIZADA_H_INCLUDED

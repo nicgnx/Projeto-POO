@@ -22,7 +22,7 @@ void Usuario::setSenha(std::string senha) { this->senha = senha; }
 
 void Usuario::adicionaPermissoes(Permissao* permissao) {
 
-    this->permissoes.push_back(permissao);
+  this->permissoes.push_back(permissao);
 }
 /*
 std::string Usuario::exibePermissao(){

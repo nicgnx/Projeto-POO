@@ -1,18 +1,18 @@
 #include "../includes/LogEscrita.hpp"
 
 LogEscrita::LogEscrita(
-    std::string usuario, int idUsuario, Data data, std::string classeAcessada,
-    std::string instanciaAcessada, std::string atributoAcessado,
-    std::string atributoAntes, std::string atributoDepois
+  std::string usuario, int idUsuario, Data data, std::string classeAcessada,
+  std::string instanciaAcessada, std::string atributoAcessado,
+  std::string atributoAntes, std::string atributoDepois
 ) {
-    this->usuario = usuario;
-    this->idUsuario = idUsuario;
-    this->data = data;
-    this->classeAcessada = classeAcessada;
-    this->instanciaAcessada = instanciaAcessada;
-    this->atributoAcessado = atributoAcessado;
-    this->atributoAntes = atributoAntes;
-    this->atributoDepois = atributoDepois;
+  this->usuario = usuario;
+  this->idUsuario = idUsuario;
+  this->data = data;
+  this->classeAcessada = classeAcessada;
+  this->instanciaAcessada = instanciaAcessada;
+  this->atributoAcessado = atributoAcessado;
+  this->atributoAntes = atributoAntes;
+  this->atributoDepois = atributoDepois;
 }
 
 LogEscrita::~LogEscrita() {}
@@ -24,32 +24,30 @@ std::string LogEscrita::getAtributoAntes() { return this->atributoAntes; }
 std::string LogEscrita::getAtributoDepois() { return this->atributoDepois; }
 
 void LogEscrita::setAtributoAcessado(std::string atributoAcessado) {
-    this->atributoAcessado = atributoAcessado;
+  this->atributoAcessado = atributoAcessado;
 }
 
 void LogEscrita::setAtributoAntes(std::string atributoAntes) {
-    this->atributoAntes = atributoAntes;
+  this->atributoAntes = atributoAntes;
 }
 
 void LogEscrita::setAtributoDepois(std::string atributoDepois) {
-    this->atributoDepois = atributoDepois;
+  this->atributoDepois = atributoDepois;
 }
 
 void LogEscrita::printLog() {
-    std::cout
-        << "---------------------------------------------------------------"
-           "-------------------------------------\n"
-        << "                                         Log de Escrita\n\n"
-        << "Usuário:             " << this->usuario << "\n"
-        << "idUsuario:           " << this->idUsuario << "\n"
-        << "Data (UTC):          ";
-    this->data.printData();
-    std::cout
-        << "Classe Acessada:     " << this->classeAcessada << "\n"
-        << "Instancia Acessada:  " << this->instanciaAcessada << "\n"
-        << "Atributo Acessado:   " << this->atributoAcessado << "\n"
-        << "Atributo Antes:      " << this->atributoAntes << "\n"
-        << "Atributo Depois:     " << this->atributoDepois << "\n"
-        << "---------------------------------------------------------------"
-           "-------------------------------------\n\n";
+  std::cout << "---------------------------------------------------------------"
+               "-------------------------------------\n"
+            << "                                         Log de Escrita\n\n"
+            << "Usuário:             " << this->usuario << "\n"
+            << "idUsuario:           " << this->idUsuario << "\n"
+            << "Data (UTC):          ";
+  this->data.printData();
+  std::cout << "Classe Acessada:     " << this->classeAcessada << "\n"
+            << "Instancia Acessada:  " << this->instanciaAcessada << "\n"
+            << "Atributo Acessado:   " << this->atributoAcessado << "\n"
+            << "Atributo Antes:      " << this->atributoAntes << "\n"
+            << "Atributo Depois:     " << this->atributoDepois << "\n"
+            << "---------------------------------------------------------------"
+               "-------------------------------------\n\n";
 }
