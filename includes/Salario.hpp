@@ -1,13 +1,12 @@
 #ifndef SALARIO_H
 #define SALARIO_H
 
-#include <string>
 #include "Data.hpp"
-
+#include <string>
 
 enum Motivo {
-  Dissidio,
-  Gerencia,
+    Dissidio,
+    Gerencia,
 };
 
 class Salario {
@@ -17,24 +16,21 @@ class Salario {
     Motivo motivacao;
 
 public:
-
     Salario(double, double, Data, Motivo);
     Salario();
     ~Salario();
 
-    //getters
+    // getters
     double getSalarioBase();
     double getVariacaoSalarial();
     Data getData();
     Motivo getMotivacao();
 
-    //setters
+    // setters
     void setSalarioBase(double salarioBase);
     void setVariacaoSalarial(double variacaoSalarial);
     void setData(Data data);
     void setMotivacao(Motivo motivacao);
-
-    
 };
 
 #endif // SALARIO_H

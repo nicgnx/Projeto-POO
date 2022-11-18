@@ -4,14 +4,16 @@
 #include "Data.hpp"
 #include <string>
 
-
 class Historico {
     Data data;
     std::string registro;
 
 public:
-    Historico(int ano,int mes,int dia,int hora,int minuto,int segundo,std::string registro);
-    Historico(Data data,std::string registro);
+    Historico(
+        int ano, int mes, int dia, int hora, int minuto, int segundo,
+        std::string registro
+    );
+    Historico(Data data, std::string registro);
     ~Historico();
     Data getData();
     std::string getRegistro();

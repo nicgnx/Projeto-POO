@@ -3,24 +3,22 @@
 
 #include "Data.hpp"
 
-
-class PagamentoAbstrata{
+class PagamentoAbstrata {
 
 protected:
-  Data data;
-  float valorAPagar;
+    Data data;
+    float valorAPagar;
 
-public:  
-  virtual ~PagamentoAbstrata() = default;
-  
-  //getters
-  Data getData();
-  float getValorAPagar();
-  
-  //setters
-  void setData(Data data);
-  void setValorAPagar(float valorAPagar);
+public:
+    virtual ~PagamentoAbstrata() = default;
 
+    // getters
+    Data getData();
+    float getValorAPagar();
+
+    // setters
+    void setData(Data data);
+    void setValorAPagar(float valorAPagar);
 };
 
 #endif

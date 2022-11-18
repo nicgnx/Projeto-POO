@@ -1,44 +1,46 @@
 #ifndef ORDEMDEMATERIAPRIMA_H
 #define ORDEMDEMATERIAPRIMA_H
 
-#include <string>
 #include "Data.hpp"
 #include "Fornecedor.hpp"
 #include "MateriaPrima.hpp"
 #include <iostream>
+#include <string>
 
 class OrdemDeMateriaPrima {
-  private:
+private:
     MateriaPrima* materiaPrima;
     int quantidade;
     float valorFinal;
     Data data;
     Fornecedor* fornecedor;
-    
 
-
-  public:
+public:
     OrdemDeMateriaPrima();
-    OrdemDeMateriaPrima(MateriaPrima* materiaPrima,int quantidade, Data data, std::vector<Fornecedor*> fornecedores);
+    OrdemDeMateriaPrima(
+        MateriaPrima* materiaPrima, int quantidade, Data data,
+        std::vector<Fornecedor*> fornecedores
+    );
     ~OrdemDeMateriaPrima();
 
-    //getters
+    // getters
     MateriaPrima* getMateriaPrima();
     int getQuantidade();
     float getValorFinal();
     Data getData();
     Fornecedor* getFornecedor();
 
-    //setters
+    // setters
     void setMateriaPrima(MateriaPrima*);
     void setQuantidade(int);
     void setValorFinal(float);
     void setData(Data);
     void setFornecedor(Fornecedor*);
 
-    //Métodos
-    Fornecedor* melhorPreco(int idMateriaPrima, std::vector<Fornecedor*> fornecedores);
+    // Métodos
+    Fornecedor*
+    melhorPreco(int idMateriaPrima, std::vector<Fornecedor*> fornecedores);
     void printOrdemDeMP();
-} ;
+};
 
 #endif // ORDEMDEMATERIAPRIMA_H

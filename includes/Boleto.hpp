@@ -1,27 +1,22 @@
 #ifndef BOLETO_H
 #define BOLETO_H
 
-
 #include "../includes/PagamentoAbstrata.hpp"
 
-enum Periodo {30, 60, 90};
+enum Periodo { 30, 60, 90 };
 
-class Boleto : public PagamentoAbstrata{
+class Boleto : public PagamentoAbstrata {
 
-
-Periodo periodo;
-
+    Periodo periodo;
 
 public:
+    Boleto(Data data, float valorAPagar, Periodo periodo);
 
-  Boleto(Data data, float valorAPagar, Periodo periodo);
-  
-  //getters
-  Periodo getPeriodo();
+    // getters
+    Periodo getPeriodo();
 
-  //setters
-  void setPeriodo(Periodo periodo);
-
+    // setters
+    void setPeriodo(Periodo periodo);
 };
 
 #endif

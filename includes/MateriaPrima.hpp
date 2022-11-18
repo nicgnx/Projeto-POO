@@ -1,38 +1,37 @@
 #ifndef MATERIAPRIMA_H
 #define MATERIAPRIMA_H
 
-#include <string>
 #include <iostream>
+#include <string>
 
 class MateriaPrima {
-  private:
+private:
     int id;
     std::string nome;
     std::string unidade;
     int estoqueMinimo;
 
-
-  public:
+public:
     MateriaPrima();
-    MateriaPrima(int, std::string, std::string, int );
+    MateriaPrima(int, std::string, std::string, int);
     ~MateriaPrima();
 
-    //Operators
-    bool operator==(MateriaPrima &mp2);
+    // Operators
+    bool operator==(MateriaPrima& mp2);
 
-    //getters
+    // getters
     int getId();
     std::string getNome();
     std::string getUnidade();
     int getEstoqueMinimo();
 
-    //setters
+    // setters
     void setNome(std::string);
     void setUnidade(std::string);
     void setEstoqueMinimo(int);
 
-    //Métodos
+    // Métodos
     void printMateriaPrima();
-} ;
+};
 
 #endif // MATERIAPRIMA_H

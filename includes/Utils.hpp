@@ -1,17 +1,17 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#include <string>
 #include <algorithm>
+#include <string>
 
 class Utils {
 
 public:
-  Utils();
-  ~Utils();
+    Utils();
+    ~Utils();
 
-  bool verificaCPF(std::string cpf);
-  bool verificaCNPJ(std::string cnpj);
+    bool verificaCPF(std::string cpf);
+    bool verificaCNPJ(std::string cnpj);
 };
 
 #endif // UTILS_H

@@ -21,3 +21,18 @@
 6. Cadastrar Produto / Lotes
 7. Editar produto
 8. Comprar produto
+
+## Formatação automática
+
+```
+
+cd src
+clang-format -i *.cpp
+cd ../program
+clang-format -i *.cpp
+cd ../includes
+clang-format -i *.hpp
+
+```
+
+

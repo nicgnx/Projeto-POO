@@ -1,41 +1,40 @@
 #ifndef PEDIDO_DE_COMPRA_H
 #define PEDIDO_DE_COMPRA_H
 
-#include "ItensDesejados.hpp"
-#include "RegistroVenda.hpp"
-#include "PagamentoAbstrata.hpp"
 #include "Data.hpp"
+#include "ItensDesejados.hpp"
+#include "PagamentoAbstrata.hpp"
+#include "RegistroVenda.hpp"
 #include <vector>
 
 class PedidoDeCompra {
-  private:
+private:
     float valor;
-    std::vector <RegistroVenda*> registroVenda;
+    std::vector<RegistroVenda*> registroVenda;
     Data data;
     PagamentoAbstrata* registroPagamento;
 
-  public:
+public:
     // Construtores e Destrutores
     PedidoDeCompra(float);
     PedidoDeCompra();
     ~PedidoDeCompra();
 
-    //getters
+    // getters
     float getValor();
     Data getData();
     pagamentoAbstrata* getRegistroPagamento();
     std::vector<RegistroVenda*> getRegistroVenda();
-    
-    //setters
+
+    // setters
     void setValor(float);
-    void setRegistroVenda(std::vector <RegistroVenda*>);
+    void setRegistroVenda(std::vector<RegistroVenda*>);
     void setData(Data);
     void setRegistroPagamento(PagamentoAbstrata*);
-    //métodos     TODO
+    // métodos     TODO
     void registraPagamento();
-    vector <RegistroVenda> executaCompra(int, int);
+    vector<RegistroVenda> executaCompra(int, int);
     void printaCompra();
 };
-
 
 #endif // PEDIDO_DE_COMPRA_H

@@ -1,16 +1,13 @@
 #ifndef LOTE_H
 #define LOTE_H
 
-#include "Produto.hpp"
 #include "Data.hpp"
+#include "Produto.hpp"
 
-enum Status {
-  ESTOQUE,
-  VENDIDO
-};
+enum Status { ESTOQUE, VENDIDO };
 
 class Lote {
-  private:
+private:
     int idProduto;
     Data data;
     int quantidade;
@@ -18,14 +15,14 @@ class Lote {
     const int idLote;
     static int lotesTotais;
 
-  public:
+public:
     Lote(int, Data, int);
     Lote();
     ~Lote();
 
     void updateLotes(int);
-    
-    //getters
+
+    // getters
     int getIdProduto();
     Data getData();
     int getQuantidade();
@@ -33,12 +30,11 @@ class Lote {
     int getLotesTotais();
     Status getStatus();
 
-    //setters
+    // setters
     void setIdProduto(int);
     void setData(Data);
     void setQuantidade(int);
     void setStatus(Status);
-    
 };
 
 #endif // LOTE_H

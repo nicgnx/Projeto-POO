@@ -1,20 +1,13 @@
 #include "../includes/Categoria.hpp"
 
-Categoria::Categoria(std::string categoria) {
-  this->categoria = categoria;
-}
+Categoria::Categoria(std::string categoria) { this->categoria = categoria; }
 
-Categoria::Categoria(){
-  this->categoria.clear();
-}
+Categoria::Categoria() { this->categoria.clear(); }
 
-Categoria::~Categoria(){}
+Categoria::~Categoria() {}
 
+std::string Categoria::getCategoria() { return this->categoria; }
 
-std::string Categoria::getCategoria (){
-  return this->categoria;
-}
-
-void Categoria::setCategoria (std::string categoria){
-  this->categoria = categoria;
+void Categoria::setCategoria(std::string categoria) {
+    this->categoria = categoria;
 }

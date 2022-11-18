@@ -7,21 +7,18 @@
 
 class Permissao {
 
-  int idPermissao;
-  std::string descricao;
+    int idPermissao;
+    std::string descricao;
 
 public:
+    Permissao();
+    Permissao(int idPermissao, std::string descricao);
 
-  Permissao();
-  Permissao(int idPermissao, std::string descricao);
+    int getIdPermissao();
+    std::string getDescricao();
 
-  int getIdPermissao();
-  std::string getDescricao();
-
-  void setIdPermissao(int idPermissao);
-  void setDescricao(std::string permissao);
-
-
+    void setIdPermissao(int idPermissao);
+    void setDescricao(std::string permissao);
 };
 
 #endif // PERMISSAO_H

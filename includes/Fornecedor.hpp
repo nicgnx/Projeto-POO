@@ -1,33 +1,31 @@
 #ifndef FORNECEDOR_H
 #define FORNECEDOR_H
 
-#include <map>
-#include <iostream>
 #include "MateriaPrima.hpp"
+#include <iostream>
+#include <map>
 
 class Fornecedor {
-  private:
+private:
     std::string nome;
-    std::map<int,float> produtosFornecidos;
-    
-  public:
+    std::map<int, float> produtosFornecidos;
+
+public:
     Fornecedor(std::string nome);
     ~Fornecedor();
 
-
-    //getters
-    std::map<int,float> getMateriaPrima();
+    // getters
+    std::map<int, float> getMateriaPrima();
     std::string getNome();
 
-    //setters
-    void setMateriaPrima(int idMateriaPrima,float preco);
+    // setters
+    void setMateriaPrima(int idMateriaPrima, float preco);
     void setNome(std::string nome);
 
-    //Métodos
+    // Métodos
     float enviaPreco(int idMateriaPrima);
     bool possuiProduto(int idMateriaPrima);
     void printProdutos();
-
-} ;
+};
 
 #endif // FORNECEDOR_H

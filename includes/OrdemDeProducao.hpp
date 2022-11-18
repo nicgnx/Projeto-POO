@@ -5,24 +5,23 @@
 #include "Lote.hpp"
 #include <string>
 
-
 class OrdemDeProducao {
-  private:
+private:
     std::string produto;
     int idProduto;
     Data data;
     int quantidade;
 
-  public:
+public:
     OrdemDeProducao(std::string, int, Data, int);
     ~OrdemDeProducao();
 
-    //getters
+    // getters
     int getIdProduto();
     Data getData();
     int getQuantidade();
 
-    //setters
+    // setters
     void setIdProduto(int);
     void setData(Data);
     void setQuantidade(int);
