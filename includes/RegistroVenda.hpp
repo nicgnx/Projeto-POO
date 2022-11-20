@@ -34,7 +34,6 @@ public:
   float getValorVenda();
 
   // setters
-  void setDataVenda(Data data);
   void setCliente(std::string cliente);
   void setCpfCnpj(int cpfCnpj);
   void setEmail(std::string email);
