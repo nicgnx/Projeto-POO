@@ -2,10 +2,10 @@
 #define CLIENTE_H
 
 #include "../includes/Data.hpp"
-#include "../includes/Permissao.hpp"
 #include "../includes/RegistroVenda.hpp"
 #include "../includes/Usuario.hpp"
 
+#include "../includes/Login.hpp"
 #include "../constants/PERMISSOES.hpp"
 
 enum tipoPessoa { PF, PJ };
@@ -19,7 +19,7 @@ public:
   // Construtores e Destrutores
   Cliente();
   Cliente(
-    std::string nome, std::string email, std::string senha, std::string cpfCnpj,
+    std::string nome, std::string cpfCnpj, std::string email, std::string senha, 
     tipoPessoa tipo, unsigned int telefone
   );
   ~Cliente();

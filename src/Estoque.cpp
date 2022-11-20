@@ -47,6 +47,10 @@ int Estoque::verificaEstoqueMP(int idMateriaPrima) {
 }
 
 void Estoque::reabasteceEstoqueProduto(int idProduto) {
+  if (!Login::getInstance()->verificaPermissao(PERMISSOES::MANUSEAR_ESTOQUE)) {
+    throw "Usuario logado nao possui permissao para manusear o estoque!";
+  }
+  
   if (verificaEstoqueProduto(idProduto) > this->produto[idProduto]->getEstoqueMinimo()) {
     auxPrintReabasteceEstoque(N_REALIZADO, idProduto);
   } else {
@@ -72,6 +76,10 @@ void Estoque::reabasteceEstoqueProduto(int idProduto) {
 }
 
 void Estoque::reabasteceEstoqueProduto(int idProduto, int quantidade) {
+  if (!Login::getInstance()->verificaPermissao(PERMISSOES::MANUSEAR_ESTOQUE)) {
+    throw "Usuario logado nao possui permissao para manusear o estoque!";
+  }
+
   if (quantidade >= this->produto[idProduto]->getLoteMinimo()) {
     OrdemDeProducao Solicitacao(
       this->produto[idProduto]->getNome(), idProduto,
@@ -85,6 +93,10 @@ void Estoque::reabasteceEstoqueProduto(int idProduto, int quantidade) {
 }
 
 void Estoque::reabasteceEstoqueMP(int idMateriaPrima) {
+  if (!Login::getInstance()->verificaPermissao(PERMISSOES::MANUSEAR_ESTOQUE)) {
+    throw "Usuario logado nao possui permissao para manusear o estoque!";
+  }
+
   if (verificaEstoqueMP(idMateriaPrima) > this->estoqueMP[idMateriaPrima]) {
     auxPrintReabasteceEstoque(N_REALIZADO_MP, idMateriaPrima);
   } else {
@@ -99,6 +111,10 @@ void Estoque::reabasteceEstoqueMP(int idMateriaPrima) {
 }
 
 void Estoque::reabasteceEstoqueMP(int idMateriaPrima, int quantidade) {
+  if (!Login::getInstance()->verificaPermissao(PERMISSOES::MANUSEAR_ESTOQUE)) {
+    throw "Usuario logado nao possui permissao para manusear o estoque!";
+  }
+
   OrdemDeMateriaPrima Solicitacao(
     this->materiaPrima[idMateriaPrima], quantidade, Data().dateNow(),
     this->fornecedores
@@ -108,6 +124,10 @@ void Estoque::reabasteceEstoqueMP(int idMateriaPrima, int quantidade) {
 }
 
 vector<int> Estoque::retiraLotes(int idProduto, int quantidade) {
+  if (!Login::getInstance()->verificaPermissao(PERMISSOES::MANUSEAR_ESTOQUE)) {
+    throw "Usuario logado nao possui permissao para manusear o estoque!";
+  }
+
   vector<int> lotes;
   int aux, num = 0;
   vector<int> materiasPrimas;
@@ -139,6 +159,10 @@ void Estoque::cadastraLote(int idProduto, Lote* lote) {
 }
 
 void Estoque::retiraMateriaPrima(int idMateriaPrima, int quantidade) {
+  if (!Login::getInstance()->verificaPermissao(PERMISSOES::MANUSEAR_ESTOQUE)) {
+    throw "Usuario logado nao possui permissao para manusear o estoque!";
+  }
+
   this->estoqueMP[idMateriaPrima] =
     this->estoqueMP[idMateriaPrima] - quantidade;
   if (this->estoqueMP[idMateriaPrima] < this->materiaPrima[idMateriaPrima]->getEstoqueMinimo())
@@ -148,6 +172,10 @@ void Estoque::retiraMateriaPrima(int idMateriaPrima, int quantidade) {
 void Estoque::cadastraProduto(
   std::string nome, int loteMinimo, int estoqueMinimo, PrecoProduto* preco
 ) {
+  if (!Login::getInstance()->verificaPermissao(PERMISSOES::CADASTRAR_EDITAR_PRODUTO)) {
+    throw "Usuario logado nao possui permissao para cadastrar produtos!";
+  }
+
   Produto* produto = new Produto(nome, loteMinimo, estoqueMinimo, preco);
   this->produto[produto->getIdProduto()] = produto;
   this->lotes[produto->getIdProduto()].push_back(new Lote());

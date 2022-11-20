@@ -12,16 +12,18 @@ private:
   static Login* instance;
 
   // Construtor e Destrutor
-  Login(Usuario*);
+  Login();
   ~Login();
 
 public:
-  static Login* logar(Usuario*);
   static Login* getInstance();
-  static void deslogar();
-  static std::string getUsuarioNome();
-  static std::string getUsuarioSenha();
-  static Usuario* getUsuario();
+
+  Login* logar(Usuario*);
+  void deslogar();
+  std::string getUsuarioNome();
+  std::string getUsuarioSenha();
+  Usuario* getUsuario();
+  bool verificaPermissao(int idPermissao);
 };
 
 #endif // LOGIN_H

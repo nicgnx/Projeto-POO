@@ -1,8 +1,11 @@
 #ifndef PRODUTO_H
 #define PRODUTO_H
 
-#include "../includes/Categoria.hpp"
-#include "../includes/PrecoProduto.hpp"
+#include "Categoria.hpp"
+#include "PrecoProduto.hpp"
+#include "Login.hpp"
+#include "../constants/PERMISSOES.hpp"
+
 #include <string>
 #include <vector>
 

@@ -25,9 +25,10 @@ public:
   void setcpfCnpj(std::string cpfCnpj);
   void setEmail(std::string email);
   void setSenha(std::string senha);
-  void adicionaPermissoes(Permissao* permissao);
+  void setPermissoes(std::vector<Permissao*> permissoes);
 
   std::string exibePermissao();
+  void adicionaPermissoes(Permissao* permissao);
 };
 
 #endif // USUARIO_H

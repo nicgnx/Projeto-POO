@@ -20,10 +20,12 @@ void Usuario::setEmail(std::string email) { this->email = email; }
 
 void Usuario::setSenha(std::string senha) { this->senha = senha; }
 
-void Usuario::adicionaPermissoes(Permissao* permissao) {
+void Usuario::setPermissoes(std::vector<Permissao*> permissoes) { this->permissoes = permissoes; }
 
+void Usuario::adicionaPermissoes(Permissao* permissao) {
   this->permissoes.push_back(permissao);
 }
+
 /*
 std::string Usuario::exibePermissao(){
   for(auto it = this->permissoes.begin(); it != this->permissoes.end(); it++){

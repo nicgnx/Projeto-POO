@@ -1,9 +1,12 @@
 #pragma once
 
-#include "../includes/OrdemDeProducao.hpp"
-#include "../includes/Produto.hpp"
+#include "OrdemDeProducao.hpp"
+#include "Produto.hpp"
+#include "Login.hpp"
 #include "Fornecedor.hpp"
 #include "OrdemDeMateriaPrima.hpp"
+#include "../constants/PERMISSOES.hpp"
+
 #include <deque>
 #include <iostream>
 #include <list>

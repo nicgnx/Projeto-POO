@@ -30,6 +30,8 @@ cd src
 clang-format -i *.cpp
 cd ../program
 clang-format -i *.cpp
+cd ../tests
+clang-format -i *.cpp
 cd ../includes
 clang-format -i *.hpp
 

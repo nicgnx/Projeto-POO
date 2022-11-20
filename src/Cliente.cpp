@@ -28,13 +28,9 @@ void Cliente::setTipoPessoa(tipoPessoa tipo) { this->tipo = tipo; }
 void Cliente::setTelefone(unsigned int telefone) { this->telefone = telefone; }
 
 void Cliente::compra(int idProduto, int quantidade, Data dataCompra) {
-  // puxa as permissoes desse cliente
-  std::vector<Permissao*> permissoes = this->getPermissao();
-
-  // for (Permissao* permissao : permissoes) {
-  //   if (permissao->getIdPermissao() == PERMISSOES.COMPRAR_PRODUTO) {
-  //   }
-  // }
+  if (!Login::getInstance()->verificaPermissao(PERMISSOES::COMPRAR_PRODUTO)) {
+    throw "Usuario logado nao possui permissao para comprar produtos!";
+  }
 
   // RegistroVenda pedido(
   //   this->nome, this->cpfCnpj, this->email, idProduto, quantidade, dataCompra

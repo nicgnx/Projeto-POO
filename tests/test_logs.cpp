@@ -3,6 +3,6 @@
 
 /*TEST_CASE("Historico De Logs") {
   SUBCASE("Construtor") {
-    
+
   }
 }*/

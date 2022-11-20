@@ -69,8 +69,18 @@ void Produto::setEstoqueMinimo(int estoqueMinimo) {
 // Métodos
 
 void Produto::novoPreco(float precoBase, float percentualVariacao, Data data) {
+  if (!Login::getInstance()->verificaPermissao(PERMISSOES::CADASTRAR_EDITAR_PRODUTO)) {
+    throw "Usuario logado nao possui permissao para editar precos do produto!";
+  }
+
   PrecoProduto* preco = new PrecoProduto(precoBase, percentualVariacao, data);
   this->precos.push_back(preco);
 }
 
-void Produto::novoPreco(PrecoProduto* preco) { this->precos.push_back(preco); }
+void Produto::novoPreco(PrecoProduto* preco) { 
+  if (!Login::getInstance()->verificaPermissao(PERMISSOES::CADASTRAR_EDITAR_PRODUTO)) {
+    throw "Usuario logado nao possui permissao para editar precos do produto!";
+  }
+  
+  this->precos.push_back(preco); 
+}
