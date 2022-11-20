@@ -3,11 +3,11 @@
 
 #include <string>
 
-enum tipoTurno {MANHA,TARDE,NOITE};
+enum tipoTurno { MANHA, TARDE, NOITE };
 
-class Turno{
+class Turno {
 
-//Atributos
+  // Atributos
 private:
   std::string nomeTurno;
   int horarioEntrada;
@@ -15,18 +15,21 @@ private:
   tipoTurno periodo;
 
 public:
-//Construtoree e Destrutores
-  Turno(std::string nomeTurno,int horarioEntrada,int horarioSaida,tipoTurno periodo);
+  // Construtoree e Destrutores
+  Turno(
+    std::string nomeTurno, int horarioEntrada, int horarioSaida,
+    tipoTurno periodo
+  );
   Turno();
   ~Turno();
 
-//Getters
+  // Getters
   std::string getNomeTurno();
   int getHorarioEntrada();
   int getHorarioSaida();
   tipoTurno getPeriodo();
 
-//Setters
+  // Setters
   void setNomeTurno(std::string nomeTurno);
   void setHorarioEntrada(int horarioEntrada);
   void setHorarioSaida(int horarioSaida);

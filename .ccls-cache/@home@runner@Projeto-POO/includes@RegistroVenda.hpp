@@ -1,12 +1,12 @@
 #ifndef REGISTRO_VENDA_H
 #define REGISTRO_VENDA_H
 
+#include "./Estoque.hpp"
 #include "Data.hpp"
 #include "Lote.hpp"
-#include "./Estoque.hpp"
 #include <vector>
 
-class RegistroVenda{
+class RegistroVenda {
   std::string cliente;
   int cpfCnpj;
   std::string email;
@@ -15,25 +15,25 @@ class RegistroVenda{
   Data dataVenda;
   float precoUnitario;
   std::vector<int> idLotes;
- 
- 
-  
+
 public:
-  RegistroVenda(std::string cliente, int cpfCnpj, std::string email, int idProduto, int quantidade, Data dataVenda);
+  RegistroVenda(
+    std::string cliente, int cpfCnpj, std::string email, int idProduto,
+    int quantidade, Data dataVenda
+  );
   ~RegistroVenda();
-//getters
+  // getters
   std::string getCliente();
   int getCpfCnpj();
   std::string getEmail();
   int getIdProduto();
   int getQuantidade();
   Data getDataVenda();
-  std::vector <int> getLotes();
+  std::vector<int> getLotes();
   float getPrecoUnitario();
   float getValorVenda();
 
-//setters
-  void setDataVenda(Data data);
+  // setters
   void setCliente(std::string cliente);
   void setCpfCnpj(int cpfCnpj);
   void setEmail(std::string email);
@@ -44,11 +44,10 @@ public:
   void setPrecoUnitario();
   void setValorVenda();
 
-
-//outros metodos
-  //bool verificaVenda();
+  // outros metodos
+  // bool verificaVenda();
   void executaVenda();
   void printRegistro();
 };
 
-#endif 
+#endif

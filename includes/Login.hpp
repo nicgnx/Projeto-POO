@@ -18,7 +18,7 @@ private:
 public:
   static Login* getInstance();
 
-  Login* logar(Usuario*);
+  void logar(Usuario*);
   void deslogar();
   std::string getUsuarioNome();
   std::string getUsuarioSenha();

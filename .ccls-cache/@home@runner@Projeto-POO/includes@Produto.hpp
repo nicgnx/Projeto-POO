@@ -1,17 +1,19 @@
 #ifndef PRODUTO_H
 #define PRODUTO_H
 
-#include "../includes/Categoria.hpp"
-#include "../includes/PrecoProduto.hpp"
+#include "Categoria.hpp"
+#include "PrecoProduto.hpp"
+#include "Login.hpp"
+#include "../constants/PERMISSOES.hpp"
+
 #include <string>
 #include <vector>
-
 
 class Produto {
   static int* staticIdProduto;
   std::string nome;
   int idProduto;
-  vector <PrecoProduto*> precos;
+  vector<PrecoProduto*> precos;
   Categoria categoria;
   int loteMinimo;
   int estoqueMinimo;
@@ -19,14 +21,13 @@ class Produto {
 public:
   // Construtores e Destrutores
   Produto(
-    std::string nome, 
-    Categoria categoria, 
-    int loteMinimo, 
-    int estoqueMinimo,
+    std::string nome, Categoria categoria, int loteMinimo, int estoqueMinimo,
     PrecoProduto* preco
   );
   Produto();
-  Produto(std::string nome, int loteMinimo, int estoqueMinimo, PrecoProduto* preco);
+  Produto(
+    std::string nome, int loteMinimo, int estoqueMinimo, PrecoProduto* preco
+  );
   ~Produto();
 
   // Getters
@@ -46,7 +47,7 @@ public:
   void setEstoqueMinimo(int estoqueMinimo);
 
   // misc
-  void novoPreco(float precoBase,float percentualVariacao,Data data);
+  void novoPreco(float precoBase, float percentualVariacao, Data data);
   void novoPreco(PrecoProduto* preco);
 };
 

@@ -5,25 +5,25 @@
 #include "Usuario.hpp"
 #include <string>
 
-class Login
- {
-    private:
-      Usuario* usuario;
-      Data logadoEm;
-      static Login* instance;
+class Login {
+private:
+  Usuario* usuario;
+  Data logadoEm;
+  static Login* instance;
 
-      //Construtor e Destrutor
-      Login(Usuario*);
-      ~Login();
-      
+  // Construtor e Destrutor
+  Login();
+  ~Login();
 
-    public:
-      static Login* logar(Usuario*);
-      static Login* getInstance();
-      static void deslogar();
-      static std::string getUsuarioNome();
-      static std::string getUsuarioSenha();
-      static Usuario* getUsuario();
- };
+public:
+  static Login* getInstance();
 
-#endif //LOGIN_H
+  void logar(Usuario*);
+  void deslogar();
+  std::string getUsuarioNome();
+  std::string getUsuarioSenha();
+  Usuario* getUsuario();
+  bool verificaPermissao(int idPermissao);
+};
+
+#endif // LOGIN_H

@@ -11,7 +11,7 @@ public:
   Departamento(std::string departamento);
   Departamento();
   ~Departamento();
-  
+
   std::string getDepartamento();
   void setDepartamento(std::string departamento);
 };

@@ -54,7 +54,7 @@ int main() {
 
   // loga o funcionario
   Login* login = Login::getInstance();
-  login -> logar(user0);
+  login->logar(user0);
 
   Estoque* estoque = Estoque::getInstancia();
 

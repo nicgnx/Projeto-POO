@@ -11,7 +11,7 @@ Login* Login::getInstance() {
   return instance;
 }
 
-Login* Login::logar(Usuario* usuario) {
+void Login::logar(Usuario* usuario) {
   this->usuario = usuario;
   this->logadoEm = (new Data())->dateNow();
 }
