@@ -174,7 +174,7 @@ void Estoque::printListaDeProdutos() {
                "-----------------------------------------\n\n";
 }
 
-void Estoque::printListaDeLotes(int id) {
+void Estoque::printListaDeLotes(int idProduto) {
   for (int num = 0; num < this->lotes[idProduto].size(); num++) {
     std::cout << "Produto: " << this->produto[idProduto]->getNome()
               << "     ID: " << idProduto

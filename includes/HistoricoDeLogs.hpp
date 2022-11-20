@@ -22,7 +22,7 @@ private:
 public:
   // Operators
   HistoricoDeLogs(const HistoricoDeLogs&);
-  HistoricoDeLogs& HistoricoDeLogs = (const HistoricoDeLogs&);
+  HistoricoDeLogs& operator=(const HistoricoDeLogs&);
 
   // Getters
   static HistoricoDeLogs* getInstacia();

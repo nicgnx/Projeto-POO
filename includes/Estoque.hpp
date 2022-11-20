@@ -27,9 +27,6 @@ private:
   // Métodos Privados
   enum tipoRetorno { N_REALIZADO, REALIZADO, N_REALIZADO_MP, REALIZADO_MP };
   void auxPrintReabasteceEstoque(tipoRetorno mens, int idProduto);
-  void reabasteceEstoqueProduto(int idProduto);
-  void reabasteceEstoqueMP(int idMateriaPrima);
-  void retiraMateriaPrima(int idMateriaPrima, int quantidade);
 
 public:
   // Operators
@@ -65,4 +62,8 @@ public:
   void printListaDeProdutos();
   void printListaDeMateriasPrimas();
   void printListaDeLotes(int idProduto);
+
+  void reabasteceEstoqueProduto(int idProduto);
+  void reabasteceEstoqueMP(int idMateriaPrima);
+  void retiraMateriaPrima(int idMateriaPrima, int quantidade);
 };

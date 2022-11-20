@@ -98,4 +98,4 @@ void Empresa::setFrotaVeiculos(vector<Veiculo*> frotaVeiculos) {
   this->frotaVeiculos = frotaVeiculos;
 }
 
-void Empresa::setTurnos(vector<Turno*> turnos) { this->turnos = turnos }
+void Empresa::setTurnos(vector<Turno*> turnos) { this->turnos = turnos; }

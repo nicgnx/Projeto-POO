@@ -71,7 +71,7 @@ void RegistroVenda::executaVenda() {
   Estoque* estoque = Estoque::getInstancia();
   this->idLotes = estoque->retiraLotes(this->idProduto, this->quantidade);
   setPrecoUnitario();
-  setValorVenda();
+  // setValorVenda();
   printRegistro();
 }
 
@@ -89,7 +89,7 @@ void RegistroVenda::printRegistro() {
             << "\n";
   std::cout << "   Quantidade: " << this->quantidade << "\n";
   std::cout << "   Preço da unidade: " << this->precoUnitario << "\n";
-  std::cout << "   Valor Total: " << this->valorVenda << "\n";
+  // std::cout << "   Valor Total: " << this->valorVenda << "\n";
   std::cout << "   Lotes:";
   for (int num = 0; num < idLotes.size(); num++) {
     num == idLotes.size() - 1 ? std::cout << " " << idLotes[num] :

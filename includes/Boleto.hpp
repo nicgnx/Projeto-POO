@@ -3,7 +3,7 @@
 
 #include "../includes/PagamentoAbstrata.hpp"
 
-enum Periodo { 30, 60, 90 };
+enum Periodo { DIAS_30, DIAS_60, DIAS_90 };
 
 class Boleto : public PagamentoAbstrata {
 

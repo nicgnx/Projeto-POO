@@ -1,6 +1,8 @@
 #ifndef ITENS_DESEJADOS_H
 #define ITENS_DESEJADOS_H
 
+#include <string>
+
 class ItensDesejados {
 protected:
   std::string produto;

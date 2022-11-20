@@ -166,7 +166,7 @@ Data Data::operator-(Data &d2) {
   if (ticks < d2.getTicks()) // Tratamento de excecao se for tentada uma
                              // subtracao impossivel
     throw ExecaoCustomizada(
-        "Erro: Resultado eh data negativa, inverta parametros");
+        (char*)"Erro: Resultado eh data negativa, inverta parametros");
   else
     return aux;
 }
@@ -280,7 +280,7 @@ void Data::printData() {
     cout << hora << formatoData.getSeparadorHorario() << minuto
          << formatoData.getSeparadorHorario() << segundo << endl;
   } else // Tratamento de excecao de formato invalido
-    throw ExecaoCustomizada("Erro: Esperado argumento PT-BR ou EN-US");
+    throw ExecaoCustomizada((char*)"Erro: Esperado argumento PT-BR ou EN-US");
 }
 
 string Data::getData() {
@@ -299,7 +299,7 @@ string Data::getData() {
            formatoData.getSeparadorHorario() + to_string(minuto) +
            formatoData.getSeparadorHorario() + to_string(segundo);
   } else // Tratamento de excecao de formato invalido
-    throw ExecaoCustomizada("Erro: Esperado argumento PT-BR ou EN-US");
+    throw ExecaoCustomizada((char*)"Erro: Esperado argumento PT-BR ou EN-US");
   return data;
 }
 

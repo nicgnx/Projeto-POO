@@ -15,7 +15,7 @@ private:
 
   // Métodos
   void verificaTurno();
-  floar calculaDistancia();
+  float calculaDistancia();
   void defineRota();
 
 public:
@@ -33,6 +33,6 @@ public:
   void setCapacidade(int capacidade);
   void setTurno(Turno* turno);
   void setRotasFuncionarios(vector<Funcionario*> rotasFuncionarios);
-}
+};
 
 #endif // VEICULO_H

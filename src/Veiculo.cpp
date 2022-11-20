@@ -50,3 +50,7 @@ void Veiculo::verificaTurno() {
   }
   this->rotasFuncionarios = aux;
 }
+
+void Veiculo::defineRota() {
+  
+}

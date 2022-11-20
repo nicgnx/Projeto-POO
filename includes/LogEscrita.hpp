@@ -31,7 +31,7 @@ public:
   void setAtributoDepois(std::string atributoDepois);
 
   // Methods
-  void printLog() override;
+  void printLog();
 };
 
 #endif // LOG_ESCRITA_H

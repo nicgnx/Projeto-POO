@@ -6,9 +6,8 @@
 #include "../includes/RegistroVenda.hpp"
 #include "../includes/Usuario.hpp"
 
-#include "../constants/PERMISSOES.h"
+#include "../constants/PERMISSOES.hpp"
 
-struct Permissoes PERMISSOES;
 enum tipoPessoa { PF, PJ };
 
 class Cliente : public Usuario {

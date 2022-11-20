@@ -8,7 +8,7 @@ PedidoDeCompra::~PedidoDeCompra() {}
 // getters
 float PedidoDeCompra::getValor() { return this->valor; }
 Data PedidoDeCompra::getData() { return this->data; }
-pagamentoAbstrata* PedidoDeCompra::getRegistroPagamento() {
+PagamentoAbstrata* PedidoDeCompra::getRegistroPagamento() {
   return this->registroPagamento;
 }
 std::vector<RegistroVenda*> PedidoDeCompra::getRegistroVenda() {

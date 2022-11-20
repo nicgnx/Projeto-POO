@@ -53,3 +53,12 @@ g++ -std=c++14 -Wall main.cpp -o main.exe
 
 ```
 
+ou 
+
+```
+
+cls
+g++ -o ./program/main.exe ./program/main.cpp ./src/*.cpp
+.\program\main.exe
+
+```

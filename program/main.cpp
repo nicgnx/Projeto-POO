@@ -19,6 +19,7 @@ int localizaID(std::string nome) {
 }
 
 int main() {
+  std::cout << "Welcome!" << std::endl;
   /*
 
 
@@ -88,12 +89,11 @@ int main() {
   );
 
   // Reabastece estoque
-
-  estoque->reabasteceEstoque(localizaID("Adubo Nutrien"));
-  estoque->reabasteceEstoque(localizaID("Adubo Yara Brasil"));
-  estoque->reabasteceEstoque(localizaID("Adubo PhosAgro"));
-  estoque->reabasteceEstoque(localizaID("Adubo Mosaic"));
-  estoque->reabasteceEstoque(localizaID("Adubo Heringer"));
+  estoque->reabasteceEstoqueProduto(localizaID("Adubo Nutrien"));
+  estoque->reabasteceEstoqueProduto(localizaID("Adubo Yara Brasil"));
+  estoque->reabasteceEstoqueProduto(localizaID("Adubo PhosAgro"));
+  estoque->reabasteceEstoqueProduto(localizaID("Adubo Mosaic"));
+  estoque->reabasteceEstoqueProduto(localizaID("Adubo Heringer"));
   std::cout << "\n\n\n";
   estoque->printListaDeProdutos();
   std::cout << "\n\n\n";

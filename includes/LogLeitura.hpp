@@ -26,7 +26,7 @@ public:
 
   // Methods
 
-  void printLog() override;
+  void printLog();
 };
 
 #endif // LOG_LEITURA_H

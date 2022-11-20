@@ -1,7 +1,5 @@
 #include "../includes/PagamentoAbstrata.hpp"
 
-PagamentoAbstrata::~PagamentoAbstrata(){};
-
 Data PagamentoAbstrata::getData() { return this->data; };
 
 float PagamentoAbstrata::getValorAPagar() { return this->valorAPagar; };

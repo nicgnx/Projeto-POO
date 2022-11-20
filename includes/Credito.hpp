@@ -3,7 +3,7 @@
 
 #include "../includes/PagamentoAbstrata.hpp"
 
-enum Parcelamento { A VISTA, x1, x2, x3, x4, x5, x6 };
+enum Parcelamento { A_VISTA, x1, x2, x3, x4, x5, x6 };
 
 class Credito : public PagamentoAbstrata {
 

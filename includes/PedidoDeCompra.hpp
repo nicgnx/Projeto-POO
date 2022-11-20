@@ -23,7 +23,7 @@ public:
   // getters
   float getValor();
   Data getData();
-  pagamentoAbstrata* getRegistroPagamento();
+  PagamentoAbstrata* getRegistroPagamento();
   std::vector<RegistroVenda*> getRegistroVenda();
 
   // setters

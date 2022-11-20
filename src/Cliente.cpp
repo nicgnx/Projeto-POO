@@ -31,28 +31,28 @@ void Cliente::compra(int idProduto, int quantidade, Data dataCompra) {
   // puxa as permissoes desse cliente
   std::vector<Permissao*> permissoes = this->getPermissao();
 
-  for (Permissao* permissao : permissoes) {
-    if (permissao->getIdPermissao() == PERMISSOES.COMPRAR_PRODUTO) {
-    }
-  }
+  // for (Permissao* permissao : permissoes) {
+  //   if (permissao->getIdPermissao() == PERMISSOES.COMPRAR_PRODUTO) {
+  //   }
+  // }
 
-  RegistroVenda pedido(
-    this->nome, this->cpfCnpj, this->email, idProduto, quantidade, dataCompra
-  );
+  // RegistroVenda pedido(
+  //   this->nome, this->cpfCnpj, this->email, idProduto, quantidade, dataCompra
+  // );
 
-  if (pedido.verificaVenda()) {
-    pedido.executaVenda();
-  } else {
-    std::cout << "-------------------------------------------------------------"
-                 "---------------------------------------\n\n";
-    std::cout << "                             Não foi possível realizar a "
-                 "compra\n\n";
-    std::cout << "        Não possuimos a quantidade desejada do produto [ ";
-    std::cout << Estoque::getInstancia()->getProduto(idProduto)->getNome()
-              << " ] no momento\n\n";
-    std::cout << "        Quantidade em estoque: "
-              << Estoque::getInstancia()->verificaEstoque(idProduto) << "\n\n";
-    std::cout << "-------------------------------------------------------------"
-                 "---------------------------------------\n\n";
-  }
+  // if (pedido.verificaVenda()) {
+  //   pedido.executaVenda();
+  // } else {
+  //   std::cout << "-------------------------------------------------------------"
+  //                "---------------------------------------\n\n";
+  //   std::cout << "                             Não foi possível realizar a "
+  //                "compra\n\n";
+  //   std::cout << "        Não possuimos a quantidade desejada do produto [ ";
+  //   std::cout << Estoque::getInstancia()->getProduto(idProduto)->getNome()
+  //             << " ] no momento\n\n";
+  //   std::cout << "        Quantidade em estoque: "
+  //             << Estoque::getInstancia()->verificaEstoque(idProduto) << "\n\n";
+  //   std::cout << "-------------------------------------------------------------"
+  //                "---------------------------------------\n\n";
+  // }
 }

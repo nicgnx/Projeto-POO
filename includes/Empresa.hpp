@@ -42,7 +42,7 @@ private:
 public:
   // Operators
   Empresa(const Empresa&);
-  Empresa& Empresa = (const Empresa&);
+  Empresa& operator=(const Empresa&);
 
   // Getters
   Empresa* getInstancia();

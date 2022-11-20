@@ -23,7 +23,7 @@ public:
   void setMetodo(std::string metodo);
 
   // Methods
-  void printLog() override;
+  void printLog();
 };
 
 #endif // LOG_EXCECAO_H
