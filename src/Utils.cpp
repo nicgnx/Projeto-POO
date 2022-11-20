@@ -1,12 +1,10 @@
 #include "../includes/Utils.hpp"
 
-Utils::Utils() { }
+Utils::Utils() {}
 
 bool Utils::verificaCPF(std::string cpf) {
   // CPF deve estar sem pontos, traços ou espaço em branco
-  int digito1,
-      digito2,
-      temp = 0;
+  int digito1, digito2, temp = 0;
 
   // verifica se tem 11 digitos
   if (cpf.length() != 11) {
@@ -19,33 +17,33 @@ bool Utils::verificaCPF(std::string cpf) {
   }
 
   // verifica o primeiro digito verificador
-  for(char i = 0; i < 9; i++)
-      temp += (cpf[i] * (10 - i));
+  for (char i = 0; i < 9; i++)
+    temp += (cpf[i] * (10 - i));
 
   temp %= 11;
 
-  if(temp < 2)
-      digito1 = 0;
+  if (temp < 2)
+    digito1 = 0;
   else
-      digito1 = 11 - temp;
+    digito1 = 11 - temp;
 
   // verifica o segundo digito verificador
   temp = 0;
-  for(char i = 0; i < 10; i++)
-      temp += (cpf[i] * (11 - i));
+  for (char i = 0; i < 10; i++)
+    temp += (cpf[i] * (11 - i));
 
   temp %= 11;
 
-  if(temp < 2)
+  if (temp < 2)
     digito2 = 0;
   else
     digito2 = 11 - temp;
 
   // compara os digitos verificadores com os informados pelo cliente
-  if(digito1 == cpf[9] && digito2 == cpf[10])
+  if (digito1 == cpf[9] && digito2 == cpf[10])
     return true;
   else
-      return false;
+    return false;
 }
 
 bool Utils::verificaCNPJ(std::string cnpj) {
@@ -64,4 +62,3 @@ bool Utils::verificaCNPJ(std::string cnpj) {
   // se chegou até aqui, é CNPJ válido
   return true;
 }
-

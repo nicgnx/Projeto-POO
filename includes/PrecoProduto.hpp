@@ -10,24 +10,19 @@ class PrecoProduto {
 
 public:
   // Construtores e Destrutores
-  PrecoProduto(
-    float precoBase, 
-    float percentualVariacao, 
-    Data dataVariacao
-  );
+  PrecoProduto(float precoBase, float percentualVariacao, Data dataVariacao);
   PrecoProduto();
   ~PrecoProduto();
 
   // Getters
   float getPrecoBase();
   float getPercentualVariacao();
-  Data getDataVariacao(); 
+  Data getDataVariacao();
 
   // Setters
   void setPrecoBase(float precoBase);
   void setPercentualVariacao(float percentualVariacao);
   void setDataVariacao(Data dataVariacao);
 };
-
 
 #endif // PRECO_PRODUTO_H

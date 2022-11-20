@@ -29,14 +29,16 @@ private:
 public:
   Data();                   // Construtor default(PT-BR)
   Data(Formato valFormato); // Construtor default de formato de data especifico
-  Data(int valAno, int valMes, int valDia, int valHora, int valMin,
-       int valSeg);          // Construtor com argumentos e formato default
+  Data(
+    int valAno, int valMes, int valDia, int valHora, int valMin,
+    int valSeg
+  );                         // Construtor com argumentos e formato default
   Data(long valTicks);       // Construtor a partir de ticks
   virtual ~Data();           // Destrutor
-  bool operator==(Data &d2); // Sobrecarga do operador de comparacao eq
-  bool operator<(Data &d2);  // Sobrecarga do operador de comparacao lt
-  bool operator>(Data &d2);  // Sobrecarga do operator de comparacao gt
-  Data operator-(Data &d2);  // Sobrecarga do operador de subtracao
+  bool operator==(Data& d2); // Sobrecarga do operador de comparacao eq
+  bool operator<(Data& d2);  // Sobrecarga do operador de comparacao lt
+  bool operator>(Data& d2);  // Sobrecarga do operator de comparacao gt
+  Data operator-(Data& d2);  // Sobrecarga do operador de subtracao
 
   // Metodos get:
   int getAno();
@@ -58,9 +60,9 @@ public:
   void setTicks(long valTicks);
   void setFormato(Formato valFormato);
 
-  bool validaData(); // Verifica se todos os valores dos atributos estao dentro
-                     // dos limites possiveis
-  Data dateNow(); // Retorna a data do presente momento
+  bool validaData(); // Verifica se todos os valores dos atributos estao
+                     // dentro dos limites possiveis
+  Data dateNow();    // Retorna a data do presente momento
   void
   printData(); // Imprime a data na tela de acordo com o formato ja atribuido
   string getData();   // Retorna a data no formato de string

@@ -1,84 +1,93 @@
-#include "../includes/Funcionario.hpp"
-#include "../includes/Cliente.hpp"
-#include "../includes/Estoque.hpp"
-#include "../includes/Permissao.hpp"
 #include <iostream>
 
+#include "../includes/Funcionario.hpp"
+#include "../includes/Cliente.hpp"
+#include "../includes/Usuario.hpp"
+#include "../includes/Permissao.hpp"
+#include "../includes/Login.hpp"
+#include "../includes/Estoque.hpp"
+#include "../includes/PrecoProduto.hpp"
 
-int localizaID(std::string nome){
-  Estoque* estoque = Estoque::getInstancia();
-  auto listaDeProdutos = estoque->getListaDeProdutos();
-  bool go = true;
-  for(auto it = listaDeProdutos.begin();go || it != listaDeProdutos.end();++it){
-    if(listaDeProdutos[it->first]->getNome() == nome){
-      go = false;
-      return listaDeProdutos[it->first]->getIdProduto();
-    }   
-  } std::cout << "Esse produto não existe";
-}
+#include "../constants/PERMISSOES.hpp"
 
+// instancia as permissoes do sistema (hardcoded mesmo), conforme a struct declarada em /constants
+Permissao* perm1 = new Permissao(PERMISSOES::CADASTRAR_EDITAR_FUNCIONARIO, "Permissao para cadastrar/editar funcionario");
+Permissao* perm2 = new Permissao(PERMISSOES::CADASTRAR_EDITAR_CLIENTE, "Permissao para cadastrar/editar cliente");
+Permissao* perm3 = new Permissao(PERMISSOES::CADASTRAR_EDITAR_CLIENTE, "Permissao para editar salario");
+Permissao* perm4 = new Permissao(PERMISSOES::DEMITIR_FUNCIONARIO, "Permissao para demitir funcionario");
+Permissao* perm5 = new Permissao(PERMISSOES::CADASTRAR_EDITAR_PRODUTO, "Permissao para cadastrar/editar produto");
+Permissao* perm6 = new Permissao(PERMISSOES::EMITIR_ORDEM_PRODUCAO, "Permissao para emitir ordem de produção");
+Permissao* perm7 = new Permissao(PERMISSOES::COMPRAR_PRODUTO, "Permissao para comprar produto");
+Permissao* perm8 = new Permissao(PERMISSOES::EDITAR_PERMISSOES, "Permissao para editar permissoes de usuarios");
+Permissao* perm9 = new Permissao(PERMISSOES::EDITAR_EMPRESA, "Permissao para editar dados da empresa");
+Permissao* perm10 = new Permissao(PERMISSOES::MANUSEAR_ESTOQUE, "Permissao para manusear o estoque");
 
 int main() {
-/*
-  
+  std::cout << "Welcome! - Permissons Test" << std::endl;
 
-  Funcionario Alan("Alan", "125.254.366-98", "alan@testeemail.com","senha123", Data (1985, 8, 24, 0, 0, 0),
-                   "Rua dos Bobos nº 0", "202233665", Cargo("Estagiario"), Departamento ("IT"), Historico (Data(2022,9,29,15,59,00),"Contratação do Alan"),Salario (1000.95,0,Data(2022,29,9,15,59,00), Gerencia));
+  Usuario* user0 = new Funcionario(
+    "Alan", 
+    "125.254.366-98",
+    "alan@testeemail.com",
+    "senha123", 
+    Data (1985, 8, 24, 0, 0, 0), 
+    "Rua dos Bobos nº 0", 
+    "202233665", 
+    Cargo("Estagiario"), 
+    Departamento ("IT"),
+    Historico(Data(2022,9,29,15,59,00),"Contratação do Alan"),
+    Salario(1000.95,0, Data(2022,29,9,15,59,00), Gerencia)
+  );
+  std::vector<Permissao*> user0Permissions = { perm1, perm2, perm5 };
+  user0->setPermissoes(user0Permissions);
 
-  
-  Funcionario Cesar("Cesar", "125.214.366-98", "cesar@testeemail.com","senha321", Data (1975, 8, 12, 0, 0, 0),
-                   "Rua conceicao nº 12", "202233665", Cargo("Tecnico"), Departamento ("Engenharia"), Historico (Data(2022,9,29,15,59,00),"Contratação do Cesar"),Salario (2000.95,0,Data(2022,29,9,15,59,00), Gerencia));
-  
+  Usuario* user1 = new Cliente(
+    "Pedro Cliente", 
+    "125.254.366-98",
+    "pedrocliente@testeemail.com",
+    "senha123", 
+    PF,
+    9999999
+  );
+  std::vector<Permissao*> user1Permissions = { perm7 };
+  user1->setPermissoes(user1Permissions);
 
-  
-  std::cout << " Funcionario: " << Alan.getNome() << "\n CPF: " << Alan.getcpfCnpj() << "\n e-mail: " << Alan.getEmail() << "\n Endereço: " << Alan.getEndereco() << "\n Matricula: " << Alan.getMatricula() << "\n Salario: " << Alan.getSalarioAtual() << "\n Cargo: " << Alan.getCargo().getCargo() << "\n Departamento: " << Alan.getDepartamento().getDepartamento() << "\n Historico: \n   - Data: ";
-Alan.getHistorico().getData().printData();
-std::cout << "   - Registro: " << Alan.getHistorico().getRegistro() << "\n Salario: " << Alan.getSalarioAtual() << "\n \n \n"; 
+  // loga o funcionario
+  Login* login = Login::getInstance();
+  login->logar(user0);
 
-  if(Alan.getSenha() == "senha123"){
-    std::cout << "senha ok";
-  }
-
-  Permissao func_nivel1(1,"altera salario, adiciona historico");
-
-  if(funcionario.getIdPermissao() == 1){
-    Alan.setNovoSalario(Salario (2000.95,0,Data(2022,29,9,15,59,00));
-  }  
-*/
-
-  Cliente agroBrasil("Agro Brasil","comercial@agrobrasil.com.br", "senha", "1236548", PJ, 551125487);
   Estoque* estoque = Estoque::getInstancia();
 
-  // Cadastrar Produtos
-  
-  estoque->cadastraProduto("Adubo Nutrien",100,35,new PrecoProduto(29.90,0.0, Data(2022,10,8,22,0,0)));
-  estoque->cadastraProduto("Adubo PhosAgro",100,325,new PrecoProduto(59.90,0.0, Data(2022,10,8,22,0,0)));
-  estoque->cadastraProduto("Adubo Yara Brasil",50,100,new PrecoProduto(39.90,0.0, Data(2022,10,8,22,0,0)));
-  estoque->cadastraProduto("Adubo Mosaic",75,80,new PrecoProduto(89.90,0.0, Data(2022,10,8,22,0,0)));
-  estoque->cadastraProduto("Adubo Heringer",30,470,new PrecoProduto(49.90,0.0, Data(2022,10,8,22,0,0)));
+  try {
+    // cadastrar produto -> funcionario tem permissao
+    estoque->cadastraProduto(
+      "Produto X",
+      20,
+      10,
+      new PrecoProduto(520.12, 0, Data().dateNow() )
+    );
+    std::cout << "Produto cadastrado com sucesso pelo funcionario" << std::endl;
+  } catch(char const* e) {
+    std::cerr << e << '\n';
+  }
 
-  // Reabastece estoque
-  
-  estoque->reabasteceEstoque(localizaID("Adubo Nutrien"));
-  estoque->reabasteceEstoque(localizaID("Adubo Yara Brasil"));
-  estoque->reabasteceEstoque(localizaID("Adubo PhosAgro"));
-  estoque->reabasteceEstoque(localizaID("Adubo Mosaic"));
-  estoque->reabasteceEstoque(localizaID("Adubo Heringer"));
-  std::cout << "\n\n\n";
-  estoque->printListaDeProdutos();
-  std::cout << "\n\n\n";
+  // loga o cliente
+  login -> deslogar();
+  login -> logar(user1);
 
-  // Compra produtos
-  
-  agroBrasil.compra(localizaID("Adubo Nutrien"), 61, Data(2022,10,8,22,0,0));
-  agroBrasil.compra(localizaID("Adubo Yara Brasil"), 83, Data(2022,10,8,22,0,0));
-  agroBrasil.compra(localizaID("Adubo PhosAgro"), 27, Data(2022,10,8,22,0,0));
-  agroBrasil.compra(localizaID("Adubo Mosaic"), 69, Data(2022,10,8,22,0,0));
-  agroBrasil.compra(localizaID("Adubo Mosaic"), 130, Data(2022,10,8,22,0,0));
-  agroBrasil.compra(localizaID("Adubo Heringer"), 54, Data(2022,10,8,22,0,0));
-  std::cout << "\n\n\n";
-  estoque->printListaDeProdutos();
-  std::cout << "\n\n\n";
+  try {
+     // cadastrar produto -> cliente nao tem permissao
+    Estoque* estoque = Estoque::getInstancia();
+    estoque->cadastraProduto(
+      "Produto Y",
+      40,
+      15,
+      new PrecoProduto(700, 0, Data().dateNow() )
+    );
+    std::cout << "Produto cadastrado com sucesso pelo cliente" << std::endl;
+  } catch(char const* e) {
+    std::cerr << e << '\n';
+  }
 
-  
+  return 0;
 }

@@ -11,7 +11,6 @@ class Permissao {
   std::string descricao;
 
 public:
-
   Permissao();
   Permissao(int idPermissao, std::string descricao);
 
@@ -20,8 +19,6 @@ public:
 
   void setIdPermissao(int idPermissao);
   void setDescricao(std::string permissao);
-
-
 };
 
 #endif // PERMISSAO_H

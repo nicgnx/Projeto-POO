@@ -1,24 +1,22 @@
 #ifndef ITENS_DESEJADOS_H
 #define ITENS_DESEJADOS_H
 
+#include <string>
+
 class ItensDesejados {
 protected:
   std::string produto;
   int idProduto;
   float precoUnitario;
-  int quantidade; 
+  int quantidade;
   float valorTotal;
   bool disponibilidade;
 
 public:
   // Construtores e Destrutores
   ItensDesejados(
-    std::string produto,
-    int idProduto,
-    float precoUnitario,
-    int quantidade,
-    float valorTotal,
-    bool disponibilidade
+    std::string produto, int idProduto, float precoUnitario, int quantidade,
+    float valorTotal, bool disponibilidade
   );
   ItensDesejados();
   ~ItensDesejados();
@@ -27,7 +25,7 @@ public:
   std::string getProduto();
   int getIdProduto();
   float getPrecoUnitario();
-  int getQuantidade(); 
+  int getQuantidade();
   float getValorTotal();
   bool getDisponibilidade();
 
@@ -35,7 +33,7 @@ public:
   void setProduto(std::string produto);
   void setIdProduto(int idProduto);
   void setPrecoUnitario(float precoUnitario);
-  void setQuantidade(int quantidade); 
+  void setQuantidade(int quantidade);
   void setValorTotal(float valorTotal);
   void setDisponibilidade(bool disponibilidade);
 
@@ -43,6 +41,5 @@ public:
   float calculaCompra(float precoUnitario, int quantidade);
   bool verificaDisponibilidade(int idProduto);
 };
-
 
 #endif // ITENS_DESEJADOS_H

@@ -1,37 +1,44 @@
 #include "../includes/Login.hpp"
 
-Login* Login::instance = nullptr;
-
-Login::Login(Usuario* usuario) {
-  this->logadoEm = logadoEm.dateNow();
-  this->usuario = usuario;
-}
-
-Login::~Login() {
-  this->instance = nullptr;
-}
-
-Login* Login::logar(Usuario* usuario) { 
-  if (Login::instance == nullptr) {
-    Login::instance = new Login(usuario);
-    }
-  return Login::instance;
-}
+Login::Login() {}
+Login::~Login() {}
+Login* Login::instance = NULL;
 
 Login* Login::getInstance() {
-  return Login::instance;
+  if (instance == NULL) {
+    instance = new Login();
+  }
+  return instance;
+}
+
+void Login::logar(Usuario* usuario) {
+  this->usuario = usuario;
+  this->logadoEm = (new Data())->dateNow();
 }
 
 void Login::deslogar() {
-  Login::getInstance()->~Login();
+  this->usuario = NULL;
 }
 
 std::string Login::getUsuarioNome() {
-  return Login::getInstance()->usuario->getNome();
+  return this->usuario->getNome();
 }
-Usuario* Login::getUsuario() {
-  return Login::getInstance()->usuario;
-}
+
+Usuario* Login::getUsuario() { return this->usuario; }
+
 std::string Login::getUsuarioSenha() {
-  return Login::getInstance()->usuario->getSenha();
+  return this->usuario->getSenha();
+}
+
+bool Login::verificaPermissao(int idPermissao) {
+  // puxa as permissoes do usuario logado
+  std::vector<Permissao*> permissoes = this->usuario->getPermissao();
+
+  for (Permissao* permissao : permissoes) {
+    if (permissao->getIdPermissao() == idPermissao) {
+      return true;
+    }
+  }
+
+  return false;
 }

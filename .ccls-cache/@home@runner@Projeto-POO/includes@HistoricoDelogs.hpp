@@ -3,20 +3,44 @@
 
 #include <map>
 #include <vector>
-#include "LogAbstrata.hpp"
+#include "LogLeitura.hpp"
+#include "LogEscrita.hpp"
+#include "LogExcecao.hpp"
 #include "Data.hpp"
 
+enum tipoLog {Escrita,Leitura,Excecao};
 
-class historicoDeLogs {
+class HistoricoDeLogs {
   private:
-    std::map <int, LogAbstrata*> historico;
+    static HistoricoDeLogs* historicoDeLogs;
+    HistoricoDeLogs();
+    ~HistoricoDeLogs();
+    std::map <int, vector<LogLeitura*>> historicoLeitura;
+    std::map <int, vector<LogEscrita*>> historicoEscrita;
+    std::map <int, vector<LogExcecao*>> historicoExcecao;
+
 
   public:
-    historicoDeLogs();
-    ~historicoDeLogs();
-    std::vector <LogAbstrata*> listaLog(Data, Data);
+
+    //Operators 
+    HistoricoDeLogs(const HistoricoDeLogs&);
+    HistoricoDeLogs& HistoricoDeLogs=(const HistoricoDeLogs&);
+
+    //Getters
+    static HistoricoDeLogs* getInstacia();
+    std::vector <LogLeitura*> listaLogLeitura(int idUsuario,Data inicial, Data final);
+    std::vector <LogEscrita*> listaLogEscrita(int idUsuario,Data inicial, Data final);
+    std::vector <LogExcecao*> listaLogExcecao(int idUsuario,Data inicial, Data final);
+
+    //Setters
+    void setLogLeitura(int idUsuario, LogLeitura *Log);
+    void setLogEscrita(int idUsuario, LogEscrita *Log);
+    void setLogExcecao(int idUsuario, LogExcecao *Log);
+
+    //Methods
+    void printLog(tipoLog log,int idUsuario, Data inicial, Data final);
     
-}
+};
 
 
 

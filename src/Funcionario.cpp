@@ -1,9 +1,13 @@
 #include "../includes/Funcionario.hpp"
 
-//Construtores e Destrutores
+// Construtores e Destrutores
 Funcionario::Funcionario() {}
 
-Funcionario::Funcionario(std::string nome,std::string cpfCnpj,std::string email,std::string senha, Data dataNascimento, std::string endereco,std::string matricula, Cargo cargo, Departamento departamento, Historico historico, Salario salario){
+Funcionario::Funcionario(
+  std::string nome, std::string cpfCnpj, std::string email, std::string senha,
+  Data dataNascimento, std::string endereco, std::string matricula, Cargo cargo,
+  Departamento departamento, Historico historico, Salario salario
+) {
   this->nome = nome;
   this->cpfCnpj = cpfCnpj;
   this->email = email;
@@ -19,7 +23,7 @@ Funcionario::Funcionario(std::string nome,std::string cpfCnpj,std::string email,
 
 Funcionario::~Funcionario() {}
 
-//Getters
+// Getters
 Data Funcionario::getDataNascimento() { return this->dataNascimento; }
 
 std::string Funcionario::getEndereco() { return this->endereco; }
@@ -28,11 +32,9 @@ std::string Funcionario::getMatricula() { return this->matricula; }
 
 Cargo Funcionario::getCargo() { return this->cargo; }
 
-Historico Funcionario::getHistorico() {
-  return this->historico.back();
-}
+Historico Funcionario::getHistorico() { return this->historico.back(); }
 
-vector <Historico> Funcionario::getHistoricoCompleto(){
+vector<Historico> Funcionario::getHistoricoCompleto() {
   return this->historico;
 }
 Departamento Funcionario::getDepartamento() { return this->departamento; }
@@ -42,11 +44,9 @@ double Funcionario::getSalarioAtual() {
   return salario.getSalarioBase();
 }
 
-Turno* Funcionario::getTurno(){
-  return this->turno;
-}
+Turno* Funcionario::getTurno() { return this->turno; }
 
-//Setters
+// Setters
 void Funcionario::setDataNascimento(Data dataNascimento) {
   this->dataNascimento = dataNascimento;
 }
@@ -73,6 +73,4 @@ void Funcionario::setNovoSalario(Salario salario) {
   this->salario.push_back(salario);
 }
 
-void Funcionario::setTurno(Turno *turno){
-  this->turno = turno;
-}
+void Funcionario::setTurno(Turno* turno) { this->turno = turno; }

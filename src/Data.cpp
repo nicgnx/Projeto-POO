@@ -16,10 +16,10 @@ int bissexto(int year) {
 }
 
 int monthToDays(int month) {
-  return month == 2   ? 28
-         : month <= 7 ? 30 + (month % 2)
-         : month > 7  ? 31 - (month % 2)
-                      : 31;
+  return month == 2 ? 28 :
+         month <= 7 ? 30 + (month % 2) :
+         month > 7  ? 31 - (month % 2) :
+                      31;
 }
 
 void Data::ticksToDate() {
@@ -35,7 +35,7 @@ void Data::ticksToDate() {
 
   while (availableTicks >= YEAR_TO_SECONDS && !stopYears) {
     availableTicks -=
-        (YEAR_TO_SECONDS + (bissexto(this->ano) * DAY_TO_SECONDS));
+      (YEAR_TO_SECONDS + (bissexto(this->ano) * DAY_TO_SECONDS));
     this->ano++;
     if (bissexto(this->ano) == 1) {
       if (availableTicks < (YEAR_TO_SECONDS + DAY_TO_SECONDS)) {
@@ -110,8 +110,9 @@ Data::Data(Formato valFormato) {
   validaData();
 }
 
-Data::Data(int valAno, int valMes, int valDia, int valHora, int valMin,
-           int valSeg) {
+Data::Data(
+  int valAno, int valMes, int valDia, int valHora, int valMin, int valSeg
+) {
   ano = valAno;
   mes = valMes;
   dia = valDia;
@@ -133,40 +134,45 @@ Data::~Data() {}
 
 // Operadores:
 
-bool Data::operator==(Data &d2) {
-  return ((ano == d2.ano) && (mes == d2.mes) && (dia == d2.dia) &&
-              (hora == d2.hora) && (minuto == d2.minuto) &&
-              (segundo == d2.segundo) ||
-          (ticks == d2.ticks));
+bool Data::operator==(Data& d2) {
+  return (
+    (ano == d2.ano) && (mes == d2.mes) && (dia == d2.dia) &&
+      (hora == d2.hora) && (minuto == d2.minuto) && (segundo == d2.segundo) ||
+    (ticks == d2.ticks)
+  );
 }
 
-bool Data::operator<(Data &d2) {
-  return ((ano < d2.ano) || (ano == d2.ano && mes < d2.mes) ||
-          (ano == d2.ano && mes == d2.mes && dia < d2.dia) ||
-          (ano == d2.ano && mes == d2.mes && dia == d2.dia && hora < d2.hora) ||
-          (ano == d2.ano && mes == d2.mes && dia == d2.dia && hora == d2.hora &&
-           minuto < d2.minuto) ||
-          (ano == d2.ano && mes == d2.mes && dia == d2.dia && hora == d2.hora &&
-           minuto == d2.minuto && segundo < d2.segundo));
+bool Data::operator<(Data& d2) {
+  return (
+    (ano < d2.ano) || (ano == d2.ano && mes < d2.mes) ||
+    (ano == d2.ano && mes == d2.mes && dia < d2.dia) ||
+    (ano == d2.ano && mes == d2.mes && dia == d2.dia && hora < d2.hora) ||
+    (ano == d2.ano && mes == d2.mes && dia == d2.dia && hora == d2.hora &&
+     minuto < d2.minuto) ||
+    (ano == d2.ano && mes == d2.mes && dia == d2.dia && hora == d2.hora &&
+     minuto == d2.minuto && segundo < d2.segundo)
+  );
 }
 
-bool Data::operator>(Data &d2) {
+bool Data::operator>(Data& d2) {
   return !(
-      (ano < d2.ano) || (ano == d2.ano && mes < d2.mes) ||
-      (ano == d2.ano && mes == d2.mes && dia < d2.dia) ||
-      (ano == d2.ano && mes == d2.mes && dia == d2.dia && hora < d2.hora) ||
-      (ano == d2.ano && mes == d2.mes && dia == d2.dia && hora == d2.hora &&
-       minuto < d2.minuto) ||
-      (ano == d2.ano && mes == d2.mes && dia == d2.dia && hora == d2.hora &&
-       minuto == d2.minuto && segundo < d2.segundo));
+    (ano < d2.ano) || (ano == d2.ano && mes < d2.mes) ||
+    (ano == d2.ano && mes == d2.mes && dia < d2.dia) ||
+    (ano == d2.ano && mes == d2.mes && dia == d2.dia && hora < d2.hora) ||
+    (ano == d2.ano && mes == d2.mes && dia == d2.dia && hora == d2.hora &&
+     minuto < d2.minuto) ||
+    (ano == d2.ano && mes == d2.mes && dia == d2.dia && hora == d2.hora &&
+     minuto == d2.minuto && segundo < d2.segundo)
+  );
 }
 
-Data Data::operator-(Data &d2) {
+Data Data::operator-(Data& d2) {
   Data aux(ticks - d2.getTicks());
   if (ticks < d2.getTicks()) // Tratamento de excecao se for tentada uma
                              // subtracao impossivel
     throw ExecaoCustomizada(
-        "Erro: Resultado eh data negativa, inverta parametros");
+      (char*)"Erro: Resultado eh data negativa, inverta parametros"
+    );
   else
     return aux;
 }
@@ -239,17 +245,13 @@ void Data::setFormato(Formato valFormato) { formatoData = valFormato; }
 
 bool Data::validaData() {
   int condicao = 1;
-  if ((segundo < 0) || (minuto < 0) || (hora < 0) || (dia < 0) || (mes < 0) ||
-      (ano < 1970))
+  if ((segundo < 0) || (minuto < 0) || (hora < 0) || (dia < 0) || (mes < 0) || (ano < 1970))
     condicao = 0;
   else if ((segundo > 59) || (minuto > 59) || (hora > 23) || (mes > 12))
     condicao = 0;
-  else if ((dia > 31) &&
-           ((mes == 1) || (mes == 3) || (mes == 5) || (mes == 7) ||
-            (mes == 8) || (mes == 10) || (mes == 12)))
+  else if ((dia > 31) && ((mes == 1) || (mes == 3) || (mes == 5) || (mes == 7) || (mes == 8) || (mes == 10) || (mes == 12)))
     condicao = 0;
-  else if ((dia > 30) &&
-           ((mes == 4) || (mes == 6) || (mes == 9) || (mes == 11)))
+  else if ((dia > 30) && ((mes == 4) || (mes == 6) || (mes == 9) || (mes == 11)))
     condicao = 0;
   if ((ano % 400 == 0) || ((ano % 4 == 0) && (ano % 100 != 0))) {
     if ((mes == 2) && (dia > 29))
@@ -280,7 +282,7 @@ void Data::printData() {
     cout << hora << formatoData.getSeparadorHorario() << minuto
          << formatoData.getSeparadorHorario() << segundo << endl;
   } else // Tratamento de excecao de formato invalido
-    throw ExecaoCustomizada("Erro: Esperado argumento PT-BR ou EN-US");
+    throw ExecaoCustomizada((char*)"Erro: Esperado argumento PT-BR ou EN-US");
 }
 
 string Data::getData() {
@@ -291,7 +293,6 @@ string Data::getData() {
            to_string(ano) + " " + to_string(hora) +
            formatoData.getSeparadorHorario() + to_string(minuto) +
            formatoData.getSeparadorHorario() + to_string(segundo);
-
   } else if (strcmp(formatoData.getNome().c_str(), "EN-US") == 0) {
     data = std::to_string(ano) + formatoData.getSeparadorData() +
            std::to_string(mes) + formatoData.getSeparadorData() +
@@ -299,7 +300,7 @@ string Data::getData() {
            formatoData.getSeparadorHorario() + to_string(minuto) +
            formatoData.getSeparadorHorario() + to_string(segundo);
   } else // Tratamento de excecao de formato invalido
-    throw ExecaoCustomizada("Erro: Esperado argumento PT-BR ou EN-US");
+    throw ExecaoCustomizada((char*)"Erro: Esperado argumento PT-BR ou EN-US");
   return data;
 }
 

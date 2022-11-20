@@ -21,3 +21,46 @@
 6. Cadastrar Produto / Lotes
 7. Editar produto
 8. Comprar produto
+
+## Formatação automática
+
+```
+
+cd src
+clang-format -i *.cpp
+cd ../program
+clang-format -i *.cpp
+cd ../tests
+clang-format -i *.cpp
+cd ../includes
+clang-format -i *.hpp
+
+```
+
+ou
+
+```
+
+.\format.bat
+
+```
+
+## Compilação Manual
+
+
+```
+
+g++ -std=c++14 -Wall main.cpp -o main.exe
+.\main.exe
+
+```
+
+ou 
+
+```
+
+cls
+g++ -o ./program/main.exe ./program/main.cpp ./src/*.cpp
+.\program\main.exe
+
+```

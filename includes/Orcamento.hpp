@@ -18,12 +18,8 @@ protected:
 public:
   // Construtores e Destrutores
   Orcamento(
-    std::string cliente,
-    int cpfCnpj,
-    std::string email,
-    vector<ItensDesejados> carrinho,
-    float valorTotal,
-    Data data,
+    std::string cliente, int cpfCnpj, std::string email,
+    vector<ItensDesejados> carrinho, float valorTotal, Data data,
     PedidoDeCompra pedido
   );
   Orcamento();
@@ -50,8 +46,9 @@ public:
   // misc
   bool verificaOrcamento(vector<ItensDesejados> carrinho);
   void printaOrcamento();
-  PedidoDeCompra gerarPedidoDeCompra(vector<ItensDesejados> itens, string tipoPagamento, string forma);
+  PedidoDeCompra gerarPedidoDeCompra(
+    vector<ItensDesejados> itens, string tipoPagamento, string forma
+  );
 };
-
 
 #endif // ORCAMENTO_H
