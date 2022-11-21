@@ -4,8 +4,7 @@
 #include "LogAbstrata.hpp"
 #include <iostream>
 
-
-class LogEscrita : public LogAbstrata{
+class LogEscrita : public LogAbstrata {
 private:
   std::string atributoAcessado;
   std::string atributoAntes;
@@ -13,7 +12,11 @@ private:
 
 public:
   // Construtores e Destrutores
-  LogEscrita(std::string usuario, int idUsuario, Data data,std::string classeAcessada, std::string instanciaAcessada, std::string atributoAcessado, std::string atributoAntes, std::string atributoDepois);
+  LogEscrita(
+    std::string usuario, int idUsuario, Data data, std::string classeAcessada,
+    std::string instanciaAcessada, std::string atributoAcessado,
+    std::string atributoAntes, std::string atributoDepois
+  );
   LogEscrita();
   ~LogEscrita();
 
@@ -27,9 +30,8 @@ public:
   void setAtributoAntes(std::string atributoAntes);
   void setAtributoDepois(std::string atributoDepois);
 
-  //Methods
-  void printLog()  override;
+  // Methods
+  void printLog();
 };
-
 
 #endif // LOG_ESCRITA_H

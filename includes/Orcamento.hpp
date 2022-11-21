@@ -4,13 +4,15 @@
 #include "ItensDesejados.hpp"
 #include "PedidoDeCompra.hpp"
 #include <vector>
+#include <map>
 
 class Orcamento {
 protected:
   std::string cliente;
-  int cpfCnpj;
+  string cpfCnpj;
   std::string email;
-  vector<ItensDesejados> carrinho;
+  
+  vector<ItensDesejados*> carrinho;
   float valorTotal;
   Data data;
   PedidoDeCompra pedido;
@@ -18,18 +20,16 @@ protected:
 public:
   // Construtores e Destrutores
   Orcamento(
-    std::string cliente, int cpfCnpj, std::string email,
-    vector<ItensDesejados> carrinho, float valorTotal, Data data,
-    PedidoDeCompra pedido
-  );
+    std::string cliente, string cpfCnpj, std::string email,
+    std::map<int, int> itensDesejados);
   Orcamento();
   ~Orcamento();
 
   // getters
   std::string getCliente();
-  int getCpfCnpj();
+  std::string getCpfCnpj();
   std::string getEmail();
-  vector<ItensDesejados> getCarrinho();
+  vector<ItensDesejados*> getCarrinho();
   float getValorTotal();
   Data getData();
   PedidoDeCompra getPedido();
@@ -44,6 +44,7 @@ public:
   void setPedido(PedidoDeCompra pedido);
 
   // misc
+  void calculaValorTotal();
   bool verificaOrcamento(vector<ItensDesejados> carrinho);
   void printaOrcamento();
   PedidoDeCompra gerarPedidoDeCompra(

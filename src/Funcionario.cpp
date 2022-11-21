@@ -6,7 +6,7 @@ Funcionario::Funcionario() {}
 Funcionario::Funcionario(
   std::string nome, std::string cpfCnpj, std::string email, std::string senha,
   Data dataNascimento, std::string endereco, std::string matricula, Cargo cargo,
-  Departamento departamento, Historico historico, Salario salario
+  Departamento departamento, Historico historico, Salario salario, Turno* turno
 ) {
   this->nome = nome;
   this->cpfCnpj = cpfCnpj;
@@ -19,6 +19,7 @@ Funcionario::Funcionario(
   this->departamento = departamento;
   this->historico.push_back(historico);
   this->salario.push_back(salario);
+  this->turno = turno;
 }
 
 Funcionario::~Funcionario() {}

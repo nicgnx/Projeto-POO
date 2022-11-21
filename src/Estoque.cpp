@@ -81,7 +81,12 @@ void Estoque::reabasteceEstoqueProduto(int idProduto) {
     auxPrintReabasteceEstoque(N_REALIZADO,idProduto);
   } else{ 
     if(this->produto[idProduto]->getEstoqueMinimo() > this->produto[idProduto]->getLoteMinimo()){
-      int aux = this->produto[idProduto]->getEstoqueMinimo() - verificaEstoqueProduto(idProduto);
+      int aux = ;
+      int quantidade = ((aux/this->produto[idProduto]->getLoteMinimo())+1)*this->produto[idProduto]->getLoteMinimo();
+      // Reabastece as matérias-primas necessárias pra solicitar o Lote.
+      if(capacidadeDeProducao(idProduto) < quantidade){
+        reabasteceEstoqueMP(this->produto[idProduto],((aux/this->produto[idProduto]->getLoteMinimo())+1)*this->produto[idProduto]->getLoteMinimo()); 
+      }
       OrdemDeProducao Solicitacao(this->produto[idProduto]->getNome(), idProduto,
                                   Data().dateNow(),
                                   ((aux/this->produto[idProduto]->getLoteMinimo())+1)*this->produto[idProduto]->getLoteMinimo());
@@ -101,14 +106,20 @@ void Estoque::reabasteceEstoqueProduto(int idProduto) {
 
 
 void Estoque::reabasteceEstoqueProduto(int idProduto, int quantidade) {
-  if (quantidade >= this->produto[idProduto]->getLoteMinimo()) {
-    OrdemDeProducao Solicitacao(this->produto[idProduto]->getNome(), idProduto,
-                                Data(2022, 10, 15, 0, 0, 0), quantidade);
-    this->lotes[idProduto].push_back(Solicitacao.solicitaLote());
-    auxPrintReabasteceEstoque(REALIZADO,idProduto);
-  } else {
-    std::cout << ("A quantidade solicitada é menor que o minímo permitido.");
+  if(quantidade < this->produto[idProduto]->getLoteMinimo()){quantidade = this->produto[idProduto]->getLoteMinimo();}
+  if(capacidadeDeProducao(idProduto) < quantidade){
+    reabasteceEstoqueMP(this->produto[idProduto],(quantidade - capacidadeDeProducao(idProduto)));    // Reabastece as matérias-primas necessárias pra solicitar o Lote.
   }
+  // Cria a Ordem de Produção do Lote.
+  OrdemDeProducao Solicitacao(this->produto[idProduto]->getNome(), idProduto,
+                                Data().dateNow(), quantidade);    
+  // Remove as matérias-primas necessária para solicitar o Lote.
+  retiraMateriaPrima(this->produto[idProduto],quantidade);    
+  // Reabastece as matérias-primas.
+  reabasteceEstoqueMP(this->produto[idProduto]);
+  // Solicita o novo Lote.
+  this->lotes[idProduto].push_back(Solicitacao.solicitaLote());                               
+  auxPrintReabasteceEstoque(REALIZADO,idProduto);
 }
 
 
@@ -135,10 +146,24 @@ void Estoque::reabasteceEstoqueMP(int idMateriaPrima, int quantidade) {
 
 
 vector<int> Estoque::retiraLotes(int idProduto, int quantidade) {
+  int aux = 0;
+  vector<int> materiasPrimas;
+
+  
+  if(verificaEstoqueProduto(idProduto) > quantidade) {return auxRetiraLotes(idProduto,quantidade);}
+  else{
+    aux = quantidade - verificaEstoqueProduto(idProduto);
+    reabasteceEstoqueProduto(idProduto,aux);
+    return auxRetiraLotes(idProduto,quantidade);
+  }
+}
+
+
+
+std::vector<int> Estoque::auxRetiraLotes(int idProduto, int quantidade){
   vector<int> lotes;
   int aux, num = 0;
-  vector<int> materiasPrimas;
-  for (; num < this->lotes[idProduto].size(); num++) {
+  for(;num < this->lotes[idProduto].size();num++){
     aux = this->lotes[idProduto][num]->getQuantidade();
     if (aux >= quantidade) {
       aux = aux - quantidade;
@@ -146,10 +171,9 @@ vector<int> Estoque::retiraLotes(int idProduto, int quantidade) {
       lotes.push_back(this->lotes[idProduto][num]->getIdLote());
       reabasteceEstoqueProduto(idProduto);
       return lotes;
-    } else {
-      if((aux == 0) && (this->lotes[idProduto].size() > 1)){
-        this->lotes[idProduto].erase(this->lotes.begin()+num);
-      } 
+      }
+    else {
+      if((aux == 0) && (this->lotes[idProduto].size() > 1)){} 
       else {
         quantidade = quantidade - aux;
         this->lotes[idProduto][num]->setQuantidade(0);
@@ -158,6 +182,7 @@ vector<int> Estoque::retiraLotes(int idProduto, int quantidade) {
     }
   } std::cout << "Não era nem pra essa compra ter sido aprovada! Vai ficar sem produto..."; return lotes;
 }
+
 
 
 

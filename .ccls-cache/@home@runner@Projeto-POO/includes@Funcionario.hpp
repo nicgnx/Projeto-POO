@@ -26,7 +26,7 @@ public:
   Funcionario(
     std::string nome, std::string cpfCnpj, std::string email, std::string senha,
     Data dataNascimento, std::string endereco, std::string matricula,
-    Cargo cargo, Departamento departamento, Historico historico, Salario salario
+    Cargo cargo, Departamento departamento, Historico historico, Salario salario, Turno* turno
   );
   ~Funcionario();
 

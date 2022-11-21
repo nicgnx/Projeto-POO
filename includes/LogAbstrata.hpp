@@ -27,7 +27,7 @@ public:
   void setData(Data data);
   void setClasseAcessada(std::string classeAcessada);
   void setInstanciaAcessada(std::string instanciaAcessada);
-  virtual void printLog() const = 0;
+  virtual void printLog() = 0;
 };
 
 #endif

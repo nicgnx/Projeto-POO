@@ -2,28 +2,38 @@
 #include <string>
 
 Orcamento::Orcamento(
-  std::string cliente, int cpfCnpj, std::string email,
-  vector<ItensDesejados> carrinho, float valorTotal, Data data,
-  PedidoDeCompra pedido
-) {
+  std::string cliente, string cpfCnpj, std::string email,
+  std::map<int, int> itensDesejados) {
+  
   this->cliente = cliente;
   this->cpfCnpj = cpfCnpj;
   this->email = email;
-  this->carrinho = carrinho;
-  this->valorTotal = valorTotal;
-  this->data = data;
-  this->pedido = pedido;
+  this->data = Data().dateNow();
+  
+  for(auto it = itensDesejados.begin(); it != itensDesejados.end(); it++){
+      ItensDesejados* itens;
+      itens->setIdProduto((*it).first);
+      itens->setQuantidade((*it).second);
+      itens->verificaDisponibilidade(itens->getIdProduto());
+    
+      this->carrinho.push_back(itens);  
+    
+  }
+
+  
+  
+
 }
 
 Orcamento::~Orcamento() {}
 
 std::string Orcamento::getCliente() { return this->cliente; };
 
-int Orcamento::getCpfCnpj() { return this->cpfCnpj; };
+std::string Orcamento::getCpfCnpj() { return this->cpfCnpj; };
 
 std::string Orcamento::getEmail() { return this->email; };
 
-vector<ItensDesejados> Orcamento::getCarrinho() { return this->carrinho; };
+vector<ItensDesejados*> Orcamento::getCarrinho() { return this->carrinho; };
 
 float Orcamento::getValorTotal() { return this->valorTotal; };
 
@@ -62,3 +72,11 @@ PedidoDeCompra Orcamento::gerarPedidoDeCompra(
 ){
 
 };
+
+void Orcamento::calculaValorTotal(){
+
+  for(auto it = this->carrinho.begin(); it != this->carrinho.end(); it++){
+    this->valorTotal += (*it)->getValorTotal();
+  }
+  
+}

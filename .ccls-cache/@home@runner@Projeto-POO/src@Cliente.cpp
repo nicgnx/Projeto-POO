@@ -2,11 +2,12 @@
 
 #include <iostream>
 
+Cliente::Cliente() {}
 
-
-Cliente::Cliente(){}
-
-Cliente::Cliente(std::string nome, std::string email, std::string senha, std::string cpfCnpj, tipoPessoa tipo, unsigned int telefone){
+Cliente::Cliente(
+  std::string nome, std::string email, std::string senha, std::string cpfCnpj,
+  tipoPessoa tipo, unsigned int telefone
+) {
 
   this->nome = nome;
   this->email = email;
@@ -18,44 +19,42 @@ Cliente::Cliente(std::string nome, std::string email, std::string senha, std::st
 
 Cliente::~Cliente() {}
 
-unsigned int Cliente::getTelefone(){
-  return this->telefone;
-}
+unsigned int Cliente::getTelefone() { return this->telefone; }
 
-tipoPessoa Cliente::getTipoPessoa(){
-  return this->tipo;
-}
+tipoPessoa Cliente::getTipoPessoa() { return this->tipo; }
 
-void Cliente::setTipoPessoa(tipoPessoa tipo){
-  this->tipo = tipo;
-}
+void Cliente::setTipoPessoa(tipoPessoa tipo) { this->tipo = tipo; }
 
-void Cliente::setTelefone(unsigned int telefone){
-  this->telefone = telefone;
-}
+void Cliente::setTelefone(unsigned int telefone) { this->telefone = telefone; }
 
-void Cliente::compra (int idProduto, int quantidade, Data dataCompra){
-  // puxa as permissoes desse cliente
-  std::vector <Permissao*> permissoes = this->getPermissao();
-
-  for (Permissao* permissao : permissoes) {
-    if (permissao->getIdPermissao() == PERMISSOES.COMPRAR_PRODUTO) {
-      
-    }
+void Cliente::compra(int idProduto, int quantidade, Data dataCompra) {
+  if (!Login::getInstance()->verificaPermissao(PERMISSOES::COMPRAR_PRODUTO)) {
+    throw "Usuario logado nao possui permissao para comprar produtos!";
   }
-  
-  RegistroVenda pedido(this->nome, this->cpfCnpj, this->email, idProduto, quantidade, dataCompra);
 
+  // RegistroVenda* pedido(this->nome, this->cpfCnpj, this->email, idProduto, quantidade, dataCompra
+   //);
 
-  
-  if(pedido.verificaVenda()){
-    pedido.executaVenda();
-  } else {
-    std::cout << "----------------------------------------------------------------------------------------------------\n\n";
-    std::cout << "                             Não foi possível realizar a compra\n\n"; 
-    std::cout << "        Não possuimos a quantidade desejada do produto [ "; 
-    std::cout << Estoque::getInstancia()->getProduto(idProduto)->getNome() << " ] no momento\n\n";  
-    std::cout << "        Quantidade em estoque: " << Estoque::getInstancia()->verificaEstoque(idProduto) << "\n\n";  
-    std::cout << "----------------------------------------------------------------------------------------------------\n\n";
-  }
+  // if (pedido.verificaVenda()) {
+  //   pedido.executaVenda();
+  // } else {
+  //   std::cout << "-------------------------------------------------------------"
+  //                "---------------------------------------\n\n";
+  //   std::cout << "                             Não foi possível realizar a "
+  //                "compra\n\n";
+  //   std::cout << "        Não possuimos a quantidade desejada do produto [ ";
+  //   std::cout << Estoque::getInstancia()->getProduto(idProduto)->getNome()
+  //             << " ] no momento\n\n";
+  //   std::cout << "        Quantidade em estoque: "
+  //             << Estoque::getInstancia()->verificaEstoque(idProduto) << "\n\n";
+  //   std::cout << "-------------------------------------------------------------"
+  //                "---------------------------------------\n\n";
+  // }
+}
+
+Orcamento* Cliente::solicitaOrcamento(std::map<int,int>itensDesejados){
+
+  Orcamento* orcamento = new Orcamento(this->nome, this->cpfCnpj, this->email,itensDesejados);
+
+  return orcamento;
 }

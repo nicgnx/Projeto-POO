@@ -1,47 +1,25 @@
 #include "../includes/ItensDesejados.hpp"
 #include <string>
 
-ItensDesejados::ItensDesejados(
-  std::string produto,
-  int idProduto,
-  float precoUnitario,
-  int quantidade,
-  float valorTotal,
-  bool disponibilidade
-) {
-  this->produto = produto;
+ItensDesejados::ItensDesejados( int idProduto, int quantidade) {
   this->idProduto = idProduto;
-  this->precoUnitario = precoUnitario;
   this->quantidade = quantidade;
-  this->valorTotal = valorTotal;
-  this->disponibilidade = disponibilidade;
+  
 }
 
-ItensDesejados::~ItensDesejados() { }
+ItensDesejados::~ItensDesejados() {}
 
-std::string ItensDesejados::getProduto() {
-  return this->produto;
-};
+std::string ItensDesejados::getProduto() { return this->produto; };
 
-int ItensDesejados::getIdProduto() {
-  return this->idProduto;
-};
+int ItensDesejados::getIdProduto() { return this->idProduto; };
 
-float ItensDesejados::getPrecoUnitario() {
-  return this->precoUnitario;
-};
+float ItensDesejados::getPrecoUnitario() { return this->precoUnitario; };
 
-int ItensDesejados::getQuantidade() {
-  return this->quantidade;
-}; 
+int ItensDesejados::getQuantidade() { return this->quantidade; };
 
-float ItensDesejados::getValorTotal() {
-  return this->valorTotal;
-};
+float ItensDesejados::getValorTotal() { return this->valorTotal; };
 
-bool ItensDesejados::getDisponibilidade() {
-  return this->disponibilidade;
-};
+bool ItensDesejados::getDisponibilidade() { return this->disponibilidade; };
 
 void ItensDesejados::setProduto(std::string produto) {
   this->produto = produto;
@@ -57,7 +35,7 @@ void ItensDesejados::setPrecoUnitario(float precoUnitario) {
 
 void ItensDesejados::setQuantidade(int quantidade) {
   this->quantidade = quantidade;
-}; 
+};
 
 void ItensDesejados::setValorTotal(float valorTotal) {
   this->valorTotal = valorTotal;
@@ -67,11 +45,22 @@ void ItensDesejados::setDisponibilidade(bool disponibilidade) {
   this->disponibilidade = disponibilidade;
 };
 
-float ItensDesejados::calculaCompra(float precoUnitario, int quantidade) {
+void ItensDesejados::calculaValorTotal(){
+
+  this->disponibilidade == false ? this->valorTotal = this->quantidade * this->precoUnitario * 0.05 : this->valorTotal = this->quantidade * this->precoUnitario;
+  
+}
+
+void ItensDesejados::verificaDisponibilidade(int idProduto){
+  Estoque* estoque = Estoque::getInstancia();
+  
+  Produto* produto = estoque->getProduto(idProduto);
+
+  this->produto = produto->getNome();
+  this->precoUnitario = produto->getPrecos()->getPrecoBase();
+ (estoque->verificaEstoqueProduto(idProduto) + estoque->capacidadeDeProducao(idProduto))<this->quantidade? this->disponibilidade = false : this->disponibilidade = true;
+
+  calculaValorTotal();
+
   
 };
-
-bool ItensDesejados::verificaDisponibilidade(int idProduto) {
-  
-};
-

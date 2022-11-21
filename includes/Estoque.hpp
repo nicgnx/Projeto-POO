@@ -22,14 +22,17 @@ private:
   // Atributes
   std::map<int, Produto*> produto;        // Parâmetros: idProduto, Produto
   std::map<int, std::deque<Lote*>> lotes; // Parâmetros: idProduto, Lote
-  std::map<int, MateriaPrima*>
-    materiaPrima;               // Parâmetros: idMateriaPrima, MateriaPrima
+  std::map<int, MateriaPrima*> materiaPrima; // Parâmetros: idMateriaPrima, MateriaPrima
   std::map<int, int> estoqueMP; // Parâmetros: idMateriaPrima, Quantidade
   std::vector<Fornecedor*> fornecedores;
 
   // Métodos Privados
   enum tipoRetorno { N_REALIZADO, REALIZADO, N_REALIZADO_MP, REALIZADO_MP };
   void auxPrintReabasteceEstoque(tipoRetorno mens, int idProduto);
+  void reabasteceEstoqueProduto(int idProduto);
+  void reabasteceEstoqueMP(int idMateriaPrima);
+  void reabasteceEstoqueMP(Produto* produto);
+  std::vector<int> auxRetiraLotes(int idProduto, int quantidade);
 
 public:
   // Operators
@@ -48,9 +51,8 @@ public:
   // Métodos
   void cadastraFornecedor(Fornecedor* fornecedor);
   vector<int> retiraLotes(int idProduto, int quantidade);
-
   int verificaEstoqueProduto(int idProduto);
-  bool verificaAplicacaoJuros(int idProduto, int quantidade);
+  int capacidadeDeProducao(int idProduto);
   int verificaEstoqueMP(int idMateriaPrima);
   void cadastraProduto(
     std::string nome, int loteMinimo, int estoqueMinimo, PrecoProduto* preco
@@ -62,11 +64,10 @@ public:
   void solicitaLote();
   void reabasteceEstoqueProduto(int idProduto, int quantidade);
   void reabasteceEstoqueMP(int idMateriaPrima, int quantidade);
+  void reabasteceEstoqueMP(Produto* produto, int quantidade);
   void printListaDeProdutos();
   void printListaDeMateriasPrimas();
   void printListaDeLotes(int idProduto);
-
-  void reabasteceEstoqueProduto(int idProduto);
-  void reabasteceEstoqueMP(int idMateriaPrima);
   void retiraMateriaPrima(int idMateriaPrima, int quantidade);
+  void retiraMateriaPrima(Produto* produto, int quantidade);
 };

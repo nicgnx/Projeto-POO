@@ -4,6 +4,8 @@
 #include "../includes/Data.hpp"
 #include "../includes/RegistroVenda.hpp"
 #include "../includes/Usuario.hpp"
+#include "../includes/Orcamento.hpp"
+#include <map>
 
 #include "../includes/Login.hpp"
 #include "../constants/PERMISSOES.hpp"
@@ -34,6 +36,7 @@ public:
 
   // Métodos
   void compra(int idProduto, int quantidade, Data dataCompra);
+  Orcamento* solicitaOrcamento(std::map<int, int> itensDesejados);
 };
 
 #endif // CLIENTE_H

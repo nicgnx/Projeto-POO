@@ -1,16 +1,10 @@
 #include "../includes/ItensDesejados.hpp"
 #include <string>
 
-ItensDesejados::ItensDesejados(
-  std::string produto, int idProduto, float precoUnitario, int quantidade,
-  float valorTotal, bool disponibilidade
-) {
-  this->produto = produto;
+ItensDesejados::ItensDesejados( int idProduto, int quantidade) {
   this->idProduto = idProduto;
-  this->precoUnitario = precoUnitario;
   this->quantidade = quantidade;
-  this->valorTotal = valorTotal;
-  this->disponibilidade = disponibilidade;
+  
 }
 
 ItensDesejados::~ItensDesejados() {}
@@ -51,10 +45,22 @@ void ItensDesejados::setDisponibilidade(bool disponibilidade) {
   this->disponibilidade = disponibilidade;
 };
 
-float ItensDesejados::calculaCompra(float precoUnitario, int quantidade){
+void ItensDesejados::calculaValorTotal(){
 
-};
+  this->disponibilidade == false ? this->valorTotal = this->quantidade * this->precoUnitario * 0.05 : this->valorTotal = this->quantidade * this->precoUnitario;
+  
+}
 
-bool ItensDesejados::verificaDisponibilidade(int idProduto){
+void ItensDesejados::verificaDisponibilidade(int idProduto){
+  Estoque* estoque = Estoque::getInstancia();
+  
+  Produto* produto = estoque->getProduto(idProduto);
 
+  this->produto = produto->getNome();
+  this->precoUnitario = produto->getPrecos()->getPrecoBase();
+ (estoque->verificaEstoqueProduto(idProduto) + estoque->capacidadeDeProducao(idProduto))<this->quantidade? this->disponibilidade = false : this->disponibilidade = true;
+
+  calculaValorTotal();
+
+  
 };

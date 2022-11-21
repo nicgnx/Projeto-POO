@@ -32,9 +32,8 @@ void Cliente::compra(int idProduto, int quantidade, Data dataCompra) {
     throw "Usuario logado nao possui permissao para comprar produtos!";
   }
 
-  // RegistroVenda pedido(
-  //   this->nome, this->cpfCnpj, this->email, idProduto, quantidade, dataCompra
-  // );
+  // RegistroVenda* pedido(this->nome, this->cpfCnpj, this->email, idProduto, quantidade, dataCompra
+   //);
 
   // if (pedido.verificaVenda()) {
   //   pedido.executaVenda();
@@ -51,4 +50,11 @@ void Cliente::compra(int idProduto, int quantidade, Data dataCompra) {
   //   std::cout << "-------------------------------------------------------------"
   //                "---------------------------------------\n\n";
   // }
+}
+
+Orcamento* Cliente::solicitaOrcamento(std::map<int,int>itensDesejados){
+
+  Orcamento* orcamento = new Orcamento(this->nome, this->cpfCnpj, this->email,itensDesejados);
+
+  return orcamento;
 }
