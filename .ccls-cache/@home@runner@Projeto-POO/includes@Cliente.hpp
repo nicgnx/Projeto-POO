@@ -35,7 +35,7 @@ public:
   void setTelefone(unsigned int telefone);
 
   // Métodos
-  void compra(int idProduto, int quantidade, Data dataCompra);
+  void compra(Orcamento* orcamento, Data dataCompra);
   Orcamento* solicitaOrcamento(std::map<int, int> itensDesejados);
 };
 

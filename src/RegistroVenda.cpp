@@ -2,16 +2,15 @@
 
 #include <iostream>
 
-RegistroVenda::RegistroVenda(
-  std::string cliente, int cpfCnpj, std::string email, int idProduto,
-  int quantidade, Data dataVenda
+RegistroVenda::RegistroVenda(std::string cliente, std::string cpfCnpj, std::string email, Data dataVenda, Orcamento* orcamento
 ) {
   this->cliente = cliente;
   this->cpfCnpj = cpfCnpj;
   this->email = email;
-  this->idProduto = idProduto;
-  this->quantidade = quantidade;
   this->dataVenda = dataVenda;
+  this->valorVenda = orcamento->getValorTotal();
+  this->itens = orcamento->getCarrinho();
+  
 }
 
 RegistroVenda::~RegistroVenda() {}

@@ -27,12 +27,12 @@ void Cliente::setTipoPessoa(tipoPessoa tipo) { this->tipo = tipo; }
 
 void Cliente::setTelefone(unsigned int telefone) { this->telefone = telefone; }
 
-void Cliente::compra(int idProduto, int quantidade, Data dataCompra) {
+void Cliente::compra(Orcamento* orcamento, Data dataCompra) {
   if (!Login::getInstance()->verificaPermissao(PERMISSOES::COMPRAR_PRODUTO)) {
     throw "Usuario logado nao possui permissao para comprar produtos!";
   }
 
-  // RegistroVenda* pedido(this->nome, this->cpfCnpj, this->email, idProduto, quantidade, dataCompra
+   RegistroVenda* pedido(this->nome, this->cpfCnpj, this->email, idProduto, quantidade, dataCompra
    //);
 
   // if (pedido.verificaVenda()) {

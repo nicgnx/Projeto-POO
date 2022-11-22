@@ -38,7 +38,7 @@ public:
   void setCliente(std::string cliente);
   void setCpfCnpj(int cpfCnpj);
   void setEmail(std::string email);
-  void setCarrinho(vector<ItensDesejados> carrinho);
+  void setCarrinho(vector<ItensDesejados*> carrinho);
   void setValorTotal(float valorTotal);
   void setData(Data data);
   void setPedido(PedidoDeCompra pedido);

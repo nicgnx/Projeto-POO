@@ -5,7 +5,8 @@
 #include "PrecoProduto.hpp"
 #include "Login.hpp"
 #include "../constants/PERMISSOES.hpp"
-
+#include "MateriaPrima.hpp"
+#include <map>
 #include <string>
 #include <vector>
 
@@ -13,7 +14,8 @@ class Produto {
   static int* staticIdProduto;
   std::string nome;
   int idProduto;
-  vector<PrecoProduto*> precos;
+  std::map<int,int> materiasPrimas;
+  std::vector<PrecoProduto*> precos;
   Categoria categoria;
   int loteMinimo;
   int estoqueMinimo;
@@ -21,7 +23,7 @@ class Produto {
 public:
   // Construtores e Destrutores
   Produto(
-    std::string nome, Categoria categoria, int loteMinimo, int estoqueMinimo,
+    std::string nome, std::vector<MateriaPrima> materiasPrimas, Categoria categoria, int loteMinimo, int estoqueMinimo,
     PrecoProduto* preco
   );
   Produto();
@@ -33,6 +35,7 @@ public:
   // Getters
   std::string getNome();
   int getIdProduto();
+  std::map<int,int> getMateriasPrimas();
   PrecoProduto* getPrecos();
   Categoria getCategoria();
   int getLoteMinimo();
@@ -42,6 +45,7 @@ public:
   // Setters
   void setNome(std::string nome);
   void setIdProduto(int idProduto);
+  void setMateriasPrimas(std::map<int,int> materiasPrimas);
   void setCategoria(Categoria categoria);
   void setLoteMinimo(int loteMinimo);
   void setEstoqueMinimo(int estoqueMinimo);

@@ -76,50 +76,40 @@ int Estoque::verificaEstoqueMP(int idMateriaPrima){ return this->estoqueMP[idMat
 
 
 
-void Estoque::reabasteceEstoqueProduto(int idProduto) {
-  if (verificaEstoqueProduto(idProduto) > this->produto[idProduto]->getEstoqueMinimo()){
-    auxPrintReabasteceEstoque(N_REALIZADO,idProduto);
-  } else{ 
-    if(this->produto[idProduto]->getEstoqueMinimo() > this->produto[idProduto]->getLoteMinimo()){
-      int aux = ;
-      int quantidade = ((aux/this->produto[idProduto]->getLoteMinimo())+1)*this->produto[idProduto]->getLoteMinimo();
-      // Reabastece as matérias-primas necessárias pra solicitar o Lote.
-      if(capacidadeDeProducao(idProduto) < quantidade){
-        reabasteceEstoqueMP(this->produto[idProduto],((aux/this->produto[idProduto]->getLoteMinimo())+1)*this->produto[idProduto]->getLoteMinimo()); 
-      }
-      OrdemDeProducao Solicitacao(this->produto[idProduto]->getNome(), idProduto,
-                                  Data().dateNow(),
-                                  ((aux/this->produto[idProduto]->getLoteMinimo())+1)*this->produto[idProduto]->getLoteMinimo());
+void Estoque::auxReabasteceEstoqueProduto(int idProduto, int quantidade) {
+      // Reabastece as matérias-primas se necessario, para solicitar o Lote.
+      if(capacidadeDeProducao(idProduto) < quantidade){reabasteceEstoqueMP(this->produto[idProduto],(quantidade - capacidadeDeProducao(idProduto)),ARBITRARIO);}
+      // Cria a Ordem de Produção do Lote.
+      OrdemDeProducao Solicitacao(this->produto[idProduto]->getNome(),idProduto,Data().dateNow(),quantidade);
+      // Remove as matérias-primas necessárias para solicitar o Lote.
+      retiraMateriaPrima(this->produto[idProduto],quantidade);   
+      // Reabastece as matérias-primas.
+      reabasteceEstoqueMP(this->produto[idProduto],0,MINIMO);
+      // Solicita o novo Lote.
       this->lotes[idProduto].push_back(Solicitacao.solicitaLote());
       auxPrintReabasteceEstoque(REALIZADO,idProduto);
-    } 
-    else {
-      OrdemDeProducao Solicitacao(this->produto[idProduto]->getNome(), idProduto,
-                                   Data().dateNow(),
-                                   this->produto[idProduto]->getLoteMinimo());
-      this->lotes[idProduto].push_back(Solicitacao.solicitaLote());
-      auxPrintReabasteceEstoque(REALIZADO,idProduto);
-    } 
-  }
 }
 
 
 
-void Estoque::reabasteceEstoqueProduto(int idProduto, int quantidade) {
-  if(quantidade < this->produto[idProduto]->getLoteMinimo()){quantidade = this->produto[idProduto]->getLoteMinimo();}
-  if(capacidadeDeProducao(idProduto) < quantidade){
-    reabasteceEstoqueMP(this->produto[idProduto],(quantidade - capacidadeDeProducao(idProduto)));    // Reabastece as matérias-primas necessárias pra solicitar o Lote.
+void Estoque::reabasteceEstoqueProduto(int idProduto, int quantidade, tipoReabastece valor) {
+  switch(valor){
+    case MINIMO:
+      if (verificaEstoqueProduto(idProduto) > this->produto[idProduto]->getEstoqueMinimo()){auxPrintReabasteceEstoque(N_REALIZADO,idProduto);}
+      else{
+        if(this->produto[idProduto]->getEstoqueMinimo() > this->produto[idProduto]->getLoteMinimo()){
+          int aux = (this->produto[idProduto]->getEstoqueMinimo() - verificaEstoqueProduto(idProduto));
+          quantidade = ((aux/this->produto[idProduto]->getLoteMinimo())+1)*this->produto[idProduto]->getLoteMinimo();
+          auxReabasteceEstoqueProduto(idProduto,quantidade);
+        }
+        else {auxReabasteceEstoqueProduto(idProduto,this->produto[idProduto]->getLoteMinimo());}
+      } 
+    break;
+    case ARBITRARIO:
+      if(quantidade < this->produto[idProduto]->getLoteMinimo()){quantidade = this->produto[idProduto]->getLoteMinimo();}
+    auxReabasteceEstoqueProduto(idProduto,quantidade);
+    break;
   }
-  // Cria a Ordem de Produção do Lote.
-  OrdemDeProducao Solicitacao(this->produto[idProduto]->getNome(), idProduto,
-                                Data().dateNow(), quantidade);    
-  // Remove as matérias-primas necessária para solicitar o Lote.
-  retiraMateriaPrima(this->produto[idProduto],quantidade);    
-  // Reabastece as matérias-primas.
-  reabasteceEstoqueMP(this->produto[idProduto]);
-  // Solicita o novo Lote.
-  this->lotes[idProduto].push_back(Solicitacao.solicitaLote());                               
-  auxPrintReabasteceEstoque(REALIZADO,idProduto);
 }
 
 
@@ -137,7 +127,7 @@ void Estoque::reabasteceEstoqueMP(int idMateriaPrima) {
 
 
 
-void Estoque::reabasteceEstoqueMP(int idMateriaPrima, int quantidade) {
+void Estoque::reabasteceEstoqueMP(int idMateriaPrima, int quantidade, tipoReabastece valor) {
   OrdemDeMateriaPrima Solicitacao(this->materiaPrima[idMateriaPrima],quantidade, Data().dateNow(),this->fornecedores);
   auxPrintReabasteceEstoque(REALIZADO_MP,idMateriaPrima);
   this->estoqueMP[idMateriaPrima] += Solicitacao.getQuantidade();
@@ -221,7 +211,7 @@ void Estoque::printListaDeProdutos(){
 
 
 
-void Estoque::printListaDeLotes(int id){
+void Estoque::printListaDeLotes(int idProduto){
   for(int num =0; num < this->lotes[idProduto].size(); num++){
     std::cout << "Produto: " << this->produto[idProduto]->getNome() << "     ID: " << idProduto << "     Lote: " << this->lotes[idProduto][num]->getIdLote() << "     Quantidade: " << this->lotes[idProduto][num]->getQuantidade() << "\n";
   }

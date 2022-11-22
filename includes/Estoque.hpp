@@ -28,10 +28,9 @@ private:
 
   // Métodos Privados
   enum tipoRetorno { N_REALIZADO, REALIZADO, N_REALIZADO_MP, REALIZADO_MP };
+  enum tipoReabastece {MINIMO,ARBITRARIO};
   void auxPrintReabasteceEstoque(tipoRetorno mens, int idProduto);
-  void reabasteceEstoqueProduto(int idProduto);
-  void reabasteceEstoqueMP(int idMateriaPrima);
-  void reabasteceEstoqueMP(Produto* produto);
+  void auxReabasteceEstoqueProduto(int idProduto, int quantidade);
   std::vector<int> auxRetiraLotes(int idProduto, int quantidade);
 
 public:
@@ -44,30 +43,40 @@ public:
   std::map<int, Produto*> getListaDeProdutos();
   Produto* getProduto(int idProduto);
   Lote* getLote(int idProduto, int idLote);
-  std::map<int, MateriaPrima*> getMateriaPrima();
-  std::map<int, int> getLotesMP();
+  MateriaPrima* getMateriaPrima(int idMateriaPrima);
   std::vector<Fornecedor*> getFornecedores();
+  std::map<int,MateriaPrima*> getListaMateriaPrima();
+  MateriaPrima* getMateriaPrima(int idMateriaPrima);
+  std::map<int,int> getEstoqueMP();
 
   // Métodos
-  void cadastraFornecedor(Fornecedor* fornecedor);
-  vector<int> retiraLotes(int idProduto, int quantidade);
-  int verificaEstoqueProduto(int idProduto);
   int capacidadeDeProducao(int idProduto);
+  int verificaEstoqueProduto(int idProduto);
   int verificaEstoqueMP(int idMateriaPrima);
-  void cadastraProduto(
-    std::string nome, int loteMinimo, int estoqueMinimo, PrecoProduto* preco
-  );
-  void cadastraMateriaPrima(
-    int id, std::string nome, std::string unidade, int estoqueMinimo
-  );
+  void cadastraFornecedor(Fornecedor* fornecedor); 
+  void cadastraProduto(std::string nome, int loteMinimo, int estoqueMinimo, PrecoProduto* preco);
+  void cadastraMateriaPrima(int id, std::string nome, std::string unidade, int estoqueMinimo);
   void cadastraLote(int idProduto, Lote* lote);
-  void solicitaLote();
-  void reabasteceEstoqueProduto(int idProduto, int quantidade);
-  void reabasteceEstoqueMP(int idMateriaPrima, int quantidade);
-  void reabasteceEstoqueMP(Produto* produto, int quantidade);
-  void printListaDeProdutos();
-  void printListaDeMateriasPrimas();
-  void printListaDeLotes(int idProduto);
+  void reabasteceEstoqueProduto(int idProduto, int quantidade, tipoReabastece valor);
+  void reabasteceEstoqueMP(int idMateriaPrima, int quantidade, tipoReabastece valor);
+
+/** @brief A função reabasteceEstoqueMP() recebe como parâmetro:
+
+@param ponteiro de Produto.
+@param quantidade desejada.
+@param tipo de operação de Reabastecimento.
+
+Caso a variável valor seja:
+
+MINIMO - A função irá reabastecer todas as materias primas que compoem o produto, de forma a conseguir produzir o estoque minimo do produto, independente da quantidade informada.
+
+ARBITRARIO - A função irá reabastecer todas as materias primas que compoem o produto, de forma a conseguir produzir a quantidade informada.
+*/
+  void reabasteceEstoqueMP(Produto* produto, int quantidade, tipoReabastece valor);
   void retiraMateriaPrima(int idMateriaPrima, int quantidade);
   void retiraMateriaPrima(Produto* produto, int quantidade);
+  vector<int> retiraLotes(int idProduto, int quantidade);
+  void printListaDeProdutos();
+  void printListaDeMateriasPrimas();//
+  void printListaDeLotes(int idProduto);
 };

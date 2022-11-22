@@ -1,6 +1,7 @@
 #ifndef REGISTRO_VENDA_H
 #define REGISTRO_VENDA_H
 
+#include "../includes/Orcamento.hpp"
 #include "./Estoque.hpp"
 #include "Data.hpp"
 #include "Lote.hpp"
@@ -8,18 +9,16 @@
 
 class RegistroVenda {
   std::string cliente;
-  int cpfCnpj;
+  std::string cpfCnpj;
   std::string email;
-  int idProduto;
-  int quantidade;
   Data dataVenda;
-  float precoUnitario;
+  float valorVenda;
+  std::vector<itensDesejados*> itens;
   std::vector<int> idLotes;
 
 public:
   RegistroVenda(
-    std::string cliente, int cpfCnpj, std::string email, int idProduto,
-    int quantidade, Data dataVenda
+    std::string cliente, std::string cpfCnpj, std::string email, Data dataVenda, Orcamento* orcamento
   );
   ~RegistroVenda();
   // getters

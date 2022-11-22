@@ -28,10 +28,10 @@ private:
 
   // Métodos Privados
   enum tipoRetorno { N_REALIZADO, REALIZADO, N_REALIZADO_MP, REALIZADO_MP };
+  enum tipoReabastece {MINIMO,ARBITRARIO};
   void auxPrintReabasteceEstoque(tipoRetorno mens, int idProduto);
-  void reabasteceEstoqueProduto(int idProduto);
-  void reabasteceEstoqueMP(int idMateriaPrima);
-  void reabasteceEstoqueMP(Produto* produto);
+  void auxReabasteceEstoqueProduto(int idProduto, int quantidade);
+  void reabasteceEstoqueMinimoMP(int idMateriaPrima);
   std::vector<int> auxRetiraLotes(int idProduto, int quantidade);
 
 public:
@@ -47,6 +47,9 @@ public:
   std::map<int, MateriaPrima*> getMateriaPrima();
   std::map<int, int> getLotesMP();
   std::vector<Fornecedor*> getFornecedores();
+  std::map<int,MateriaPrima*> getListaMateriaPrima();
+  MateriaPrima* getMateriaPrima(int idMateriaPrima);
+  std::map<int,int> getEstoqueMP();
 
   // Métodos
   void cadastraFornecedor(Fornecedor* fornecedor);
@@ -62,9 +65,9 @@ public:
   );
   void cadastraLote(int idProduto, Lote* lote);
   void solicitaLote();
-  void reabasteceEstoqueProduto(int idProduto, int quantidade);
-  void reabasteceEstoqueMP(int idMateriaPrima, int quantidade);
-  void reabasteceEstoqueMP(Produto* produto, int quantidade);
+  void reabasteceEstoqueProduto(int idProduto, int quantidade, tipoReabastece valor);
+  void reabasteceEstoqueMP(int idMateriaPrima, int quantidade, tipoReabastece valor);
+  void reabasteceEstoqueMP(Produto* produto, int quantidade, tipoReabastece valor);
   void printListaDeProdutos();
   void printListaDeMateriasPrimas();
   void printListaDeLotes(int idProduto);
