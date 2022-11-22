@@ -257,6 +257,17 @@ void Estoque::printListaDeProdutos(){
 }
 
 
+void Estoque::printListaDeMateriasPrimas(){
+  std::cout << "----------------------------------------------------------------------------------------------------\n\n";
+  std::cout << "                            Lista das Materia Priams Cadastradas no Sistema\n\n";
+  for(auto it =this->materiaPrima.begin(); it!=this->materiaPrima.end(); ++it){
+    std::cout << "Materia Prima: " << it.second->getNome() << "     ID: " << it.first << "     Quantidade: " << verificaEstoqueMP(it.first) << "\n\n";
+  }
+  std::cout << "\n\n----------------------------------------------------------------------------------------------------\n\n";
+}
+
+
+
 void Estoque::printListaDeLotes(int idProduto){
   for(int num =0; num < this->lotes[idProduto].size(); num++){
     std::cout << "Produto: " << this->produto[idProduto]->getNome() << "     ID: " << idProduto << "     Lote: " << this->lotes[idProduto][num]->getIdLote() << "     Quantidade: " << this->lotes[idProduto][num]->getQuantidade() << "\n";

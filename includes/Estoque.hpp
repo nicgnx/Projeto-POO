@@ -77,6 +77,6 @@ ARBITRARIO - A função irá reabastecer todas as materias primas que compoem o 
   void retiraMateriaPrima(Produto* produto, int quantidade);
   vector<int> retiraLotes(int idProduto, int quantidade);
   void printListaDeProdutos();
-  void printListaDeMateriasPrimas();//
+  void printListaDeMateriasPrimas();
   void printListaDeLotes(int idProduto);
 };
