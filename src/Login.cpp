@@ -40,5 +40,20 @@ bool Login::verificaPermissao(int idPermissao) {
     }
   }
 
+  // se chegou ate aqui nao tem permissao: dispara logs
+  HistoricoDeLogs* historicoLogs = HistoricoDeLogs::getInstacia();
+  LogExcecao* logExcecao = new LogExcecao(
+    this->usuario->getNome(),
+    std::stoi(this->usuario->getcpfCnpj()),
+    Data().dateNow(),
+    "Login",
+    "Login",
+    "Login::verificaPermissao"
+  );
+  historicoLogs->setLogExcecao(
+    std::stoi(this->usuario->getcpfCnpj()), 
+    logExcecao
+  );
+
   return false;
 }

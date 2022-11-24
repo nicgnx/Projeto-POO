@@ -3,6 +3,8 @@
 
 #include "Data.hpp"
 #include "Usuario.hpp"
+#include "LogExcecao.hpp"
+#include "HistoricoDeLogs.hpp"
 #include <string>
 
 class Login {

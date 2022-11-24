@@ -91,5 +91,7 @@ int main() {
     std::cerr << e << '\n';
   }
 
+  // mostra os logs todos da aplicação
+
   return 0;
 }
