@@ -229,7 +229,7 @@ void Estoque::reabasteceEstoqueMP(Produto* produto, int quantidade, tipoReabaste
     std::cout << "Capacidade de Produção baseado na Materia Prima " << i->first << ": " << (verificaEstoqueMP(i->first)/i->second) << "\n\n";
     if((verificaEstoqueMP(i->first)/i->second) < quantidade){
       std::cout << (quantidade - (verificaEstoqueMP(i->first)/i->second))*(i->second); std::cout << "\n\n";
-      reabasteceEstoqueMP1(i->first,(quantidade - (verificaEstoqueMP(i->first)/i->second))*(i->second),ARBITRARIO);
+      reabasteceEstoqueMP(i->first,(quantidade - (verificaEstoqueMP(i->first)/i->second))*(i->second),ARBITRARIO);
       std::cout << "Sai!!";}
   } 
 }
@@ -238,7 +238,7 @@ void Estoque::reabasteceEstoqueMP(Produto* produto, int quantidade, tipoReabaste
 void Estoque::retiraMateriaPrima(int idMateriaPrima, int quantidade){
     this->estoqueMP[idMateriaPrima] -= quantidade;
     if(this->estoqueMP[idMateriaPrima] < this->materiaPrima[idMateriaPrima]->getEstoqueMinimo())
-      reabasteceEstoqueMP1(idMateriaPrima,0,MINIMO);
+      reabasteceEstoqueMP(idMateriaPrima,0,MINIMO);
 }
 
 

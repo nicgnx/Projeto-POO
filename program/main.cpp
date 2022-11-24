@@ -7,6 +7,7 @@
 #include "../includes/Login.hpp"
 #include "../includes/Estoque.hpp"
 #include "../includes/PrecoProduto.hpp"
+#include "../includes/Turno.hpp"
 
 #include "../constants/PERMISSOES.hpp"
 
@@ -36,7 +37,8 @@ int main() {
     Cargo("Estagiario"), 
     Departamento ("IT"),
     Historico(Data(2022,9,29,15,59,00),"Contratação do Alan"),
-    Salario(1000.95,0, Data(2022,29,9,15,59,00), Gerencia)
+    Salario(1000.95,0, Data(2022,29,9,15,59,00), Gerencia),
+    new Turno("Turno teste", 10, 20, MANHA)
   );
   std::vector<Permissao*> user0Permissions = { perm1, perm2, perm5 };
   user0->setPermissoes(user0Permissions);

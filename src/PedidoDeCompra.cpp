@@ -43,19 +43,22 @@ void PedidoDeCompra::setRegistroPagamento(PagamentoAbstrata* registroPagamento
 }
 // métodos
 void PedidoDeCompra::registraPagamento(std::string tipo, std::string forma) {
-  for (auto t : tiposDePagamento) {
-    if (tipo == t)
-        break;
-    else if (t == tiposDePagamento.end()) {
+  for (int i = 0; i < sizeof(tiposDePagamento) / sizeof(int); i++) {
+    std::string tipoIt = tiposDePagamento[i];
+    if (tipo == tipoIt)
+      break;
+    else if (i == (sizeof(tiposDePagamento) / sizeof(int)) - 1) {
       std::cout << "\nErro! Tipo de pagamento não registrado.\n";
       return ;
     }
   }
-  for (auto f : formasDePagamento) {
-    if (forma == f)
-        break;
-    else if (f == formasDePagamento.end()) {
-      std::cout << "\nErro! Forma de pagamento não registrada.\n";
+
+  for (int i = 0; i < sizeof(formasDePagamento) / sizeof(int); i++) {
+    std::string formaIt = formasDePagamento[i];
+    if (forma == formaIt)
+      break;
+    else if (i == (sizeof(formasDePagamento) / sizeof(int)) - 1) {
+      std::cout << "\nErro! Tipo de pagamento não registrado.\n";
       return ;
     }
   }
