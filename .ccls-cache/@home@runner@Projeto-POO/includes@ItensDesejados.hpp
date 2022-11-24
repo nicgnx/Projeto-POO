@@ -6,10 +6,10 @@
 
 class ItensDesejados {
 protected:
-  std::string produto;
   int idProduto;
-  float precoUnitario;
   int quantidade;
+  std::string produto;
+  float precoUnitario;
   float valorTotal;
   bool disponibilidade;
   ;

@@ -1,23 +1,11 @@
 #include "../includes/PagamentoAbstrata.hpp"
 
+Data PagamentoAbstrata::getData() { return this->data; };
 
-PagamentoAbstrata::~PagamentoAbstrata(){};
+float PagamentoAbstrata::getValorAPagar() { return this->valorAPagar; };
 
-Data PagamentoAbstrata::getData(){
-  return this->data;
-};
+void PagamentoAbstrata::setData(Data data) { this->data = data; };
 
-float PagamentoAbstrata::getValorAPagar(){
-  return this->valorAPagar;
-};
-
-void PagamentoAbstrata::setData(Data data){
-  this->data = data;
-};
-
-void PagamentoAbstrata::setValorAPagar(float valorAPagar){
+void PagamentoAbstrata::setValorAPagar(float valorAPagar) {
   this->valorAPagar = valorAPagar;
 };
-
-
-

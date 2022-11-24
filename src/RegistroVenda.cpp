@@ -1,26 +1,25 @@
 #include "../includes/RegistroVenda.hpp"
 
-#include <iostream>
 
-RegistroVenda::RegistroVenda(std::string cliente, std::string cpfCnpj, std::string email, Data dataVenda, Orcamento* orcamento
-) {
-  this->cliente = cliente;
+RegistroVenda::RegistroVenda(std::string cpfCnpj,int idProduto, int quantidade, float precoUnitario,  Data dataVenda) {
+  
   this->cpfCnpj = cpfCnpj;
-  this->email = email;
+  this->idProduto = idProduto;
+  this->quantidade = quantidade;
+  this->precoUnitario = precoUnitario;
   this->dataVenda = dataVenda;
-  this->valorVenda = orcamento->getValorTotal();
-  this->itens = orcamento->getCarrinho();
+
+  executaVenda();
+
   
 }
 
 RegistroVenda::~RegistroVenda() {}
 // Getters
 
-std::string RegistroVenda::getCliente() { return this->cliente; }
 
-int RegistroVenda::getCpfCnpj() { return this->cpfCnpj; }
 
-std::string RegistroVenda::getEmail() { return this->email; }
+std::string RegistroVenda::getCpfCnpj() { return this->cpfCnpj; }
 
 int RegistroVenda::getIdProduto() { return this->idProduto; }
 
@@ -34,28 +33,21 @@ float RegistroVenda::getPrecoUnitario() { return this->precoUnitario; }
 
 // Setters
 
-void RegistroVenda::setDataVenda(Data data) { this->dataVenda = data; }
-
-void RegistroVenda::setCliente(std::string cliente) { this->cliente = cliente; }
 
 void RegistroVenda::setCpfCnpj(int cpfCnpj) { this->cpfCnpj = cpfCnpj; }
 
-void RegistroVenda::setEmail(std::string email) { this->email = email; }
-
 void RegistroVenda::setIdProduto(int idProduto) { this->idProduto = idProduto; }
 
-void RegistroVenda::setQuantidade(int quantidade) {
-  this->quantidade = quantidade;
-}
+void RegistroVenda::setQuantidade(int quantidade) { this->quantidade = quantidade; }
+
+void RegistroVenda::setDataVenda(Data data) { this->dataVenda = data; }
 
 void RegistroVenda::setLotes(Lote* lote) {
   this->idLotes.push_back(lote->getIdLote());
 }
 
-void RegistroVenda::setPrecoUnitario() {
-  Estoque* estoque = Estoque::getInstancia();
-  this->precoUnitario =
-    estoque->getProduto(this->idProduto)->getPrecos()->getPrecoBase();
+void RegistroVenda::setPrecoUnitario(float precoUnitario) {
+   this->precoUnitario = precoUnitario;
 }
 
 /*bool RegistroVenda::verificaVenda(){
@@ -69,9 +61,9 @@ void RegistroVenda::setPrecoUnitario() {
 void RegistroVenda::executaVenda() {
   Estoque* estoque = Estoque::getInstancia();
   this->idLotes = estoque->retiraLotes(this->idProduto, this->quantidade);
-  setPrecoUnitario();
-  // setValorVenda();
-  printRegistro();
+  
+
+  
 }
 
 void RegistroVenda::printRegistro() {
@@ -79,7 +71,7 @@ void RegistroVenda::printRegistro() {
                "-------------------------------------\n\n";
   std::cout << "   Compra realizada com sucesso! Segue abaixo as informações "
                "da compra.\n\n";
-  std::cout << "   Cliente: " << this->cliente << "\n";
+  std::cout << "   Cpf/Cnpj cliente: " << this->cpfCnpj << "\n";
   std::cout << "   Data: ";
   this->dataVenda.printData();
   std::cout << "\n";

@@ -2,10 +2,11 @@
 
 #include "OrdemDeProducao.hpp"
 #include "Produto.hpp"
-#include "Login.hpp"
+#include "MateriaPrima.hpp"
+//#include "Login.hpp"
 #include "Fornecedor.hpp"
 #include "OrdemDeMateriaPrima.hpp"
-#include "../constants/PERMISSOES.hpp"
+//#include "../constants/PERMISSOES.hpp"
 
 #include <deque>
 #include <iostream>
@@ -46,7 +47,6 @@ public:
   MateriaPrima* getMateriaPrima(int idMateriaPrima);
   std::vector<Fornecedor*> getFornecedores();
   std::map<int,MateriaPrima*> getListaMateriaPrima();
-  MateriaPrima* getMateriaPrima(int idMateriaPrima);
   std::map<int,int> getEstoqueMP();
 
   // Métodos
@@ -79,4 +79,5 @@ ARBITRARIO - A função irá reabastecer todas as materias primas que compoem o 
   void printListaDeProdutos();
   void printListaDeMateriasPrimas();
   void printListaDeLotes(int idProduto);
+  void printListaDeFornecedores();
 };

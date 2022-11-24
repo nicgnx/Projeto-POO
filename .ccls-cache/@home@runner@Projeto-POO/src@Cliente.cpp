@@ -19,9 +19,9 @@ Cliente::Cliente(
 
 Cliente::~Cliente() {}
 
-unsigned int Cliente::getTelefone() { return this->telefone; }
-
 tipoPessoa Cliente::getTipoPessoa() { return this->tipo; }
+
+unsigned int Cliente::getTelefone() { return this->telefone; }
 
 void Cliente::setTipoPessoa(tipoPessoa tipo) { this->tipo = tipo; }
 
@@ -32,7 +32,8 @@ void Cliente::compra(Orcamento* orcamento, Data dataCompra) {
     throw "Usuario logado nao possui permissao para comprar produtos!";
   }
 
-   RegistroVenda* pedido(this->nome, this->cpfCnpj, this->email, idProduto, quantidade, dataCompra
+   orcamento->gerarPedidoDeCompra(dataCompra);
+  
    //);
 
   // if (pedido.verificaVenda()) {

@@ -2,13 +2,11 @@
 #define CLIENTE_H
 
 #include "../includes/Data.hpp"
-#include "../includes/RegistroVenda.hpp"
 #include "../includes/Usuario.hpp"
 #include "../includes/Orcamento.hpp"
-#include <map>
-
 #include "../includes/Login.hpp"
 #include "../constants/PERMISSOES.hpp"
+#include <map>
 
 enum tipoPessoa { PF, PJ };
 

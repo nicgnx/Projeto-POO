@@ -1,27 +1,22 @@
 #ifndef CREDITO_H
 #define CREDITO_H
 
-
 #include "../includes/PagamentoAbstrata.hpp"
 
-enum Parcelamento {A VISTA, x1, x2, x3, x4, x5, x6};
+enum Parcelamento { A_VISTA, x1, x2, x3, x4, x5, x6 };
 
-class Credito : public PagamentoAbstrata{
+class Credito : public PagamentoAbstrata {
 
-
-Parcelamento parcelamento;
-
+  Parcelamento parcelamento;
 
 public:
-
   Credito(Data data, float valorAPagar, Parcelamento parcelamento);
-  
-  //getters
+
+  // getters
   Parcelamento getParcelamento();
 
-  //setters
+  // setters
   void setParcelamento(Parcelamento parcelamento);
-
 };
 
 #endif

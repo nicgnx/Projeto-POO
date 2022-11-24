@@ -3,12 +3,13 @@
 int* Produto::staticIdProduto = NULL;
 
 Produto::Produto(
-  std::string nome, Categoria categoria, int loteMinimo, int estoqueMinimo,
-  PrecoProduto* preco
+    std::string nome, std::vector<MateriaPrima> materiasPrimas, Categoria categoria, int loteMinimo, int estoqueMinimo,
+    PrecoProduto* preco
 ) {
 
   this->nome = nome;
   this->idProduto = getID();
+  this->materiasPrimas = materiasPrimas;
   this->precos.push_back(preco);
   this->categoria = categoria;
   this->loteMinimo = loteMinimo;
@@ -42,7 +43,9 @@ int Produto::getID() {
 
 std::string Produto::getNome() { return this->nome; }
 
-int Produto::getIdProduto() { return this->idProduto; }
+int Produto::getIdProduto() { return this->idProduto;}
+
+std::map<int,int> Produto::getMateriasPrimas(){return this->materiasPrimas;}
 
 PrecoProduto* Produto::getPrecos() { return this->precos.back(); }
 
@@ -57,6 +60,8 @@ int Produto::getEstoqueMinimo() { return this->estoqueMinimo; }
 void Produto::setNome(std::string nome) { this->nome = nome; }
 
 void Produto::setIdProduto(int idProduto) { this->idProduto = idProduto; }
+
+void Produto::setMateriasPrimas(std::map<int,int> materiasPrimas){this->materiasPrimas[idMateriaPrima] = quantidade;}
 
 void Produto::setCategoria(Categoria categoria) { this->categoria = categoria; }
 

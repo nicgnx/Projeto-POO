@@ -2,7 +2,7 @@
 #include <string>
 
 Orcamento::Orcamento(
-  std::string cliente, string cpfCnpj, std::string email,
+  std::string cliente, std::string cpfCnpj, std::string email,
   std::map<int, int> itensDesejados) {
   
   this->cliente = cliente;
@@ -11,18 +11,13 @@ Orcamento::Orcamento(
   this->data = Data().dateNow();
   
   for(auto it = itensDesejados.begin(); it != itensDesejados.end(); it++){
-      ItensDesejados* itens;
-      itens->setIdProduto((*it).first);
-      itens->setQuantidade((*it).second);
+      ItensDesejados* itens = new ItensDesejados((*it).first,(*it).second);
+      
       itens->verificaDisponibilidade(itens->getIdProduto());
     
       this->carrinho.push_back(itens);  
     
   }
-
-  
-  
-
 }
 
 Orcamento::~Orcamento() {}
@@ -39,7 +34,7 @@ float Orcamento::getValorTotal() { return this->valorTotal; };
 
 Data Orcamento::getData() { return this->data; };
 
-PedidoDeCompra Orcamento::getPedido() { return this->pedido; };
+PedidoDeCompra* Orcamento::getPedido() { return this->pedido; };
 
 void Orcamento::setCliente(std::string cliente) { this->cliente = cliente; };
 
@@ -47,7 +42,7 @@ void Orcamento::setCpfCnpj(int cpfCnpj) { this->cpfCnpj = cpfCnpj; };
 
 void Orcamento::setEmail(std::string email) { this->email = email; };
 
-void Orcamento::setCarrinho(vector<ItensDesejados> carrinho) {
+void Orcamento::setCarrinho(vector<ItensDesejados*> carrinho) {
   this->carrinho = carrinho;
 };
 
@@ -57,20 +52,21 @@ void Orcamento::setValorTotal(float valorTotal) {
 
 void Orcamento::setData(Data data) { this->data = data; };
 
-void Orcamento::setPedido(PedidoDeCompra pedido) { this->pedido = pedido; };
+void Orcamento::setPedido(PedidoDeCompra* pedido) { this->pedido = pedido; };
 
-bool Orcamento::verificaOrcamento(vector<ItensDesejados> carrinho){
+// bool Orcamento::verificaOrcamento(vector<ItensDesejados> carrinho){
 
-};
+// };
 
 void Orcamento::printaOrcamento(){
 
 };
 
-PedidoDeCompra Orcamento::gerarPedidoDeCompra(
-  vector<ItensDesejados> itens, string tipoPagamento, string forma
-){
+PedidoDeCompra* Orcamento::gerarPedidoDeCompra(Data dataCompra){
+  PedidoDeCompra* pedido = new PedidoDeCompra(getCarrinho(),   dataCompra, getValorTotal(), getCpfCnpj());
 
+  setPedido(pedido);
+  
 };
 
 void Orcamento::calculaValorTotal(){

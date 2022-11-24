@@ -9,18 +9,19 @@
 class Orcamento {
 protected:
   std::string cliente;
-  string cpfCnpj;
+  std::string cpfCnpj;
   std::string email;
-  
+
+  Data data;
   vector<ItensDesejados*> carrinho;
   float valorTotal;
-  Data data;
-  PedidoDeCompra pedido;
+ 
+  PedidoDeCompra* pedido;
 
 public:
   // Construtores e Destrutores
   Orcamento(
-    std::string cliente, string cpfCnpj, std::string email,
+    std::string cliente, std::string cpfCnpj, std::string email,
     std::map<int, int> itensDesejados);
   Orcamento();
   ~Orcamento();
@@ -32,7 +33,7 @@ public:
   vector<ItensDesejados*> getCarrinho();
   float getValorTotal();
   Data getData();
-  PedidoDeCompra getPedido();
+  PedidoDeCompra* getPedido();
 
   // setters
   void setCliente(std::string cliente);
@@ -41,15 +42,13 @@ public:
   void setCarrinho(vector<ItensDesejados*> carrinho);
   void setValorTotal(float valorTotal);
   void setData(Data data);
-  void setPedido(PedidoDeCompra pedido);
+  void setPedido(PedidoDeCompra* pedido);
 
   // misc
   void calculaValorTotal();
-  bool verificaOrcamento(vector<ItensDesejados> carrinho);
   void printaOrcamento();
-  PedidoDeCompra gerarPedidoDeCompra(
-    vector<ItensDesejados> itens, string tipoPagamento, string forma
+  PedidoDeCompra* gerarPedidoDeCompra(Data DataCompra
   );
 };
 
-#endif // ORCAMENTO_H
+#endif 

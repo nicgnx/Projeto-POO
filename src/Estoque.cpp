@@ -10,6 +10,7 @@ Estoque* Estoque::estoque = NULL;
 // Funções Auxiliares
 void Estoque::auxReabasteceEstoqueProduto(int idProduto, int quantidade) {
       // Reabastece as matérias-primas se necessario, para solicitar o Lote.
+      std::cout << "ID: " << idProduto << " Quantidade: " << quantidade << "\n\n";
       if(capacidadeDeProducao(idProduto) < quantidade){reabasteceEstoqueMP(this->produto[idProduto],(quantidade - capacidadeDeProducao(idProduto)),ARBITRARIO);}
       // Cria a Ordem de Produção do Lote.
       OrdemDeProducao Solicitacao(this->produto[idProduto]->getNome(),idProduto,Data().dateNow(),quantidade);
@@ -32,7 +33,7 @@ std::vector<int> Estoque::auxRetiraLotes(int idProduto, int quantidade){
       aux = aux - quantidade;
       this->lotes[idProduto][num]->setQuantidade(aux);
       lotes.push_back(this->lotes[idProduto][num]->getIdLote());
-      reabasteceEstoqueProduto(idProduto);
+      reabasteceEstoqueProduto(idProduto,0,MINIMO);
       return lotes;
       }
     else {
@@ -78,10 +79,12 @@ void Estoque::auxPrintReabasteceEstoque(tipoRetorno mens,int id){
       std::cout << "----------------------------------------------------------------------------------------------------\n\n";
       std::cout << "                  Solicitação de Reabastecimento do Estoque da Materia Prima [ " << this->materiaPrima[id]->getNome() <<   " ]\n\n";
       std::cout << "                  ID: " << id << "\n";
-      std::cout << "                  Quantidade: " << lotes[id].back()->getQuantidade() << "\n";
-      std::cout << "\n\n----------------------------------------------------------------------------------------------------\n\n\n";
+      std::cout << "                  Quantidade: " << verificaEstoqueMP(id) << "\n";
+      std::cout << "\n\n----------------------------------------------------------------------------------------------------\n\n\n";std::cout << "Sai!!";
       break;
     }
+    default:
+      break;
   }
 }
 
@@ -138,14 +141,14 @@ int Estoque::capacidadeDeProducao(int idProduto){
   std::vector<int> estoqueMateriaPrima;
   int producao = 0;
   for(auto i = materiaPrima.begin();i != materiaPrima.end();i++){
-    estoqueMateriaPrima.push_back(verificaEstoqueMP(materiaPrima.first));
+    estoqueMateriaPrima.push_back(verificaEstoqueMP(i->first));
   }
-  for(int i = 0; i < estoqueMateriaPrima.size();i++){
-    if(i == 0)
-      producao = estoqueMateriaPrima[0]/materiaPrima[0].second
+  for(auto i = materiaPrima.begin();i != materiaPrima.end();i++){
+    if(i == materiaPrima.begin())
+      producao = verificaEstoqueMP(i->first)/i->second;
     else 
-      producao > (estoqueMateriaPrima[i]/materiaPrima[i].second) ? producao = estoqueMateriaPrima[i]/materiaPrima.second : ;
-  } return producao;
+      producao > (verificaEstoqueMP(i->first)/i->second) ? producao = verificaEstoqueMP(i->first)/i->second : producao;
+  } std::cout << "Capacidade de Produção: " <<  producao << "\n\n"; return producao;
 }
 
 
@@ -174,7 +177,8 @@ void Estoque::cadastraProduto(std::string nome, int loteMinimo,int estoqueMinimo
 
 
 void Estoque::cadastraMateriaPrima(int id, std::string nome, std::string unidade, int estoqueMinimo){
-  this->materiaPrima[id] = new MateriaPrima(id,nome,unidade,estoqueMinimo);
+  this->materiaPrima.insert(std::pair<int,MateriaPrima*> (id,new MateriaPrima(id,nome,unidade,estoqueMinimo)));
+  this->estoqueMP[id] = 0;
 }
 
 
@@ -206,19 +210,27 @@ void Estoque::reabasteceEstoqueMP(int idMateriaPrima, int quantidade, tipoReabas
   if((verificaEstoqueMP(idMateriaPrima) > this->materiaPrima[idMateriaPrima]->getEstoqueMinimo()) && (valor == MINIMO))
     auxPrintReabasteceEstoque(N_REALIZADO_MP,idMateriaPrima);
   else{
-    valor == MINIMO ? quantidade = (this->materiaPrima[idMateriaPrima]->getEstoqueMinimo() - verificaEstoqueMP(idMateriaPrima)) : ;
-    OrdemDeMateriaPrima Solicitacao(this->materiaPrima[idMateriaPrima],quantidade, Data().dateNow(),this->fornecedores);
+    valor == MINIMO ? quantidade = (this->materiaPrima[idMateriaPrima]->getEstoqueMinimo() - verificaEstoqueMP(idMateriaPrima)) : quantidade;
+    OrdemDeMateriaPrima* Solicitacao = new OrdemDeMateriaPrima(this->materiaPrima[idMateriaPrima],quantidade, Data().dateNow(),this->fornecedores);
+    this->estoqueMP[idMateriaPrima] = this->estoqueMP[idMateriaPrima] + Solicitacao->getQuantidade();
     auxPrintReabasteceEstoque(REALIZADO_MP,idMateriaPrima);
-    this->estoqueMP[idMateriaPrima] += Solicitacao.getQuantidade();
+    std::cout << "Sai!!";
+    quantidade = 0;
   }
 }
 
 
 void Estoque::reabasteceEstoqueMP(Produto* produto, int quantidade, tipoReabastece valor){
-  valor == MINIMO ? quantidade = produto->getEstoqueMinimo() : ;
-  for(int i = produto->getMateriasPrimas().begin(); i != produto->getMateriasPrimas().end();i++){
-    if((verificaEstoqueMP(i.first)/i.second) < quantidade)
-      reabasteceEstoqueMP(i.first,(quantidade - (verificaEstoqueMP(i.first)/i.second))*i.second,ARBITRARIO);
+  valor == MINIMO ? quantidade = produto->getEstoqueMinimo() : quantidade;
+  produto->printMateriaPrima();
+  //std::cout << "ID: " << i->first << " Quantidade: " << i->second << "\n";
+  for(auto i = produto->getMateriasPrimas().begin(); i != produto->getMateriasPrimas().end();++i){
+    std::cout << "ID: " << i->first << " Quantidade: " << i->second << "\n";
+    std::cout << "Capacidade de Produção baseado na Materia Prima " << i->first << ": " << (verificaEstoqueMP(i->first)/i->second) << "\n\n";
+    if((verificaEstoqueMP(i->first)/i->second) < quantidade){
+      std::cout << (quantidade - (verificaEstoqueMP(i->first)/i->second))*(i->second); std::cout << "\n\n";
+      reabasteceEstoqueMP1(i->first,(quantidade - (verificaEstoqueMP(i->first)/i->second))*(i->second),ARBITRARIO);
+      std::cout << "Sai!!";}
   } 
 }
 
@@ -226,13 +238,13 @@ void Estoque::reabasteceEstoqueMP(Produto* produto, int quantidade, tipoReabaste
 void Estoque::retiraMateriaPrima(int idMateriaPrima, int quantidade){
     this->estoqueMP[idMateriaPrima] -= quantidade;
     if(this->estoqueMP[idMateriaPrima] < this->materiaPrima[idMateriaPrima]->getEstoqueMinimo())
-      reabasteceEstoqueMP(idMateriaPrima,0,MINIMO);
+      reabasteceEstoqueMP1(idMateriaPrima,0,MINIMO);
 }
 
 
 void Estoque::retiraMateriaPrima(Produto* produto, int quantidade){
   for(auto i = produto->getMateriasPrimas().begin();i != produto->getMateriasPrimas().end();i++)
-    retiraMateriaPrima(i.first,i.second*quantidade);
+    retiraMateriaPrima(i->first,i->second*quantidade);
 }
 
 
@@ -259,9 +271,9 @@ void Estoque::printListaDeProdutos(){
 
 void Estoque::printListaDeMateriasPrimas(){
   std::cout << "----------------------------------------------------------------------------------------------------\n\n";
-  std::cout << "                            Lista das Materia Priams Cadastradas no Sistema\n\n";
+  std::cout << "                            Lista das Materia Primas Cadastradas no Sistema\n\n";
   for(auto it =this->materiaPrima.begin(); it!=this->materiaPrima.end(); ++it){
-    std::cout << "Materia Prima: " << it.second->getNome() << "     ID: " << it.first << "     Quantidade: " << verificaEstoqueMP(it.first) << "\n\n";
+    std::cout << "Materia Prima: " << it->second->getNome() << "     ID: " << it->first << "     Quantidade: " << verificaEstoqueMP(it->first) << "\n\n";
   }
   std::cout << "\n\n----------------------------------------------------------------------------------------------------\n\n";
 }
@@ -272,4 +284,15 @@ void Estoque::printListaDeLotes(int idProduto){
   for(int num =0; num < this->lotes[idProduto].size(); num++){
     std::cout << "Produto: " << this->produto[idProduto]->getNome() << "     ID: " << idProduto << "     Lote: " << this->lotes[idProduto][num]->getIdLote() << "     Quantidade: " << this->lotes[idProduto][num]->getQuantidade() << "\n";
   }
+}
+
+void Estoque::printListaDeFornecedores(){
+  std::cout << "----------------------------------------------------------------------------------------------------\n\n";
+  std::cout << "                            Lista dos Fornecedores Cadastradas no Sistema\n\n\n\n";
+  for(int it = 0; it < this->fornecedores.size(); ++it){
+    std::cout << "Nome: " << this->fornecedores[it]->getNome() << "\n";
+    this->fornecedores[it]->printProdutos();
+    std::cout << "\n\n";
+  }
+  std::cout << "\n\n----------------------------------------------------------------------------------------------------\n\n";
 }
