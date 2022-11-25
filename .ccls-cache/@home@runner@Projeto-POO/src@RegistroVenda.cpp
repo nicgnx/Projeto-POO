@@ -8,8 +8,9 @@ RegistroVenda::RegistroVenda(std::string cpfCnpj,int idProduto, int quantidade, 
   this->quantidade = quantidade;
   this->precoUnitario = precoUnitario;
   this->dataVenda = dataVenda;
+  this->status = STATUS::AGUARDANDO;
 
-  executaVenda();
+  // executaVenda();
 
   
 }
@@ -30,6 +31,7 @@ Data RegistroVenda::getDataVenda() { return this->dataVenda; }
 std::vector<int> RegistroVenda::getLotes() { return this->idLotes; }
 
 float RegistroVenda::getPrecoUnitario() { return this->precoUnitario; }
+STATUS RegistroVenda::getStatus() { return this->status; }
 
 // Setters
 
@@ -50,6 +52,10 @@ void RegistroVenda::setPrecoUnitario(float precoUnitario) {
    this->precoUnitario = precoUnitario;
 }
 
+void RegistroVenda::setStatus(STATUS status) {
+  this->status = status;
+}
+
 /*bool RegistroVenda::verificaVenda(){
   Estoque* estoque = Estoque::getInstancia();
     if(this->quantidade > estoque->verificaEstoque(this->idProduto)){
@@ -59,11 +65,10 @@ void RegistroVenda::setPrecoUnitario(float precoUnitario) {
 }*/
 
 void RegistroVenda::executaVenda() {
+  this->setStatus(STATUS::PROCESSANDO);
   Estoque* estoque = Estoque::getInstancia();
   this->idLotes = estoque->retiraLotes(this->idProduto, this->quantidade);
-  
-
-  
+  this->setStatus(STATUS::CONCLUIDO);
 }
 
 void RegistroVenda::printRegistro() {

@@ -1,6 +1,7 @@
 #ifndef BOLETO_H
 #define BOLETO_H
 
+#include <iostream>
 #include "../includes/PagamentoAbstrata.hpp"
 
 enum Periodo { DIAS_30, DIAS_60, DIAS_90 };
@@ -17,6 +18,9 @@ public:
 
   // setters
   void setPeriodo(Periodo periodo);
+
+  //métodos
+  virtual void printaPagamento() override; 
 };
 
 #endif

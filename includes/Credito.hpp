@@ -1,6 +1,8 @@
 #ifndef CREDITO_H
 #define CREDITO_H
 
+#include <iostream>
+#include <iomanip>
 #include "../includes/PagamentoAbstrata.hpp"
 
 enum Parcelamento { A_VISTA, x1, x2, x3, x4, x5, x6 };
@@ -17,6 +19,9 @@ public:
 
   // setters
   void setParcelamento(Parcelamento parcelamento);
+
+  //métodos 
+  virtual void printaPagamento() override;
 };
 
 #endif

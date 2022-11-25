@@ -8,6 +8,12 @@
 #include <vector>
 #include <iostream>
 
+enum STATUS{
+  AGUARDANDO,
+  PROCESSANDO,
+  CONCLUIDO
+};
+
 class RegistroVenda {
 
   std::string cpfCnpj;
@@ -16,6 +22,8 @@ class RegistroVenda {
   float precoUnitario; 
   std::vector<int> idLotes;
   Data dataVenda;
+  STATUS status;
+
 
 public:
   RegistroVenda(
@@ -23,13 +31,14 @@ public:
   );
   ~RegistroVenda();
   // getters
-
+  
   std::string getCpfCnpj();
   int getIdProduto();
   int getQuantidade();
   Data getDataVenda();
   std::vector<int> getLotes();
   float getPrecoUnitario();
+  STATUS getStatus();
 
 
   // setters
@@ -40,7 +49,7 @@ public:
   void setDataVenda(Data dataVenda);
   void setLotes(Lote* lote);
   void setPrecoUnitario(float precoUnitario);
-
+  void setStatus(STATUS);
 
   // outros metodos
   // bool verificaVenda();

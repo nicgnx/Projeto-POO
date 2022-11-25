@@ -62,3 +62,9 @@ bool Utils::verificaCNPJ(std::string cnpj) {
   // se chegou até aqui, é CNPJ válido
   return true;
 }
+
+/*static bool criaLog(int idPermissao, std::string classeAcessada, std::string instaciaAcessada, std::string metodo, std::string atributoAcessado, std::string atributoAntes, std::string atributoDepois) {
+  HistoricoDeLogs* historicoLogs = HistoricoDeLogs::getInstacia();
+  
+  
+}*/

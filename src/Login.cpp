@@ -31,6 +31,10 @@ std::string Login::getUsuarioSenha() {
 }
 
 bool Login::verificaPermissao(int idPermissao) {
+  if (this->getInstance() == nullptr) {
+    std::cout << "\nVoce precisa estar logado para realizar esta acao.\n";
+    return false;
+  }
   // puxa as permissoes do usuario logado
   std::vector<Permissao*> permissoes = this->usuario->getPermissao();
 

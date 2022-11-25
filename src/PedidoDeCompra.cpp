@@ -114,10 +114,13 @@ void PedidoDeCompra::registraPagamento(std::string tipo, std::string forma) {
     std::cout << "\nErro! Tipo de pagamento não validado.\n";
     return;
   }
+  this->executaCompra();
 }
 
 void PedidoDeCompra::executaCompra() {
-  
+  for (auto it : this->registroVenda) {
+    it->executaVenda();
+  }
 }
 
 void PedidoDeCompra::printaCompra() {
@@ -125,5 +128,11 @@ void PedidoDeCompra::printaCompra() {
     std::cout << "\n Erro! Escolha uma forma de pagamento. \n";
     return;
   }
-  std::cout << "\n COMPRA VALIDADA - (recibo de validação em trabalho)";
+  for (auto it : this->registroVenda) {
+    if (it->getStatus() != STATUS::CONCLUIDO)
+      std::cout <<"\n" << it->getIdProduto() << " : Aguardando a confirmação do pedido.\n";
+    else
+      std::cout <<"\n" << it->getIdProduto() << " : Compra executada.\n";
+  }
+  this->registroPagamento->printaPagamento();
 }

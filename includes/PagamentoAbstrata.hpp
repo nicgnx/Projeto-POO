@@ -19,6 +19,9 @@ public:
   // setters
   void setData(Data data);
   void setValorAPagar(float valorAPagar);
+
+  //métodos
+  virtual void printaPagamento() = 0;
 };
 
 #endif

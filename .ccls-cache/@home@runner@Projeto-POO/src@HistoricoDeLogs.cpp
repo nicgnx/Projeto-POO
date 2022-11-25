@@ -75,6 +75,7 @@ void HistoricoDeLogs::setLogExcecao(int idUsuario, LogExcecao* Log) {
   this->historicoExcecao[idUsuario].push_back(Log);
 }
 
+
 void HistoricoDeLogs::printLog(
   tipoLog log, int idUsuario, Data inicial, Data final
 ) {
