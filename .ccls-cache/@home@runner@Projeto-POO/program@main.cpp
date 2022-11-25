@@ -1,5 +1,78 @@
 #include <iostream>
+#include <iostream>
+#include <vector>
+#include "../includes/Data.hpp"
+#include "../includes/Fornecedor.hpp"
+#include "../includes/MateriaPrima.hpp"
+#include "../includes/OrdemDeMateriaPrima.hpp"
+#include "../includes/Estoque.hpp"
 
+int main() {
+  Estoque* estoque = Estoque::getInstancia();
+  estoque->cadastraMateriaPrima(10,"Madeira","Kg",10);
+  estoque->cadastraMateriaPrima(20,"Prego","Kg",20);
+  estoque->cadastraMateriaPrima(30,"Borracha","L",10);
+  estoque->cadastraMateriaPrima(40,"Barra de Ferro","Kg",10);
+  estoque->cadastraMateriaPrima(50,"Parafuso","U",20);
+  estoque->cadastraMateriaPrima(60,"Plastico","Kg",10);
+  std::cout << "-----------------------------------   Criação das materias primas   -----------------------------------\n\n\n";
+  estoque->printListaDeMateriasPrimas();
+
+  estoque->cadastraFornecedor(new Fornecedor ("Madeira&Madeira"));  
+  estoque->cadastraFornecedor(new Fornecedor ("Casa do Marceneiro"));
+  estoque->cadastraFornecedor(new Fornecedor ("Só Artesanal"));
+  estoque->cadastraFornecedor(new Fornecedor ("Leroy Merlin"));
+
+  vector<Fornecedor*> fornecedores = estoque->getFornecedores();
+
+  
+  fornecedores[0]->setMateriaPrima(10,10.25);
+  fornecedores[0]->setMateriaPrima(20,9.25);
+  fornecedores[1]->setMateriaPrima(20,9.85);
+  fornecedores[1]->setMateriaPrima(30,11.85);
+  fornecedores[2]->setMateriaPrima(30,5.85);
+  fornecedores[2]->setMateriaPrima(40, 6.30);
+  fornecedores[3]->setMateriaPrima(40, 8.30);
+  fornecedores[3]->setMateriaPrima(50, 8.30);
+  fornecedores[3]->setMateriaPrima(60, 8.30);
+  std::cout << "-----------------------------------   Criação dos Fornecedores   -----------------------------------\n\n\n";
+  estoque->printListaDeFornecedores();
+
+  estoque->cadastraProduto("Mesa",10,30,new PrecoProduto(15,0,Data().dateNow()));
+  estoque->cadastraProduto("Cadeira",15,10,new PrecoProduto(5,0,Data().dateNow()));
+  estoque->cadastraProduto("Copo",50,100,new PrecoProduto(2,0,Data().dateNow()));
+
+  estoque->getProduto(1001)->setMateriasPrimas(10,5);
+  estoque->getProduto(1001)->setMateriasPrimas(20,15);
+  estoque->getProduto(1002)->setMateriasPrimas(10,5);
+  estoque->getProduto(1002)->setMateriasPrimas(50,15);  
+  estoque->getProduto(1002)->setMateriasPrimas(40,3);
+  estoque->getProduto(1002)->setMateriasPrimas(30,1);
+  estoque->getProduto(1003)->setMateriasPrimas(60,2);
+
+  std::cout << "-----------------------------------   Criação dos Produtos   -----------------------------------\n\n\n";
+
+  estoque->printListaDeProdutos();
+
+  std::cout << "-----------------------------------   Reabastecimento de Estoque   -----------------------------------\n\n\n";
+
+  estoque->retiraLotes(1001,10);
+  estoque->printListaDeProdutos();
+  estoque->printListaDeMateriasPrimas();
+  estoque->retiraLotes(1002,10);
+  estoque->printListaDeProdutos();
+  estoque->printListaDeMateriasPrimas();
+  estoque->retiraLotes(1003,10);
+  estoque->printListaDeProdutos();
+  estoque->printListaDeMateriasPrimas();
+  estoque->reabasteceEstoqueProduto(1001, 0, Estoque::MINIMO);
+  estoque->reabasteceEstoqueProduto(1002, 0, Estoque::MINIMO);
+  estoque->reabasteceEstoqueProduto(1003, 0, Estoque::MINIMO);
+
+  estoque->printListaDeProdutos();
+  estoque->printListaDeMateriasPrimas();
+}
+/*
 #include "../includes/Funcionario.hpp"
 #include "../includes/Cliente.hpp"
 #include "../includes/Usuario.hpp"
@@ -94,4 +167,6 @@ int main() {
   // mostra os logs todos da aplicação
 
   return 0;
-}
+
+  
+}*/

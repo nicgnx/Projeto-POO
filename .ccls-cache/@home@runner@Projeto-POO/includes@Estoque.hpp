@@ -29,12 +29,14 @@ private:
 
   // Métodos Privados
   enum tipoRetorno { N_REALIZADO, REALIZADO, N_REALIZADO_MP, REALIZADO_MP };
-  enum tipoReabastece {MINIMO,ARBITRARIO};
   void auxPrintReabasteceEstoque(tipoRetorno mens, int idProduto);
   void auxReabasteceEstoqueProduto(int idProduto, int quantidade);
   std::vector<int> auxRetiraLotes(int idProduto, int quantidade);
 
 public:
+  // Tipos
+    enum tipoReabastece {MINIMO,ARBITRARIO};
+
   // Operators
   Estoque(const Estoque&);
   Estoque& operator=(const Estoque&);
@@ -58,7 +60,7 @@ public:
   void cadastraMateriaPrima(int id, std::string nome, std::string unidade, int estoqueMinimo);
   void cadastraLote(int idProduto, Lote* lote);
   void reabasteceEstoqueProduto(int idProduto, int quantidade, tipoReabastece valor);
-  void reabasteceEstoqueMP(int idMateriaPrima, int quantidade, tipoReabastece valor);
+  void reabasteceEstoqueMP1(int idMateriaPrima, int quantidade, tipoReabastece valor);
 
 /** @brief A função reabasteceEstoqueMP() recebe como parâmetro:
 

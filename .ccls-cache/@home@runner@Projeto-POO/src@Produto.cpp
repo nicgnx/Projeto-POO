@@ -3,8 +3,8 @@
 int* Produto::staticIdProduto = NULL;
 
 Produto::Produto(
-    std::string nome, std::vector<MateriaPrima> materiasPrimas, Categoria categoria, int loteMinimo, int estoqueMinimo,
-    PrecoProduto* preco
+  std::string nome,std::map<int,int> materiasPrimas, Categoria categoria, int loteMinimo, int estoqueMinimo,
+  PrecoProduto* preco
 ) {
 
   this->nome = nome;
@@ -35,7 +35,7 @@ Produto::~Produto() {} // destrutor
 int Produto::getID() {
   if (staticIdProduto == NULL) {
     staticIdProduto = new int;
-    *staticIdProduto = 0;
+    *staticIdProduto = 1000;
   }
   *staticIdProduto += 1;
   return *staticIdProduto;
@@ -61,7 +61,7 @@ void Produto::setNome(std::string nome) { this->nome = nome; }
 
 void Produto::setIdProduto(int idProduto) { this->idProduto = idProduto; }
 
-void Produto::setMateriasPrimas(std::map<int,int> materiasPrimas){this->materiasPrimas[idMateriaPrima] = quantidade;}
+void Produto::setMateriasPrimas(int idMateriaPrima, int quantidade){this->materiasPrimas[idMateriaPrima] = quantidade;}
 
 void Produto::setCategoria(Categoria categoria) { this->categoria = categoria; }
 
@@ -72,20 +72,26 @@ void Produto::setEstoqueMinimo(int estoqueMinimo) {
 }
 
 // Métodos
+void Produto::printMateriaPrima(){
+  std::cout << "Materias Primas do Produto " << getNome() << "\n\n";
+  for(auto i = this->materiasPrimas.begin(); i != this->materiasPrimas.end(); i++){
+    std::cout << "ID: " << i->first << " Quantidade: " << i->second << "\n";
+  } std::cout << "\n\n";
+}
 
 void Produto::novoPreco(float precoBase, float percentualVariacao, Data data) {
-  if (!Login::getInstance()->verificaPermissao(PERMISSOES::CADASTRAR_EDITAR_PRODUTO)) {
-    throw "Usuario logado nao possui permissao para editar precos do produto!";
-  }
+  //if (!Login::getInstance()->verificaPermissao(PERMISSOES::CADASTRAR_EDITAR_PRODUTO)) {
+   // throw "Usuario logado nao possui permissao para editar precos do produto!";
+  //}
 
   PrecoProduto* preco = new PrecoProduto(precoBase, percentualVariacao, data);
   this->precos.push_back(preco);
 }
 
 void Produto::novoPreco(PrecoProduto* preco) { 
-  if (!Login::getInstance()->verificaPermissao(PERMISSOES::CADASTRAR_EDITAR_PRODUTO)) {
-    throw "Usuario logado nao possui permissao para editar precos do produto!";
-  }
+ // if (!Login::getInstance()->verificaPermissao(PERMISSOES::CADASTRAR_EDITAR_PRODUTO)) {
+  //  throw "Usuario logado nao possui permissao para editar precos do produto!";
+ // }
   
   this->precos.push_back(preco); 
 }

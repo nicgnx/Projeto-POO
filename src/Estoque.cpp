@@ -10,14 +10,11 @@ Estoque* Estoque::estoque = NULL;
 // Funções Auxiliares
 void Estoque::auxReabasteceEstoqueProduto(int idProduto, int quantidade) {
       // Reabastece as matérias-primas se necessario, para solicitar o Lote.
-      std::cout << "ID: " << idProduto << " Quantidade: " << quantidade << "\n\n";
       if(capacidadeDeProducao(idProduto) < quantidade){reabasteceEstoqueMP(this->produto[idProduto],(quantidade - capacidadeDeProducao(idProduto)),ARBITRARIO);}
       // Cria a Ordem de Produção do Lote.
       OrdemDeProducao Solicitacao(this->produto[idProduto]->getNome(),idProduto,Data().dateNow(),quantidade);
       // Remove as matérias-primas necessárias para solicitar o Lote.
       retiraMateriaPrima(this->produto[idProduto],quantidade);   
-      // Reabastece as matérias-primas.
-      reabasteceEstoqueMP(this->produto[idProduto],0,MINIMO);
       // Solicita o novo Lote.
       this->lotes[idProduto].push_back(Solicitacao.solicitaLote());
       auxPrintReabasteceEstoque(REALIZADO,idProduto);
@@ -80,7 +77,7 @@ void Estoque::auxPrintReabasteceEstoque(tipoRetorno mens,int id){
       std::cout << "                  Solicitação de Reabastecimento do Estoque da Materia Prima [ " << this->materiaPrima[id]->getNome() <<   " ]\n\n";
       std::cout << "                  ID: " << id << "\n";
       std::cout << "                  Quantidade: " << verificaEstoqueMP(id) << "\n";
-      std::cout << "\n\n----------------------------------------------------------------------------------------------------\n\n\n";std::cout << "Sai!!";
+      std::cout << "\n\n----------------------------------------------------------------------------------------------------\n\n\n";
       break;
     }
     default:
@@ -148,7 +145,7 @@ int Estoque::capacidadeDeProducao(int idProduto){
       producao = verificaEstoqueMP(i->first)/i->second;
     else 
       producao > (verificaEstoqueMP(i->first)/i->second) ? producao = verificaEstoqueMP(i->first)/i->second : producao;
-  } std::cout << "Capacidade de Produção: " <<  producao << "\n\n"; return producao;
+  } return producao;
 }
 
 
@@ -207,14 +204,14 @@ void Estoque::reabasteceEstoqueProduto(int idProduto, int quantidade, tipoReabas
 
 
 void Estoque::reabasteceEstoqueMP(int idMateriaPrima, int quantidade, tipoReabastece valor) {
-  if((verificaEstoqueMP(idMateriaPrima) > this->materiaPrima[idMateriaPrima]->getEstoqueMinimo()) && (valor == MINIMO))
+ if((verificaEstoqueMP(idMateriaPrima) >= this->materiaPrima[idMateriaPrima]->getEstoqueMinimo()) && (valor == MINIMO))
     auxPrintReabasteceEstoque(N_REALIZADO_MP,idMateriaPrima);
   else{
     valor == MINIMO ? quantidade = (this->materiaPrima[idMateriaPrima]->getEstoqueMinimo() - verificaEstoqueMP(idMateriaPrima)) : quantidade;
     OrdemDeMateriaPrima* Solicitacao = new OrdemDeMateriaPrima(this->materiaPrima[idMateriaPrima],quantidade, Data().dateNow(),this->fornecedores);
     this->estoqueMP[idMateriaPrima] = this->estoqueMP[idMateriaPrima] + Solicitacao->getQuantidade();
+    
     auxPrintReabasteceEstoque(REALIZADO_MP,idMateriaPrima);
-    std::cout << "Sai!!";
     quantidade = 0;
   }
 }
@@ -222,28 +219,29 @@ void Estoque::reabasteceEstoqueMP(int idMateriaPrima, int quantidade, tipoReabas
 
 void Estoque::reabasteceEstoqueMP(Produto* produto, int quantidade, tipoReabastece valor){
   valor == MINIMO ? quantidade = produto->getEstoqueMinimo() : quantidade;
-  produto->printMateriaPrima();
-  //std::cout << "ID: " << i->first << " Quantidade: " << i->second << "\n";
-  for(auto i = produto->getMateriasPrimas().begin(); i != produto->getMateriasPrimas().end();++i){
-    std::cout << "ID: " << i->first << " Quantidade: " << i->second << "\n";
-    std::cout << "Capacidade de Produção baseado na Materia Prima " << i->first << ": " << (verificaEstoqueMP(i->first)/i->second) << "\n\n";
+  std::map <int,int> materiasPrimas = produto->getMateriasPrimas();
+  for(auto i = materiasPrimas.begin(); i != materiasPrimas.end(); i++){   
     if((verificaEstoqueMP(i->first)/i->second) < quantidade){
-      std::cout << (quantidade - (verificaEstoqueMP(i->first)/i->second))*(i->second); std::cout << "\n\n";
-      reabasteceEstoqueMP(i->first,(quantidade - (verificaEstoqueMP(i->first)/i->second))*(i->second),ARBITRARIO);
-      std::cout << "Sai!!";}
+    reabasteceEstoqueMP(i->first,(quantidade - (verificaEstoqueMP(i->first)/i->second))*(i->second),valor);
+    }
   } 
 }
 
 
 void Estoque::retiraMateriaPrima(int idMateriaPrima, int quantidade){
-    this->estoqueMP[idMateriaPrima] -= quantidade;
-    if(this->estoqueMP[idMateriaPrima] < this->materiaPrima[idMateriaPrima]->getEstoqueMinimo())
-      reabasteceEstoqueMP(idMateriaPrima,0,MINIMO);
+  this->estoqueMP[idMateriaPrima] -= quantidade;
+  std::cout << "----------------------------------------------------------------------------------------------------\n\n";
+  std::cout << "Materia Prima [ " << this->materiaPrima[idMateriaPrima]->getNome() << " ] " << "retirada.\n\n"
+            << " Quantidade: " << quantidade << "\n";  
+  std::cout << "\n\n----------------------------------------------------------------------------------------------------\n\n";  
+  if(this->estoqueMP[idMateriaPrima] < this->materiaPrima[idMateriaPrima]->getEstoqueMinimo())
+    reabasteceEstoqueMP(idMateriaPrima,0,MINIMO);
 }
 
 
 void Estoque::retiraMateriaPrima(Produto* produto, int quantidade){
-  for(auto i = produto->getMateriasPrimas().begin();i != produto->getMateriasPrimas().end();i++)
+  std::map <int,int> materiasPrimas = produto->getMateriasPrimas();
+  for(auto i = materiasPrimas.begin() ;i != materiasPrimas.end();i++)
     retiraMateriaPrima(i->first,i->second*quantidade);
 }
 
