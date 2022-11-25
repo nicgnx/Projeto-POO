@@ -30,7 +30,7 @@ public:
   std::string getCliente();
   std::string getCpfCnpj();
   std::string getEmail();
-  vector<ItensDesejados*> getCarrinho();
+  std::vector<ItensDesejados*> getCarrinho();
   float getValorTotal();
   Data getData();
   PedidoDeCompra* getPedido();
@@ -39,14 +39,14 @@ public:
   void setCliente(std::string cliente);
   void setCpfCnpj(int cpfCnpj);
   void setEmail(std::string email);
-  void setCarrinho(vector<ItensDesejados*> carrinho);
+  void setCarrinho(std::vector<ItensDesejados*> carrinho);
   void setValorTotal(float valorTotal);
   void setData(Data data);
   void setPedido(PedidoDeCompra* pedido);
 
   // misc
   void calculaValorTotal();
-  void printaOrcamento();
+  void printOrcamento();
   PedidoDeCompra* gerarPedidoDeCompra(Data DataCompra
   );
 };

@@ -66,3 +66,6 @@ TEST_CASE("logs") {
   log->printLog();
   log2->printLog();
 }
+TEST_CASE("Pedido de Compra") {
+  
+}

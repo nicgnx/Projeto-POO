@@ -28,7 +28,7 @@ std::string Orcamento::getCpfCnpj() { return this->cpfCnpj; };
 
 std::string Orcamento::getEmail() { return this->email; };
 
-vector<ItensDesejados*> Orcamento::getCarrinho() { return this->carrinho; };
+std::vector<ItensDesejados*> Orcamento::getCarrinho() { return this->carrinho; };
 
 float Orcamento::getValorTotal() { return this->valorTotal; };
 
@@ -58,8 +58,14 @@ void Orcamento::setPedido(PedidoDeCompra* pedido) { this->pedido = pedido; };
 
 // };
 
-void Orcamento::printaOrcamento(){
-
+void Orcamento::printOrcamento(){
+  std::cout << "----------------------------------------------------------------------------------------------------\n\n"
+            << "                            Empresa - Orçamento para " << getCliente() << " (" << getCpfCnpj() << ")\n\n"
+            << "Produtos: " << "\n\n";
+    std::vector<ItensDesejados*> itens = getCarrinho();
+    for(auto i = itens.begin(); i != itens.end(); i++){
+      std::cout << "Nome: " << (*i)->getProduto() << "ID: " << (*i)->getIdProduto();
+    }
 };
 
 PedidoDeCompra* Orcamento::gerarPedidoDeCompra(Data dataCompra){

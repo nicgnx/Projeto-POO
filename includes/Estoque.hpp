@@ -60,7 +60,7 @@ public:
   void cadastraMateriaPrima(int id, std::string nome, std::string unidade, int estoqueMinimo);
   void cadastraLote(int idProduto, Lote* lote);
   void reabasteceEstoqueProduto(int idProduto, int quantidade, tipoReabastece valor);
-  void reabasteceEstoqueMP1(int idMateriaPrima, int quantidade, tipoReabastece valor);
+  void reabasteceEstoqueMP(int idMateriaPrima, int quantidade, tipoReabastece valor);
 
 /** @brief A função reabasteceEstoqueMP() recebe como parâmetro:
 

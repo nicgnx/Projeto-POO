@@ -2,11 +2,12 @@
 #include "../includes/Funcionario.hpp"
 #include "../includes/Login.hpp"
 #include "../third_party/doctest.h"
+#include "../includes/Turno.hpp"
 
 #include "../includes/LogExcecao.hpp"
 #include "../includes/LogLeitura.hpp"
 
-TEST_CASE("Construtor") {
+/*TEST_CASE("Construtor") {
   Cliente agroBrasil(
     "Agro Brasil", "comercial@agrobrasil.com.br", "1236548", "123.456.78-456",
     PJ, 551125487
@@ -24,16 +25,16 @@ TEST_CASE("Construtor") {
   CHECK_EQ(Login::getInstance(), nullptr);
   Login::logar(&comunicaBrasil);
   CHECK_EQ(Login::getUsuarioNome(), "Comunica Brasil");
-}
+}*/
 
-TEST_CASE("Construtor2") {
-
+TEST_CASE("Funcionario") {
+  Turno* turno = new Turno();
   Funcionario Alan(
     "Alan", "125.254.366-98", "alan@testeemail.com", "senha123",
     Data(1985, 8, 24, 0, 0, 0), "Rua dos Bobos nº 0", "202233665",
     Cargo("Estagiario"), Departamento("IT"),
     Historico(Data(2022, 9, 29, 15, 59, 00), "Contratação do Alan"),
-    Salario(1000.95, 0, Data(2022, 29, 9, 15, 59, 00), Gerencia)
+    Salario(1000.95, 0, Data(2022, 29, 9, 15, 59, 00), Gerencia), turno
   );
 
   std::cout << " Funcionario: " << Alan.getNome()
@@ -52,18 +53,19 @@ TEST_CASE("Construtor2") {
   if (Alan.getSenha() == "senha123") {
     std::cout << "senha ok";
   }
-
-  TEST_CASE("login") {
-
-    LogAbstrata* log = new LogLeitura(
-      "cesar", 1, Data(1985, 8, 24, 0, 0, 0), "Venda", "executaVenda",
-      "executou a venda para o cliente"
-    );
-    LogAbstrata* log2 = new LogExcecao(
-      "fulano", 2, Data(1985, 8, 24, 0, 0, 0), "Estoque",
-      "VerificaEstoque nao permitido", "Verifica estoque"
-    );
-    log.printLog();
-    log2.printLog();
-  }
+}
+TEST_CASE("logs") {
+  LogAbstrata* log = new LogLeitura(
+    "cesar", 1, Data(1985, 8, 24, 0, 0, 0), "Venda", "executaVenda",
+    "executou a venda para o cliente"
+  );
+  LogAbstrata* log2 = new LogExcecao(
+    "fulano", 2, Data(1985, 8, 24, 0, 0, 0), "Estoque",
+    "VerificaEstoque nao permitido", "Verifica estoque"
+  );
+  log->printLog();
+  log2->printLog();
+}
+TEST_CASE("Pedido de Compra") {
+  
 }

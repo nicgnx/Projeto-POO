@@ -1,7 +1,6 @@
 #include "../includes/RegistroVenda.hpp"
 
 
-
 RegistroVenda::RegistroVenda(std::string cpfCnpj,int idProduto, int quantidade, float precoUnitario,  Data dataVenda) {
   
   this->cpfCnpj = cpfCnpj;

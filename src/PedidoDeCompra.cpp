@@ -42,14 +42,14 @@ void PedidoDeCompra::setRegistroPagamento(PagamentoAbstrata* registroPagamento
   this->registroPagamento = registroPagamento;
 }
 // métodos
-void PedidoDeCompra::registraPagamento(std::string tipo, std::string forma) {
+bool PedidoDeCompra::validaEntrada(std::string tipo, std::string forma) {
   for (int i = 0; i < sizeof(tiposDePagamento) / sizeof(int); i++) {
     std::string tipoIt = tiposDePagamento[i];
     if (tipo == tipoIt)
       break;
     else if (i == (sizeof(tiposDePagamento) / sizeof(int)) - 1) {
       std::cout << "\nErro! Tipo de pagamento não registrado.\n";
-      return ;
+      return false;
     }
   }
 
@@ -58,33 +58,72 @@ void PedidoDeCompra::registraPagamento(std::string tipo, std::string forma) {
     if (forma == formaIt)
       break;
     else if (i == (sizeof(formasDePagamento) / sizeof(int)) - 1) {
-      std::cout << "\nErro! Tipo de pagamento não registrado.\n";
-      return ;
+      std::cout << "\nErro! Forma de pagamento não registrada.\n";
+      return false;
     }
   }
-
-  // switch (tipo) {
-  //   case "boleto":
-  //     switch (forma) {
-  //       case "30":
-  //         break;
-  //     }
-  //     break;
-  //   case "credito":
-  //     switch (forma) {
-  //       case "a_vista":
-  //         break;
-  //     }
-  //     break;
-  // }
+  return true;
 }
 
-void PedidoDeCompra::executaCompra() {}
+void PedidoDeCompra::registraPagamento(std::string tipo, std::string forma) {
+  if (this->validaEntrada(tipo, forma) == false)
+    return;
+  if (tipo.compare("boleto") == 0) {
+    if (forma.compare("30") == 0) {
+      this->registroPagamento = new Boleto(this->dataPedido.dateNow(), this->valorDaCompra, Periodo::DIAS_30);
+    }
+    else if (forma.compare("60") == 0) {
+      this->registroPagamento = new Boleto(this->dataPedido.dateNow(), this->valorDaCompra, Periodo::DIAS_60);
+    }
+    else if (forma.compare("90") == 0) {
+      this->registroPagamento = new Boleto(this->dataPedido.dateNow(), this->valorDaCompra, Periodo::DIAS_90);
+    }
+    else {
+      std::cout << "\nForma de pagamento não é valida para boleto\n";
+      return;
+    }
+  }
+  else if (tipo.compare("credito") == 0) {
+    if (forma.compare("a_vista") == 0) {
+      this->registroPagamento = new Credito(this->dataPedido.dateNow(), this->valorDaCompra, Parcelamento::A_VISTA);
+    }
+    else if (forma.compare("x1") == 0) {
+      this->registroPagamento = new Credito(this->dataPedido.dateNow(), this->valorDaCompra, Parcelamento::x1);
+    }
+    else if (forma.compare("x2") == 0) {
+      this->registroPagamento = new Credito(this->dataPedido.dateNow(), this->valorDaCompra, Parcelamento::x2);
+    }
+    else if (forma.compare("x3") == 0) {
+      this->registroPagamento = new Credito(this->dataPedido.dateNow(), this->valorDaCompra, Parcelamento::x3);
+    }
+    else if (forma.compare("x4") == 0) {
+      this->registroPagamento = new Credito(this->dataPedido.dateNow(), this->valorDaCompra, Parcelamento::x4);
+    }
+    else if (forma.compare("x5") == 0) {
+      this->registroPagamento = new Credito(this->dataPedido.dateNow(), this->valorDaCompra, Parcelamento::x5);
+    }
+    else if (forma.compare("x6") == 0) {
+      this->registroPagamento = new Credito(this->dataPedido.dateNow(), this->valorDaCompra, Parcelamento::x6);
+    }
+    else {
+      std::cout << "\n Forma de pagamento não é valida para credito.\n";
+      return;
+    }
+  }
+  else {
+    std::cout << "\nErro! Tipo de pagamento não validado.\n";
+    return;
+  }
+}
+
+void PedidoDeCompra::executaCompra() {
+  
+}
 
 void PedidoDeCompra::printaCompra() {
   if (this->registroPagamento == nullptr) {
     std::cout << "\n Erro! Escolha uma forma de pagamento. \n";
-    return ;
+    return;
   }
-  
+  std::cout << "\n COMPRA VALIDADA - (recibo de validação em trabalho)";
 }

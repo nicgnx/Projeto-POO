@@ -18,6 +18,8 @@ void Estoque::auxReabasteceEstoqueProduto(int idProduto, int quantidade) {
       // Solicita o novo Lote.
       this->lotes[idProduto].push_back(Solicitacao.solicitaLote());
       auxPrintReabasteceEstoque(REALIZADO,idProduto);
+      // Reabastece as materias primas se necessário
+      reabasteceEstoqueMP(this->produto[idProduto],0,MINIMO);
 }
 
 
@@ -234,8 +236,6 @@ void Estoque::retiraMateriaPrima(int idMateriaPrima, int quantidade){
   std::cout << "Materia Prima [ " << this->materiaPrima[idMateriaPrima]->getNome() << " ] " << "retirada.\n\n"
             << " Quantidade: " << quantidade << "\n";  
   std::cout << "\n\n----------------------------------------------------------------------------------------------------\n\n";  
-  if(this->estoqueMP[idMateriaPrima] < this->materiaPrima[idMateriaPrima]->getEstoqueMinimo())
-    reabasteceEstoqueMP(idMateriaPrima,0,MINIMO);
 }
 
 

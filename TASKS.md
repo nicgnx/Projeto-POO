@@ -2,13 +2,13 @@
 
 (10) implementar casos de teste que o prof pediu na main
 
-(11) integrar permissoes (que ja esta funcionando) nas principais funcoes do sistema
-
 (12) integrar logs nas principais funcoes do sistema
 
 ----------------------------------------------------------------------
 
 ## EM ANDAMENTO -> colocar nome de quem está fazendo
+
+(11) (Erick) integrar permissoes (que ja esta funcionando) nas principais funcoes do sistema
 
 (4) (Gustavo) adaptar classe Empresa para o modelo mais recente.
   * Alterar o construtor da classse afim dele para criar um usuário root que possuí todas as permissões quando a 1º instância de Empresa é criada.

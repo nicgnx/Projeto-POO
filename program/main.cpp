@@ -6,6 +6,7 @@
 #include "../includes/MateriaPrima.hpp"
 #include "../includes/OrdemDeMateriaPrima.hpp"
 #include "../includes/Estoque.hpp"
+#include "../includes/Cliente.hpp"
 
 int main() {
   Estoque* estoque = Estoque::getInstancia();
@@ -56,6 +57,7 @@ int main() {
 
   std::cout << "-----------------------------------   Reabastecimento de Estoque   -----------------------------------\n\n\n";
 
+  /*
   estoque->retiraLotes(1001,10);
   estoque->printListaDeProdutos();
   estoque->printListaDeMateriasPrimas();
@@ -65,12 +67,21 @@ int main() {
   estoque->retiraLotes(1003,10);
   estoque->printListaDeProdutos();
   estoque->printListaDeMateriasPrimas();
+  */
+  
   estoque->reabasteceEstoqueProduto(1001, 0, Estoque::MINIMO);
   estoque->reabasteceEstoqueProduto(1002, 0, Estoque::MINIMO);
   estoque->reabasteceEstoqueProduto(1003, 0, Estoque::MINIMO);
-
   estoque->printListaDeProdutos();
   estoque->printListaDeMateriasPrimas();
+
+  Cliente Carlos("Carlos","74536547898","carlos@empresa.com","Senha125",PF,1258479635);
+  std::map<int,int> listaDeCompras;
+  listaDeCompras[1001] = 5;
+  listaDeCompras[1002] = 20;
+  listaDeCompras[1003] = 40;
+  
+  Carlos.solicitaOrcamento(listaDeCompras);
 }
 /*
 #include "../includes/Funcionario.hpp"

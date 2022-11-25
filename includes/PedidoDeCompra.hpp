@@ -5,7 +5,11 @@
 #include "ItensDesejados.hpp"
 #include "PagamentoAbstrata.hpp"
 #include "RegistroVenda.hpp"
+#include "Boleto.hpp"
+#include "Credito.hpp"
 #include <vector>
+#include <string>
+#include <cstring>
 
 const std::vector<std::string>tiposDePagamento = {"boleto", "credito"};
 const std::vector<std::string>formasDePagamento = {"30", "60", "90", "a_vista", "x1", "x2", "x3", "x4", "x5", "x6"};
@@ -14,7 +18,8 @@ private:
   float valorDaCompra;
   std::vector<RegistroVenda*> registroVenda;
   Data dataPedido;
-  PagamentoAbstrata* registroPagamento;
+  PagamentoAbstrata* registroPagamento = nullptr;
+  
 
 public:
   // Construtores e Destrutores
@@ -37,6 +42,7 @@ public:
   void registraPagamento(std::string, std::string);
   void executaCompra();
   void printaCompra();
+  bool validaEntrada(std::string, std::string);
 };
 
 #endif // PEDIDO_DE_COMPRA_H
