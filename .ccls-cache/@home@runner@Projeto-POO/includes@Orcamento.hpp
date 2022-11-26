@@ -18,6 +18,8 @@ protected:
  
   PedidoDeCompra* pedido;
 
+  std::string auxPrint(int tamanho);
+
 public:
   // Construtores e Destrutores
   Orcamento(std::string cliente, std::string cpfCnpj, std::string email,    std::map<int, int> itensDesejados);

@@ -166,7 +166,7 @@ Data Data::operator-(Data &d2) {
   if (ticks < d2.getTicks()) // Tratamento de excecao se for tentada uma
                              // subtracao impossivel
     throw ExecaoCustomizada(
-        (char*)"Erro: Resultado eh data negativa, inverta parametros");
+        "Erro: Resultado eh data negativa, inverta parametros");
   else
     return aux;
 }
@@ -280,7 +280,32 @@ void Data::printData() {
     cout << hora << formatoData.getSeparadorHorario() << minuto
          << formatoData.getSeparadorHorario() << segundo << endl;
   } else // Tratamento de excecao de formato invalido
-    throw ExecaoCustomizada((char*)"Erro: Esperado argumento PT-BR ou EN-US");
+    throw ExecaoCustomizada("Erro: Esperado argumento PT-BR ou EN-US");
+}
+
+string Data::printData(bool nada) {
+  string data;
+  if (strcmp(formatoData.getNome().c_str(), "PT-BR") == 0) {
+    data.insert(0,to_string(dia));
+    data.insert(data.size(),formatoData.getSeparadorData());
+    data.insert(data.size(),to_string(mes));
+    data.insert(data.size(),formatoData.getSeparadorData());
+    data.insert(data.size(),to_string(ano));
+    data.insert(data.size(),"  ");
+    data.insert(data.size(),to_string(hora));
+    data.insert(data.size(),formatoData.getSeparadorHorario());
+    data.insert(data.size(),to_string(minuto));
+    data.insert(data.size(),formatoData.getSeparadorHorario());
+    data.insert(data.size(),to_string(segundo));
+    return data;
+  } else if (strcmp(formatoData.getNome().c_str(), "EN-US") == 0) {
+    cout << ano << formatoData.getSeparadorData() << mes
+         << formatoData.getSeparadorData() << dia << "  ";
+    cout << hora << formatoData.getSeparadorHorario() << minuto
+         << formatoData.getSeparadorHorario() << segundo << endl;
+    return "Não use esse formato";
+  } else // Tratamento de excecao de formato invalido
+    throw ExecaoCustomizada("Erro: Esperado argumento PT-BR ou EN-US");
 }
 
 string Data::getData() {
@@ -299,7 +324,7 @@ string Data::getData() {
            formatoData.getSeparadorHorario() + to_string(minuto) +
            formatoData.getSeparadorHorario() + to_string(segundo);
   } else // Tratamento de excecao de formato invalido
-    throw ExecaoCustomizada((char*)"Erro: Esperado argumento PT-BR ou EN-US");
+    throw ExecaoCustomizada("Erro: Esperado argumento PT-BR ou EN-US");
   return data;
 }
 
