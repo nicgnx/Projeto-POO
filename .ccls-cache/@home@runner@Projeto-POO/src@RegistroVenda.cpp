@@ -9,10 +9,7 @@ RegistroVenda::RegistroVenda(std::string cpfCnpj,int idProduto, int quantidade, 
   this->precoUnitario = precoUnitario;
   this->dataVenda = dataVenda;
   this->status = STATUS::AGUARDANDO;
-
-  //executaVenda();
-
-  
+  executaVenda();  
 }
 
 RegistroVenda::~RegistroVenda() {}
@@ -69,6 +66,7 @@ void RegistroVenda::executaVenda() {
   Estoque* estoque = Estoque::getInstancia();
   this->idLotes = estoque->retiraLotes(this->idProduto, this->quantidade);
   this->setStatus(STATUS::CONCLUIDO);
+  printRegistro();
 }
 
 void RegistroVenda::printRegistro() {
@@ -76,16 +74,16 @@ void RegistroVenda::printRegistro() {
                "-------------------------------------\n\n";
   std::cout << "   Compra realizada com sucesso! Segue abaixo as informações "
                "da compra.\n\n";
-  std::cout << "   Cpf/Cnpj cliente: " << this->cpfCnpj << "\n";
-  std::cout << "   Data: ";
+  std::cout << "   Cpf/Cnpj:   " << this->cpfCnpj << "\n";
+  std::cout << "   Data:       ";
   this->dataVenda.printData();
   std::cout << "\n";
-  std::cout << "   Produto: "
+  std::cout << "   Produto:    "
             << Estoque::getInstancia()->getProduto(this->idProduto)->getNome()
             << "\n";
   std::cout << "   Quantidade: " << this->quantidade << "\n";
-  std::cout << "   Preço da unidade: " << this->precoUnitario << "\n";
-  std::cout << "   Lotes:";
+  std::cout << "   Preço:      R$ " << this->precoUnitario << "\n";
+  std::cout << "   Lotes:     ";
   for (int num = 0; num < idLotes.size(); num++) {
     num == idLotes.size() - 1 ? std::cout << " " << idLotes[num] :
                                 std::cout << " " << idLotes[num] << ",";
@@ -93,4 +91,4 @@ void RegistroVenda::printRegistro() {
   std::cout << "\n\n";
   std::cout << "---------------------------------------------------------------"
                "-------------------------------------\n";
-}
+} //tá funcionando

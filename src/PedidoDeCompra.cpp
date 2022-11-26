@@ -114,13 +114,13 @@ void PedidoDeCompra::registraPagamento(std::string tipo, std::string forma) {
   this->executaCompra();
 }
 
-/*
+
 void PedidoDeCompra::executaCompra() {
   for (auto it : this->registroVenda) {
     it->executaVenda();
   }
 }
-*/
+
 void PedidoDeCompra::printaCompra() {
   if (this->registroPagamento == nullptr) {
     std::cout << "\n Erro! Escolha uma forma de pagamento. \n";

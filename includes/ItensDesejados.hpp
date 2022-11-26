@@ -12,7 +12,7 @@ protected:
   float precoUnitario;
   float valorTotal;
   bool disponibilidade;
-  ;
+  float juros;
 
 public:
   // Construtores e Destrutores
