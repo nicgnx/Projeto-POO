@@ -38,8 +38,7 @@ public:
   void setFornecedor(Fornecedor*);
 
   // Métodos
-  Fornecedor*
-  melhorPreco(int idMateriaPrima, std::vector<Fornecedor*> fornecedores);
+  Fornecedor* melhorPreco(int idMateriaPrima, std::vector<Fornecedor*> fornecedores);
   void printOrdemDeMP();
 };
 

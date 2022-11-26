@@ -13,17 +13,14 @@ protected:
   std::string email;
 
   Data data;
-  vector<ItensDesejados*> carrinho;
+  std::vector<ItensDesejados*> carrinho;
   float valorTotal;
  
   PedidoDeCompra* pedido;
 
 public:
   // Construtores e Destrutores
-  Orcamento(
-    std::string cliente, std::string cpfCnpj, std::string email,
-    std::map<int, int> itensDesejados);
-  Orcamento();
+  Orcamento(std::string cliente, std::string cpfCnpj, std::string email,    std::map<int, int> itensDesejados);
   ~Orcamento();
 
   // getters
@@ -44,11 +41,11 @@ public:
   void setData(Data data);
   void setPedido(PedidoDeCompra* pedido);
 
-  // misc
+  // Métodos
   void calculaValorTotal();
+  void gerarPedidoDeCompra(Data DataCompra);
   void printOrcamento();
-  PedidoDeCompra* gerarPedidoDeCompra(Data DataCompra
-  );
+  void printOrcamentoAprovado(Orcamento* orcamento);//
 };
 
 #endif 

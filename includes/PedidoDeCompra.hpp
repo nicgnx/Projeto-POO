@@ -40,7 +40,7 @@ public:
   void setRegistroPagamento(PagamentoAbstrata*);
   // métodos
   void registraPagamento(std::string, std::string);
-  void executaCompra();
+  //void executaCompra();
   void printaCompra();
   bool validaEntrada(std::string, std::string);
 };

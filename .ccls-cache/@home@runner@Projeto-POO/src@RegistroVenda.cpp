@@ -10,7 +10,7 @@ RegistroVenda::RegistroVenda(std::string cpfCnpj,int idProduto, int quantidade, 
   this->dataVenda = dataVenda;
   this->status = STATUS::AGUARDANDO;
 
-  // executaVenda();
+  //executaVenda();
 
   
 }
@@ -85,7 +85,6 @@ void RegistroVenda::printRegistro() {
             << "\n";
   std::cout << "   Quantidade: " << this->quantidade << "\n";
   std::cout << "   Preço da unidade: " << this->precoUnitario << "\n";
-  // std::cout << "   Valor Total: " << this->valorVenda << "\n";
   std::cout << "   Lotes:";
   for (int num = 0; num < idLotes.size(); num++) {
     num == idLotes.size() - 1 ? std::cout << " " << idLotes[num] :

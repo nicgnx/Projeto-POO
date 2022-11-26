@@ -4,11 +4,8 @@
 PedidoDeCompra::PedidoDeCompra(std::vector<ItensDesejados*> itens, Data dataPedido, float valorDaCompra,std::string cpfCnpj) {
   this->dataPedido = dataPedido;
   this->valorDaCompra = valorDaCompra;
-  
-  for(auto it = itens.begin(); it != itens.end(); it++){
-    RegistroVenda* registroDeVenda = new RegistroVenda(cpfCnpj,(*it)->getIdProduto(),(*it)->getQuantidade() ,(*it)->getPrecoUnitario(), getDataPedido());
-
-    this->registroVenda.push_back(registroDeVenda);
+  for(int i = 0; i < itens.size(); i++){
+    this->registroVenda.push_back(new RegistroVenda(cpfCnpj,itens[i]->getIdProduto(),itens[i]->getQuantidade() ,itens[i]->getPrecoUnitario(), getDataPedido()));
   }
 }
 PedidoDeCompra::PedidoDeCompra() {}
@@ -117,12 +114,13 @@ void PedidoDeCompra::registraPagamento(std::string tipo, std::string forma) {
   this->executaCompra();
 }
 
+/*
 void PedidoDeCompra::executaCompra() {
   for (auto it : this->registroVenda) {
     it->executaVenda();
   }
 }
-
+*/
 void PedidoDeCompra::printaCompra() {
   if (this->registroPagamento == nullptr) {
     std::cout << "\n Erro! Escolha uma forma de pagamento. \n";

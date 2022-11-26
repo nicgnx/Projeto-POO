@@ -1,6 +1,8 @@
 #include "../includes/Orcamento.hpp"
 #include <string>
 
+// Construtores e Destrutores
+
 Orcamento::Orcamento(
   std::string cliente, std::string cpfCnpj, std::string email,
   std::map<int, int> itensDesejados) {
@@ -17,10 +19,12 @@ Orcamento::Orcamento(
     
       this->carrinho.push_back(itens);  
     
-  }
+  } calculaValorTotal();
 }
 
 Orcamento::~Orcamento() {}
+
+// Getters
 
 std::string Orcamento::getCliente() { return this->cliente; };
 
@@ -36,49 +40,58 @@ Data Orcamento::getData() { return this->data; };
 
 PedidoDeCompra* Orcamento::getPedido() { return this->pedido; };
 
+
+// Setters
+
 void Orcamento::setCliente(std::string cliente) { this->cliente = cliente; };
 
 void Orcamento::setCpfCnpj(int cpfCnpj) { this->cpfCnpj = cpfCnpj; };
 
 void Orcamento::setEmail(std::string email) { this->email = email; };
 
-void Orcamento::setCarrinho(vector<ItensDesejados*> carrinho) {
-  this->carrinho = carrinho;
-};
+void Orcamento::setCarrinho(vector<ItensDesejados*> carrinho) {this->carrinho = carrinho;};
 
-void Orcamento::setValorTotal(float valorTotal) {
-  this->valorTotal = valorTotal;
-};
+void Orcamento::setValorTotal(float valorTotal) {this->valorTotal = valorTotal;};
 
 void Orcamento::setData(Data data) { this->data = data; };
 
 void Orcamento::setPedido(PedidoDeCompra* pedido) { this->pedido = pedido; };
 
-// bool Orcamento::verificaOrcamento(vector<ItensDesejados> carrinho){
 
-// };
+// Métodos
+
+void Orcamento::calculaValorTotal(){
+  for(int it = 0; it < this->carrinho.size(); it++){
+    this->valorTotal += this->carrinho[it]->getValorTotal();
+  }
+}
+
+void Orcamento::gerarPedidoDeCompra(Data dataCompra){
+setPedido(new PedidoDeCompra(getCarrinho(), dataCompra, getValorTotal(), getCpfCnpj()));
+}
 
 void Orcamento::printOrcamento(){
   std::cout << "----------------------------------------------------------------------------------------------------\n\n"
-            << "                            Empresa - Orçamento para " << getCliente() << " (" << getCpfCnpj() << ")\n\n"
-            << "Produtos: " << "\n\n";
+            << "             Empresa - Orçamento para " << getCliente() << " (" << getCpfCnpj() << ") "
+            << "- Data: "; getData().printData(); 
+  std::cout << "\n\n\nProdutos Desejados: " << "\n\n\n";
     std::vector<ItensDesejados*> itens = getCarrinho();
-    for(auto i = itens.begin(); i != itens.end(); i++){
-      std::cout << "Nome: " << (*i)->getProduto() << "ID: " << (*i)->getIdProduto();
+    for(int i = 0; i < itens.size(); i++){
+      std::cout << "Nome:            " << itens[i]->getProduto() << "\n\n"
+                << "ID:              " << itens[i]->getIdProduto() << "\n\n"
+                << "Quantidade:      " << itens[i]->getQuantidade() << "\n\n"
+                << "Preço Unitario:  R$ " << itens[i]->getPrecoUnitario() << "\n\n"
+                << "Disponibilidade: ";
+      itens[i]->getDisponibilidade() == false ? std::cout << "Em falta\n\n" : std::cout << "Em estoque\n\n";
+      itens[i]->getDisponibilidade() == false ? std::cout << "Juros:           " << itens[i]->getJuros()*100 << "%\n\n" : std::cout << "Juros:           " << "Nenhum\n\n";
+      std::cout << "Valor total:     R$ " << itens[i]->getValorTotal() << "\n"
+                << "-----------------------------\n\n\n";
     }
-};
+  std::cout << "Valor total do Orçamento: R$ " << getValorTotal() << "\n\n";
+  std::cout << "----------------------------------------------------------------------------------------------------\n\n";
+}
 
-PedidoDeCompra* Orcamento::gerarPedidoDeCompra(Data dataCompra){
-  PedidoDeCompra* pedido = new PedidoDeCompra(getCarrinho(),   dataCompra, getValorTotal(), getCpfCnpj());
-
-  setPedido(pedido);
-  
-};
-
-void Orcamento::calculaValorTotal(){
-
-  for(auto it = this->carrinho.begin(); it != this->carrinho.end(); it++){
-    this->valorTotal += (*it)->getValorTotal();
-  }
+void printOrcamentoAprovado (Orcamento* orcamento){
   
 }
+
