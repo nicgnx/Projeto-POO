@@ -5,6 +5,7 @@
 #include "../includes/Cliente.hpp"
 #include "../includes/Departamento.hpp"
 #include "../includes/Estoque.hpp"
+#include "../includes/Usuario.hpp"
 #include "../includes/Funcionario.hpp"
 #include "../includes/HistoricoDeLogs.hpp"
 #include "../includes/Permissao.hpp"
@@ -12,6 +13,9 @@
 #include "Veiculo.hpp"
 #include <string>
 #include <vector>
+
+#include "../includes/Login.hpp"
+#include "../constants/PERMISSOES.hpp"
 
 class Empresa {
 private:
@@ -45,7 +49,7 @@ public:
   Empresa& operator=(const Empresa&);
 
   // Getters
-  Empresa* getInstancia();
+  static Empresa* getInstancia();
   std::string getNome();
   std::string getCnpj();
   std::vector<Funcionario*> getFuncionarios();
@@ -70,6 +74,14 @@ public:
   void setPermissoes(std::vector<Permissao*> permissoes);
   void setFrotaVeiculos(vector<Veiculo*> frotaVeiculos);
   void setTurnos(vector<Turno*> turnos);
+
+  // métodos
+  void cadastrarFuncionario(Funcionario* funcionario);
+  void cadastrarCliente(Cliente* funcionario);
+  Cargo* getCargoByName(std::string nomeCargo);
+  Departamento* getDepartamentoByName(std::string nomeDepartamento);
+  Turno* getTurnoByName(std::string nomeTurno);
+  void demiteFuncionario(Funcionario* funcionario);
 };
 
 #endif // EMPRESA_H

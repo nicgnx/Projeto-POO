@@ -35,6 +35,7 @@ bool Login::verificaPermissao(int idPermissao) {
     std::cout << "\nVoce precisa estar logado para realizar esta acao.\n";
     return false;
   }
+
   // puxa as permissoes do usuario logado
   std::vector<Permissao*> permissoes = this->usuario->getPermissao();
 
@@ -46,18 +47,22 @@ bool Login::verificaPermissao(int idPermissao) {
 
   // se chegou ate aqui nao tem permissao: dispara logs
   HistoricoDeLogs* historicoLogs = HistoricoDeLogs::getInstacia();
+  std::string final6Digits = this->usuario->getcpfCnpj().substr(this->usuario->getcpfCnpj().size() - 6);
+
   LogExcecao* logExcecao = new LogExcecao(
     this->usuario->getNome(),
-    std::stoi(this->usuario->getcpfCnpj()),
+    std::stoi(final6Digits),
     Data().dateNow(),
     "Login",
     "Login",
     "Login::verificaPermissao"
   );
   historicoLogs->setLogExcecao(
-    std::stoi(this->usuario->getcpfCnpj()), 
+    std::stoi(final6Digits), 
     logExcecao
   );
+  std::cout << "\nVoce não possui permissão para realizar esta acao!\n";
+
 
   return false;
 }

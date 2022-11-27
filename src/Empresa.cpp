@@ -99,3 +99,81 @@ void Empresa::setFrotaVeiculos(vector<Veiculo*> frotaVeiculos) {
 }
 
 void Empresa::setTurnos(vector<Turno*> turnos) { this->turnos = turnos; }
+
+void Empresa::cadastrarFuncionario(Funcionario* funcionario) {
+  std::vector<Funcionario*> funcionarios = this->getFuncionarios();
+  funcionarios.push_back(funcionario);
+  this->setFuncionarios(funcionarios);
+}
+
+void Empresa::cadastrarCliente(Cliente* cliente) {
+  std::vector<Cliente*> clientes = this->getClientes();
+  clientes.push_back(cliente);
+  this->setClientes(clientes);
+}
+
+Cargo* Empresa::getCargoByName(std::string nomeCargo) {
+  for (auto it : this->getCargos()) {
+    if (it->getCargo() == nomeCargo) {
+      return it;
+    };
+  }
+
+  // se chegou aqui nao achou o cargo
+  std::cout << "Cargo buscado não existe na empresa!" << std::endl;
+  throw "Cargo buscado não existe na empresa!";
+}
+
+Departamento* Empresa::getDepartamentoByName(std::string nomeDepartamento) {
+  for (auto it : this->getDepartamentos()) {
+    if (it->getDepartamento() == nomeDepartamento) {
+      return it;
+    };
+  }
+
+  // se chegou aqui nao achou o departamento
+  std::cout << "Departamento buscado não existe na empresa!" << std::endl;
+  throw "Departamento buscado não existe na empresa!";
+}
+
+Turno* Empresa::getTurnoByName(std::string nomeTurno) {
+  for (auto it : this->getTurnos()) {
+    if (it->getNomeTurno() == nomeTurno) {
+      return it;
+    };
+  }
+
+  // se chegou aqui nao achou o turno
+  std::cout << "Turno buscado não existe na empresa!" << std::endl;
+  throw "Turno buscado não existe na empresa!";
+}
+
+void Empresa::demiteFuncionario(Funcionario* funcionario) {
+  // primeira coisa é verificar permissao do usuario logado
+  if (!Login::getInstance()->verificaPermissao(PERMISSOES::DEMITIR_FUNCIONARIO)) {
+    std::cout << "Usuario logado nao possui permissao demitir funcionario!"
+              << std::endl;
+    throw "Usuario logado nao possui permissao demitir funcionario!";
+  }
+
+  // agora exclui ele da empresa
+  std::vector<Funcionario*> funcionarios = this->getFuncionarios();
+  bool found = false;
+  for (int i = 0; i < funcionarios.size(); i++) {
+    if (funcionarios[i] == funcionario) {
+      for (int j = i; j < (funcionarios.size() - 1); j++) {
+        funcionarios[j] = funcionarios[j + 1];
+      }
+      found = true;
+      funcionarios.pop_back();
+      empresa -> setFuncionarios(funcionarios);
+      break;
+    }
+  }
+
+  if (!found)
+    cout << "\nFuncionario nao encontrado para demitir!";
+  else
+    cout << "\nFuncionario demitido com sucesso!";
+  cout << endl;
+}
