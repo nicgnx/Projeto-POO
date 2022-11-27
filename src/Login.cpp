@@ -1,6 +1,9 @@
 #include "../includes/Login.hpp"
 
-Login::Login() {}
+Login::Login() {
+  this -> usuario = NULL;
+}
+
 Login::~Login() {}
 Login* Login::instance = NULL;
 
@@ -30,7 +33,13 @@ std::string Login::getUsuarioSenha() {
   return this->usuario->getSenha();
 }
 
-bool Login::verificaPermissao(int idPermissao) {
+bool Login::verificaPermissao(
+  int idPermissao, 
+  // argumentos opcionais
+  std::string classeAcessada = "", 
+  std::string instanciaAcessada = "", 
+  std::string metodoAcessado = ""
+) {
   if (this->getInstance() == nullptr) {
     std::cout << "\nVoce precisa estar logado para realizar esta acao.\n";
     return false;
@@ -53,9 +62,9 @@ bool Login::verificaPermissao(int idPermissao) {
     this->usuario->getNome(),
     std::stoi(final6Digits),
     Data().dateNow(),
-    "Login",
-    "Login",
-    "Login::verificaPermissao"
+    classeAcessada,
+    instanciaAcessada,
+    metodoAcessado
   );
   historicoLogs->setLogExcecao(
     std::stoi(final6Digits), 

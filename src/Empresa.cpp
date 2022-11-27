@@ -153,7 +153,7 @@ void Empresa::demiteFuncionario(Funcionario* funcionario) {
   if (!Login::getInstance()->verificaPermissao(PERMISSOES::DEMITIR_FUNCIONARIO)) {
     std::cout << "Usuario logado nao possui permissao demitir funcionario!"
               << std::endl;
-    throw "Usuario logado nao possui permissao demitir funcionario!";
+    // throw "Usuario logado nao possui permissao demitir funcionario!";
   }
 
   // agora exclui ele da empresa

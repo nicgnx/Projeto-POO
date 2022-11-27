@@ -25,7 +25,12 @@ public:
   std::string getUsuarioNome();
   std::string getUsuarioSenha();
   Usuario* getUsuario();
-  bool verificaPermissao(int idPermissao);
+  bool verificaPermissao(  
+    int idPermissao, 
+    std::string classeAcessada = "", 
+    std::string instanciaAcessada = "", 
+    std::string metodoAcessado = ""
+  );
 };
 
 #endif // LOGIN_H

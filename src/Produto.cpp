@@ -80,7 +80,7 @@ void Produto::printMateriaPrima(){
 }
 
 void Produto::novoPreco(float precoBase, float percentualVariacao, Data data) {
-  //if (!Login::getInstance()->verificaPermissao(PERMISSOES::CADASTRAR_EDITAR_PRODUTO)) {
+  //if (!Login::getInstance()->verificaPermissao(PERMISSOES::CADASTRAR_EDITAR_PRODUTO, "Produto::novoPreco")) {
    // throw "Usuario logado nao possui permissao para editar precos do produto!";
   //}
 
@@ -89,7 +89,7 @@ void Produto::novoPreco(float precoBase, float percentualVariacao, Data data) {
 }
 
 void Produto::novoPreco(PrecoProduto* preco) { 
- // if (!Login::getInstance()->verificaPermissao(PERMISSOES::CADASTRAR_EDITAR_PRODUTO)) {
+ // if (!Login::getInstance()->verificaPermissao(PERMISSOES::CADASTRAR_EDITAR_PRODUTO, )) {
   //  throw "Usuario logado nao possui permissao para editar precos do produto!";
  // }
   
