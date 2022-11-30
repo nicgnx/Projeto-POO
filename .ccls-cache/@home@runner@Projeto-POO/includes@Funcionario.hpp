@@ -14,7 +14,7 @@
 #include "LogCriacaoDelecao.hpp"
 #include "LogLeitura.hpp"
 #include "Login.hpp"
-//#include "../constants/PERMISSOES.hpp"
+#include "../constants/PERMISSOES.hpp"
 
 
 class Funcionario : public Usuario {
@@ -31,7 +31,7 @@ class Funcionario : public Usuario {
   std::string horarioEmbarque;
 
 public:
-  Funcionario();
+  Funcionario(std::string cpfCnpj);
   Funcionario(
     std::string nome, std::string cpfCnpj, std::string email, std::string senha,
     Data dataNascimento, std::string endereco, std::string matricula,

@@ -16,13 +16,11 @@
 class Empresa {
 private:
   static Empresa* empresa;
-  Empresa(
-    std::string nome, std::string cnpj, std::vector<Funcionario*> funcionarios,
+  Empresa(std::string nome, std::string cnpj, std::vector<Funcionario*> funcionarios,
     std::vector<Cliente*> clientes, std::vector<Cargo*> cargos,
     std::vector<Departamento*> departamentos, Estoque* estoque,
     HistoricoDeLogs* historico, std::vector<Permissao*> permissoes,
-    std::vector<Veiculo*> frotaVeiculos, std::vector<Turno*> turnos
-  );
+    std::vector<Veiculo*> frotaVeiculos, std::vector<Turno*> turnos);
   Empresa();
   ~Empresa();
 
@@ -45,7 +43,7 @@ public:
   Empresa& operator=(const Empresa&);
 
   // Getters
-  Empresa* getInstancia();
+  static Empresa* getInstancia();
   std::string getNome();
   std::string getCnpj();
   std::vector<Funcionario*> getFuncionarios();

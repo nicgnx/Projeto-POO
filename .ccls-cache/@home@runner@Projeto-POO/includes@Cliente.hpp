@@ -21,7 +21,7 @@ class Cliente : public Usuario {
 
 public:
   // Construtores e Destrutores
-  Cliente();
+  Cliente(std::string cpfCnpj);
   Cliente(std::string nome, std::string email, std::string senha, std::string cpfCnpj,
   tipoPessoa tipo, unsigned int telefone
   );
