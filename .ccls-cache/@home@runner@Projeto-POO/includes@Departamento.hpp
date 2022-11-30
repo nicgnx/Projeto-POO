@@ -3,19 +3,17 @@
 
 #include <string>
 
-
 class Departamento {
 private:
-  std::string nome;
+  std::string departamento;
 
 public:
-  Departamento(std::string nome);
+  Departamento(std::string departamento);
+  Departamento();
   ~Departamento();
-  
-  std::string getNome();
-  void setNome(std::string nome);
-};
 
-#include "../src/Departamento.cpp"
+  std::string getDepartamento();
+  void setDepartamento(std::string departamento);
+};
 
 #endif // DEPARTAMENTO_H

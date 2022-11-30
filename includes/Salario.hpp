@@ -1,9 +1,8 @@
 #ifndef SALARIO_H
 #define SALARIO_H
 
-#include <string>
 #include "Data.hpp"
-
+#include <string>
 
 enum Motivo {
   Dissidio,
@@ -11,30 +10,27 @@ enum Motivo {
 };
 
 class Salario {
-    double salarioBase;
-    double variacaoSalarial;
-    Data data;
-    Motivo motivacao;
+  double salarioBase;
+  double variacaoSalarial;
+  Data data;
+  Motivo motivacao;
 
 public:
+  Salario(double, double, Data, Motivo);
+  Salario();
+  ~Salario();
 
-    Salario(double, double, Data, Motivo);
-    ~Salario();
+  // getters
+  double getSalarioBase();
+  double getVariacaoSalarial();
+  Data getData();
+  Motivo getMotivacao();
 
-    //getters
-    double getSalarioBase();
-    double getVariacaoSalarial();
-    Data getData();
-    Motivo getMotivacao();
-
-    //setters
-    void setSalarioBase(double);
-    void setVariacaoSalarial(double);
-    void setData(Data);
-    void setMotivacao(Motivo);
-
+  // setters
+  void setSalarioBase(double salarioBase);
+  void setVariacaoSalarial(double variacaoSalarial);
+  void setData(Data data);
+  void setMotivacao(Motivo motivacao);
 };
 
-#include "../src/Salario.cpp"
-
-#endif
+#endif // SALARIO_H

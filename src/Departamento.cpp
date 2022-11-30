@@ -1,14 +1,15 @@
 #include "../includes/Departamento.hpp"
 
-
-Departamento::Departamento(std::string nome) {
-  this->nome = nome;
+Departamento::Departamento(std::string departamento) {
+  this->departamento = departamento;
 }
 
-std::string Departamento::getNome(){
-  return this->nome;
-}
+Departamento::Departamento() { this->departamento.clear(); }
 
-void Departamento::setNome(std::string nome){
-  this->nome = nome;
+Departamento::~Departamento(){};
+
+std::string Departamento::getDepartamento() { return this->departamento; }
+
+void Departamento::setDepartamento(std::string departamento) {
+  this->departamento = departamento;
 }

@@ -1,35 +1,35 @@
-
 #include <iostream>
-#include <string>
+
 #include "../includes/Usuario.hpp"
 
+std::string Usuario::getNome() { return this->nome; }
 
-std::string Usuario::getNome(){
-  
-  return this->nome;
+std::string Usuario::getcpfCnpj() { return this->cpfCnpj; }
+
+std::string Usuario::getEmail() { return this->email; }
+
+std::string Usuario::getSenha() { return this->senha; }
+
+std::vector<Permissao*> Usuario::getPermissao() { return this->permissoes; }
+
+void Usuario::setNome(std::string nome) { this->nome = nome; }
+
+void Usuario::setcpfCnpj(std::string cpfCnpj) { this->cpfCnpj = cpfCnpj; }
+
+void Usuario::setEmail(std::string email) { this->email = email; }
+
+void Usuario::setSenha(std::string senha) { this->senha = senha; }
+
+void Usuario::setPermissoes(std::vector<Permissao*> permissoes) { this->permissoes = permissoes; }
+
+void Usuario::adicionaPermissoes(Permissao* permissao) {
+  this->permissoes.push_back(permissao);
 }
 
-std::string Usuario::getcpfCnpj(){
-  
-  return this->cpfCnpj;
+/*
+std::string Usuario::exibePermissao(){
+  for(auto it = this->permissoes.begin(); it != this->permissoes.end(); it++){
+    return (it*)->getDescricao();
+  }
 }
-
-std::string Usuario::getEmail(){
-  
-  return this->email;
-}
-
-void Usuario::setNome(std::string nome){
-
-  this->nome = nome;
-}
-
-void Usuario::setcpfCnpj(std::string cpfCnpj){
-
-  this->cpfCnpj = cpfCnpj;
-}
-
-void Usuario::setEmail(std::string email){
-
-  this->email = email;
-}
+*/

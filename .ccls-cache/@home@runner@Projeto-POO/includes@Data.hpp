@@ -61,8 +61,8 @@ public:
   bool validaData(); // Verifica se todos os valores dos atributos estao dentro
                      // dos limites possiveis
   Data dateNow(); // Retorna a data do presente momento
-  void
-  printData(); // Imprime a data na tela de acordo com o formato ja atribuido
+  void  printData(); // Imprime a data na tela de acordo com o formato ja atribuido
+  string printData(bool); // retorna uma string de acordo com o formato ja atribuido
   string getData();   // Retorna a data no formato de string
   int diffData(Data); // Retorna a diferença entre duas datas em dias
 };

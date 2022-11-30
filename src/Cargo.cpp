@@ -1,13 +1,11 @@
 #include "../includes/Cargo.hpp"
 
-Cargo::Cargo(std::string nome) {
-  this->nome = nome;
-}
+Cargo::Cargo(std::string cargo) { this->cargo = cargo; }
 
-std::string Cargo::getCargo (){
-  return this->nome;
-}
+Cargo::Cargo() { this->cargo.clear(); }
 
-void Cargo::setCargo (std::string nome){
-  this->nome = nome;
-}
+Cargo::~Cargo() {}
+
+std::string Cargo::getCargo() { return this->cargo; }
+
+void Cargo::setCargo(std::string cargo) { this->cargo = cargo; }

@@ -10,7 +10,7 @@ using namespace std;
 class ExecaoCustomizada : public exception
 {
 protected:
-	char msg[100];
+	char msg[200];
 
 public:
 	ExecaoCustomizada(char* e)
