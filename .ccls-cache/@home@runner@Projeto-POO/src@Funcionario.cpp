@@ -1,16 +1,7 @@
 #include "../includes/Funcionario.hpp"
 
 // Construtores e Destrutores
-Funcionario::Funcionario() {
-  Login* login = Login::getInstance();
-  if(login->getUsuario() == nullptr){
-    HistoricoDeLogs* historic = HistoricoDeLogs::getInstancia();
-    historic->setLog(new LogCriacaoDelecao("system","0000000",Data().dateNow(),"Funcionario","root","000000",CRIACAO));
-  }else{
-    HistoricoDeLogs* historic = HistoricoDeLogs::getInstancia();
-    historic->setLog(new LogCriacaoDelecao(nome,cpfCnpj,Data().dateNow(),"Funcionario","Vazio","Vazio",CRIACAO));
-    }
-  }
+Funcionario::Funcionario() {}
 
 Funcionario::Funcionario(
   std::string nome, std::string cpfCnpj, std::string email, std::string senha,
@@ -30,13 +21,10 @@ Funcionario::Funcionario(
   this->salario.push_back(salario);
   this->turno = turno;
   this->cordenada = cordenada;
-  Login* login = Login::getInstance();
-  if(login->getUsuario() == nullptr){
-    HistoricoDeLogs* historic = HistoricoDeLogs::getInstancia();
-    historic->setLog(new LogCriacaoDelecao("root","0000000",Data().dateNow(),"Funcionario",nome,cpfCnpj,CRIACAO));
-  }else{
-    HistoricoDeLogs* historic = HistoricoDeLogs::getInstancia();
-    historic->setLog(new LogCriacaoDelecao(nome,cpfCnpj,Data().dateNow(),"Funcionario",nome,cpfCnpj,CRIACAO));}
+  Login* usuario = Login::getInstance();
+  HistoricoDeLogs* historico = HistoricoDeLogs::getInstancia();
+  historico->setLog(new LogCriacaoDelecao(usuario->getUsuario()->getNome(),usuario->getUsuario()->getcpfCnpj(),Data().dateNow(),"Funcionario",nome,cpfCnpj,CRIACAO));
+
 }
 
 Funcionario::~Funcionario() {}

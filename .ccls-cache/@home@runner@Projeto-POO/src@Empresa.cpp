@@ -4,7 +4,12 @@ Empresa* Empresa::empresa = NULL;
 
 // Construtores e Destrutores
 
-Empresa::Empresa() {}
+Empresa::Empresa() {
+  Funcionario* root = new Funcionario("root");
+  root->setNome("root");
+  root->setcpfCnpj("000000");
+  this->funcionarios.push_back(root);
+}
 
 Empresa::~Empresa() { empresa = NULL; }
 
@@ -103,11 +108,7 @@ void Empresa::setTurnos(vector<Turno*> turnos) { this->turnos = turnos; }
 // Métodos
 
 void Empresa::cadastrarFuncionario(Funcionario* funcionario) {
-  if (!Login::getInstance()->verificaPermissao(PERMISSOES::CADASTRAR_EDITAR_FUNCIONARIO)) {
-    std::cout << "Usuario logado nao possui permissao cadastrar funcionario!"
-              << std::endl;
-    throw "Usuario logado nao possui permissao cadastrar funcionario!";
-  }
+  //Login::getInstance()->verificaPermissao(PERMISSOES::CADASTRAR_EDITAR_FUNCIONARIO,"CADASTRAR_EDITAR_FUNCIONARIO");
 
   std::vector<Funcionario*> funcionarios = this->getFuncionarios();
   funcionarios.push_back(funcionario);
@@ -115,11 +116,7 @@ void Empresa::cadastrarFuncionario(Funcionario* funcionario) {
 }
 
 void Empresa::cadastrarCliente(Cliente* cliente) {
-  if (!Login::getInstance()->verificaPermissao(PERMISSOES::CADASTRAR_EDITAR_CLIENTE)) {
-    std::cout << "Usuario logado nao possui permissao cadastrar cliente!"
-              << std::endl;
-    throw "Usuario logado nao possui permissao cadastrar cliente!";
-  }
+  //Login::getInstance()->verificaPermissao(PERMISSOES::CADASTRAR_EDITAR_CLIENTE,"CADASTRAR_EDITAR_CLIENTE");
   
   std::vector<Cliente*> clientes = this->getClientes();
   clientes.push_back(cliente);
@@ -164,11 +161,9 @@ Turno* Empresa::getTurnoByName(std::string nomeTurno) {
 
 void Empresa::demiteFuncionario(Funcionario* funcionario) {
   // primeira coisa é verificar permissao do usuario logado
-  if (!Login::getInstance()->verificaPermissao(PERMISSOES::DEMITIR_FUNCIONARIO)) {
-    std::cout << "Usuario logado nao possui permissao demitir funcionario!"
-              << std::endl;
+  //Login::getInstance()->verificaPermissao(PERMISSOES::DEMITIR_FUNCIONARIO,"DEMITIR_FUNCIONARIO");
     // throw "Usuario logado nao possui permissao demitir funcionario!";
-  }
+  
 
   // agora exclui ele da empresa
   std::vector<Funcionario*> funcionarios = this->getFuncionarios();
@@ -211,20 +206,11 @@ void Empresa::demiteFuncionario(Funcionario* funcionario) {
 }*/
 
 void Empresa::reabasteceMateriaPrima(int idMateriaPrima, int quantidade, tipoReabastece valor,Funcionario* funcionario){
-  if (!Login::getInstance()->verificaPermissao(PERMISSOES::EMITIR_ORDEM_PRODUCAO)) {
-    std::cout << "Usuario logado nao possui permissao EMITIR_ORDEM_PRODUCAO!"
-              << std::endl;
-    throw "Usuario logado nao possui permissao EMITIR_ORDEM_PRODUCAO!";
-  }
-Estoque::getInstancia()->reabasteceEstoqueMP(idMateriaPrima,quantidade,valor);
-  
+  //Login::getInstance()->verificaPermissao(PERMISSOES::EMITIR_ORDEM_PRODUCAO,"EMITIR_ORDEM_PRODUCAO");
+  Estoque::getInstancia()->reabasteceEstoqueMP(idMateriaPrima,quantidade,valor); 
 }
 
 void Empresa::reabasteceProduto(int idProduto, int quantidade, tipoReabastece valor,Funcionario* funcionario){
-  if (!Login::getInstance()->verificaPermissao(PERMISSOES::EMITIR_ORDEM_PRODUCAO)) {
-    std::cout << "Usuario logado nao possui permissao para reabastecer materias primas!"
-              << std::endl;
-    throw "Usuario logado nao possui permissao para reabastecer materias primas!";
-  }
-Estoque::getInstancia()->reabasteceEstoqueProduto(idProduto,quantidade,valor);
+  //Login::getInstance()->verificaPermissao(PERMISSOES::EMITIR_ORDEM_PRODUCAO,"EMITIR_ORDEM_PRODUCAO");
+  Estoque::getInstancia()->reabasteceEstoqueProduto(idProduto,quantidade,valor);
 }

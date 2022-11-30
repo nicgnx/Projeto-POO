@@ -2,7 +2,7 @@
 #define TURNO_H
 
 #include <string>
-#include "Login.hpp"
+
 
 enum tipoTurno { MANHA, TARDE, NOITE };
 
@@ -11,8 +11,8 @@ class Turno {
   // Atributos
 private:
   std::string nomeTurno;
-  float horarioEntrada;
-  float horarioSaida;
+  std::pair<float,float> horarioEntrada;
+  std::pair<float,float> horarioSaida;
   tipoTurno periodo;
 
 public:
@@ -26,14 +26,15 @@ public:
 
   // Getters
   std::string getNomeTurno();
-  float getHorarioEntrada();
-  float getHorarioSaida();
+  std::pair<float,float> getHorarioEntrada();
+  std::pair<float,float>  getHorarioSaida();
   tipoTurno getPeriodo();
+  float getHorarioEntradaCompleto();
 
   // Setters
   void setNomeTurno(std::string nomeTurno);
-  void setHorarioEntrada(float horarioEntrada);
-  void setHorarioSaida(float horarioSaida);
+  void setHorarioEntrada(float horaEntrada, float minutosEntrada);
+  void setHorarioSaida(float horaSaida, float minutosSaida);
   void setPeriodo(tipoTurno periodo);
 };
 
