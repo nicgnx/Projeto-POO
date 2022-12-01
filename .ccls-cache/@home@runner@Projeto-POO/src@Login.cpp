@@ -14,10 +14,18 @@ Login* Login::getInstance() {
 }
 
 void Login::logar(Usuario* usuario) {
-  this->usuario = usuario;
-  this->logadoEm = (new Data())->dateNow();
-  HistoricoDeLogs* historico = HistoricoDeLogs::getInstancia();
-  historico->setLog(new LogLoginLogout(usuario->getNome(),usuario->getcpfCnpj(),Data().dateNow(),"Login",LOGIN));
+  if(this->usuario == nullptr){
+    this->usuario = usuario;
+    this->logadoEm = (new Data())->dateNow();
+    HistoricoDeLogs* historico = HistoricoDeLogs::getInstancia();
+    historico->setLog(new LogLoginLogout(usuario->getNome(),usuario->getcpfCnpj(),Data().dateNow(),"Login",LOGIN));
+  }else{
+    deslogar();
+    this->usuario = usuario;
+    this->logadoEm = (new Data())->dateNow();
+    HistoricoDeLogs* historico = HistoricoDeLogs::getInstancia();
+    historico->setLog(new LogLoginLogout(usuario->getNome(),usuario->getcpfCnpj(),Data().dateNow(),"Login",LOGIN));
+  }
 }
 
 void Login::deslogar() {

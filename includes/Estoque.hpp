@@ -58,6 +58,9 @@ public:
   std::map<int,MateriaPrima*> getListaMateriaPrima();
   std::map<int,int> getEstoqueMP();
 
+  // setters
+  void setEstoque(int idProduto,int quantidade, int posicao);
+
   // Métodos
   int capacidadeDeProducao(int idProduto);
   int verificaEstoqueProduto(int idProduto);

@@ -71,6 +71,7 @@ public:
 
 // métodos
   void cadastrarFuncionario(Funcionario* funcionario);
+  void cadastraVeiculo(Veiculo* veiculo);
   void cadastrarCliente(Cliente* funcionario);
   Cargo* getCargoByName(std::string nomeCargo);
   Departamento* getDepartamentoByName(std::string nomeDepartamento);

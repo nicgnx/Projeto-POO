@@ -45,19 +45,7 @@ void Veiculo::verificaTurno() {
   std::vector<Funcionario*> aux;
   for (int i = 0; i < this->funcionarios.size(); i++) {
     if (this->funcionarios[i]->getTurno()->getPeriodo() != this->turno->getPeriodo()) {   
-        std::string periodoTurno;
-  if(getTurno()->getPeriodo() == 0){
-      periodoTurno = "Manhã";
-  }
-  if(getTurno()->getPeriodo() == 1){
-      periodoTurno = "Tarde";
-  }
-  if(getTurno()->getPeriodo() == 2){
-      periodoTurno = "Noite";
-  }
-
-      std::cout << "--------------------------------------------"<< std::endl << this->funcionarios[i]->getNome() << " não pertence a este turno do Veiculo, turno: " << periodoTurno << std::endl <<
-     "--------------------------------------------" << std::endl ;
+       
     } else
       aux.push_back(this->funcionarios[i]);
   }
@@ -227,10 +215,13 @@ void Veiculo::exibeRota(){
   if(getTurno()->getPeriodo() == 2){
       periodoTurno = "Noite";
   }
-
+  std::cout << "|" << "Veiculo periodo "  << periodoTurno
+    << "                       |"<< std::endl;
+  
+  std::cout << "|" << "Rotas de embarque dos Funcionarios     "  << "        |"<< std::endl;
   
   for(auto it = this->rotasFuncionarios.begin(); it != this->rotasFuncionarios.end(); it++){
-    std::cout << "|" << "Rotas de embarque dos Funcionarios     "  << "        |"<< std::endl;
+  
 
     std::cout <<"|"<< " Nome do Funcionario:           " << (*it)->getNome() << "\n| " << "Turno:                         " << (*it)->getTurno()->getNomeTurno()  <<  "\n|"
        << " Horario de entrada do turno:   " << (*it)->getTurno()->getHorarioEntrada().first <<":" << (*it)->getTurno()->getHorarioEntrada().second <<  "\n|"<<
@@ -239,6 +230,7 @@ void Veiculo::exibeRota(){
                
     
   }
+  
 }
 
 

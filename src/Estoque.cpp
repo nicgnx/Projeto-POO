@@ -186,6 +186,13 @@ std::map<int,int> Estoque::getEstoqueMP(){
   return this->estoqueMP;
 }
 
+// Setters
+
+void Estoque::setEstoque(int idProduto,int quantidade,int posicao){
+  Login::getInstance()->verificaPermissao(PERMISSOES::MANUSEAR_ESTOQUE,"MANUSEAR_ESTOQUE","Estoque","Estoque","setEstoque");
+  std::deque<Lote*> lote = this->lotes[idProduto];
+  lote[posicao]->setQuantidade(quantidade);
+}
 
 //Métodos
 int Estoque::capacidadeDeProducao(int idProduto){

@@ -45,7 +45,7 @@ try {
   std::vector<Permissao*> funcionarios = {perm1, perm2, perm3, perm5, perm6, perm7, perm8, perm9,perm10};
   
   
-// intancia a classe Empresa.
+// Item 1 - intancia a classe Empresa.
   Empresa* empresa = Empresa::getInstancia();
   empresa->setNome("Empresa teste");
   empresa->setCnpj("29843608000160");
@@ -91,7 +91,7 @@ empresa->setDepartamentos(departamentosEmpresa);
   std::pair<float,float>cordenada4(-19.838356773138216,-43.943269610056625);
 
 
-// cadastrar 4 funcionarios
+// Item 2 - Usuário logado com acesso a todas as permissões exceto excluir funcionários
   
   empresa->cadastrarFuncionario(new Funcionario(
         "Funcionario 0", "26872026065", "0@testeemail.com", "senha123", Data(1985, 8, 24, 0, 0, 0), "Rua dos Bobos nº 0",
@@ -100,7 +100,15 @@ empresa->setDepartamentos(departamentosEmpresa);
         Salario(1000.95, 0, Data(2022, 29, 9, 15, 59, 00), Gerencia), new Turno("Matutino", 8, 12, 16, 20, MANHA), cordenada1));
   
   Funcionario* user0 = empresa->getFuncionarios()[1];
+  user0->setPermissoes(funcionarios);
 
+// Item 3 - Comprovamento do Singletom de Login
+  
+  login->logar(user0);
+  
+
+// Item 4 - Cadastrar três funcionarios
+  
   Funcionario* user1 = new Funcionario(
     "Funcionario 1", "12525436601", "1@testeemail.com", "senha123", Data(1985, 8, 24, 0, 0, 0), "Rua dos Bobos nº 0",
     "202233665", *empresa->getCargoByName("Vendedor"), *empresa->getDepartamentoByName("Vendas"),
@@ -122,93 +130,137 @@ empresa->setDepartamentos(departamentosEmpresa);
   empresa->cadastrarFuncionario(user1);
   empresa->cadastrarFuncionario(user2);
   empresa->cadastrarFuncionario(user3);
-  
-  //Instancia Veiculo  
-    
-  Veiculo* veiculo = new Veiculo(4, empresa->getTurnoByName("Matutino"), empresa->getFuncionarios());
-//exibindo Rotas do veiculo e horarios de embarque de cada funcionario
- veiculo->exibeRota();
- 
-  Estoque* estoque = empresa->getEstoque();
-  estoque->cadastraMateriaPrima(10,"Madeira","Kg",10);
 
+  user1->setPermissoes(funcionarios);
+  user2->setPermissoes(funcionarios);
+  user3->setPermissoes(funcionarios);
 
-
-  estoque->cadastraMateriaPrima(20,"Prego","Kg",20);
-  estoque->cadastraMateriaPrima(30,"Borracha","L",10);
-  estoque->cadastraMateriaPrima(40,"Barra de Ferro","Kg",10);
-  estoque->cadastraMateriaPrima(50,"Parafuso","U",20);
-  estoque->cadastraMateriaPrima(60,"Plastico","Kg",10);
-  std::cout << "-----------------------------------   Criação das materias primas   -----------------------------------\n\n\n";
-  estoque->printListaDeMateriasPrimas();
-
-  estoque->cadastraFornecedor(new Fornecedor ("Madeira&Madeira"));  
-  estoque->cadastraFornecedor(new Fornecedor ("Casa do Marceneiro"));
-  estoque->cadastraFornecedor(new Fornecedor ("Só Artesanal"));
-  estoque->cadastraFornecedor(new Fornecedor ("Leroy Merlin"));
-
-  vector<Fornecedor*> fornecedores = estoque->getFornecedores();
-
-  
-  fornecedores[0]->setMateriaPrima(10,10.25);
-  fornecedores[0]->setMateriaPrima(20,9.25);
-  fornecedores[1]->setMateriaPrima(20,9.85);
-  fornecedores[1]->setMateriaPrima(30,11.85);
-  fornecedores[2]->setMateriaPrima(30,5.85);
-  fornecedores[2]->setMateriaPrima(40, 6.30);
-  fornecedores[3]->setMateriaPrima(40, 8.30);
-  fornecedores[3]->setMateriaPrima(50, 8.30);
-  fornecedores[3]->setMateriaPrima(60, 8.30);
-  std::cout << "-----------------------------------   Criação dos Fornecedores   -----------------------------------\n\n\n";
-  estoque->printListaDeFornecedores();
-
-  estoque->cadastraProduto("Mesa",10,30,new PrecoProduto(15,0,Data().dateNow()));
-  estoque->cadastraProduto("Cadeira",15,10,new PrecoProduto(5,0,Data().dateNow()));
-  estoque->cadastraProduto("Copo",50,100,new PrecoProduto(2,0,Data().dateNow()));
-
-  estoque->getProduto(1001)->setMateriasPrimas(10,5);
-  estoque->getProduto(1001)->setMateriasPrimas(20,15);
-  estoque->getProduto(1002)->setMateriasPrimas(10,5);
-  estoque->getProduto(1002)->setMateriasPrimas(50,15);  
-  estoque->getProduto(1002)->setMateriasPrimas(40,3);
-  estoque->getProduto(1002)->setMateriasPrimas(30,1);
-  estoque->getProduto(1003)->setMateriasPrimas(60,2);
-
-  std::cout << "-----------------------------------   Criação dos Produtos   -----------------------------------\n\n\n";
-
-  estoque->printListaDeProdutos();
-
-  std::cout << "-----------------------------------   Reabastecimento de Estoque   -----------------------------------\n\n\n";
-
-  estoque->reabasteceEstoqueProduto(1001, 0, MINIMO);
-  estoque->reabasteceEstoqueProduto(1002, 0, MINIMO);
-  estoque->reabasteceEstoqueProduto(1003, 0, MINIMO);
-  estoque->printListaDeProdutos();
-  estoque->printListaDeMateriasPrimas();
+// Item 5 - Cadastrar Clientes
 
   empresa->cadastrarCliente(new Cliente ("Carlos","carlos@empresa.com","Senha125","74536547898",PF,1258479635));
   Cliente* Carlos = empresa->getClientes()[0];
   Carlos->setPermissoes(clientes);
 
-  std::map<int,int> listaDeCompras;
-  listaDeCompras[1001] = 5;
-  listaDeCompras[1002] = 20;
-  listaDeCompras[1003] = 40;
+  empresa->cadastrarCliente(new Cliente ("Casas Pernambuco","cliente@casaspernambuco.com","Senha135","12547885",PJ,1258479635));
+  Cliente* casasPernambuco = empresa->getClientes()[1];
+  casasPernambuco->setPermissoes(clientes);
 
-  login->logar(Carlos);
-  Orcamento* C_orcamento = Carlos->solicitaOrcamento(listaDeCompras);
-  C_orcamento->printOrcamento();
-  Carlos->compra(C_orcamento,Data().dateNow());
-  //HistoricoDeLogs::getInstancia()->printLog();
-  //HistoricoDeLogs::getInstancia()->printLogCompleto();
+
+// Item 6 - Cadastro do produto Mesa e das materias primas Madeira, Plático, Alumínio, Parafusos
+  
+  Estoque* estoque = empresa->getEstoque();
+  estoque->cadastraMateriaPrima(10,"Madeira","g",1000);
+  estoque->cadastraMateriaPrima(20,"Plástico","g",1000);
+  estoque->cadastraMateriaPrima(30,"Aluminío","g",1000);
+  estoque->cadastraMateriaPrima(40,"Parafusos","unidade",20);
+
+  std::cout << "\n\n\n-----------------------------------   Criação das materias primas   -----------------------------------\n\n\n";
+  estoque->printListaDeMateriasPrimas();
+
+ 
+
+// Cadastra Fornecedores
+
+  estoque->cadastraFornecedor(new Fornecedor ("Madeira&Madeira"));  
+  estoque->cadastraFornecedor(new Fornecedor ("Casa do Marceneiro"));
+  vector<Fornecedor*> fornecedores = estoque->getFornecedores();
 
   
+  fornecedores[0]->setMateriaPrima(10,10.25);
+  fornecedores[0]->setMateriaPrima(20,11.25);
+  fornecedores[0]->setMateriaPrima(30,8.85);
+  fornecedores[0]->setMateriaPrima(40,12.85);
+  fornecedores[1]->setMateriaPrima(10,13.85);
+  fornecedores[1]->setMateriaPrima(20, 6.30);
+  fornecedores[1]->setMateriaPrima(30, 9.30);
+  fornecedores[1]->setMateriaPrima(40, 25.30);
+
+  std::cout << "\n\n\n-----------------------------------   Criação dos Fornecedores   -----------------------------------\n\n\n";
+  estoque->printListaDeFornecedores();
+
+  // Cadastra Produto
+  estoque->cadastraProduto("Mesa",20,20,new PrecoProduto(50,0,Data().dateNow()));
+
+  estoque->getProduto(1001)->setMateriasPrimas(10,450);
+  estoque->getProduto(1001)->setMateriasPrimas(20,150);
+  estoque->getProduto(1001)->setMateriasPrimas(30,100);
+  estoque->getProduto(1001)->setMateriasPrimas(40,8);  
+
+  std::cout << "\n\n\n-----------------------------------   Criação dos Produtos   -----------------------------------\n\n\n";
+
+  estoque->printListaDeProdutos();
+
+  std::cout << "\n\n\n-----------------------------------   Reabastecimento de Estoque   -----------------------------------\n\n\n";
+
+// Item 7 - reabastece estoque minímo do produto
+
+  estoque->reabasteceEstoqueProduto(1001, 0, MINIMO);
+  estoque->printListaDeProdutos();
+  estoque->printListaDeMateriasPrimas();
+
+// Item 8 - Tenta excluir um funcionário cadastrado no sistema
+std::cout << "\n\n\n -----------------------------------   Tentativa de Exclusão do Funcionario   -----------------------------------\n\n\n";
+  empresa->demiteFuncionario(user2);
+  
   } catch (char const* e) {
-    std::cerr << e << '\n';
-  HistoricoDeLogs::getInstancia()->printLog();
+    std::cerr << e << "\n\n\n";
+
   } catch (ExecaoCustomizada e) {
-    std::cerr << e.what() << '\n';
-  HistoricoDeLogs::getInstancia()->printLog();
+    std::cerr << e.what() << "\n\n\n";
+  
+    Empresa* empresa = Empresa::getInstancia();
+    Estoque* estoque = Estoque::getInstancia();
+    Login* login = Login::getInstance();
+    Cliente* casasPernambuco = empresa->getClientes()[1];
+  
+    // Retira 15 mesas para poder atender aos requerimentos do Item 9
+    
+    estoque->setEstoque(1001,5,1);
+  
+    // Lista de compras do cliente casasPernambuco
+    std::map<int,int> listaDeCompras;
+    listaDeCompras[1001] = 10;
+  
+    login->logar(casasPernambuco);
+
+    // Item 9 - O cliente PJ solicita 10 mesas e paga 5% a mais por falta do produto e de materias primas para fabrica-lo
+    
+    Orcamento* C_orcamento = casasPernambuco->solicitaOrcamento(listaDeCompras);
+    std::cout << "\n\n\n-----------------------------------   Solicitação de Orçamaento pelo Cliente PJ   -----------------------------------\n\n\n";
+    C_orcamento->printOrcamento();
+
+      std::cout << "\n\n\n-----------------------------------   Compra do Produto   -----------------------------------\n\n\n";
+    casasPernambuco->compra(C_orcamento,Data().dateNow());
+
+    login->logar(empresa->getFuncionarios()[1]);
+
+    std::cout << "\n\n\n -----------------------------------   Ordem de Embarque dos Funcionários   -----------------------------------\n\n\n";
+     
+    // Item 10 - Instancia veiculos, calcula a rota e exibe a ordem de embarque dos passageiros
+    
+    Veiculo* veiculo1 = new Veiculo(4, empresa->getTurnoByName("Noturno"), empresa->getFuncionarios());
+    Veiculo* veiculo2 = new Veiculo(4, empresa->getTurnoByName("Matutino"), empresa->getFuncionarios());
+    empresa->cadastraVeiculo(veiculo1);
+    empresa->cadastraVeiculo(veiculo2);
+    // Exibindo Rotas do veiculo e horarios de embarque de cada funcionario  
+    empresa->getFrotaVeiculos()[0]->exibeRota();
+  std::cout << "\n\n\n -----------------------------------   Ordem de Embarque dos Funcionários   -----------------------------------\n\n\n";
+    empresa->getFrotaVeiculos()[1]->exibeRota();
+    
+    // Item 11 - Exibe os Logs das operações
+
+
+
+  std::cout << "\n\n\n-----------------------------------   Histórico de Logs   -----------------------------------\n\n\n";
+
+    // Logs de Criação, Deleção, Login e Logout.
+    HistoricoDeLogs::getInstancia()->printLog(); 
+
+    /* Logs Completos
+
+     Comentamos essa linha pois o sistema está gerando muito log.
+  
+     HistoricoDeLogs::getInstancia()->printLogCompleto(); */
   }
     
 }

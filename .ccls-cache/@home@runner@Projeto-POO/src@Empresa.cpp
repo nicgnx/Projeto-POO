@@ -108,15 +108,19 @@ void Empresa::setTurnos(vector<Turno*> turnos) { this->turnos = turnos; }
 // Métodos
 
 void Empresa::cadastrarFuncionario(Funcionario* funcionario) {
-  //Login::getInstance()->verificaPermissao(PERMISSOES::CADASTRAR_EDITAR_FUNCIONARIO,"CADASTRAR_EDITAR_FUNCIONARIO");
+  Login::getInstance()->verificaPermissao(PERMISSOES::CADASTRAR_EDITAR_FUNCIONARIO,"CADASTRAR_EDITAR_FUNCIONARIO","Empresa","Empresa","cadastrarFuncionario");
 
   std::vector<Funcionario*> funcionarios = this->getFuncionarios();
   funcionarios.push_back(funcionario);
   this->setFuncionarios(funcionarios);
 }
 
+ void Empresa::cadastraVeiculo(Veiculo* veiculo){
+   this->frotaVeiculos.push_back(veiculo);
+ }
+
 void Empresa::cadastrarCliente(Cliente* cliente) {
-  //Login::getInstance()->verificaPermissao(PERMISSOES::CADASTRAR_EDITAR_CLIENTE,"CADASTRAR_EDITAR_CLIENTE");
+  Login::getInstance()->verificaPermissao(PERMISSOES::CADASTRAR_EDITAR_CLIENTE,"CADASTRAR_EDITAR_CLIENTE","Empresa","Empresa","cadastrarCliente");
   
   std::vector<Cliente*> clientes = this->getClientes();
   clientes.push_back(cliente);
@@ -160,8 +164,9 @@ Turno* Empresa::getTurnoByName(std::string nomeTurno) {
 }
 
 void Empresa::demiteFuncionario(Funcionario* funcionario) {
-  // primeira coisa é verificar permissao do usuario logado
-  //Login::getInstance()->verificaPermissao(PERMISSOES::DEMITIR_FUNCIONARIO,"DEMITIR_FUNCIONARIO");
+  //primeira coisa é verificar permissao do usuario logado
+  Login::getInstance()->verificaPermissao(PERMISSOES::DEMITIR_FUNCIONARIO,"DEMITIR_FUNCIONARIO","Empresa","Empresa","demiteFuncionario");
+
     // throw "Usuario logado nao possui permissao demitir funcionario!";
   
 
